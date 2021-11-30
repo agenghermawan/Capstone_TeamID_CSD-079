@@ -40,7 +40,7 @@
                 </div>
             </form>
         </div>
-        <div class="col-span-1 bg-white p-5 mt-5 shadow-2xl max-h-96">
+        <div class="col-span-1 bg-white p-5 mt-5 shadow-2xl" style="height: 425px">
             <div class="form-group my-2">
                 <label for="" > Ditulis :</label>
                 <input type="text" class="w-full bg-gray-200 border-none rounded mt-2" value="" placeholder="Ditulis Oleh">
@@ -55,10 +55,10 @@
             </div>
             <div class="form-group mt-2">
                 <label for="" > Refrensi :</label>
-                <input type="text" class="w-full bg-gray-200 border-none rounded mt-2" value="" placeholder="Kategori">
+                <input type="text" class="w-full bg-gray-200 border-none rounded mt-2" value="" placeholder="Refrensi">
             </div>
+            <button type="submit" class="rounded from-bue-300 to-blue-200 bg-gradient-to-r my-2 p-3 shadow-2xl"> Submit </button>
         </div>
-
     </div>
 
 

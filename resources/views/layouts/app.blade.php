@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>Sehatku</title>
     @include('layouts.style')
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.tiny.cloud/1/tmrao508v4qd0k76bb3ztge1vkvrlu25nec5c1fzm5tftz7y/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
@@ -22,7 +23,7 @@
                 <a href="{{ route('dashboard') }}" class="mt-10"> Dashboard </a>
                 <a href=""> Dokter </a>
                 <a href="{{ route('rumahSakit.index') }}"> Rumah Sakit </a>
-                <a href=""> Pasien </a>
+                <a href="{{route('pengguna.index')}}"> Pengguna </a>
                 <a href=""> Janji Temu </a>
                 <a href="{{ route('artikel.index') }}"> Artikel </a>
             </nav>

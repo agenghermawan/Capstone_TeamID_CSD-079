@@ -3,6 +3,8 @@
 use App\Http\Controllers\Backend\ArtikelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\RumahSakitController;
+use App\Http\Controllers\Backend\PenggunaController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,5 +27,6 @@ Route::get('/dashboard', function () {
 
 Route::resource('rumahSakit', RumahSakitController::class);
 Route::resource('artikel', ArtikelController::class);
+Route::resource('pengguna', PenggunaController::class);
 
 require __DIR__.'/auth.php';
