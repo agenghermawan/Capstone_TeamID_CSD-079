@@ -26,6 +26,7 @@
                 <a href="{{route('pengguna.index')}}"> Pengguna </a>
                 <a href=""> Janji Temu </a>
                 <a href="{{ route('artikel.index') }}"> Artikel </a>
+                <a href="{{ route('artikel.index') }}"> Covid Info </a>
             </nav>
         </div>
         <div class="content w-full rounded-lg mx-5 my-5 py-10 px-10" style="background-color: #f1f5f8">

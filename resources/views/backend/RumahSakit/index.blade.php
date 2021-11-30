@@ -45,6 +45,7 @@
                     <td>858</td>
                 </tr>
             </tbody>
+        </table>
     </div>
 
 @endsection

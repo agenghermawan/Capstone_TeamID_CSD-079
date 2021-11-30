@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class PenggunaController extends Controller
 {
@@ -14,7 +15,9 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        return view('backend.Pengguna.index');
+        $response = Http::get('https://apicovid19indonesia-v2.vercel.app/api/indonesia/provinsi');
+        $data = json_decode($response);
+        return view('backend.Pengguna.index',compact('data'));
     }
 
     /**
