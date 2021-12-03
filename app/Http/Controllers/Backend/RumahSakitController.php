@@ -46,7 +46,7 @@ class RumahSakitController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('backend.RumahSakit.detail');
     }
 
     /**

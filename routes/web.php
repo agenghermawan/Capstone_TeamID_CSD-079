@@ -4,7 +4,9 @@ use App\Http\Controllers\Backend\ArtikelController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\RumahSakitController;
 use App\Http\Controllers\Backend\PenggunaController;
-
+use App\Http\Controllers\Backend\getDataCovidController;
+use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\DokterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,12 +23,17 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
-Route::resource('rumahSakit', RumahSakitController::class);
-Route::resource('artikel', ArtikelController::class);
-Route::resource('pengguna', PenggunaController::class);
+Route::middleware('auth')->prefix('admin')->group(function(){
+    Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard'); 
+    Route::get('covid', [getDataCovidController::class, 'index'])->name('backendGetDataCovid');
+
+    Route::resource('rumahSakit', RumahSakitController::class);
+    Route::resource('artikel', ArtikelController::class);
+    Route::resource('pengguna', PenggunaController::class);
+    Route::resource('dokter', DokterController::class);
+});
+
+
 
 require __DIR__.'/auth.php';

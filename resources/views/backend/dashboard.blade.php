@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
     <div class="grid grid-cols-3 gap-10  mt-4 content-dashboard">
         <div class="col-span-2 left-content-dashboard">
             <div class="title flex justify-between">

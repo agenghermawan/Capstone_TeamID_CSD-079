@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\resources",
+    "\\resources\\views",
+    "\\resources\\views\\backend",
+    "\\resources\\views\\backend\\Pengguna"
   ],
+  "SelectedNode": "\\resources\\views\\backend\\Pengguna\\create.blade.php",
   "PreviewInSolutionExplorer": false
 }
