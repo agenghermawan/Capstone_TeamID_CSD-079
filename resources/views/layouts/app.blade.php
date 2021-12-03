@@ -20,9 +20,9 @@
 </head>
 
 <body style="background-color: #f5f6fC">
-    <div class="relative min-h-screen flex " style="font-family: 'Inter', sans-serif;">
-        <div class="sidebar text-blue-300 w-64 h-100 text-center align-center py-10 md:block "
-            style="background-color: #273264; border-radius:0 125px 0 0">
+    <div class="relative min-h-screen flex" style="font-family: 'Inter', sans-serif;">
+        <div class="sidebar text-blue-300 w-64 h-100 text-center align-center py-10 hidden md:inline-block "
+            style="background-color: #273264; border-radius:0 100px 0 0">
             <div class="icon flex justify-center mt-5">
                 <img src="{{ asset('icon/icon.png') }}" class="w-20" alt="">
             </div>

@@ -33,9 +33,8 @@
         }
 
     </style>
-
-
 @endsection
+
 @section('content')
     <div class="h1 my-5"> Daftar Data Rumah Sakit </div>
     <a href="{{ route('rumahSakit.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Data Rumah
