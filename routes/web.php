@@ -7,6 +7,8 @@ use App\Http\Controllers\Backend\PenggunaController;
 use App\Http\Controllers\Backend\getDataCovidController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DokterController;
+use App\Http\Controllers\Backend\ObatController;
+use App\Http\Controllers\Backend\PenyakitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,13 +27,16 @@ Route::get('/', function () {
 
 
 Route::middleware('auth')->prefix('admin')->group(function(){
-    Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard'); 
+    Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard');
     Route::get('covid', [getDataCovidController::class, 'index'])->name('backendGetDataCovid');
 
     Route::resource('rumahSakit', RumahSakitController::class);
     Route::resource('artikel', ArtikelController::class);
     Route::resource('pengguna', PenggunaController::class);
     Route::resource('dokter', DokterController::class);
+    Route::resource('obat', ObatController::class);
+    Route::resource('penyakit', PenyakitController::class);
+
 });
 
 

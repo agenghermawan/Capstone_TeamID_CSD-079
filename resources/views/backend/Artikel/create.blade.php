@@ -20,7 +20,7 @@
                 <div class="content-form-article mt-5 bg-white shadow-2xl p-5">
                     <div class="form-group p-5">
                         <p class="my-5"> Isi Artikel </p>
-                        <textarea id="editor"></textarea>
+                        <div id="summernote"></div>
                     </div>
                     <div class="form-group p-5">
                         <label class="inline-block mb-2 text-gray-500">File Upload</label>

@@ -5,7 +5,7 @@
 
 @endsection
 @section('content')
-    <div class="container mt-4 grid grid-cols-1 md:grid-cols-2 lg:flex justify-between flex justify-between">
+    <div class="container mt-4 grid grid-cols-1 md:grid-cols-2 lg:flex">
         <h4> Daftar Pengguna </h4>
         <a href="{{ route('pengguna.create') }}" class="bg-gradient-to-r from-blue-500 to-blue-200 p-2 rounded"> Tambahkan
             Pengguna</a>
