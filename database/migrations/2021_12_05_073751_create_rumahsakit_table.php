@@ -24,6 +24,7 @@ class CreateRumahsakitTable extends Migration
             $table->string('notelp',40);
             $table->string('lokasiGmaps');
             $table->string('jamOperasional');
+            $table->json('fasilitas');
             $table->timestamps();
         });
     }

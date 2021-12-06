@@ -5,15 +5,17 @@
 @endsection
 @section('content')
 
-    <h1 class="my-5">
-        Form Data Rumah Sakit
-    </h1>
-    <h1 x-data="{ message: 'I ❤️ Alpine' }" x-text="message"></h1>
 
 
     <form class="w-full bg-white p-10" enctype="multipart/form-data" method="POST" action="{{route('rumahSakit.store')}}">
+
+        <h1 class="text-base mb-4 tracking-wide text-blue-700 font-bold uppercase border-b pb-2 md:text-center">
+            Form Data Rumah Sakit
+        </h1>
+
         @method('POST')
         @csrf
+
         @if(session('message'))
             <div class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-blue-100 rounded-lg" role="alert">
                 <p> {{ session('message') }}</p>
@@ -48,7 +50,7 @@
         </div>
 
         <div class="flex flex-wrap -mx-3 mb-6 ">
-            <div class="w-full md:w-1/3 px-3">
+            <div class="w-full md:w-1/3 px-3 mb-6">
                 <label for="provinsi" class="block text-gray-700 text-xs font-bold mb-2 uppercase tracking-wide">Provinsi</label>
                 <input type="text" name="provinsi" class="rounded bg-blue-200 border-none w-full focus:border-none transform transtition hover:scale-105 duration-500 ease-in-out focus:bg-white">
                 @error('provinsi')
@@ -56,7 +58,7 @@
                 @enderror
             </div>
 
-            <div class="w-full md:w-1/3 px-3">
+            <div class="w-full md:w-1/3 px-3 mb-6">
                 <label for="kodepos" class="block text-gray-700 text-xs font-bold mb-2 uppercase tracking-wide">Kode Pos</label>
                 <input type="text" name="kodepos" class="rounded bg-blue-200 border-none w-full focus:border-none transform
                 transtition hover:scale-105 duration-500 ease-in-out focus:bg-white @error('kodepos') is-invalid @enderror">
@@ -66,7 +68,7 @@
                 @enderror
             </div>
 
-            <div class="w-full md:w-1/3 px-3">
+            <div class="w-full md:w-1/3 px-3 mb-6">
                 <label for="kota" class="block text-gray-700 text-xs font-bold mb-2 uppercase tracking-wide">Kota</label>
                 <input type="text" name="kota" class="rounded bg-blue-200 border-none w-full focus:border-none
                 transform transtition hover:scale-105 duration-500 ease-in-out focus:bg-white @error('kota') is-invalid @enderror">
@@ -81,11 +83,14 @@
                 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="tentang">
                     Tentang
                 </label>
+
                 <textarea name="tentang" id="" cols="30" rows="2" class="rounded w-full bg-blue-200
                 text-black-700 border-none focus:border-none py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 @error('tentang') is-invalid @enderror"></textarea>
+
                 @error('tentang')
                 <p class="text-red-500 text-xs italic">{{$message}}</p>
                 @enderror
+
             </div>
         </div>
 
@@ -110,7 +115,7 @@
                 <input
                     class="rounded w-full bg-blue-200 text-black-700 border-none focus:border-none py-3
                     px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 @error('lokasiGmaps') is-invalid @enderror"
-                    id="lokasiGmaps" type="text" name="lokasiGmaps" placeholder="http://">
+                    id="lokasiGmaps" type="text" name="lokasiGmaps" placeholder="">
                 @error('lokasiGmaps')
                 <p class="text-red-500 text-xs italic">{{$message}}</p>
                 @enderror
@@ -129,6 +134,181 @@
                 @enderror
             </div>
         </div>
+
+        <h5 class="text-xs tracking-wide font-bold text-blue-700 uppercase"> Fasilitas </h5>
+        <div class="fasilitas border-b border-blue-300 mb-6">
+            <div class="flex flex-wrap -mx-3 my-6">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="fasilitas" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Farmasi" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700" id="fasilitas"> Farmasi </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]"  value="Intalasi Berjalan" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Intalasi Berjalan </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Kafetaria" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Kafetaria  </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap -mx-3 my-6">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Instalasi Rawat Inap " class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Instalasi Rawat Inap </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Ambulans" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Ambulans </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="ATM" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> ATM  </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap -mx-3 my-6">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Area Parkir" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Area parkir </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Intalasi Radiologi" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Intalasi Radiologi </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Unit Gawat Darurat (UGD)" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Unit Gawat Darurat (UGD)  </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap -mx-3 my-6">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Instalasi Laboratorium" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Instalasi Laboratorium </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="Ruang Tunggu " class="inline-flex items-center">
+                        <input type="checkbox" id="Ruang Tunggu " name="fasilitas[]" value="Ruang Tunggu" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Ruang Tunggu </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="IGD" class="inline-flex items-center">
+                        <input type="checkbox" id="IGD" name="fasilitas[]" value="Instalasi Gawat Darurat (IGD)" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Instalasi Gawat Darurat (IGD)  </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <h5 class="text-xs tracking-wide font-bold text-blue-700 uppercase"> Poli klinik</h5>
+        <div class="poliklinik border-b border-blue-300">
+            <div class="flex flex-wrap -mx-3 my-6">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="fasilitas" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Farmasi" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700" id="fasilitas"> Farmasi </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]"  value="Intalasi Berjalan" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Intalasi Berjalan </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Kafetaria" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Kafetaria  </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap -mx-3 my-6">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Instalasi Rawat Inap " class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Instalasi Rawat Inap </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Ambulans" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Ambulans </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="ATM" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> ATM  </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap -mx-3 my-6">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Area Parkir" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Area parkir </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Intalasi Radiologi" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Intalasi Radiologi </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Unit Gawat Darurat (UGD)" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Unit Gawat Darurat (UGD)  </span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="flex flex-wrap -mx-3 my-6">
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="" class="inline-flex items-center">
+                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Instalasi Laboratorium" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Instalasi Laboratorium </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="Ruang Tunggu " class="inline-flex items-center">
+                        <input type="checkbox" id="Ruang Tunggu " name="fasilitas[]" value="Ruang Tunggu" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Ruang Tunggu </span>
+                    </label>
+                </div>
+                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
+                    <label for="IGD" class="inline-flex items-center">
+                        <input type="checkbox" id="IGD" name="fasilitas[]" value="Instalasi Gawat Darurat (IGD)" class="rounded border-blue-200">
+                        <span class="ml-2 text-sm tracking-wide text-blue-700"> Instalasi Gawat Darurat (IGD)  </span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
         <button
             class="from-blue-400 to-blue-100 bg-gradient-to-l  rounded-lg p-2 mt-5 w-full text-white shadow-2xl md:w-52 xl:w-30 lg:w-40 transform transtition hover:scale-105 duration-500"
             type="submit"> Submit </button>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DokterController;
 use App\Http\Controllers\Backend\ObatController;
 use App\Http\Controllers\Backend\PenyakitController;
+use App\Http\Controllers\Backend\PoliKlinikController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,8 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::resource('dokter', DokterController::class);
     Route::resource('obat', ObatController::class);
     Route::resource('penyakit', PenyakitController::class);
+    Route::resource('poliklinik', PoliKlinikController::class);
+
 
 });
 

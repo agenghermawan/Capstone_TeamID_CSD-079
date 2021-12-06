@@ -37,9 +37,17 @@
 
 @section('content')
     <div class="h1 my-5"> Daftar Data Rumah Sakit </div>
-    <a href="{{ route('rumahSakit.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Data Rumah
-        Sakit</a>
+    <div class="md:flex md:justify-between ">
+        <div class="left-header mb-8">
+            <a href="{{ route('rumahSakit.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Data Rumah
+                Sakit</a>
+        </div>
+        <div class="right-header">
+            <a href="{{ route('poliklinik.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Data Poli Klinik
+                </a>
+        </div>
 
+    </div>
     <div class="w-full mt-5">
         <table class="min-w-full divide-y divide-gray-200" id="myTable">
             <thead class="bg-gray-50">

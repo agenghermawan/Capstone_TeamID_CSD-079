@@ -66,16 +66,9 @@
                 <h4 class="font-bold text-blue-500 mb-4"> Fasilitas </h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 text-sm ">
                     <ul class="list-disc">
-                        <li> Farmasi</li>
-                        <li> ATM</li>
-                        <li> Unit Gawat Darurat</li>
-                        <li> Instalasi Radiologi</li>
-                    </ul>
-                    <ul class="list-disc">
-                        <li> Farmasi</li>
-                        <li> ATM</li>
-                        <li> Unit Gawat Darurat</li>
-                        <li> Instalasi Radiologi</li>
+                      @foreach($data->fasilitas as $item)
+                            <li> {{$item}}</li>
+                        @endforeach
                     </ul>
                 </div>
             </div>

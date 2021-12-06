@@ -47,6 +47,7 @@ class RumahSakitController extends Controller
             'notelp' => 'required',
             'lokasiGmaps' => 'required',
             'jamOperasional' => 'required',
+            'fasilitas' => 'required'
         ])->validate();
 
         RumahSakit::create($request->all());
@@ -63,7 +64,8 @@ class RumahSakitController extends Controller
      */
     public function show($id)
     {
-        return view('backend.RumahSakit.detail');
+        $data = RumahSakit::findOrFail($id);
+        return view('backend.RumahSakit.detail',compact('data'));
     }
 
     /**
