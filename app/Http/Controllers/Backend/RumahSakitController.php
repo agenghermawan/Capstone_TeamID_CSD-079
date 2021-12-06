@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\RumahSakit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RumahSakitController extends Controller
 {
@@ -35,7 +37,22 @@ class RumahSakitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Validator::make($request->all(), [
+            'nama' => 'required|max:255',
+            'alamat' => 'required',
+            'tentang' => 'required',
+            'provinsi' => 'required',
+            'kodepos' => 'required|integer',
+            'kota' => 'required',
+            'notelp' => 'required',
+            'lokasiGmaps' => 'required',
+            'jamOperasional' => 'required',
+        ])->validate();
+
+        RumahSakit::create($request->all());
+        return back()->with([
+            'message'=> 'Data Rumah Sakit Berhasil di tambahkan',
+        ]);
     }
 
     /**
