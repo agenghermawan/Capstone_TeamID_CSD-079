@@ -16,7 +16,8 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        return  view('backend.Artikel.index');
+        $data = Artikel::all();
+        return  view('backend.Artikel.index',compact('data'));
     }
 
     /**
@@ -37,20 +38,21 @@ class ArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        Validator::make($request->all(), [
+        $data = $request->all();
+        Validator::make($data, [
             'title' => 'required|max:255',
             'isiArtikel' => 'required',
             'ditulisOleh' => 'required',
             'kategori' => 'required',
             'refrensi' => 'required',
-            'photo' => 'required|img:jpg,png',
+            'photo' => 'required|image:jpg,png',
         ])->validate();
 
-        Artikel::create($request->all());
+        $data['photo']  = $request->file('photo')->store('artikel','public', $request->file('photo')->getClientOriginalName());
+        Artikel::create($data);
         return back()->with([
             'message' => 'Berhasil ditambahkan'
-        ]
-        );
+        ]);
     }
 
     /**
