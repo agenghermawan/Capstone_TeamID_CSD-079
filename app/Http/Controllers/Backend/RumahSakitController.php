@@ -16,7 +16,8 @@ class RumahSakitController extends Controller
      */
     public function index()
     {
-        return view('backend.RumahSakit.index');
+        $data = RumahSakit::all();
+        return view('backend.RumahSakit.index',compact('data'));
     }
 
     /**

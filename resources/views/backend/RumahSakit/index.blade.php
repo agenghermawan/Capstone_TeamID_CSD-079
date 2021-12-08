@@ -39,12 +39,14 @@
     <div class="h1 my-5"> Daftar Data Rumah Sakit </div>
     <div class="md:flex md:justify-between ">
         <div class="left-header mb-8">
-            <a href="{{ route('rumahSakit.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Data Rumah
+            <a href="{{ route('rumahSakit.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Data
+                Rumah
                 Sakit</a>
         </div>
         <div class="right-header">
-            <a href="{{ route('poliklinik.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Data Poli Klinik
-                </a>
+            <a href="{{ route('poliklinik.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Data Poli
+                Klinik
+            </a>
         </div>
 
     </div>
@@ -53,54 +55,53 @@
             <thead class="bg-gray-50">
                 <tr>
                     <th scope="col"
-                        class="px-6 py-3  text-xs text-center font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3  text-xs text-center font-medium text-blue-500 uppercase tracking-wider">
                         Nama
                     </th>
                     <th scope="col"
-                        class="px-6 py-3  text-xs text-center font-medium text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3  text-xs text-center font-medium text-blue-500 uppercase tracking-wider">
                         Alamat
                     </th>
                     <th scope="col"
-                        class="px-6 py-3  text-xs font-medium text-center text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3  text-xs font-medium text-center text-blue-500 uppercase tracking-wider">
                         Total Poli Klinik
                     </th>
                     <th scope="col"
-                        class="px-6 py-3  text-xs font-medium text-center text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3  text-xs font-medium text-center text-blue-500 uppercase tracking-wider">
                         No Telp
                     </th>
                     <th scope="col"
-                        class="px-6 py-3  text-xs font-medium text-center text-gray-500 uppercase tracking-wider">
+                        class="px-6 py-3  text-xs font-medium text-center text-blue-500 uppercase tracking-wider">
                         Detail
                     </th>
                 </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200">
-                @for ($i = 0; $i < 15; $i++)
-                    <tr>
+                @foreach ($data as $item)
+                    <tr class="p-15">
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
                                 <div class="ml-4">
                                     <div class="text-sm text-center font-medium text-gray-900">
-                                        Dki Jakarta
+                                        <p> {{ $item->nama }} </p>
                                     </div>
                                 </div>
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                            <p class="text-xs text-gray-400"> Orang </p>
+                            <p class="text-xs text-blue-400"> {{ $item->provinsi }} </p>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                            <p class="text-xs text-gray-400"> Orang </p>
+                            <p class="text-xs text-blue-400"> {{ $item->kodepos }} </p>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
-                            <p class="text-xs text-gray-400"> Orang </p>
+                        <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-blue-500">
+                            <p class="text-xs text-blue-400"> {{ $item->jamOperasional }} </p>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                             <a href="{{ route('rumahSakit.show', 1) }}" class="rounded bg-blue-300 p-2"> Detail </a>
                         </td>
                     </tr>
-                @endfor
-
+                @endforeach
             </tbody>
         </table>
     </div>

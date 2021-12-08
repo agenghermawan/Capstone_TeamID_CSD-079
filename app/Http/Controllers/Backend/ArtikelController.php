@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Artikel;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 
 class ArtikelController extends Controller
 {
@@ -35,7 +37,20 @@ class ArtikelController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Validator::make($request->all(), [
+            'title' => 'required|max:255',
+            'isiArtikel' => 'required',
+            'ditulisOleh' => 'required',
+            'kategori' => 'required',
+            'refrensi' => 'required',
+            'photo' => 'required|img:jpg,png',
+        ])->validate();
+
+        Artikel::create($request->all());
+        return back()->with([
+            'message' => 'Berhasil ditambahkan'
+        ]
+        );
     }
 
     /**

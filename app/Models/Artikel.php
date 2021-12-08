@@ -5,14 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Poliklinik extends Model
+class Artikel extends Model
 {
     use HasFactory;
-    protected $table = 'poliklinik';
+    protected $table = 'artikel';
     protected $fillable = [
-        'nama' ,'deskripsi' ,'tindakanmedis'
-    ];
-    protected $casts = [
-        'tindakanmedis' => 'array'
+        'title', 'isiArtikel', 'ditulisOleh', 'kategori','refrensi','photo'
     ];
 }

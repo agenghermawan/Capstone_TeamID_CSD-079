@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Poliklinik;
 use Illuminate\Http\Request;
+use Validator;
 
 class PoliKlinikController extends Controller
 {
@@ -35,7 +37,16 @@ class PoliKlinikController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        Validator::make($request->all(),[
+            'nama' => 'required',
+            'deskripsi' => 'required|max:150',
+            'tindakanmedis' => 'required',
+        ])->validate();
+
+        Poliklinik::create($request->all());
+        return back()->with([
+            'message' => 'Berhasil menambahkan data Poli Klinik',
+        ]);
     }
 
     /**

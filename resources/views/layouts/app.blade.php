@@ -7,6 +7,8 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Sehatku</title>
     @include('layouts.style')
+    @include('layouts.script')
+
 </head>
 
 <body style="background-color: #f5f6fC">
@@ -45,7 +47,8 @@
         </div>
     </div>
 
-    @include('layouts.script')
+    @yield('script')
+
 </body>
 
 </html>
