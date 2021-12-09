@@ -50,7 +50,7 @@
                 <div class="form-group my-2">
                     <label for="" class="text-gray-700 text-sm"> Ditulis :</label>
                     <input type="text" name="ditulisOleh" class="w-full  text-gray-700 text-sm border-gray-300 rounded mt-2"
-                        value="" placeholder="Ditulis Oleh">
+                        value="{{ Auth::user()->name }}" placeholder="Ditulis Oleh">
                 </div>
 
                 <div class="form-group my-2">

@@ -63,7 +63,8 @@ class ArtikelController extends Controller
      */
     public function show($id)
     {
-        //
+        $dataArtikel = Artikel::findOrFail($id);
+        return view('backend.Artikel.show',compact('dataArtikel'));
     }
 
     /**

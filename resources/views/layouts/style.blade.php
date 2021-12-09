@@ -12,11 +12,10 @@
     integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 
 <!-- Datatables  -->
-<link rel="stylesheet" type="text/css" href="{{asset('datatables/datatables.css')}}"/>
+<link rel="stylesheet" type="text/css" href="{{ asset('datatables/datatables.css') }}" />
 
 <!-- Assets  -->
 <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
 <!-- Opsional Css   -->
 @yield('css')
-

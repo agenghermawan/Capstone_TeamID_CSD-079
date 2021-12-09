@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Http\Controllers\Controller;
+use App\Models\Penyakit;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class PenyakitController extends Controller
 {
@@ -24,7 +25,7 @@ class PenyakitController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.Penyakit.create');
     }
 
     /**
@@ -35,7 +36,18 @@ class PenyakitController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request);
+        $penyakit = new Penyakit();
+        $penyakit->id = 0;
+        $penyakit -> exists = true;
+        $penyakit -> $request->namaPenyakit;
+        $penyakit -> $request->deskripsiPenyakit;
+        $penyakit -> $request->isiPenyakit;
+        $penyakit -> $request->photoPenyakit;
+        $image = $penyakit -> addMediaFromRequest('photoPenyakit')->toMediaCollection('images');
+        return response()->json([
+            'url' => $image->getUrl()
+        ]);
     }
 
     /**

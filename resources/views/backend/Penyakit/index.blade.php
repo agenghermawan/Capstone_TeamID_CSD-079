@@ -7,12 +7,11 @@
 @section('content')
     <div class="container mt-4  grid-cols-1 md:grid-cols-2 lg:flex flex justify-between">
         <h4> Daftar Data Penyakit </h4>
-        <a href="{{ route('pengguna.create') }}"
+        <a href="{{ route('penyakit.create') }}"
             class="bg-blue-200 px-3 py-4 rounded transition transform hover:scale-110  ease-in-out duration-500 ">
             Tambahkan
             Data Penyakit</a>
     </div>
-
 
     <div class="grid md:grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-3">
         @for ($i = 0; $i < 12; $i++)

@@ -39,8 +39,9 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::resource('penyakit', PenyakitController::class);
     Route::resource('poliklinik', PoliKlinikController::class);
 
-
 });
+
+Route::get('penyakit',[PenyakitController::class, 'index'] );
 
 
 

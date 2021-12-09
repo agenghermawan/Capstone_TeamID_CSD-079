@@ -54,24 +54,19 @@
         <table class="min-w-full divide-y divide-gray-200" id="myTable">
             <thead class="bg-gray-50">
                 <tr>
-                    <th scope="col"
-                        class="px-6 py-3  text-xs text-center font-medium text-blue-500 uppercase tracking-wider">
+                    <th scope="col" class="px-6 py-3  text-xs text-center font-medium text-black uppercase tracking-wider">
                         Nama
                     </th>
-                    <th scope="col"
-                        class="px-6 py-3  text-xs text-center font-medium text-blue-500 uppercase tracking-wider">
+                    <th scope="col" class="px-6 py-3  text-xs text-center font-medium text-black uppercase tracking-wider">
                         Alamat
                     </th>
-                    <th scope="col"
-                        class="px-6 py-3  text-xs font-medium text-center text-blue-500 uppercase tracking-wider">
+                    <th scope="col" class="px-6 py-3  text-xs font-medium text-center text-black uppercase tracking-wider">
                         Total Poli Klinik
                     </th>
-                    <th scope="col"
-                        class="px-6 py-3  text-xs font-medium text-center text-blue-500 uppercase tracking-wider">
+                    <th scope="col" class="px-6 py-3  text-xs font-medium text-center text-black uppercase tracking-wider">
                         No Telp
                     </th>
-                    <th scope="col"
-                        class="px-6 py-3  text-xs font-medium text-center text-blue-500 uppercase tracking-wider">
+                    <th scope="col" class="px-6 py-3  text-xs font-medium text-center text-black uppercase tracking-wider">
                         Detail
                     </th>
                 </tr>
@@ -83,19 +78,19 @@
                             <div class="flex items-center">
                                 <div class="ml-4">
                                     <div class="text-sm text-center font-medium text-gray-900">
-                                        <p> {{ $item->nama }} </p>
+                                        <p class="py-3"> {{ $item->nama }} </p>
                                     </div>
                                 </div>
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                            <p class="text-xs text-blue-400"> {{ $item->provinsi }} </p>
+                            <p class="text-xs text-gray-400"> {{ $item->provinsi }} </p>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                            <p class="text-xs text-blue-400"> {{ $item->kodepos }} </p>
+                            <p class="text-xs text-gray-400"> {{ $item->kodepos }} </p>
                         </td>
-                        <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-blue-500">
-                            <p class="text-xs text-blue-400"> {{ $item->jamOperasional }} </p>
+                        <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                            <p class="text-xs text-gray-400"> {{ $item->jamOperasional }} </p>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                             <a href="{{ route('rumahSakit.show', 1) }}" class="rounded bg-blue-300 p-2"> Detail </a>

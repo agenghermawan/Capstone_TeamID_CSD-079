@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Obat;
 use Illuminate\Http\Request;
+use Validator;
 
 class ObatController extends Controller
 {
@@ -14,7 +16,8 @@ class ObatController extends Controller
      */
     public function index()
     {
-        return view('backend.Obat.index');
+        $dataObat = Obat::all();
+        return view('backend.Obat.index',compact('dataObat'));
     }
 
     /**
@@ -35,7 +38,31 @@ class ObatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->all();
+        Validator::make($data,[
+            "namaObat" => "required",
+            "golongan" => "required",
+            "kategori" => "required",
+            "dikonsumsiOleh" => "required",
+            "bentukObat" => "required",
+            "anjuranLainnya" => "required",
+            "photoObat" => "required|image:jpg,png,webp",
+            "merkDagang" => "required",
+            "manfaat" => "required",
+            "deskripsi" => "required",
+            "productObat" => "required",
+            "peringatanObat" => "required",
+            "dosisdanaturan" => "required",
+            "interaksi" => "required",
+            "efekSamping" => "required",
+        ]);
+
+
+        $data['photoObat'] = $request->file('photoObat')->store('assets/Obat','public',$request->file('photoObat')->getClientOriginalName());
+        Obat::create($data);
+        return back()->with([
+            'message' => 'Berhasil Ditambahkan',
+        ]);
     }
 
     /**
@@ -46,7 +73,8 @@ class ObatController extends Controller
      */
     public function show($id)
     {
-        return view('backend.Obat.detail');
+        $detailDataObat = Obat::findOrFail($id);
+        return view('backend.Obat.detail',compact('detailDataObat'));
     }
 
     /**
