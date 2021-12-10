@@ -7,7 +7,7 @@ use App\Http\Requests\Auth\LoginRequest;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-
+use RealRashid\SweetAlert\Facades\Alert;
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -29,10 +29,18 @@ class AuthenticatedSessionController extends Controller
     public function store(LoginRequest $request)
     {
         $request->authenticate();
-
         $request->session()->regenerate();
-
+        Alert::success('Success Title', 'Success Message');
         return redirect()->intended(RouteServiceProvider::HOME);
+
+        //            if (Auth::guard('web')->attempt(['email' => $request->email, 'password' => 
+        //     $request->password], $request->remember)) {
+        //     return redirect()->intended(route('LandingPage'));
+        // }
+        // if (Auth::guard('dokter')->attempt(['email' => $request->email, 'password' => 
+        //     $request->password], $request->remember)) {
+        //     return redirect()->intended(route('artikelShow_frontend'));
+        // }
     }
 
     /**

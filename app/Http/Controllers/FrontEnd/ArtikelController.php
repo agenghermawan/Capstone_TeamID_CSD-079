@@ -9,6 +9,9 @@ class ArtikelController extends Controller
 {
      public function index()
     {
-        return  view('frontend.Penyakit');
+        return  view('frontend.Artikel.index');
+    }
+    public function show($id){
+        return view('frontend.Artikel.detail');
     }
 }

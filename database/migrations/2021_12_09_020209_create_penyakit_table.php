@@ -17,7 +17,7 @@ class CreatePenyakitTable extends Migration
             $table->id();
             $table->string('namaPenyakit');
             $table->string('deskripsiPenyakit');
-            
+            $table->string('ditulisOleh');
             $table->string('photoPenyakit');
             $table->longText('isiPenyakit');
             $table->timestamps();

@@ -36,19 +36,18 @@
 @endsection
 
 @section('content')
-    <div class="h1 my-5"> Daftar Data Rumah Sakit </div>
+    <div class="h1 my-5 md:text-center text-lg font-bold text-blue-500"> Daftar Data Rumah Sakit </div>
     <div class="md:flex md:justify-between ">
         <div class="left-header mb-8">
-            <a href="{{ route('rumahSakit.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Data
+            <a href="{{ route('rumahSakit.create') }}" class="bg-blue-300 p-3 text-white rounded mb-5"> Tambahkan Data
                 Rumah
                 Sakit</a>
         </div>
         <div class="right-header">
-            <a href="{{ route('poliklinik.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Data Poli
+            <a href="{{ route('poliklinik.create') }}" class="bg-blue-300 p-3 text-white rounded mb-5"> Tambahkan Data Poli
                 Klinik
             </a>
         </div>
-
     </div>
     <div class="w-full mt-5">
         <table class="min-w-full divide-y divide-gray-200" id="myTable">
@@ -93,7 +92,7 @@
                             <p class="text-xs text-gray-400"> {{ $item->jamOperasional }} </p>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                            <a href="{{ route('rumahSakit.show', 1) }}" class="rounded bg-blue-300 p-2"> Detail </a>
+                            <a href="{{ route('rumahSakit.show', 1) }}" class="rounded bg-blue-200 p-2"> Detail </a>
                         </td>
                     </tr>
                 @endforeach

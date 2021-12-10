@@ -11,13 +11,22 @@
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-3 sm:col-span-6">
                                 <div class="mt-1 flex rounded-md shadow-sm">
+                                    <input type="text" name="namaPenyakit" id="namaPenyakit"
+                                        class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                                        placeholder="Nama Penyakit">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="grid grid-cols-6 gap-6">
+                            <div class="col-span-3 sm:col-span-6">
+                                <div class="mt-1 flex rounded-md shadow-sm">
                                     <span
                                         class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
                                         <i class="fas fa-user"></i>
                                     </span>
-                                    <input type="text" name="namaPenyakit" id="namaPenyakit"
-                                        class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
-                                        placeholder="Nama Penyakit">
+                                    <input type="text" name="ditulisOleh" id="ditulisOleh"
+                                        class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300 text-gray-500"
+                                        value="{{ Auth::user()->name }}">
                                 </div>
                             </div>
                         </div>
@@ -93,7 +102,7 @@
                     // integration to choose the right communication channel. This example uses
                     // a POST request with JSON as a data structure but your configuration
                     // could be different.
-                    xhr.open('POST', '{{ route('penyakit.store') }}', true);
+                    xhr.open('POST', '{{ route('image_upload') }}', true);
                     xhr.setRequestHeader('x-csrf-token', '{{ csrf_token() }}');
                     xhr.responseType = 'json';
                 }

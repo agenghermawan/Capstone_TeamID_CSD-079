@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Poliklinik;
 use App\Models\RumahSakit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -27,7 +28,8 @@ class RumahSakitController extends Controller
      */
     public function create()
     {
-        return view('backend.RumahSakit.create');
+        $dataPoliklinik = Poliklinik::all();
+        return view('backend.RumahSakit.create',compact('dataPoliklinik'));
     }
 
     /**
@@ -48,7 +50,8 @@ class RumahSakitController extends Controller
             'notelp' => 'required',
             'lokasiGmaps' => 'required',
             'jamOperasional' => 'required',
-            'fasilitas' => 'required'
+            'fasilitas' => 'required',
+            'poliklinik' => 'required',
         ])->validate();
 
         RumahSakit::create($request->all());

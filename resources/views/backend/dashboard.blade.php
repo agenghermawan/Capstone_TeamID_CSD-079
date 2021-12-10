@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @include('sweetalert::alert')
     <div class="grid grid-cols-3 gap-10  mt-4 content-dashboard">
         <div class="col-span-2 left-content-dashboard">
             <div class="title flex justify-between">
@@ -9,47 +10,53 @@
             </div>
             <!-- Chart Top -->
             <div class="content-card grid gap-4 grid-cols-4 mt-5">
-                <div class="card h-100 p-5 bg-white ">
+                <div
+                    class="card h-100 p-5 bg-white shadow-md transform transtition hover:scale-110 duration-500 from-blue-300 bg-gradient-to-tr to-blue-200">
                     <div class="title-content-card flex justify-between">
-                        <img src="{{ asset('icon/icon.png') }}" width="30px" height="30px" alt="">
+                        <img src="{{ asset('icon/Hospital.png') }}" width="30px" height="30px" alt="">
                     </div>
                     <div class="content-card py-5">
-                        <h1> 4180 </h1>
-                        <p> Item Sales</p>
+                        <h1> {{ $countRumahSakit }} </h1>
+                        <p> Rumah Sakit</p>
                     </div>
                 </div>
-                <div class="card h-100 p-5 bg-white">
+                <div
+                    class="card h-100 p-5 bg-white shadow-md transform transtition hover:scale-110 duration-500 from-blue-300 bg-gradient-to-tr to-blue-200">
                     <div class="title-content-card flex justify-between">
-                        <img src="{{ asset('icon/icon.png') }}" width="30px" height="30px" alt="">
+                        <img src="{{ asset('icon/user.png') }}" width="30px" height="30px" alt="">
                     </div>
                     <div class="content-card py-5">
-                        <h1> 4180 </h1>
-                        <p> Item Sales</p>
+                        <h1> {{ $countPengguna }} </h1>
+                        <p> Pengguna</p>
                     </div>
                 </div>
-                <div class="card h-100 p-5 bg-white">
+                <div
+                    class="card h-100 p-5 bg-white shadow-md transform transtition hover:scale-110 duration-500 from-blue-300 bg-gradient-to-tr to-blue-200">
                     <div class="title-content-card flex justify-between">
-                        <img src="{{ asset('icon/icon.png') }}" width="30px" height="30px" alt="">
+                        <img src="{{ asset('icon/doctor.png') }}" width="30px" height="30px" alt="">
                     </div>
                     <div class="content-card py-5">
-                        <h1> 4180 </h1>
-                        <p> Item Sales</p>
+                        <h1> {{ $countDokter }} </h1>
+                        <p> Dokter</p>
                     </div>
                 </div>
-                <div class="card h-100 p-5 bg-white">
+                <div
+                    class="card h-100 p-5 bg-white shadow-md transform transtition hover:scale-110 duration-500 from-blue-300 bg-gradient-to-tr to-blue-200">
                     <div class="title-content-card flex justify-between">
-                        <img src="{{ asset('icon/icon.png') }}" width="30px" height="30px" alt="">
+                        <img src="{{ asset('icon/positive.png') }}" width="30px" height="30px" alt="">
                     </div>
                     <div class="content-card py-5">
-                        <h1> 4180 </h1>
-                        <p> Item Sales</p>
+                        @foreach ($dataIndonesia as $item)
+                            <h1> {{ $item->positif }} </h1>
+                        @endforeach
+                        <p> Covid </p>
                     </div>
                 </div>
             </div>
             <!-- Chart -->
             <div class="report grid grid-cols-12 gap-4 mt-5">
                 <div class="col-span-8 ">
-                    Sales Report
+                    Report Data
                     <div class="bg-white w-100  mt-5">
                         <div class="shadow-lg rounded-lg overflow-hidden">
                             <div class="py-3 px-5 ">Bar chart</div>
@@ -61,7 +68,7 @@
                     Weekly Top
                     <div class="bg-white w-100 h-100 mt-5">
                         <div class="shadow-lg rounded-lg overflow-hidden">
-                            <div class="py-3 px-5">Doughnut chart</div>
+                            <div class="py-3 px-5">Informasi Covid</div>
                             <canvas class="p-10" id="chartDoughnut"></canvas>
                         </div>
                     </div>

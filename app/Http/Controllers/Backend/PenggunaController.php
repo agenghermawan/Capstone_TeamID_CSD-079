@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 
@@ -15,9 +16,10 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        $response = Http::get('https://apicovid19indonesia-v2.vercel.app/api/indonesia/provinsi');
-        $data = json_decode($response);
-        return view('backend.Pengguna.index',compact('data'));
+        $data = User::all();
+        return view('backend.Pengguna.index',compact('data'))->with([
+            'data' => $data
+        ]);
     }
 
     /**
@@ -49,7 +51,8 @@ class PenggunaController extends Controller
      */
     public function show($id)
     {
-        return view('backend.Pengguna.detail');
+        $data = User::find($id);
+        return view('backend.Pengguna.detail',compact('data'));
     }
 
     /**
@@ -72,7 +75,13 @@ class PenggunaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = $request->all();
+        $findId = User::findOrFail($id);
+
+        $findId->update($data);
+        return back()->with([
+            'message' => 'Berhasil Di Update'
+        ]);
     }
 
     /**

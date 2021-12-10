@@ -3,7 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dokter;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Validator;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DokterController extends Controller
 {
@@ -14,8 +18,9 @@ class DokterController extends Controller
      */
     public function index()
     {
-        return view('backend.Dokter.index');
-        }
+        $data = User::all()->where('role_pengguna','Dokter');
+        return view('backend.Dokter.index',compact('data'));
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -35,7 +40,21 @@ class DokterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Validator::make($request->all(), [
+            'fullname' => 'required',
+            'noStr' => 'required',
+            'telp' => 'required',
+            'user_id' => 'required',
+            'email' => 'required',
+            'alamat' => 'required',
+            'kota' => 'required',
+            'rumahSakit' => 'required',
+            'sebagaiDokter' => 'required',
+        ])->validate();
+
+        Dokter::create($request->all());
+        Alert::success('Success Title', 'Ditunggu, Data kamu sedang di verifikasi');
+        return redirect()->route('LandingPage');
     }
 
     /**

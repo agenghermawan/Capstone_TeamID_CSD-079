@@ -15,7 +15,8 @@ class PenyakitController extends Controller
      */
     public function index()
     {
-        return view('backend.Penyakit.index');
+        $dataPenyakit = Penyakit::all();
+        return view('backend.Penyakit.index',compact('dataPenyakit'));
     }
 
     /**
@@ -36,18 +37,10 @@ class PenyakitController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
-        $penyakit = new Penyakit();
-        $penyakit->id = 0;
-        $penyakit -> exists = true;
-        $penyakit -> $request->namaPenyakit;
-        $penyakit -> $request->deskripsiPenyakit;
-        $penyakit -> $request->isiPenyakit;
-        $penyakit -> $request->photoPenyakit;
-        $image = $penyakit -> addMediaFromRequest('photoPenyakit')->toMediaCollection('images');
-        return response()->json([
-            'url' => $image->getUrl()
-        ]);
+        $data = $request->all();
+        $data['photoPenyakit'] = $request->file('photoPenyakit')->store('assets/photoPenyakit','public',$request->file('photoPenyakit')->getClientOriginalName());
+        Penyakit::create($data);
+        return back();
     }
 
     /**
@@ -58,7 +51,8 @@ class PenyakitController extends Controller
      */
     public function show($id)
     {
-        
+        $data = Penyakit::findOrFail($id);
+        return view('backend.Penyakit.show',compact('data'));
     }
 
     /**
@@ -68,8 +62,11 @@ class PenyakitController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {
-        return view('backend.Penyakit.edit');
+    {   
+        $data = Penyakit::findOrFail($id);
+        return view('backend.Penyakit.edit')->with([
+            'data' => $data
+        ]);
     }
 
     /**

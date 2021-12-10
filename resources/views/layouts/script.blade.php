@@ -4,6 +4,8 @@
 <!-- Opsional Css   -->
 <script src="{{ asset('js/app.js') }}"></script>
 
+
+
 <!-- Opsional Css   -->
 <script type="text/javascript" src="{{ asset('js/jquery-3.6.0.min.js') }}"></script>
 
@@ -29,10 +31,6 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         $('#myTable').DataTable();
     });
 
-    tinymce.init({
-        selector: 'textarea#editor',
-        menubar: false
-    });
     $(document).ready(function() {
         $('#myTable').DataTable();
     });

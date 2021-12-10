@@ -16,7 +16,8 @@ class PoliKlinikController extends Controller
      */
     public function index()
     {
-        return view('backend.poliklinik.index');
+        $data = Poliklinik::all();
+        return view('backend.poliklinik.index',compact('data'));
     }
 
     /**
@@ -42,6 +43,7 @@ class PoliKlinikController extends Controller
             'deskripsi' => 'required|max:150',
             'tindakanmedis' => 'required',
         ])->validate();
+
 
         Poliklinik::create($request->all());
         return back()->with([
