@@ -1,0 +1,331 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* --text-color: #1e5f8d; */
+  --text-color: #2c4964;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
+}
+
+.hamburger {
+  display: none;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #101010;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5% 0;
+}
+
+.nav-item {
+  margin-left: 5rem;
+}
+
+.nav-link {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #475569;
+}
+
+.nav-link:hover {
+  color: #482ff7;
+}
+
+.nav-logo {
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: #482ff7;
+}
+
+/* main */
+
+main {
+  padding: 5%;
+  display: flex;
+}
+
+main img {
+  max-width: 100%;
+  width: 20%;
+  height: fit-content;
+  margin: 0 5%;
+}
+
+.detail-drugs-container {
+  width: 45%;
+  height: auto;
+  color: #2c4964;
+}
+
+.detail-drugs-container > h1 {
+  font-size: 3em;
+  margin-bottom: 5%;
+}
+
+.detail-drugs-container > p:first-of-type {
+  font-size: 2em;
+  margin-bottom: 1%;
+}
+
+.detail-drugs-container > p:last-of-type {
+  margin-bottom: 10%;
+}
+
+.info {
+  margin: 2.5% 0;
+  padding-bottom: 2.5%;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.info h2 {
+  font-size: 2em;
+  margin-bottom: 2%;
+}
+
+.info p {
+  font-size: 1.5em;
+  line-height: 175%;
+}
+
+aside {
+  width: 25%;
+  height: auto;
+  padding: 0 2.5%;
+}
+
+aside h1 {
+  text-align: center;
+  color: #2c4964;
+  margin-bottom: 5%;
+}
+
+.card-recommendation-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-recommendation {
+  width: 90%;
+  height: auto;
+  box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
+  /* border-bottom: 1px solid rgba(0, 0, 0, 0.2); */
+  color: #2c4964;
+  padding: 10% 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 5%;
+  border-radius: 5px;
+}
+
+.card-recommendation > img {
+  width: 40%;
+}
+
+.card-recommendation > h2 {
+  margin: 5% 0;
+}
+
+.card-recommendation p {
+  margin-bottom: 5%;
+}
+
+.card-recommendation > button {
+  width: 60%;
+  padding: 2% 0;
+  background-color: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 2.5px;
+  cursor: pointer;
+}
+
+.card-recommendation > button:hover {
+  background-color: #2c4964;
+  color: #fff;
+}
+
+/* footer */
+
+footer {
+  background-color: #f1f7fc;
+  padding: 2%;
+}
+
+footer h2 {
+  text-align: center;
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 5rem;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-item {
+    margin: 2.5rem 0;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  main img {
+    width: 100%;
+  }
+
+  .detail-drugs-container {
+    margin: 10% 0;
+    width: 100%;
+  }
+
+  .detail-drugs-container h1 {
+    font-size: 2.5em;
+  }
+
+  aside {
+    width: 100%;
+  }
+}
+
+/* Mobile landscape */
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  main img {
+    width: 50%;
+  }
+
+  .detail-drugs-container {
+    margin: 10% 0;
+    width: 100%;
+  }
+
+  .detail-drugs-container h1 {
+    font-size: 2.5em;
+  }
+
+  aside {
+    width: 100%;
+  }
+
+  .card-recommendation-container {
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  .card-recommendation {
+    width: 40%;
+  }
+}
+
+/* tablet ipad (potrait) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  main {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  main img {
+    width: 75%;
+  }
+
+  .detail-drugs-container {
+    margin: 10% 0;
+    width: 100%;
+  }
+
+  .detail-drugs-container h1 {
+    font-size: 2.5em;
+  }
+
+  aside {
+    width: 100%;
+  }
+
+  aside h1 {
+    font-size: 2em;
+  }
+
+  .card-recommendation-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .card-recommendation {
+    width: 40%;
+  }
+}
