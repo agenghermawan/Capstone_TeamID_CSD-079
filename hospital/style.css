@@ -1,0 +1,312 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* --text-color: #1e5f8d; */
+  --text-color: #2c4964;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
+}
+
+.hamburger {
+  display: none;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #101010;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5% 0;
+}
+
+.nav-item {
+  margin-left: 5rem;
+}
+
+.nav-link {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #475569;
+}
+
+.nav-link:hover {
+  color: #482ff7;
+}
+
+.nav-logo {
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: #482ff7;
+}
+
+/* main */
+
+.header-hospital-page {
+  padding: 5% 5% 2.5% 5%;
+  background-color: #f1f7fc;
+  color: #2c4964;
+}
+
+.header-hospital-page > h1 {
+  font-size: 4em;
+  margin-bottom: 2%;
+}
+
+.header-hospital-page > p {
+  font-size: 1.5em;
+  margin-bottom: 2.5%;
+}
+
+.searchbar {
+  display: flex;
+}
+
+.hospital-page-container {
+  padding: 5%;
+  padding-top: 2.5%;
+  color: #2c4964;
+}
+
+.hospital-page-container h2 {
+  font-size: 3em;
+  margin-bottom: 2.5%;
+}
+
+.searchbar input {
+  width: 95%;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding-left: 15px;
+}
+
+.searchbar button {
+  width: 5%;
+  height: 50px;
+}
+
+.card-hospital-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-hospital {
+  width: 22%;
+  margin: 0 1.5%;
+  /* height: auto; */
+  height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 75px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  padding: 1.5% 0;
+  margin-bottom: 3%;
+  color: #2c4964;
+  padding: 2%;
+}
+
+.card-hospital h3 {
+  font-size: 2em;
+  margin-bottom: 5%;
+}
+
+.card-hospital p {
+  font-size: 1.5em;
+  text-align: justify;
+  line-height: 200%;
+  margin-bottom: 5%;
+}
+
+.card-hospital a {
+  text-align: center;
+  background-color: #2c4964;
+  color: #fff;
+  border: none;
+  width: 100%;
+  padding: 4% 5%;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.card-hospital a:hover {
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+}
+
+/* footer */
+
+footer {
+  background-color: #f1f7fc;
+  padding: 2%;
+}
+
+footer h2 {
+  text-align: center;
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 5rem;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-item {
+    margin: 2.5rem 0;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .header-hospital-page {
+    padding-bottom: 5%;
+  }
+
+  .header-hospital-page > h1 {
+    font-size: 3em;
+    margin: 5% 0;
+  }
+
+  .header-hospital-page > p {
+    margin-bottom: 7.5%;
+  }
+
+  .searchbar input {
+    width: 85%;
+  }
+
+  .searchbar button {
+    width: 15%;
+  }
+
+  .hospital-page-container h2 {
+    font-size: 1.6em;
+    margin: 5% 0;
+  }
+
+  .card-hospital {
+    width: 47%;
+  }
+
+  .card-hospital h3 {
+    font-size: 1.2em;
+  }
+}
+
+/* Mobile landscape */
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .header-hospital-page {
+    padding-bottom: 5%;
+  }
+
+  .header-hospital-page > h1 {
+    font-size: 3em;
+  }
+
+  .header-hospital-page > p {
+    margin-bottom: 5%;
+  }
+
+  .searchbar input {
+    width: 90%;
+  }
+
+  .searchbar button {
+    width: 10%;
+  }
+
+  .hospital-page-container h2 {
+    font-size: 2em;
+  }
+
+  .card-hospital {
+    width: 47%;
+  }
+}
+
+/* tablet ipad (potrait) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .header-hospital-page > h1 {
+    font-size: 3em;
+  }
+
+  .searchbar input {
+    width: 90%;
+  }
+
+  .searchbar button {
+    width: 10%;
+  }
+
+  .hospital-page-container h2 {
+    font-size: 2em;
+  }
+
+  .card-hospital {
+    width: 30%;
+    margin: 0 1.65%;
+    margin-bottom: 3%;
+  }
+}
