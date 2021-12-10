@@ -1,0 +1,539 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* --text-color: #1e5f8d; */
+  --text-color: #2c4964;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
+}
+
+.hamburger {
+  display: none;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #101010;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5% 0;
+}
+
+.nav-item {
+  margin-left: 5rem;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #475569;
+}
+
+.nav-link:hover {
+  color: #482ff7;
+}
+
+.nav-logo {
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: #482ff7;
+}
+
+/* main */
+
+.detail-hospital-container {
+  padding: 5%;
+}
+
+.detail-hospital-container > h1 {
+  font-size: 3em;
+  color: #2c4964;
+  margin-bottom: 1%;
+}
+
+.detail-hospital-content {
+}
+
+.banner {
+  display: flex;
+  justify-content: space-between;
+}
+
+.banner img {
+  max-width: 100%;
+  width: 60%;
+  height: auto;
+}
+
+.address {
+  width: 35%;
+  color: #2c4964;
+}
+
+.address > h2 {
+  font-size: 2em;
+  margin-bottom: 3%;
+}
+
+.address iframe {
+  width: 100%;
+  height: 250px;
+  margin-bottom: 2.5%;
+}
+
+.address > p {
+  font-size: 1.25em;
+}
+
+.info {
+  display: flex;
+  justify-content: space-between;
+  margin: 2.5% 0;
+  color: #2c4964;
+}
+
+.about {
+  width: 49%;
+  height: auto;
+}
+
+.about > h2 {
+  font-size: 2em;
+  margin-bottom: 1%;
+}
+
+.about > p {
+  font-size: 1.5em;
+  line-height: 175%;
+  text-align: justify;
+}
+
+.facility {
+  width: 49%;
+  height: auto;
+}
+
+.facility > h2 {
+  font-size: 2em;
+  margin-bottom: 1%;
+}
+
+.facility > ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.facility ul li {
+  width: 40%;
+  margin: 1% 5%;
+  font-size: 1.5em;
+}
+
+.employee {
+  display: flex;
+  justify-content: space-between;
+}
+
+.polyclinic {
+  width: 48%;
+  height: auto;
+  color: #2c4964;
+}
+
+.polyclinic > h2 {
+  font-size: 2em;
+  margin-bottom: 2%;
+}
+
+.card-polyclinic-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-polyclinic {
+  display: flex;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 2.5%;
+  overflow: hidden;
+}
+
+.card-polyclinic img {
+  width: 20%;
+  height: 125px;
+  object-fit: cover;
+}
+
+.card-polyclinic-text {
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 2.5%;
+}
+
+.card-polyclinic-text > h3 {
+  font-size: 1.75em;
+  margin-bottom: 1%;
+}
+
+.card-polyclinic-text > p {
+  font-size: 1.25em;
+}
+
+.doctor {
+  width: 48%;
+  height: auto;
+  color: #2c4964;
+}
+
+.doctor > h2 {
+  font-size: 2em;
+  margin-bottom: 2%;
+}
+
+.card-doctor-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-doctor {
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  margin-bottom: 2.5%;
+  overflow: hidden;
+}
+
+.card-doctor img {
+  max-width: 100%;
+  width: 20%;
+  height: 125px;
+  object-fit: cover;
+}
+
+.card-doctor-body {
+  width: 80%;
+  display: flex;
+  /* align-items: center; */
+  margin-left: 2.5%;
+}
+
+.card-doctor-text {
+  width: 80%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.card-doctor-text > h3 {
+  font-size: 1.75em;
+  margin-bottom: 1%;
+}
+
+.card-doctor-text > p {
+  font-size: 1.25em;
+}
+
+.card-doctor-body > a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1% 3%;
+  cursor: pointer;
+  color: #2c4964;
+  background-color: #e2e8f0;
+}
+
+/* footer */
+
+footer {
+  background-color: #f1f7fc;
+  padding: 2%;
+}
+
+footer h2 {
+  text-align: center;
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 5rem;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-item {
+    margin: 2.5rem 0;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .detail-hospital-container > h1 {
+    font-size: 2em;
+    margin: 5% 0;
+  }
+
+  .banner {
+    flex-direction: column;
+  }
+
+  .banner img {
+    width: 100%;
+  }
+
+  .address {
+    width: 100%;
+    margin: 5% 0;
+  }
+
+  .address > h2 {
+    font-size: 1.75em;
+  }
+
+  .address iframe {
+    display: none;
+  }
+
+  .address > p {
+    font-size: 1.5em;
+  }
+
+  .info {
+    flex-direction: column;
+    margin-bottom: 5%;
+  }
+
+  .about {
+    width: 100%;
+    margin-bottom: 5%;
+  }
+
+  .about > h2 {
+    font-size: 1.75em;
+  }
+
+  .facility {
+    width: 100%;
+  }
+
+  .employee {
+    flex-direction: column;
+  }
+
+  .polyclinic {
+    width: 100%;
+    margin-bottom: 2.5%;
+  }
+
+  .card-polyclinic {
+    margin-bottom: 5%;
+  }
+
+  .card-polyclinic img {
+    width: 40%;
+  }
+
+  .card-polyclinic-text {
+    width: 60%;
+  }
+
+  .doctor {
+    width: 100%;
+  }
+
+  .card-doctor {
+    margin-bottom: 5%;
+  }
+
+  .card-doctor img {
+    width: 40%;
+  }
+
+  .card-doctor-body {
+    flex-direction: column;
+  }
+
+  .card-doctor-body > button {
+    width: 50%;
+    margin: 7.5% 0;
+  }
+}
+
+/* Mobile landscape */
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .detail-hospital-container > h1 {
+    font-size: 2em;
+    margin: 5% 0;
+  }
+
+  .banner {
+    flex-direction: column;
+  }
+
+  .banner img {
+    width: 100%;
+  }
+
+  .address {
+    width: 100%;
+    margin: 5% 0;
+  }
+
+  .address > h2 {
+    font-size: 1.75em;
+  }
+
+  .address iframe {
+    display: none;
+  }
+
+  .address > p {
+    font-size: 1.5em;
+  }
+
+  .info {
+    flex-direction: column;
+    margin-bottom: 5%;
+  }
+
+  .about {
+    width: 100%;
+    margin-bottom: 5%;
+  }
+
+  .about > h2 {
+    font-size: 1.75em;
+  }
+
+  .facility {
+    width: 100%;
+  }
+
+  .employee {
+    flex-direction: column;
+  }
+
+  .polyclinic {
+    width: 100%;
+    margin-bottom: 2.5%;
+  }
+
+  .card-polyclinic {
+    margin-bottom: 5%;
+  }
+
+  .card-polyclinic img {
+    width: 40%;
+  }
+
+  .card-polyclinic-text {
+    width: 60%;
+  }
+
+  .doctor {
+    width: 100%;
+  }
+
+  .card-doctor {
+    margin-bottom: 5%;
+  }
+
+  .card-doctor img {
+    width: 40%;
+  }
+
+  .card-doctor-body {
+    flex-direction: column;
+  }
+
+  .card-doctor-body > button {
+    width: 50%;
+    margin: 7.5% 0;
+  }
+}
+
+/* tablet ipad (potrait) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .card-polyclinic img {
+    width: 40%;
+  }
+
+  .card-polyclinic-text {
+    width: 60%;
+  }
+
+  .card-doctor img {
+    width: 40%;
+  }
+
+  .card-doctor-body {
+    flex-direction: column;
+  }
+
+  .card-doctor-body > button {
+    width: 50%;
+    margin: 7.5% 0;
+  }
+}
