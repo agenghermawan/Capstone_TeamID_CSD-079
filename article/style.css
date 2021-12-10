@@ -1,0 +1,289 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /* --text-color: #1e5f8d; */
+  --text-color: #2c4964;
+}
+
+html {
+  font-size: 62.5%;
+  font-family: "Roboto", sans-serif;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+.header {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2.5rem;
+}
+
+.hamburger {
+  display: none;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: #101010;
+}
+
+.nav-menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 1.5% 0;
+}
+
+.nav-item {
+  margin-left: 5rem;
+}
+
+.nav-link {
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #475569;
+}
+
+.nav-link:hover {
+  color: #482ff7;
+}
+
+.nav-logo {
+  font-size: 2.1rem;
+  font-weight: 500;
+  color: #482ff7;
+}
+
+/* main */
+
+.searchbar {
+  padding: 5%;
+  padding-bottom: 0;
+  display: flex;
+}
+
+.drugs-page-container {
+  padding: 5%;
+  padding-top: 2.5%;
+  color: #2c4964;
+}
+
+.drugs-page-container h2 {
+  font-size: 3em;
+  margin-bottom: 2.5%;
+}
+
+.searchbar input {
+  width: 95%;
+  height: 50px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  padding-left: 15px;
+}
+
+.searchbar button {
+  width: 5%;
+  height: 50px;
+}
+
+/* Article */
+
+.article-container {
+  padding: 5%;
+  padding-top: 2.5%;
+}
+
+.article-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3%;
+}
+
+.article-header h2 {
+  font-size: 3em;
+  color: var(--text-color);
+}
+
+.article-header a {
+  font-size: 1.75em;
+  padding: 0.5%;
+  border-radius: 5px;
+  color: var(--text-color);
+}
+
+.article-header a:hover {
+  background-color: var(--text-color);
+  color: #f5f5f5;
+}
+
+.article-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.card-article {
+  width: 22.5%;
+  height: auto;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  margin: 0 1.25%;
+  color: #2c4964;
+}
+
+.card-article img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 200px;
+  border-radius: 10px 10px 0 0;
+}
+
+.card-article h3 {
+  font-size: 1.5em;
+  padding: 5%;
+  padding-bottom: 0;
+}
+
+.card-article p {
+  padding: 5%;
+  line-height: 150%;
+  text-align: justify;
+}
+/* footer */
+
+footer {
+  background-color: #f1f7fc;
+  padding: 2%;
+}
+
+footer h2 {
+  text-align: center;
+  font-weight: 400;
+}
+
+@media only screen and (max-width: 768px) {
+  .nav-menu {
+    position: fixed;
+    left: -100%;
+    top: 5rem;
+    flex-direction: column;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 10px;
+    text-align: center;
+    transition: 0.3s;
+    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+  }
+
+  .nav-menu.active {
+    left: 0;
+  }
+
+  .nav-item {
+    margin: 2.5rem 0;
+  }
+
+  .hamburger {
+    display: block;
+    cursor: pointer;
+  }
+
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .hamburger.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .hamburger.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  .searchbar input {
+    width: 85%;
+  }
+
+  .searchbar button {
+    width: 15%;
+  }
+
+  .article-header h2 {
+    font-size: 2em;
+  }
+
+  .article-content {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .card-article {
+    width: 95%;
+    margin-bottom: 5%;
+  }
+}
+
+/* Mobile landscape */
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .searchbar input {
+    width: 90%;
+  }
+
+  .searchbar button {
+    width: 10%;
+  }
+
+  .article-header h2 {
+    font-size: 2.5em;
+  }
+
+  .card-article {
+    width: 47%;
+    margin: 0 1.5%;
+    margin-bottom: 5%;
+  }
+}
+
+/* tablet ipad (potrait) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .searchbar input {
+    width: 90%;
+  }
+
+  .searchbar button {
+    width: 10%;
+  }
+
+  .article-header h2 {
+    font-size: 2.5em;
+  }
+
+  .card-article {
+    width: 47%;
+    margin: 0 1.5%;
+    margin-bottom: 5%;
+  }
+}
