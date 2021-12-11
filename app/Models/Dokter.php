@@ -18,7 +18,7 @@ class Dokter extends Authenticatable
     use TwoFactorAuthenticatable;
     protected $table = 'dokter';
     protected $fillable = [
-        'fullname', 'noStr', 'telp','user_id','email','alamat','kota','rumahSakit','sebagaiDokter','status'
+        'fullname', 'noStr', 'telp','user_id','email','alamat','kota','rumahSakit','sebagaiDokter','status,','deskripsi','photo'
     ];
 
     public function user(){

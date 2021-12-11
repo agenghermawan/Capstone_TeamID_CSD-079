@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Dokter;
+use App\Models\RumahSakit;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Validator;
@@ -18,7 +19,7 @@ class DokterController extends Controller
      */
     public function index()
     {
-        $data = User::all()->where('role_pengguna','Dokter');
+        $data = User::with('dokter')->where('role_pengguna','Dokter')->get();
         return view('backend.Dokter.index',compact('data'));
     }
 
@@ -29,7 +30,8 @@ class DokterController extends Controller
      */
     public function create()
     {
-        return view('backend.Dokter.create');
+       $data =  RumahSakit::all();
+        return view('backend.Dokter.create',compact('data'));
     }
 
     /**
@@ -76,7 +78,8 @@ class DokterController extends Controller
      */
     public function edit($id)
     {
-        return view('backend.Dokter.edit');
+        $data = User::with('dokter','rumahsakit')->find($id);
+        return view('backend.Dokter.edit',compact('data'));
     }
 
     /**
@@ -88,7 +91,7 @@ class DokterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request);
     }
 
     /**

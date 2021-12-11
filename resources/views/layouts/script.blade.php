@@ -31,10 +31,6 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         $('#myTable').DataTable();
     });
 
-    $(document).ready(function() {
-        $('#myTable').DataTable();
-    });
-
     const labelsBarChart = [
         "January",
         "February",
@@ -46,7 +42,7 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     const dataBarChart = {
         labels: labelsBarChart,
         datasets: [{
-            label: "My First dataset",
+            label: "Histori Transaksi",
             backgroundColor: "hsl(252, 82.9%, 67.8%)",
             borderColor: "hsl(252, 82.9%, 67.8%)",
             data: [0, 10, 5, 2, 20, 30, 45],
@@ -66,14 +62,14 @@ crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
     const dataDoughnut = {
-        labels: ["JavaScript", "Python", "Ruby"],
+        labels: ["Positive", "Meninggal", "Sembuh"],
         datasets: [{
             label: "My First Dataset",
             data: [300, 50, 100],
             backgroundColor: [
-                "rgb(133, 105, 241)",
-                "rgb(164, 101, 241)",
-                "rgb(101, 143, 241)",
+                "lightblue",
+                "red",
+                "lightgreen",
             ],
             hoverOffset: 4,
         }, ],

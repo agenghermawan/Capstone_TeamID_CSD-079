@@ -18,7 +18,6 @@ class DashboardController extends Controller
         $countRumahSakit = RumahSakit::all()->count();
         $countPengguna = User::all()->count();
         $countDokter= Dokter::all()->count();
-        alert()->toast('Dashboard','Lorem Lorem Lorem');
         return view('backend.dashboard',compact('dataIndonesia','countRumahSakit','countPengguna','countDokter'));
     }
 }

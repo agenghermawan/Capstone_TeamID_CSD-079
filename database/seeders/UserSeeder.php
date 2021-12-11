@@ -18,6 +18,7 @@ class UserSeeder extends Seeder
             'name' => 'Ageng Hermawan',
             'email' => 'agenghermawan16@gmail.com',
             'password' => \Hash::make('irwansyah123'),
+            'role_pengguna' =>'Admin'
         ]);
     }
 }

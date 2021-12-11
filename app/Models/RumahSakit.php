@@ -10,9 +10,14 @@ class RumahSakit extends Model
     use HasFactory;
     protected $table = 'rumahsakit';
     protected $fillable = [
-        'nama' , 'alamat', 'tentang', 'notelp' ,'lokasiGmaps', 'jamOperasional', 'provinsi' ,'kodepos' ,'kota' ,'fasilitas','poliklinik'
+        'nama' , 'alamat', 'tentang', 'notelp' ,'lokasiGmaps', 'jamOperasional', 'provinsi' ,'kodepos' ,'kota' ,'fasilitas','poliklinik','photo'
     ];
     protected $casts = [
-        'fasilitas' => 'array'
+        'fasilitas' => 'array',
+        'poliklinik' => 'array'
     ];
+
+    public function user(){
+        $this->hasMany(User::class);
+    }
 }

@@ -17,7 +17,7 @@ class CreatePoliklinikTable extends Migration
             $table->id();
             $table->string('nama',40);
             $table->string('deskripsi',150);
-            $table->json('tindakanmedis');
+            $table->json('tindakanmedis')->nullable();
             $table->timestamps();
         });
     }

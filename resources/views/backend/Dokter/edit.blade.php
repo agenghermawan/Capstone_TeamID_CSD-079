@@ -6,37 +6,40 @@
 @endsection
 @section('content')
     <h4 class="mt-4 text-base font-semibold py-2"> Data Dokter </h4>
-
-    <div class="bg-white grid rounded grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-7">
+    <div class="bg-white grid rounded-lg grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-7">
         <div class="col-span-1 flex items-center border-r">
             <div class="image w-1/4 ">
-                <img src="{{ asset('image/profile.jpg') }}" class="w-24 h-24 rounded-full" alt="">
+                @if($data -> profile_photo_path == null)
+                    <img src="{{asset('image/avatar doktor.jpg')}}" class="w-20 h-20 rounded-full" alt="">
+                @else
+                    <img src="{{ asset('image/profile.jpg') }}" class="w-20 h-20 rounded-full " alt="">
+                @endif
             </div>
             <div class="name">
-                <h4> Ageng Hermawan </h4>
-                <h4> Dokter Anak </h4>
+                <h4 class="text-blue-700 text-base tracking-wide"> Ageng Hermawan </h4>
+                <h4 class="text-blue-500 text-sm tracking-wide"> Dokter Anak </h4>
             </div>
         </div>
         <div class="col-span-1 border-r px-4">
-            <h4 class="text-sm font-normal"> Kontak Detail </h4>
+            <h4 class="text-sm text-blue-700 font-normal"> Kontak Detail </h4>
             <ul class="list-none mt-2 text-sm font-normal text-blue-400">
-                <li> agenghermawan16@gmail.com </li>
-                <li> agenghermawan16@gmail.com </li>
-                <li> agenghermawan16@gmail.com </li>
+                <li> {{$data->email}} </li>
+                <li> {{$data->status}}</li>
+                <li> {{$data->telp}}</li>
             </ul>
         </div>
         <div class="col-span-1 flex items-center justify-center text-center">
             <div class="p-5">
                 <h5 class="text-blue-700"> 20K </h5>
-                <p class="text-blue-400"> Pasien </p>
+                <p class="text-blue-400 text-sm"> Pasien </p>
             </div>
             <div class="p-5">
                 <h5 class="text-blue-700"> 20K </h5>
-                <p class="text-blue-400"> Pasien </p>
+                <p class="text-blue-400 text-sm"> Pasien </p>
             </div>
             <div class="p-5">
                 <h5 class="text-blue-700"> 20K </h5>
-                <p class="text-blue-400"> Pasien </p>
+                <p class="text-blue-400 text-sm "> Pasien </p>
             </div>
         </div>
     </div>
@@ -44,24 +47,30 @@
     <div class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-2 mt-4">
         <div class="left-element-detail bg-white col-span-1 p-10">
             <p class=" text-base text-blue-500 "> <i class="fas fa-user-shield"></i> Profile </p>
+        <form action="{{route('dokter.update', $data->id)}}" method="POST">
+            @method('PUT')
+                @csrf
             <div class="form mt-4 text-blue-600 grid grid-cols-1 md:grid-cols-2 gap-4 xl:grid-cols-2">
                 <div class="form-group">
-                    <label for="nama" class="block text-sm text-blue-400"> Nama : </label>
-                    <input type="text" class="border-blue-300 w-full bg-blue-50 rounded mt-2">
+                    <label for="name" class="block text-sm text-blue-400"> Name : </label>
+                    <input type="text" class="border-blue-300 w-full bg-blue-50 rounded mt-2" name="name" value="{{$data->name}}">
                 </div>
                 <div class="form-group">
-                    <label for="nama" class="block text-sm text-blue-400"> Nama : </label>
-                    <input type="text" class="border-blue-300 bg-blue-50 w-full rounded mt-2">
+                    <label for="email" class="block text-sm text-blue-400"> Email : </label>
+                    <input type="text" class="border-blue-300 bg-blue-50 w-full rounded mt-2" name="email" value="{{$data->email}}">
                 </div>
             </div>
             <div class="form mt-4 text-blue-600 grid grid-cols-1 md:grid-cols-2 gap-4 xl:grid-cols-2">
                 <div class="form-group">
-                    <label for="nama" class="block text-sm text-blue-400"> Nama : </label>
-                    <input type="text" class="border-blue-300  bg-blue-50 w-full rounded mt-2">
+                    <label for="alamat" class="block text-sm text-blue-400"> Alamat : </label>
+                    <input type="text" name="alamat" value="{{$data->alamat}}" class="border-blue-300  bg-blue-50 w-full rounded mt-2">
                 </div>
                 <div class="form-group">
-                    <label for="nama" class="block text-sm text-blue-400"> Nama : </label>
-                    <input type="text" class="border-blue-300 bg-blue-50 w-full rounded mt-2">
+                    <label for="" class="block text-sm text-blue-400"> Jenis Kelamin</label>
+                    <select class="mt-2 border-blue-300  bg-blue-50 text-sm tracking-wide w-full rounded" name="jenis_kelamin">
+                        <option value=""> Laki Laki </option>
+                        <option value=""> Perempuan </option>
+                    </select>
                 </div>
             </div>
             <div class="form mt-4 text-blue-600 grid grid-cols-1 ">
@@ -72,11 +81,12 @@
             </div>
             <div class="form mt-4 text-blue-600 grid grid-cols-1 ">
                 <div class="form-group">
-                    <button class="rounded p-2 from-blue-300 bg-gradient-to-b to-purple-200 shadow-lg text-white w-32">
+                    <button type="submit" class="rounded p-2 from-blue-300 bg-gradient-to-b to-purple-200 shadow-lg text-white w-32">
                         Submit
                     </button>
                 </div>
             </div>
+        </form>
         </div>
 
         <div class="left-element-detail col-span-1 w-full bg-white pt-10 border">
@@ -97,7 +107,6 @@
                             </div>
                         </div>
                     @endfor
-
                 </div>
             </div>
         </div>

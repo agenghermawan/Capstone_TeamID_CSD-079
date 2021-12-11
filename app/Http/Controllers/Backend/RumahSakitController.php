@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Alert;
 use App\Http\Controllers\Controller;
 use App\Models\Poliklinik;
 use App\Models\RumahSakit;
@@ -40,7 +41,8 @@ class RumahSakitController extends Controller
      */
     public function store(Request $request)
     {
-        Validator::make($request->all(), [
+        $data = $request->all();
+        Validator::make($data, [
             'nama' => 'required|max:255',
             'alamat' => 'required',
             'tentang' => 'required',
@@ -52,9 +54,12 @@ class RumahSakitController extends Controller
             'jamOperasional' => 'required',
             'fasilitas' => 'required',
             'poliklinik' => 'required',
+            'photo' => 'required|image:jpg,png'
         ])->validate();
 
+        $data['photo'] = $request->file('photo')->store('assets/Rumahsakit','public',$request->file('photo')->getClientOriginalName());
         RumahSakit::create($request->all());
+        Alert::toast('Berhasil memasukan data rumah sakit', 'success');
         return back()->with([
             'message'=> 'Data Rumah Sakit Berhasil di tambahkan',
         ]);

@@ -97,7 +97,7 @@
                                     <input type="text" name="telp" class="form-control"
                                         style="width: 400px;border-radius:50px; border:1px solid gray" placeholder=""
                                         required>
-                                    @error('nama')
+                                    @error('telps')
                                         <p class="text-xs text-red">{{ $message }}</p>
                                     @enderror
                                 </div>

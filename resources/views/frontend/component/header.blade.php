@@ -37,15 +37,46 @@
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </a>
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1" style="font-size: 12px">
-                                @if (Auth::user()->role_pengguna == 'Dokter')
+                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1" style="font-size: 12px">
+
+                            @if (Auth::user()->role_pengguna == 'Dokter')
+                                 <?php
+                                    $data = App\Models\User::with('dokter')->find(Auth::user()->id);
+                                    ?>
+                                    @if(empty($data->dokter))
+                                             <li>
+                                                 <a class="dropdown-item fs-3 l px-5" style="font-size: 10px"
+                                                    href="{{ route('callbacDocter') }}">Lanjutkan Pendaftaran</a>
+                                             </li>
+                                        @endif
+                                     @if(empty($data->dokter) == null)
+                                         @if($data->dokter->status == 'non-active')
+                                             <li>
+                                                 <a class="dropdown-item fs-3 l px-5" style="font-size: 10px;pointer-events: none"
+                                                    href="{{ route('callbacDocter') }}"  >Menunggu Persetujuan</a>
+                                             </li>
+                                             <li>
+                                                 <a class="dropdown-item fs-3 l px-5" style="font-size: 10px;"
+                                                    href="{{ route('callbacDocter') }}"  >Profile Anda </a>
+                                             </li>
+                                         @elseif($data->dokter->status == 'active')
+                                             <li>
+                                                 <a class="dropdown-item fs-3 l px-5" style="font-size: 10px"
+                                                    href="{{ route('callbacDocter') }}">Dashboard Dokter</a>
+                                             </li>
+                                         @endif
+                                     @endif
+                                @endif
+                                @if(Auth::user()->role_pengguna == 'Pengguna')
                                     <li>
                                         <a class="dropdown-item fs-3 l px-5" style="font-size: 10px"
-                                            href="{{ route('callbacDocter') }}">Lanjutkan Pendaftaran</a>
+                                           href="{{ route('callbacDocter') }}">Dashboard Anda</a>
                                     </li>
+                                @endif
+                                @if(Auth::user()->role_pengguna == 'Admin')
                                     <li>
                                         <a class="dropdown-item fs-3 l px-5" style="font-size: 10px"
-                                            href="{{ route('dashboard') }}">Dashboard</a>
+                                           href="{{ route('dashboard') }}">Dashboard Anda</a>
                                     </li>
                                 @endif
                                 <li>

@@ -59,7 +59,7 @@
                     Report Data
                     <div class="bg-white w-100  mt-5">
                         <div class="shadow-lg rounded-lg overflow-hidden">
-                            <div class="py-3 px-5 ">Bar chart</div>
+                            <div class="py-3 px-5 ">Transaksi</div>
                             <canvas class="p-10" id="chartBar"></canvas>
                         </div>
                     </div>

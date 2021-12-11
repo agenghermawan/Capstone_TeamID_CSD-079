@@ -57,7 +57,6 @@ class ObatController extends Controller
             "efekSamping" => "required",
         ]);
 
-
         $data['photoObat'] = $request->file('photoObat')->store('assets/Obat','public',$request->file('photoObat')->getClientOriginalName());
         Obat::create($data);
         return back()->with([
