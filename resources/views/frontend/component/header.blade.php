@@ -62,7 +62,7 @@
                                          @elseif($data->dokter->status == 'active')
                                              <li>
                                                  <a class="dropdown-item fs-3 l px-5" style="font-size: 10px"
-                                                    href="{{ route('callbacDocter') }}">Dashboard Dokter</a>
+                                                    href="{{ route('dashboard') }}">Dashboard Dokter</a>
                                              </li>
                                          @endif
                                      @endif
@@ -70,7 +70,7 @@
                                 @if(Auth::user()->role_pengguna == 'Pengguna')
                                     <li>
                                         <a class="dropdown-item fs-3 l px-5" style="font-size: 10px"
-                                           href="{{ route('callbacDocter') }}">Dashboard Anda</a>
+                                           href="{{ route('dashboard') }}">Dashboard Anda</a>
                                     </li>
                                 @endif
                                 @if(Auth::user()->role_pengguna == 'Admin')

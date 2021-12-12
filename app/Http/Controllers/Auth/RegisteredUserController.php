@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\RumahSakit;
 use Validator;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -53,8 +54,8 @@ class RegisteredUserController extends Controller
         Auth::login($user);
         return redirect(RouteServiceProvider::HOME);
     }
-    
+
     public function callbacDocter(){
-        return view('frontend.callbackDoctor');
+        return view('frontend.callbackDoctor',['data' => RumahSakit::all()]);
     }
 }

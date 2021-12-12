@@ -111,9 +111,9 @@
                                             <select class="form-control" name="rumahSakit"
                                                 id="exampleFormControlSelect1" name="role_pengguna"
                                                 style="width: 400px;border-radius:50px; border:1px solid gray" required>
-                                                <option value="Pengguna">Rumah Sakit Permata</option>
-                                                <option value="Dokter">Rumah Sakit Marinir</option>
-                                                <option value="Dokter">Rumah Sakit Premier</option>
+                                                @foreach($data as $item)
+                                                    <option value="{{$item->id}}">{{$item->nama}}</option>
+                                                @endforeach
                                             </select>
                                         </div>
                                         <button

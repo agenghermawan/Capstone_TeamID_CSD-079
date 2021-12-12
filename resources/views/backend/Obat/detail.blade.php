@@ -24,6 +24,7 @@
                     <p class="mt-2 ">
                         {{ $detailDataObat->productObat }}
                     </p>
+                </ul>
             </div>
         </div>
         <div class="warning grid gap-2">

@@ -47,12 +47,15 @@ Route::get('kategori/obat/{kategori}',[App\Http\Controllers\Frontend\ObatControl
 
 
 Route::middleware('auth')->prefix('admin')->group(function(){
+
+    Route::get('dokter/daftarPermintaan',[DokterController::class,'daftarPermintaan'])->name('dokter_daftarPermintaan');
+    Route::get('dokter/permintaan/{id}',[DokterController::class,'Permintaan'])->name('dokter_permintaan');
+    Route::put('dokter/jawaban/{id}',[DokterController::class,'jawabanPermintaan'])->name('jawaban_permintaan');
+
     Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard');
     Route::get('covid', [getDataCovidController::class, 'index'])->name('backendGetDataCovid');
-
     Route::post('image_upload', [ImageUploadController::class, 'store'])->name('image_upload');
     Route::get('callback/register',[App\Http\Controllers\Auth\RegisteredUserController::class, 'callbacDocter'] )->name('callbacDocter');
-
     Route::resource('rumahSakit', RumahSakitController::class);
     Route::resource('artikel', ArtikelController::class);
     Route::resource('pengguna', PenggunaController::class);

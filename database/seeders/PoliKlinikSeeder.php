@@ -14,10 +14,6 @@ class PoliKlinikSeeder extends Seeder
      */
     public function run()
     {
-        Poliklinik::create([
-            'nama' => 'Poli Anak',
-            'deskripsi' => 'Poli untuk menyembuhkan balita',
-            'tindakanmedis' => '',
-        ]);
+
     }
 }

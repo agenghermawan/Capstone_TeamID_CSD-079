@@ -19,8 +19,18 @@ class DokterController extends Controller
      */
     public function index()
     {
-        $data = User::with('dokter')->where('role_pengguna','Dokter')->get();
+        if (\Auth::user()->role_pengguna == 'Dokter'){
+            $dataDiriSendiri = \Auth::user()->id;
+            $data = User::whereRelation('dokter', 'status', 'active')
+                ->where('id',$dataDiriSendiri)
+                ->get();
+            return view('backend.Dokter.index',compact('data'));
+        }else{
+            $data = User::whereRelation('dokter', 'status', 'active')
+            ->get();
         return view('backend.Dokter.index',compact('data'));
+        };
+
     }
 
     /**
@@ -103,5 +113,27 @@ class DokterController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function daftarPermintaan()
+    {
+        return view('backend.Dokter.daftarPermintaan',['data' => Dokter::where('status','non-active')->get()]);
+    }
+    public function Permintaan($id)
+    {
+        return view('backend.Dokter.Permintaan',['data' => User::with('dokter')->findOrFail($id)]);
+    }
+    public function jawabanPermintaan(Request $request, $id)
+    {
+        $getDokter = Dokter::find($id);
+        if ($request->status == 'diterima'){
+            $getDokter -> status = 'active';
+            $getDokter->save();
+        }elseif ($request->status == 'ditolak'){
+            $getDokter->status = $request->status;
+            $getDokter->save();
+        }
+        Alert::toast('Kamu Berhasil Memperbarui data dokter','success');
+        return view('backend.Dokter.Permintaan',['data' => User::with('dokter')->findOrFail($id)]);
     }
 }

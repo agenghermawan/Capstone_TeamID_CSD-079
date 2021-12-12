@@ -23,7 +23,7 @@ class CreateDokterTable extends Migration
             $table->string('email');
             $table->string('kota');
             $table->string('rumahSakit');
-            $table->string('deskripsi');
+            $table->string('deskripsi')->nullable();
             $table->string('sebagaiDokter');
             $table->string('status')->default('non-active');
             $table->timestamps();

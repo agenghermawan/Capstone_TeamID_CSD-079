@@ -35,11 +35,19 @@
     </style>
 @endsection
 
-@section('content')
-    <div class="h1 my-5 text-center text-base text-blue-500 font-bold"> Daftar Data Rumah Sakit </div>
-    <a href="{{ route('obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Data Obat</a>
-    <a href="{{ route('kategori-obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Kategori Obat</a>
+@section('title','Daftar Data Obat')
+@section('buttonHeader')
+    <div class="md:flex inline-block">
+        <p class="animate-bounce md:mr-4">
+            <a href="{{ route('kategori-obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5 animate-bounce"> Tambahkan Kategori Obat </a>
+        </p>  <p class="animate-bounce">
+            <a href="{{ route('obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5 animate-bounce"> Tambahkan Data Obat</a>
+        </p>
+    </div>
 
+@endsection
+@section('content')
+    <div class="h1 my-5 text-center text-base text-blue-500 font-bold animate-pulse text-lg"> Daftar Data Rumah Sakit </div>
     <div class="w-full mt-5">
         <table class="min-w-full divide-y divide-gray-200" id="myTable">
             <thead class="bg-gray-50">

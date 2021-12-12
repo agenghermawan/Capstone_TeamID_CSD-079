@@ -15,7 +15,7 @@
             </div>
             <div class="w-full bg-white px-4 py-4 grid  md:grid-cols-2">
                 <div class="item-left grid  sm:p-10 md:justify-center xl:justify-start">
-                    <p> <strong> Positif </strong> <br>
+                    <p> <strong> Sembuh </strong> <br>
                         {{ $item->sembuh }}
                     </p>
                 </div>
@@ -26,7 +26,7 @@
             <div class="w-full bg-white px-4 py-4 grid  md:grid-cols-2">
                 <div class="item-left grid  sm:p-10 md:justify-center xl:justify-start">
                     <p> <strong> Meninggal </strong> <br>
-                        {{ $item->sembuh }}
+                        {{ $item->meninggal }}
                     </p>
                 </div>
                 <div class="item-right grid sm:justify-center xl:justify-end md:justify-center ">
@@ -35,7 +35,7 @@
             </div>
             <div class="w-full bg-white px-4 py-4 grid  md:grid-cols-2">
                 <div class="item-left grid  sm:p-10 md:justify-center xl:justify-start">
-                    <p> <strong> Meninggal </strong> <br>
+                    <p> <strong> Dirawat </strong> <br>
                         {{ $item->dirawat }}
                     </p>
                 </div>

@@ -39,8 +39,10 @@
                                     <img src="https://halodoc-sumba.s3-ap-southeast-1.amazonaws.com/Bintan_Department/fca47837-6879-4926-b554-dba9536c6f06.png"
                                         alt="">
                                     <div class="card-polyclinic-text">
-                                        <h3>Anak</h3>
-                                        <p>16 Tindakan Medis</p>
+                                        @foreach($item as $poli)
+                                            <h3>{{$poli->nama}}</h3>
+                                        <p>{{count(array($poli->tindakanmedis))}} Tindakan Medis</p>
+                                        @endforeach
                                     </div>
                                 </div>
                                 @endforeach
@@ -49,39 +51,22 @@
                         <div class="doctor">
                             <h2>Dokter</h2>
                             <div class="card-doctor-container">
+                                @foreach($dataDokter as $dokter)
                                 <div class="card-doctor">
-                                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
+                                    @if($dokter->user->profile_photo_path == null)
+                                        <img src="{{Storage::url($dokter->user->profile_photo_path)}}"
+                                    @endif
+                                        <img src="{{Storage::url($dokter->user->profile_photo_path)}}"
                                         alt="">
                                     <div class="card-doctor-body">
                                         <div class="card-doctor-text">
-                                            <h3>Dr. Frankstein</h3>
-                                            <p>Kedokteran Jiwa dan Psikiatri</p>
+                                            <h3>{{$dokter->fullname}}</h3>
+                                            <p>{{$dokter->sebagaiDokter}}</p>
                                         </div>
                                         <a href="{{ route('buatjanji_frontend') }}">Buat Janji</a>
                                     </div>
                                 </div>
-                                <div class="card-doctor">
-                                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-                                        alt="">
-                                    <div class="card-doctor-body">
-                                        <div class="card-doctor-text">
-                                            <h3>Dr. Frankstein</h3>
-                                            <p>Kedokteran Jiwa dan Psikiatri</p>
-                                        </div>
-                                        <a href="{{ route('buatjanji_frontend') }}">Buat Janji</a>
-                                    </div>
-                                </div>
-                                <div class="card-doctor">
-                                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-                                        alt="">
-                                    <div class="card-doctor-body">
-                                        <div class="card-doctor-text">
-                                            <h3>Dr. Frankstein</h3>
-                                            <p>Kedokteran Jiwa dan Psikiatri</p>
-                                        </div>
-                                        <a href="{{ route('buatjanji_frontend') }}">Buat Janji</a>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                     </div>

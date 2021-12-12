@@ -38,8 +38,13 @@ class PenyakitController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
+        \Validator::make($data,[
+            'isiPenyakit' => 'required',
+            'photoPenyakit' => 'required|image:jpg,png',
+        ])->validate();
         $data['photoPenyakit'] = $request->file('photoPenyakit')->store('assets/photoPenyakit','public',$request->file('photoPenyakit')->getClientOriginalName());
         Penyakit::create($data);
+        \Alert::toast('berhasil menambahkan data penyakit','success');
         return back();
     }
 
@@ -62,7 +67,7 @@ class PenyakitController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-    {   
+    {
         $data = Penyakit::findOrFail($id);
         return view('backend.Penyakit.edit')->with([
             'data' => $data

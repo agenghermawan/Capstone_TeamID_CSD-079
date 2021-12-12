@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Models\Artikel;
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -16,8 +17,15 @@ class ArtikelController extends Controller
      */
     public function index()
     {
-        $data = Artikel::all();
-        return  view('backend.Artikel.index',compact('data'));
+        if (\Auth::user()->role_pengguna == 'Dokter') {
+            $getId = \Auth::user()->id;
+            $dataArtikelSendiri = User::with('dokter')->where('id', $getId)->first();
+            $getFullname = $dataArtikelSendiri->dokter->fullname;
+            return view('backend.Artikel.index', ['data' => Artikel::where('ditulisOleh', $getFullname)->get()]);
+        } else{
+            $data = Artikel::all();
+            return view('backend.Artikel.index', compact('data'));
+       }
     }
 
     /**

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Data Dokter
+    Daftar Permintaan Dokter
 @endsection
 @section('buttonHeader')
     <div x-data="{ open: false }">
@@ -10,7 +10,7 @@ Data Dokter
             <uli>
                 <li class="bg-white space-y-1 flex flex-col absolute">
                     <a href="{{route('dokter_daftarPermintaan')}}" class="py-2"> Daftar Permintaan </a>
-                    <a href="" class="py-2"> Dokter Aktif </a>
+                    <a href="{{route('dokter.index')}}" class="py-2"> Dokter Aktif </a>
                     <a href="{{route('dokter.create')}}" class="py-2"> Tambahkan Dokter</a>
                 </li>
             </uli>
@@ -30,7 +30,7 @@ Data Dokter
                         @endif
                     </div>
                     <div class="name w-3/4 font-semibold">
-                        <h4 class="text-blue-700"> {{ $item->name }} </h4>
+                        <h4 class="text-blue-700"> {{ $item->fullname }} </h4>
                         <h4 class="text-sm text-blue-500"> Dokter Anak </h4>
                     </div>
                 </div>
@@ -45,24 +45,24 @@ Data Dokter
                     <div class="contanct text-sm mt-4 text-blue-500">
                         <p><i class="fa fa-phone-alt mr-3"></i>{{ $item->telp }}</p>
                         <p><i class="far fa-envelope mr-2"></i> {{ $item->email }}</p>
-                        @if (empty($item->dokter))
+                        @if (empty($item))
                             <p><i class="far fa-envelope mr-2"></i> Belum Mengajukan Sebagai Doktor </p>
-                        @elseif(empty($item->dokter) == null)
-                            <p><i class="far fa-envelope mr-2"></i> {{ $item->dokter->status }} </p>
+                        @elseif(empty($item) == null)
+                            <p><i class="far fa-envelope mr-2"></i> {{ $item->status }} </p>
                         @endif
                     </div>
                 </div>
                 <div class="button-description flex justify-end p-2">
-                    @if (empty($item->dokter) == null)
-                        @if ($item->dokter->status == 'non-active')
-                            <a href="{{ route('dokter.edit', 1) }}"
-                                class="bg-blue-300 rounded md text-base font-medium text-white mr-2 p-2 w-64 text-center border transition duration-500 ease-in-out transform  hover:scale-110">
+                    @if (empty($item) == null)
+                        @if ($item->status == 'non-active')
+                            <a href="{{ route('dokter_permintaan', $item->id) }}"
+                               class="bg-blue-300 rounded md text-base font-medium text-white mr-2 p-2 w-64 text-center border transition duration-500 ease-in-out transform  hover:scale-110">
                                 Terima Permintaan
                             </a>
                         @endif
                     @endif
                     <a href="{{ route('dokter.edit', 1) }}"
-                        class="bg-blue-300 rounded md text-base font-medium text-white mr-2 p-2 w-32 text-center border transition duration-500 ease-in-out transform  hover:scale-110">
+                       class="bg-blue-300 rounded md text-base font-medium text-white mr-2 p-2 w-32 text-center border transition duration-500 ease-in-out transform  hover:scale-110">
                         Detail
                     </a>
                 </div>

@@ -1,19 +1,27 @@
 @extends('layouts.app')
-
+@section('title','Daftar Data Penyakit')
+@section('buttonHeader')
+    <a href="{{ route('penyakit.index') }}"
+       class="bg-blue-200 px-3 py-4 rounded transition transform hover:scale-110  ease-in-out duration-500 ">
+        List daftars Penyakit</a>
+@endsection
 @section('content')
-    <div class="bg-white w-full text-sm font-medium text-blue-500 p-5 my-5"> Tambahkan Data Pengguna </div>
+    @include('sweetalert::alert')
     <form action="{{ route('penyakit.store') }}" enctype="multipart/form-data" method="POST">
         @csrf
         <div class="mt-5 md:mt-0 md:col-span-3">
             <form action="#" method="POST">
                 <div class="shadow sm:rounded-md sm:overflow-hidden">
-                    <div class="px-4 py-5 bg-white space-y-6 sm:p-6">
+                    <div class="px-4 py-5 bg-white space-y-6 sm:p-6 shadow-md rounded-xl">
                         <div class="grid grid-cols-6 gap-6">
                             <div class="col-span-3 sm:col-span-6">
                                 <div class="mt-1 flex rounded-md shadow-sm">
                                     <input type="text" name="namaPenyakit" id="namaPenyakit"
-                                        class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300"
+                                        class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" required
                                         placeholder="Nama Penyakit">
+                                    @error('namaPenyakit')
+                                    <p class="text-red text-xs">{{$message}}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -25,8 +33,11 @@
                                         <i class="fas fa-user"></i>
                                     </span>
                                     <input type="text" name="ditulisOleh" id="ditulisOleh"
-                                        class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300 text-gray-500"
+                                        class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300 text-gray-500"  required
                                         value="{{ Auth::user()->name }}">
+                                    @error('ditulisOleh')
+                                      <p class="text-red text-xs">{{$message}}</p>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
@@ -54,10 +65,16 @@
                                     Attach a file</p>
                             </div>
                             <input type="file" name="photoPenyakit" class="opacity-20" />
+                            @error('photoPenyakit')
+                                <p class="text-red text-xs">{{$message}}</p>
+                            @enderror
                         </label>
                         <div class="space-y-1 text-center">
-                            <textarea name="isiPenyakit" id="editor" cols="20" rows="5"></textarea>
+                            <textarea name="isiPenyakit" id="editor" cols="20" rows="5" ></textarea>
                         </div>
+                        @error('isiPenyakit')
+                          <p class="text-red text-xs">{{$message}}</p>
+                        @enderror
                         <button type="submit"
                             class="bg-blue-300 hover:scale-110 transform transtition rounded-md shadow-md p-3 text-sm tracking-wide duration-500">
                             Tambahkan Data

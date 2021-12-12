@@ -4,16 +4,15 @@
 
 
 @endsection
+@section('title','Daftar Data Penyakit')
+@section('buttonHeader')
+    <a href="{{ route('penyakit.create') }}"
+       class="bg-blue-200 px-3 py-4 rounded transition transform hover:scale-110  ease-in-out duration-500 ">
+        Tambahkan
+        Data Penyakit</a>
+@endsection
 @section('content')
-    <div class="container mt-4  grid-cols-1 md:grid-cols-2 lg:flex flex justify-between">
-        <h4> Daftar Data Penyakit </h4>
-        <a href="{{ route('penyakit.create') }}"
-            class="bg-blue-200 px-3 py-4 rounded transition transform hover:scale-110  ease-in-out duration-500 ">
-            Tambahkan
-            Data Penyakit</a>
-    </div>
-
-    <div class="grid grid-cols-1 md:grid-cols-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-3 mt-5">
         @foreach ($dataPenyakit as $item)
             <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700">
                 <img class="rounded-t-lg" src="{{ Storage::url($item->photoPenyakit) }}" alt="">
