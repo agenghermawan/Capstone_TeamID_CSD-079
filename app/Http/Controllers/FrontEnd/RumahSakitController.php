@@ -3,17 +3,30 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Poliklinik;
+use App\Models\RumahSakit;
+use PHPUnit\Framework\Constraint\Count;
 
 class RumahSakitController extends Controller
 {
     public function index (){
-        return view('frontend.RumahSakit.index');
+        $data = Poliklinik::all();
+        return view('frontend.RumahSakit.index',compact('data'));
     }
-    public function show ($id){
-        return view('frontend.RumahSakit.show');
+    public function show ($nama){
+       $data = RumahSakit::where('poliklinik', 'like', "%{$nama}%")->get();
+       /*Modal::whereIn('column', $ids)->get(); */
+       return view('frontend.RumahSakit.show',compact('data','nama'));
     }
     public function detail($id){
-        return view('frontend.RumahSakit.detail');
+        $dataRumahsakit = RumahSakit::where('id',$id)->first();
+        $getfieldPoliklinik = $dataRumahsakit->poliklinik;
+        $count = count($getfieldPoliklinik);
+        $data = [];
+            foreach ($getfieldPoliklinik as $item){
+                $dataPoliklinik = Poliklinik::where('nama', $item)->get();
+                array_push($data,$dataPoliklinik);
+            }
+        return view('frontend.RumahSakit.detail',compact('data','dataRumahsakit'));
     }
 }

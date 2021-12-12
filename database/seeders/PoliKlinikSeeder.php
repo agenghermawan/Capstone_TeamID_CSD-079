@@ -17,7 +17,7 @@ class PoliKlinikSeeder extends Seeder
         Poliklinik::create([
             'nama' => 'Poli Anak',
             'deskripsi' => 'Poli untuk menyembuhkan balita',
-            'tindakanmedis' => 'Mengihalngkan Pilek pada balita'
+            'tindakanmedis' => '',
         ]);
     }
 }

@@ -31,7 +31,6 @@
             border-radius: 10px;
             background-color: lightblue;
         }
-
     </style>
 @endsection
 
@@ -55,13 +54,23 @@
                 <p class="text-base text-justify ">{{$data->tentang}}</p>
             </div>
             <div class="p-10">
-                <h4 class="font-bold text-blue-500 mb-4"> Fasilitas </h4>
                 <div class="grid grid-cols-1 md:grid-cols-2 text-sm ">
-                    <ul class="list-disc">
-                      @foreach($data->fasilitas as $item)
-                            <li> {{$item}}</li>
-                        @endforeach
-                    </ul>
+                    <div class="fasilitas">
+                        <h4 class="font-bold text-blue-500 mb-4"> Fasilitas </h4>
+                        <ul class="list-disc">
+                            @foreach($data->fasilitas as $item)
+                                <li> {{$item}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="fasilitas">
+                        <h4 class="font-bold text-blue-500 mb-4"> Fasilitas </h4>
+                        <ul class="list-disc">
+                            @foreach($data->poliklinik as $item)
+                                <li> {{$item}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>

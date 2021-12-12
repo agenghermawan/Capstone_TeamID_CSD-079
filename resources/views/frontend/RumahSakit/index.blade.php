@@ -13,43 +13,15 @@
 
         <div class="hospital-page-container">
             <h2>Telusuri Berdasarkan Poliklinik</h2>
-
             <div class="card-hospital-container">
-                <div class="card-hospital">
-                    <!-- <img src="https://img.icons8.com/external-itim2101-blue-itim2101/64/000000/external-drug-medical-and-health-itim2101-blue-itim2101.png"/> -->
-                    <h3>Laboratorium</h3>
-                    <p>Laboratorium adalah salah satu instalasi di rumah sakit yang merupakan pelayanan penunjang yang
-                        bertujuan untuk membantu mendiagnosis penyakit serta dapat membantu melihat resiko</p>
-                    <a href={{ route('rumahSakit_show_frontend', 1) }}>Lihat Rumah Sakit</a>
-                </div>
-                <div class="card-hospital">
-                    <!-- <img src="https://img.icons8.com/external-itim2101-blue-itim2101/64/000000/external-drug-medical-and-health-itim2101-blue-itim2101.png"/> -->
-                    <h3>Laboratorium</h3>
-                    <p>Laboratorium adalah salah satu instalasi di rumah sakit yang merupakan pelayanan penunjang yang
-                        bertujuan untuk membantu mendiagnosis penyakit serta dapat membantu melihat resiko</p>
-                    <a href={{ route('rumahSakit_show_frontend', 1) }}>Lihat Rumah Sakit</a>
-                </div>
-                <div class="card-hospital">
-                    <!-- <img src="https://img.icons8.com/external-itim2101-blue-itim2101/64/000000/external-drug-medical-and-health-itim2101-blue-itim2101.png"/> -->
-                    <h3>Laboratorium</h3>
-                    <p>Laboratorium adalah salah satu instalasi di rumah sakit yang merupakan pelayanan penunjang yang
-                        bertujuan untuk membantu mendiagnosis penyakit serta dapat membantu melihat resiko</p>
-                    <a href={{ route('rumahSakit_show_frontend', 1) }}>Lihat Rumah Sakit</a>
-                </div>
-                <div class="card-hospital">
-                    <!-- <img src="https://img.icons8.com/external-itim2101-blue-itim2101/64/000000/external-drug-medical-and-health-itim2101-blue-itim2101.png"/> -->
-                    <h3>Laboratorium</h3>
-                    <p>Laboratorium adalah salah satu instalasi di rumah sakit yang merupakan pelayanan penunjang yang
-                        bertujuan untuk membantu mendiagnosis penyakit serta dapat membantu melihat resiko</p>
-                    <a href={{ route('rumahSakit_show_frontend', 1) }}>Lihat Rumah Sakit</a>
-                </div>
-                <div class="card-hospital">
-                    <!-- <img src="https://img.icons8.com/external-itim2101-blue-itim2101/64/000000/external-drug-medical-and-health-itim2101-blue-itim2101.png"/> -->
-                    <h3>Laboratorium</h3>
-                    <p>Laboratorium adalah salah satu instalasi di rumah sakit yang merupakan pelayanan penunjang yang
-                        bertujuan untuk membantu mendiagnosis penyakit serta dapat membantu melihat resiko</p>
-                    <a href={{ route('rumahSakit_show_frontend', 1) }}>Lihat Rumah Sakit</a>
-                </div>
+                @foreach($data as $item)
+                    <div class="card-hospital">
+                        <img src=""/>
+                        <h3>{{$item -> nama}}</h3>
+                        <p>{{$item -> deskripsi}}</p>
+                        <a href="{{ route('rumahSakit_show_frontend', $item->nama) }}" >Lihat Rumah Sakit</a>
+                    </div>
+                @endforeach
             </div>
         </div>
     </main>
@@ -138,6 +110,8 @@
         }
 
         .card-hospital a {
+            display: flex;
+            justify-content: center;
             text-align: center;
             background-color: #2c4964;
             color: #fff;

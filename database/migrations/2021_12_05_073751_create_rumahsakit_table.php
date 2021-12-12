@@ -16,13 +16,13 @@ class CreateRumahsakitTable extends Migration
         Schema::create('rumahsakit', function (Blueprint $table) {
             $table->id();
             $table->string('nama',40);
-            $table->string('alamat',100);
+            $table->string('alamat',255);
             $table->string('provinsi',40);
             $table->integer('kodepos');
             $table->string('kota',40);
-            $table->string('tentang',40);
+            $table->mediumText('tentang');
             $table->string('notelp',40);
-            $table->string('lokasiGmaps');
+            $table->longText('lokasiGmaps');
             $table->string('jamOperasional');
             $table->json('fasilitas');
             $table->json('poliklinik')->nullable();

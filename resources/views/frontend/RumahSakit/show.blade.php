@@ -9,33 +9,18 @@
         <div class="hospital-page-container">
             <h2>Laboratorium</h2>
             <div class="card-hospital-container">
-                <a href="{{ route('rumahSakit_detail_frontend', 1) }}" class="card-hospital">
+                @foreach($data as $item)
+                <a href="{{ route('rumahSakit_detail_frontend', $item->id) }}" class="card-hospital">
                     <img
-                        src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8aG9zcGl0YWx8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" />
+                        src="{{Storage::url($item->photo)}}" />
                     <div class="card-hospital-content">
-                        <h3>7AM PM Covid Test 19 Klinik Cipinang Bali</h3>
-                        <h4>Klinik</h4>
-                        <p>Tanjung Priok, Jakarta Utara</p>
+                        <h3>{{$item->nama}}</h3>
+                        <h4>{{$nama}}</h4>
+                        <p> {{$item->tentang}}</p>
+                        <p>{{$item->alamat}}</p>
                     </div>
                 </a>
-                <a href="{{ route('rumahSakit_detail_frontend', 1) }}" class="card-hospital">
-                    <img
-                        src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8aG9zcGl0YWx8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" />
-                    <div class="card-hospital-content">
-                        <h3>7AM PM Covid Test 19 Klinik Cipinang Bali</h3>
-                        <h4>Klinik</h4>
-                        <p>Tanjung Priok, Jakarta Utara</p>
-                    </div>
-                </a>
-                <a href="{{ route('rumahSakit_detail_frontend', 1) }}" class="card-hospital">
-                    <img
-                        src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8aG9zcGl0YWx8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60" />
-                    <div class="card-hospital-content">
-                        <h3>7AM PM Covid Test 19 Klinik Cipinang Bali</h3>
-                        <h4>Klinik</h4>
-                        <p>Tanjung Priok, Jakarta Utara</p>
-                    </div>
-                </a>
+                @endforeach
             </div>
         </div>
     </main>
@@ -85,7 +70,7 @@
             height: 175px;
             min-height: 75px;
             display: flex;
-            justify-content: center;
+            justify-content: left;
             /* align-items: center; */
             border: 1px solid rgba(0, 0, 0, 0.2);
             border-radius: 5px;

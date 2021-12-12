@@ -5,42 +5,28 @@
     <main>
         <div class="container">
             <div class="detail-hospital-container">
-                <h1>7AM PM Covid Test 19 Klinik Cipinang Bali</h1>
+                <h1>{{$dataRumahsakit->nama}}</h1>
                 <div class="detail-hospital-content">
                     <div class="banner">
-                        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8aG9zcGl0YWx8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
+                        <img src="{{Storage::url($dataRumahsakit->photo)}}"
                             alt="">
                         <div class="address">
                             <h2>Alamat</h2>
-                            <iframe
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15805.028483636099!2d112.62265473604201!3d-7.9723570915617135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd629041a87b3e7%3A0xee3005a907e7bb08!2sRSUD%20Dr.%20SAIFUL%20ANWAR%20MALANG!5e0!3m2!1sen!2sid!4v1639059305028!5m2!1sen!2sid"
-                                style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                            <p>No.2, Jl. Jaksa Agung Suprapto, Klojen, Kec. Klojen, Kota Malang, Jawa Timur</p>
+                            {!! $dataRumahsakit->lokasiGmaps  !!}
+                            <p>{{$dataRumahsakit->alamat}}</p>
                         </div>
                     </div>
                     <div class="info">
                         <div class="about">
                             <h2>Tentang</h2>
-                            <p>Rumah Sakit Umum Daerah Dr Saiful Anwar adalah Rumah Sakit Umum Daerah Kelas A milik
-                                Pemerintah
-                                Daerah Provinsi Jawa Timur yang sebelumnya bernama Rumah Sakit Celaket dan berubah menjadi
-                                Rumah
-                                Sakit Saiful Anwar tahun 1979. Memiliki Visi menjadi Rumah Sakit berstandar kelas dunia
-                                pilihan
-                                masyarakat. Dengan Misi terwujudnya pelayanan kesehatan dan pendidikan berstandar
-                                internasional
-                                dengan mengutamakan keselamatan pasien dan berfokus pada kepuasan pelanggan.</p>
+                            <p>{{$dataRumahsakit->tentang}}</p>
                         </div>
                         <div class="facility">
                             <h2>Fasilitas</h2>
                             <ul>
-                                <li>Instalasi Gizi</li>
-                                <li>Unit Perawatan Intensif</li>
-                                <li>Farmasi</li>
-                                <li>Unit Gawat Darurat (UGD)</li>
-                                <li>Instalasi Laboratorium</li>
-                                <li>Instalasi Rawat Inap</li>
-                                <li>Instalasi Rawat Jalan</li>
+                                @foreach($dataRumahsakit->fasilitas as $fasilitas)
+                                <li>{{$fasilitas}}</li>
+                                @endforeach
                             </ul>
                         </div>
                     </div>
@@ -48,6 +34,7 @@
                         <div class="polyclinic">
                             <h2>Poliklinik</h2>
                             <div class="card-polyclinic-container">
+                                @foreach($data as $item)
                                 <div class="card-polyclinic">
                                     <img src="https://halodoc-sumba.s3-ap-southeast-1.amazonaws.com/Bintan_Department/fca47837-6879-4926-b554-dba9536c6f06.png"
                                         alt="">
@@ -56,22 +43,7 @@
                                         <p>16 Tindakan Medis</p>
                                     </div>
                                 </div>
-                                <div class="card-polyclinic">
-                                    <img src="https://halodoc-sumba.s3-ap-southeast-1.amazonaws.com/Bintan_Department/fca47837-6879-4926-b554-dba9536c6f06.png"
-                                        alt="">
-                                    <div class="card-polyclinic-text">
-                                        <h3>Anak</h3>
-                                        <p>16 Tindakan Medis</p>
-                                    </div>
-                                </div>
-                                <div class="card-polyclinic">
-                                    <img src="https://halodoc-sumba.s3-ap-southeast-1.amazonaws.com/Bintan_Department/fca47837-6879-4926-b554-dba9536c6f06.png"
-                                        alt="">
-                                    <div class="card-polyclinic-text">
-                                        <h3>Anak</h3>
-                                        <p>16 Tindakan Medis</p>
-                                    </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="doctor">
@@ -531,7 +503,7 @@
             .card-doctor-body>button {
                 width: 50%;
                 margin: 7.5% 0;
-            }
+            }}
 
     </style>
 @endsection

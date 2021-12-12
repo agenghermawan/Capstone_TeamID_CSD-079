@@ -25,4 +25,7 @@ class RumahSakit extends Model
     public function user(){
         $this->hasMany(User::class);
     }
+    public function poliklinik(){
+        $this->hasMany(Poliklinik::class);
+    }
 }

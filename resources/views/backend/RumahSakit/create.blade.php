@@ -282,5 +282,6 @@
             <button
                 class="from-gray-400 to-gray-100 bg-gradient-to-l  rounded-lg p-2 mt-5 w-full text-white shadow-2xl md:w-52 xl:w-30 lg:w-40 transform transtition hover:scale-105 duration-500"
                 type="submit"> Submit </button>
+        </div>
     </form>
 @endsection

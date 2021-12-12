@@ -31,7 +31,7 @@ Route::get('/', function () {
 Route::get('artikel',[App\Http\Controllers\Frontend\ArtikelController::class, 'index'] )->name('artikel_frontend');
 Route::get('detail/artikel/{id}',[App\Http\Controllers\Frontend\ArtikelController::class, 'show'] )->name('artikelShow_frontend');
 Route::get('rumahsakit',[App\Http\Controllers\Frontend\RumahSakitController::class, 'index'] )->name('rumahSakit_frontend');
-Route::get('rumahsakit/show/{id}',[App\Http\Controllers\Frontend\RumahSakitController::class, 'show'] )->name('rumahSakit_show_frontend');
+Route::get('rumahsakit/show/{nama}',[App\Http\Controllers\Frontend\RumahSakitController::class, 'show'] )->name('rumahSakit_show_frontend');
 Route::get('rumahsakit/detail/{id}',[App\Http\Controllers\Frontend\RumahSakitController::class, 'detail'] )->name('rumahSakit_detail_frontend');
 
 Route::get('DataCovid/indonesia',[App\Http\Controllers\Frontend\DataCovidController::class, 'index'] )->name('dataCovid_frontend');
