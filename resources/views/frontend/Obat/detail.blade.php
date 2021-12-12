@@ -2,84 +2,64 @@
 
 @section('contentFrontEnd')
     <main>
-        <img src="https://d2qjkwm11akmwu.cloudfront.net/products/79460_22-9-2021_10-26-40.webp" alt="">
+
+        <img src="{{Storage::url($data->photoObat)}}" alt="">
         <div class="detail-drugs-container">
-            <h1>Sterimar Nose Hygiene and Comfort 50 ml</h1>
-            <p><b>Rp.149000 - 199000</b> Per Botol</p>
-            <p>*Harga berbeda di tiap apotik</p>
+            <h1>{{$data -> namaObat}}</h1>
+            <p><b>{{$data->bentukObat}}</b></p>
+            <p>*termasuk obat {{$data->golongan}}</p>
 
             <div class="info category">
                 <h2>Kategori</h2>
-                <p>Batuk dan Flu, COVID-19</p>
+                <p>{{$data->kategori}}</p>
             </div>
 
             <div class="info description">
                 <h2>Deskripsi</h2>
-                <p>STERIMAR NOSE HYGIENE AND COMFORT sediaan pencuci hidung yang dikembangkan dengan kandungan trance
-                    element air laut dan zinc oleh para ahli kesehatan THT dan spesialis anak. STERIMAR efektif mencegah dan
-                    mengobati masalah hidung yang terkait dengan alergi dan hidung tersumbat.</p>
+                <p>{{$data->deskripsi}}</p>
             </div>
 
             <div class="info indication">
-                <h2>Indikasi Umum</h2>
-                <p>Membantu mengembalikan kelembapan alami dari hidung, dan membersihkan hidung dari sekresi hingus dan
-                    kotoran</p>
+                <h2>Manfaat</h2>
+                <p>{{$data->manfaat}}</p>
             </div>
 
             <div class="info composition">
                 <h2>Komposisi</h2>
-                <p>Sea water 31.82 mL, purified water qsp 100 mL</p>
+                <p>{{$data->golongan}}</p>
             </div>
 
             <div class="info dose">
-                <h2>Dosis</h2>
-                <p>2-6 kali semprotan per hari tiap lubang hidung (atau lebih jika diperlukan). Disarankan untuk penggunaan
-                    sebelum tidur atau membersihkan hidung sehari-hari</p>
+                <h2>Dosis dan aturan</h2>
+                <p>{{$data->dosisdanaturan}}</p>
             </div>
 
             <div class="info how-to-use">
-                <h2>Aturan Pakai</h2>
-                <p>Semprotkan pada tiap lubang hidung. Lama penyemprotan 1-2 detik. Bersihkan nosel dengan air hangat
-                    setelah digunakan dan keringkan.</p>
+                <h2>Efek Samping</h2>
+                <p>{{$data->efekSamping}}</p>
             </div>
 
             <div class="info manufacture">
                 <h2>Manufaktur</h2>
-                <p>Church & Dwight UK Limited</p>
+                <p>{{$data->merkDagang}}</p>
             </div>
 
             <div class="info registration-number">
-                <h2>No. Registrasi</h2>
-                <p>Kemenkes RI: AKL20704915762</p>
+                <h2>Interaksi</h2>
+                <p>{{$data->interaksi}}</p>
             </div>
         </div>
         <aside>
             <h1>Rekomendasi Obat lain</h1>
             <div class="card-recommendation-container">
-                <div class="card-recommendation">
-                    <img src="https://d2qjkwm11akmwu.cloudfront.net/products/97696_22-9-2021_10-51-58.webp" alt="">
-                    <h2>Rhinos SR 10 Kapsul</h2>
-                    <p>Rp.200000</p>
-                    <button>Detail</button>
-                </div>
-                <div class="card-recommendation">
-                    <img src="https://d2qjkwm11akmwu.cloudfront.net/products/97696_22-9-2021_10-51-58.webp" alt="">
-                    <h2>Rhinos SR 10 Kapsul</h2>
-                    <p>Rp.200000</p>
-                    <button>Detail</button>
-                </div>
-                <div class="card-recommendation">
-                    <img src="https://d2qjkwm11akmwu.cloudfront.net/products/97696_22-9-2021_10-51-58.webp" alt="">
-                    <h2>Rhinos SR 10 Kapsul</h2>
-                    <p>Rp.200000</p>
-                    <button>Detail</button>
-                </div>
-                <div class="card-recommendation">
-                    <img src="https://d2qjkwm11akmwu.cloudfront.net/products/97696_22-9-2021_10-51-58.webp" alt="">
-                    <h2>Rhinos SR 10 Kapsul</h2>
-                    <p>Rp.200000</p>
-                    <button>Detail</button>
-                </div>
+                @foreach($dataRekomendasi as $item)
+                    <div class="card-recommendation">
+                        <img src="{{Storage::url($item->photo)}}" alt="">
+                        <h2>{{$item->nama}}</h2>
+                            <p>Rp.200000</p>
+                        <button>Detail</button>
+                    </div>
+                @endforeach
             </div>
         </aside>
     </main>

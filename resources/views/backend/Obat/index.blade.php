@@ -38,6 +38,7 @@
 @section('content')
     <div class="h1 my-5 text-center text-base text-blue-500 font-bold"> Daftar Data Rumah Sakit </div>
     <a href="{{ route('obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Data Obat</a>
+    <a href="{{ route('kategori-obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Kategori Obat</a>
 
     <div class="w-full mt-5">
         <table class="min-w-full divide-y divide-gray-200" id="myTable">

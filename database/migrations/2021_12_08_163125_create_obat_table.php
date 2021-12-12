@@ -15,9 +15,9 @@ class CreateObatTable extends Migration
     {
         Schema::create('obat', function (Blueprint $table) {
             $table->id();
+     /*       $table->string('kategori_id');*/
             $table->string('deskripsi');
             $table->string('productObat');
-            $table->string('peringatanObat');
             $table->string('dosisdanaturan');
             $table->string('interaksi');
             $table->string('efekSamping');
@@ -26,10 +26,9 @@ class CreateObatTable extends Migration
             $table->string('photoObat');
             $table->string('kategori');
             $table->string('manfaat');
-            $table->string('dikonsumsiOleh');
             $table->string('bentukObat');
             $table->string('merkDagang');
-            $table->string('anjuranLainnya');
+/*            $table->foreign('kategori_id')->references('id')->on('kategori_obat')->onDelete('cascade');*/
             $table->timestamps();
         });
     }

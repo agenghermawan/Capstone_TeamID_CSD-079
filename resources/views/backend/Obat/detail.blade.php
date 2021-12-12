@@ -11,12 +11,6 @@
             <h5 class="mt-2">
                 {{ $detailDataObat->deskripsi }}
             </h5>
-            <p>Di dalam pengobatan tradisional, panas dalam diartikan sebagai kumpulan keluhan yang terjadi akibat terlalu
-                sering mengonsumsi jenis makanan tertentu, seperti makanan pedas atau makanan yang diolah dengan suhu
-                tinggi, seperti daging bakar dan gorengan.</p>
-            Adem sari mengandung ekstrak jeruk nipis, pulosari, dan kayu manis, yang dipercaya mampu meredakan keluhan dan
-            gejala panas dalam. Selain itu, di dalam Adem Sari juga terkandung vitamin C yang diketahui baik untuk
-            kesehatan.
         </div>
         <div class="image bg-clip-content md:flex">
             <div class="md:flex-shrink-0">
@@ -32,28 +26,12 @@
                     </p>
             </div>
         </div>
-
-
-
-
         <div class="warning grid gap-2">
             <h5 class="font-bold"> Peringatan Sebelum Mengonsumsi Adem Sari : </h5>
             <ul class="list-disc list-inside">
                 <li>
                     {{ $detailDataObat->peringatanObat }}
                 </li>
-                <li>
-                    Hati-hati mengonsumsi Adem Sari jika Anda menderita sakit maag.
-                </li>
-                <li>
-                    Adem Sari mengandung pemanis buatan aspartam. Jangan mengonsumsi produk yang mengandung aspartame jika
-                    Anda menderita fenilketonuria.
-                </li>
-                <li>
-                    Adem Sari mengandung vitamin C. Konsultasikan prihal konsumsi vitamin C jika Anda menderita batu ginjal,
-                    G6PD (defisiensi glucose-6-phosphate dehydrogenase), atau pernah mengalami hemokromatosis.
-                </li>
-
             </ul>
         </div>
 
@@ -86,10 +64,6 @@
             <div class="golongan border-b py-2">
                 <h4> Kategori </h4>
                 <p class="text-sm text-blue-700"> {{ $detailDataObat->kategori }} </p>
-            </div>
-            <div class="golongan border-b py-2">
-                <h4> Dikonsumsi Oleh </h4>
-                <p class="text-sm text-blue-700"> {{ $detailDataObat->dikonsumsiOleh }} </p>
             </div>
             <div class="golongan border-b py-2">
                 <h4> Bentuk Obat </h4>

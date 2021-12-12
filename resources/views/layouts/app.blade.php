@@ -30,6 +30,7 @@
                     <a href="{{ route('obat.index') }}"><i class="fas fa-capsules mr-2"></i> Obat </a>
                     <a href="{{ route('penyakit.index') }}"><i class="fas fa-procedures mr-2"></i> Penyakit </a>
                     <a href="{{ route('backendGetDataCovid') }}"><i class="fas fa-virus mr-2"></i> Covid Info </a>
+                    <a href="{{ route('kategori-obat.index') }}"><i class="fas fa-virus mr-2"></i> Kategori Obat </a>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit"><i class="fas fa-virus mr-2"></i> Logout
@@ -51,6 +52,7 @@
                     <a href="{{ route('obat.index') }}"><i class="fas fa-capsules mr-2"></i> Obat </a>
                     <a href="{{ route('penyakit.index') }}"><i class="fas fa-procedures mr-2"></i> Penyakit </a>
                     <a href="{{ route('backendGetDataCovid') }}"><i class="fas fa-virus mr-2"></i> Covid Info </a>
+                    <a href="{{ route('kategori-obat.index') }}"><i class="fas fa-virus mr-2"></i> Kategori Obat </a>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit"><i class="fas fa-door-closed"></i> Logout

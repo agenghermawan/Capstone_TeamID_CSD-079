@@ -5,6 +5,7 @@
 @endsection
 
 @section('content')
+    @include('sweetalert::alert')
     <form action="{{ route('obat.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="w-full md:flex b mt-5">
@@ -17,28 +18,20 @@
                     <input type="text"
                         class="rounded shadow-sm w-full md:w-1/2 mb-2 text-sm border-gray-300 focus:border-gray-500 focus:placeholder-transparent"
                         placeholder="Nama Obat" name="namaObat">
-                    <input type="text"
-                        class="rounded shadow-sm w-full   md:w-1/2 mb-2 text-sm border-gray-300 focus:border-gray-500 focus:placeholder-transparent"
-                        placeholder="Kategori" name="kategori">
+                    <select name="kategori" id="kategori" class="rounded shadow-sm w-full md:w-1/2 mb-2 text-sm border-gray-300 focus:border-blue-500">
+                        @foreach($data as $item)
+                            <option value="{{$item->nama}}"> {{$item->nama}}</option>
+                        @endforeach
+                    </select>
                 </div>
-                <div class="form-group my-5 w-full">
+                <div class="form-group flex gap-1 my-5 w-full">
                     <input type="text"
-                        class="rounded shadow-sm w-full mb-2 text-sm border-gray-300 focus:border-gray-500 focus:placeholder-transparent"
+                        class="rounded shadow-sm w-full mb-2 md:w-1/2 text-sm border-gray-300 focus:border-gray-500 focus:placeholder-transparent"
                         placeholder="Golongan" name="golongan">
-                </div>
-
-                <div class="form-group my-5 md:flex gap-1">
                     <input type="text"
-                        class="rounded shadow-sm w-full md:w-1/2 mb-2 text-sm border-gray-300 focus:border-gray-500 focus:placeholder-transparent"
-                        placeholder="Dikonsumsi Oleh" name="dikonsumsiOleh">
-                    <input type="text"
-                        class="rounded shadow-sm w-full md:w-1/2 mb-2 text-sm border-gray-300 focus:border-gray-500 focus:placeholder-transparent"
-                        placeholder="Bentuk Obat" name="bentukObat">
+                           class="rounded shadow-sm w-full md:w-1/2 mb-2 text-sm border-gray-300 focus:border-gray-500 focus:placeholder-transparent"
+                           placeholder="Bentuk Obat" name="bentukObat">
                 </div>
-                <div class="form-group my-5  md:flex gap-1">
-                    <textarea name="anjuranLainnya" id="anjuranLainnya" class="w-full"> Anjuran Lainnya </textarea>
-                </div>
-
                 <div class="image md:mt-5">
                     <label class="inline-block mb-2 text-gray-700"></label>
                     <div class="flex items-center justify-center w-full">
@@ -70,22 +63,19 @@
                         class="rounded shadow-sm w-full h-32  mb-2 text-sm border-gray-300 focus:border-gray-500 focus:placeholder-transparent"
                         name="manfaat">
                 </div>
+
+            </div>
+            <div class="bg-white p-10 md:w-1/2">
+                <h3 class="font-bold text-blue-700 border-b pb-2"> Detail Obat </h3>
                 <div class="form-group">
                     <label for="deskripsi" class="block text-sm my-4 text-gray-500"> Deskripsi</label>
                     <textarea name="deskripsi" id="deskripsi" class="w-full rounded-md border-gray-300"> </textarea>
                 </div>
-            </div>
-            <div class="bg-white p-10 md:w-1/2">
-                <h3 class="font-bold text-blue-700 border-b pb-2"> Detail Obat </h3>
-
                 <div class="form-group">
-                    <label for="productObat" class="block text-sm my-4 text-gray-500"> Prooduct</label>
+                    <label for="productObat" class="block text-sm my-4 text-gray-500"> Product</label>
                     <textarea name="productObat" id="deskripsi" class="w-full rounded-md border-gray-300"> </textarea>
                 </div>
-                <div class="form-group">
-                    <label for="peringatanObat" class="block text-sm my-4 text-gray-500"> Peringatan </label>
-                    <textarea name="peringatanObat" id="deskripsi" class="w-full rounded-md border-gray-300"> </textarea>
-                </div>
+
                 <div class="form-group">
                     <label for="dosisdanaturan" class="block text-sm my-4 text-gray-500"> Dosis dan aturan</label>
                     <textarea name="dosisdanaturan" id="deskripsi" class="w-full rounded-md border-gray-300"> </textarea>

@@ -8,34 +8,15 @@
         </div>
         <div class="drugs-page-container">
             <h2>Obat dan Vitamin Berdasarkan Kategori</h2>
-
+            @foreach($data as $item)
             <div class="card-drugs-container">
-                <a href="{{ route('obatKategori_frontend') }}" class="card-drugs">
+                <a href="{{ route('obatKategori_frontend',$item->nama) }}" class="card-drugs">
                     <img
-                        src="https://img.icons8.com/external-itim2101-blue-itim2101/64/000000/external-drug-medical-and-health-itim2101-blue-itim2101.png" />
-                    <h3>Flu dan Batuk</h3>
-                </a>
-                <a class="card-drugs">
-                    <img
-                        src="https://img.icons8.com/external-itim2101-blue-itim2101/64/000000/external-drug-medical-and-health-itim2101-blue-itim2101.png" />
-                    <h3>Flu dan Batuk</h3>
-                </a>
-                <a class="card-drugs">
-                    <img
-                        src="https://img.icons8.com/external-itim2101-blue-itim2101/64/000000/external-drug-medical-and-health-itim2101-blue-itim2101.png" />
-                    <h3>Flu dan Batuk</h3>
-                </a>
-                <a class="card-drugs">
-                    <img
-                        src="https://img.icons8.com/external-itim2101-blue-itim2101/64/000000/external-drug-medical-and-health-itim2101-blue-itim2101.png" />
-                    <h3>Flu dan Batuk</h3>
-                </a>
-                <a class="card-drugs">
-                    <img
-                        src="https://img.icons8.com/external-itim2101-blue-itim2101/64/000000/external-drug-medical-and-health-itim2101-blue-itim2101.png" />
-                    <h3>Flu dan Batuk</h3>
+                        src="{{Storage::url($item->photo)}}" style="width: 64px" height="64px" />
+                    <h3>{{$item->nama}}</h3>
                 </a>
             </div>
+            @endforeach
         </div>
     </main>
 @endsection
@@ -81,10 +62,11 @@
         .card-drugs-container {
             display: flex;
             flex-wrap: wrap;
+            justify-content: left;
         }
 
         .card-drugs {
-            width: 22%;
+            width: 25%;
             margin: 0 1.5%;
             height: auto;
             min-height: 75px;
@@ -101,7 +83,7 @@
         .card-drugs img {
             max-width: 100%;
             width: 25%;
-            height: auto;
+            height: 64px;
         }
 
         .card-drugs h3 {

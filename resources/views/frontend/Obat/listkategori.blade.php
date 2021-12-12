@@ -10,41 +10,14 @@
             <h2>Obat Flu dan Batuk</h2>
 
             <div class="card-drugs-container">
-                <a href="{{ route('obatShow_frontend', 1) }}" class="card-drugs">
-                    <img src="https://d2qjkwm11akmwu.cloudfront.net/products/79460_22-9-2021_10-26-40.webp" />
-                    <h3>Sterimar Nose Hygiene and Comfort 50 ml</h3>
-                    <p>Per Botol</p>
-                    <h3>Rp.149000 - 199000</h3>
-                    <button>Detail</button>
-                </a>
-                <a class="card-drugs">
-                    <img src="https://d2qjkwm11akmwu.cloudfront.net/products/97696_22-9-2021_10-51-58.webp" />
-                    <h3>Rhinos SR 10 Kapsul</h3>
-                    <p>Per Strip</p>
-                    <h3>Rp.20000</h3>
-                    <button>Detail</button>
-                </a>
-                <a class="card-drugs">
-                    <img src="https://d2qjkwm11akmwu.cloudfront.net/products/97696_22-9-2021_10-51-58.webp" />
-                    <h3>Flu dan Batuk</h3>
-                    <p>Per Strip</p>
-                    <h3>Rp.20000</h3>
-                    <button>Detail</button>
-                </a>
-                <a class="card-drugs">
-                    <img src="https://d2qjkwm11akmwu.cloudfront.net/products/97696_22-9-2021_10-51-58.webp" />
-                    <h3>Flu dan Batuk</h3>
-                    <p>Per Strip</p>
-                    <h3>Rp.20000</h3>
-                    <button>Detail</button>
-                </a>
-                <a class="card-drugs">
-                    <img src="https://d2qjkwm11akmwu.cloudfront.net/products/97696_22-9-2021_10-51-58.webp" />
-                    <h3>Flu dan Batuk</h3>
-                    <p>Per Strip</p>
-                    <h3>Rp.20000</h3>
-                    <button>Detail</button>
-                </a>
+                @foreach($data as $item)
+                    <a href="{{ route('obatShow_frontend',$item->id) }}" class="card-drugs">
+                        <img src="{{Storage::url($item->photoObat)}}" />
+                        <h3>{{$item->namaObat}}</h3>
+                        <p>{{$item->bentukObat}}</p>
+                        <h3>{{$item->golongan}}</h3>
+                    </a>
+                @endforeach
             </div>
         </div>
     </main>
@@ -86,6 +59,7 @@
         .card-drugs-container {
             display: flex;
             flex-wrap: wrap;
+            justify-content: left;
         }
 
         .card-drugs {

@@ -2,14 +2,11 @@
 
 namespace App\Http\Controllers\Backend;
 
-use Alert;
 use App\Http\Controllers\Controller;
-use App\Models\Poliklinik;
-use App\Models\RumahSakit;
+use App\Models\KategoriObat;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
-class RumahSakitController extends Controller
+class KategoriObatController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +15,8 @@ class RumahSakitController extends Controller
      */
     public function index()
     {
-        $data = RumahSakit::all();
-        return view('backend.RumahSakit.index',compact('data'));
+        $data = KategoriObat::all();
+        return view('backend.Kategori.index',compact('data'));
     }
 
     /**
@@ -29,8 +26,7 @@ class RumahSakitController extends Controller
      */
     public function create()
     {
-        $dataPoliklinik = Poliklinik::all();
-        return view('backend.RumahSakit.create',compact('dataPoliklinik'));
+        return view('backend.Kategori.create');
     }
 
     /**
@@ -42,28 +38,15 @@ class RumahSakitController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        Validator::make($data, [
-            'nama' => 'required|max:255',
-            'alamat' => 'required',
-            'tentang' => 'required',
-            'provinsi' => 'required',
-            'kodepos' => 'required|integer',
-            'kota' => 'required',
-            'notelp' => 'required',
-            'lokasiGmaps' => 'required',
-            'jamOperasional' => 'required',
-            'fasilitas' => 'required',
-            'poliklinik' => 'required',
-            'photo' => 'required|image:jpg,png',
+        \Validator::make($data ,[
+            'nama' => 'required',
+            'deskripsi' =>'required',
+            'photo' => 'required|image:jpg,png|max:2048'
         ])->validate();
-
-        $getnamaPhoto = $request->file('photo')->getClientOriginalName();
-        $data['photo'] = $request->file('photo')->storeAs('assets/rumahsakit',$getnamaPhoto,'public');
-        RumahSakit::create($data);
-        Alert::toast('Data rumah sakit berhasil ditambahkan', 'success');
-        return back()->with([
-            'message'=> 'Data Rumah Sakit Berhasil di tambahkan',
-        ]);
+        $data['photo'] =$request->file('photo')->storeAs('assets/KategoriObat', $request->file('photo')->getClientOriginalName(), 'public');
+        KategoriObat::create($data);
+        \Alert::toast('Berhasil Menambhakn data kategori','success');
+        return back();
     }
 
     /**
@@ -74,8 +57,7 @@ class RumahSakitController extends Controller
      */
     public function show($id)
     {
-        $data = RumahSakit::findOrFail($id);
-        return view('backend.RumahSakit.detail',compact('data'));
+        //
     }
 
     /**

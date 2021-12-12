@@ -7,34 +7,36 @@
             <h1>Data Covid 19 di Indonesia</h1>
             <p>Update 07 Dec 2021 16:00</p>
             <div class="covid-card-container">
+            @foreach($dataIndonesia as $item)
                 <div class="covid-card">
                     <div class="covid-card-number">
-                        <h2>4.258.076</h2>
+                        <h2> {{ $item->positif }}</h2>
                         <p>(+261)</p>
                     </div>
                     <h3>KASUS KONFIRMASI</h3>
                 </div>
                 <div class="covid-card">
                     <div class="covid-card-number">
-                        <h2>4.108.717</h2>
+                        <h2>{{$item->sembuh}}</h2>
                         <p>(96,5%)</p>
                     </div>
                     <h3>KASUS SEMBUH</h3>
                 </div>
                 <div class="covid-card">
                     <div class="covid-card-number">
-                        <h2>143.893</h2>
+                        <h2>{{$item->meninggal}}</h2>
                         <p>(3,4%)</p>
                     </div>
                     <h3>KASUS MENINGGAL</h3>
                 </div>
                 <div class="covid-card">
                     <div class="covid-card-number">
-                        <h2>5.466</h2>
+                        <h2>{{$item->dirawat}}</h2>
                         <p>(0,1%)</p>
                     </div>
                     <h3>KASUS AKTIF</h3>
                 </div>
+            @endforeach
             </div>
         </div>
     </main>

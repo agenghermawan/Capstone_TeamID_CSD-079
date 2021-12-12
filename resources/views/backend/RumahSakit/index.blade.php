@@ -36,6 +36,7 @@
 @endsection
 
 @section('content')
+    @include('sweetalert::alert')
     <div class="h1 my-5 md:text-center text-lg font-bold text-blue-500"> Daftar Data Rumah Sakit </div>
     <div class="md:flex md:justify-between ">
         <div class="left-header mb-8">
@@ -92,7 +93,7 @@
                             <p class="text-xs text-gray-400"> {{ $item->jamOperasional }} </p>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                            <a href="{{ route('rumahSakit.show', 1) }}" class="rounded bg-blue-200 p-2"> Detail </a>
+                            <a href="{{ route('rumahSakit.show', $item->id) }}" class="rounded bg-blue-200 p-2"> Detail </a>
                         </td>
                     </tr>
                 @endforeach

@@ -10,7 +10,11 @@ class Obat extends Model
     protected $table = 'obat';
     use HasFactory;
     protected $fillable = [
-        'namaObat','golongan','kategori','dikonsumsiOleh','bentukObat'
-        ,'anjuranLainnya','photoObat','merkDagang','manfaat','deskripsi','productObat','peringatanObat','dosisdanaturan','interaksi','efekSamping'
+        'namaObat','golongan','kategori','bentukObat'
+        ,'photoObat','merkDagang','manfaat','deskripsi','productObat','dosisdanaturan','interaksi','efekSamping'
     ];
+
+    public function kategoriObat(){
+        $this->belongsTo(KategoriObat::class,'kategori','id');
+    }
 }

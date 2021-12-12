@@ -37,17 +37,14 @@
 
 @section('content')
     <div class="bg-white p-10 shadow-lg rounded-xl">
+        <h4 class="font-sm text-base mb-4 font-semibold"> {{$data->nama}}</h4>
         <div class="image grid grid-cols-1 gap-5 md:grid-cols-2">
-            <img src="{{ asset('image/rumahsakit.jpg') }}" class="w-full" alt="">
+            <img src="{{ Storage::url($data->photo)}}" class="w-full h-80 object-cover" height="400px" alt="">
             <div class="border-b">
                 <iframe class="rounded shadow-lg "
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.4501488816986!2d106.82132961534131!3d-6.335688695414971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69edd3edb84d21%3A0x58e186ff58dc127!2sRumah%20Sakit%20Umum%20Zahirah!5e0!3m2!1sen!2sid!4v1638525047855!5m2!1sen!2sid"
                     width="600" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                <p class="text-sm mt-4 subpixel-antialiased text-blue-600">Jl. Sirsak No.21, RT.9/RW.1, Jagakarsa, Kec.
-                    Jagakarsa, Kota
-                    Jakarta Selatan,
-                    Daerah Khusus Ibukota
-                    Jakarta 12620</p>
+                <p class="text-sm mt-4 subpixel-antialiased text-blue-600">{{$data->alamat}}</p>
             </div>
         </div>
 
@@ -55,12 +52,7 @@
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 border-b border-blue-200">
             <div class="pt-10 pb-10 pr-10">
                 <h4 class="mb-4 text-blue-500 font-bold"> Tentang </h4>
-                <p class="text-base text-justify ">Rumah Sakit Premier Bintaro merupakan Rumah Sakit Umum Swasta yang berdiri
-                    sejak tanggal 12 Agustus 1998
-                    dibawah naungan Ramsay Sime Darby Health Care Group. Rumah Sakit Premier Bintaro memiliki Visi
-                    mewujudkan pelayanan kesehatan yang terkemuka di Asia dengan layanan kesehatan yang berkualitas. Dengan
-                    Misi memberikan pelayanan kesehatan yang berkualitas dan memuaskan pasien serta mencapai kinerja
-                    pelayanan yang diinginkan.</p>
+                <p class="text-base text-justify ">{{$data->tentang}}</p>
             </div>
             <div class="p-10">
                 <h4 class="font-bold text-blue-500 mb-4"> Fasilitas </h4>

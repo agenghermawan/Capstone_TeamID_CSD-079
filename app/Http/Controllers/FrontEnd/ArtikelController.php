@@ -3,15 +3,18 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Artikel;
 use Illuminate\Http\Request;
 
 class ArtikelController extends Controller
 {
      public function index()
     {
-        return  view('frontend.Artikel.index');
+        $data = Artikel::all();
+        return  view('frontend.Artikel.index',compact('data'));
     }
     public function show($id){
-        return view('frontend.Artikel.detail');
+        $data = Artikel::findOrFail($id);
+        return view('frontend.Artikel.detail',compact('data'));
     }
 }

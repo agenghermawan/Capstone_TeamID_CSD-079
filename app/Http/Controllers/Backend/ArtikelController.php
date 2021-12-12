@@ -50,6 +50,7 @@ class ArtikelController extends Controller
 
         $data['photo']  = $request->file('photo')->store('artikel','public', $request->file('photo')->getClientOriginalName());
         Artikel::create($data);
+        \Alert::toast('berhasil menambahkan data artikel','success');
         return back()->with([
             'message' => 'Berhasil ditambahkan'
         ]);

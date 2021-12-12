@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\KategoriObat;
 use App\Models\Obat;
 use Illuminate\Http\Request;
 use Validator;
@@ -27,7 +28,8 @@ class ObatController extends Controller
      */
     public function create()
     {
-        return  view('backend.obat.create');
+        $data = KategoriObat::all();
+        return  view('backend.obat.create',compact('data'));
     }
 
     /**
@@ -43,15 +45,12 @@ class ObatController extends Controller
             "namaObat" => "required",
             "golongan" => "required",
             "kategori" => "required",
-            "dikonsumsiOleh" => "required",
             "bentukObat" => "required",
-            "anjuranLainnya" => "required",
             "photoObat" => "required|image:jpg,png,webp",
             "merkDagang" => "required",
             "manfaat" => "required",
             "deskripsi" => "required",
             "productObat" => "required",
-            "peringatanObat" => "required",
             "dosisdanaturan" => "required",
             "interaksi" => "required",
             "efekSamping" => "required",
@@ -59,6 +58,7 @@ class ObatController extends Controller
 
         $data['photoObat'] = $request->file('photoObat')->store('assets/Obat','public',$request->file('photoObat')->getClientOriginalName());
         Obat::create($data);
+        \Alert::toast('berhasil menambahkan data obat','success');
         return back()->with([
             'message' => 'Berhasil Ditambahkan',
         ]);

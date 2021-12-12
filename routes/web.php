@@ -11,7 +11,7 @@ use App\Http\Controllers\Backend\ObatController;
 use App\Http\Controllers\Backend\PenyakitController;
 use App\Http\Controllers\Backend\PoliKlinikController;
 use App\Http\Controllers\Backend\ImageUploadController;
-use RealRashid\SweetAlert\Facades\Alert;
+use App\Http\Controllers\Backend\KategoriObatController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,7 +34,7 @@ Route::get('rumahsakit',[App\Http\Controllers\Frontend\RumahSakitController::cla
 Route::get('rumahsakit/show/{id}',[App\Http\Controllers\Frontend\RumahSakitController::class, 'show'] )->name('rumahSakit_show_frontend');
 Route::get('rumahsakit/detail/{id}',[App\Http\Controllers\Frontend\RumahSakitController::class, 'detail'] )->name('rumahSakit_detail_frontend');
 
-Route::get('buatJanji/dokter',[App\Http\Controllers\Frontend\DataCovidController::class, 'index'] )->name('dataCovid_frontend');
+Route::get('DataCovid/indonesia',[App\Http\Controllers\Frontend\DataCovidController::class, 'index'] )->name('dataCovid_frontend');
 
 
 Route::get('DataCovid',[App\Http\Controllers\Frontend\BuatJanjiController::class, 'index'] )->name('buatjanji_frontend');
@@ -42,7 +42,7 @@ Route::get('DataCovid',[App\Http\Controllers\Frontend\BuatJanjiController::class
 
 Route::get('obat',[App\Http\Controllers\Frontend\ObatController::class, 'index'] )->name('obat_frontend');
 Route::get('detail/obat/{id}',[App\Http\Controllers\Frontend\ObatController::class, 'show'] )->name('obatShow_frontend');
-Route::get('kategori/obat',[App\Http\Controllers\Frontend\ObatController::class, 'kategori'] )->name('obatKategori_frontend');
+Route::get('kategori/obat/{kategori}',[App\Http\Controllers\Frontend\ObatController::class, 'kategori'] )->name('obatKategori_frontend');
 
 
 
@@ -60,6 +60,8 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::resource('obat', ObatController::class);
     Route::resource('penyakit', PenyakitController::class);
     Route::resource('poliklinik', PoliKlinikController::class);
+    Route::resource('kategori-obat', KategoriObatController::class);
+
 });
 
 
