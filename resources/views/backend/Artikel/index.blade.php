@@ -4,7 +4,7 @@
 
 
 @endsection
-@section('title','Daftar Article')
+@section('title','Daftar Artikel')
 @section('buttonHeader')
     <a href="{{ route('artikel.create') }}" class="bg-blue-300 animate-bounce p-3 shadow-2xl rounded transform transition hover:scale-110 duration-500">Tambahkan Artikel</a>
  @endsection

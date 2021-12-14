@@ -50,7 +50,7 @@
         @foreach ($data as $item)
             <div class="bg-white p-10 shadow-md rounded-md">
                 <h4 class="font-lg font-semibold"> {{ $item->nama }}</h4>
-                <p class="my-4 text-sm text-black"> {{ $item->deskripsi }}</p>
+                  {!!$item->deskripsi !!}
                 <div x-data="{ open: false }">
                     <button @click="open = ! open" class="bg-blue-100 rounded-lg text-sm p-2">Lihat Tindakan Medis</button>
                     <span x-show="open">

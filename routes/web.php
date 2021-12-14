@@ -12,6 +12,10 @@ use App\Http\Controllers\Backend\PenyakitController;
 use App\Http\Controllers\Backend\PoliKlinikController;
 use App\Http\Controllers\Backend\ImageUploadController;
 use App\Http\Controllers\Backend\KategoriObatController;
+
+use App\Http\Controllers\FrontEnd\KonsultasiController;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -44,10 +48,10 @@ Route::get('obat',[App\Http\Controllers\Frontend\ObatController::class, 'index']
 Route::get('detail/obat/{id}',[App\Http\Controllers\Frontend\ObatController::class, 'show'] )->name('obatShow_frontend');
 Route::get('kategori/obat/{kategori}',[App\Http\Controllers\Frontend\ObatController::class, 'kategori'] )->name('obatKategori_frontend');
 
-
+Route::resource('profile/user',App\Http\Controllers\Frontend\ProfileController::class);
+Route::resource('konsultasi',KonsultasiController::class);
 
 Route::middleware('auth')->prefix('admin')->group(function(){
-
     Route::get('dokter/daftarPermintaan',[DokterController::class,'daftarPermintaan'])->name('dokter_daftarPermintaan');
     Route::get('dokter/permintaan/{id}',[DokterController::class,'Permintaan'])->name('dokter_permintaan');
     Route::put('dokter/jawaban/{id}',[DokterController::class,'jawabanPermintaan'])->name('jawaban_permintaan');
@@ -64,7 +68,7 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::resource('penyakit', PenyakitController::class);
     Route::resource('poliklinik', PoliKlinikController::class);
     Route::resource('kategori-obat', KategoriObatController::class);
-
+    Route::resource('konsultasi-dokter', \App\Http\Controllers\Backend\KonsultasiController::class);
 });
 
 

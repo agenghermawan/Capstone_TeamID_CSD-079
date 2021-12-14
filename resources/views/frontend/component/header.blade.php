@@ -70,7 +70,7 @@
                                 @if(Auth::user()->role_pengguna == 'Pengguna')
                                     <li>
                                         <a class="dropdown-item fs-3 l px-5" style="font-size: 10px"
-                                           href="{{ route('dashboard') }}">Dashboard Anda</a>
+                                           href="{{ route('user.index') }}">Dashboard Anda</a>
                                     </li>
                                 @endif
                                 @if(Auth::user()->role_pengguna == 'Admin')

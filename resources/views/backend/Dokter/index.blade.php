@@ -18,6 +18,7 @@ Data Dokter
     </div>
 @endsection
 @section('content')
+    @include('sweetalert::alert')
     <div class="grid container grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3 w-full mt-10">
         @foreach ($data as $item)
             <div class="col-span-1 bg-white p-10 rounded shadow-xl">

@@ -14,7 +14,11 @@
             <div class="col-span-1 bg-white p-10 rounded shadow-xl">
                 <div class="head flex items-center px-5">
                     <div class="image-head w-1/4 md:w-2/4 xl:w-1/4">
-                        <img src="{{ asset('image/profile.jpg') }}" class="w-20 h-20 rounded-full " alt="">
+                        @if(Auth::user()->profile_photo_path == null)
+                            <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}" class="rounded-full" width="60px" height="60px" alt="">
+                        @else
+                            <img src="{{Storage::url(Auth::user()->profile_photo_path)}}" alt="" class="rounded-full" width="60px" height="60px">
+                        @endif
                     </div>
                     <div class="name w-3/4 md:w-2/4 font-semibold  ">
                         <h4 class="text-blue-700"> {{ $item->name }} </h4>

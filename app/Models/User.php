@@ -25,9 +25,7 @@ class User extends Authenticatable
      *
      * @var string[]
      */
-    protected $fillable = [
-        'name', 'email', 'password', 'alamat', 'telp','role_pengguna'
-    ];
+    protected $guarded = [];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -62,7 +60,9 @@ class User extends Authenticatable
     public function dokter(){
         return $this->hasOne(Dokter::class);
     }
-
+   public function jawabankonsultasi(){
+        return $this->hasMany(jawabanKonsultasi::class);
+    }
     public function rumahsakit(){
         return $this->belongsTo(RumahSakit::class);
     }

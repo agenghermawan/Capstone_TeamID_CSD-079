@@ -53,7 +53,6 @@ class RumahSakitController extends Controller
             'lokasiGmaps' => 'required',
             'jamOperasional' => 'required',
             'fasilitas' => 'required',
-            'poliklinik' => 'required',
             'photo' => 'required|image:jpg,png',
         ])->validate();
 
@@ -86,7 +85,9 @@ class RumahSakitController extends Controller
      */
     public function edit($id)
     {
-        //
+        $dataPoliklinik = Poliklinik::all();
+        $data = RumahSakit::findOrFail($id);
+        return view('backend.RumahSakit.detail',compact('dataPoliklinik','data'));
     }
 
     /**
@@ -98,7 +99,25 @@ class RumahSakitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $rumahsakit = RumahSakit::find($id);
+        $data = $request->all();
+        Validator::make($data, [
+            'nama' => 'required|max:255',
+            'alamat' => 'required',
+            'tentang' => 'required',
+            'provinsi' => 'required',
+            'kodepos' => 'required|integer',
+            'kota' => 'required',
+            'notelp' => 'required',
+            'lokasiGmaps' => 'required',
+            'jamOperasional' => 'required',
+            'fasilitas' => 'required',
+        ])->validate();
+        $rumahsakit->update($data);
+        Alert::toast('Data rumah sakit berhasil diperbarui', 'success');
+        return back()->with([
+            'message'=> 'Data Rumah Sakit Berhasil di tambahkan',
+        ]);
     }
 
     /**

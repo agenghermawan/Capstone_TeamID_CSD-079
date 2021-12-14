@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
-use App\Models\User;
+use App\Models\konsultasi;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
+use Auth;
 
-class PenggunaController extends Controller
+class ProfileController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +16,8 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        $data = User::all();
-        return view('backend.Pengguna.index',compact('data'))->with([
-            'data' => $data
-        ]);
+        $dataKonsultasi = konsultasi::where('ditulisOleh', Auth::user()->name)->get();
+        return view('frontend.Profile.index',compact('dataKonsultasi'));
     }
 
     /**
@@ -29,7 +27,7 @@ class PenggunaController extends Controller
      */
     public function create()
     {
-        return view('backend.Pengguna.create');
+        //
     }
 
     /**
@@ -51,8 +49,7 @@ class PenggunaController extends Controller
      */
     public function show($id)
     {
-        $data = User::find($id);
-        return view('backend.Pengguna.detail',compact('data'));
+        //
     }
 
     /**
@@ -75,14 +72,7 @@ class PenggunaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $findId = User::findOrFail($id);
-        $data['profile_photo_path'] = $request->file('profile_photo_path')->storeAs('asset/user',$request->file('profile_photo_path')->getClientOriginalName(),'public');
-        $findId->update($data);
-        \Alert::toast('Berhasil Memperbarui Data','success');
-        return back()->with([
-            'message' => 'Berhasil Di Update'
-        ]);
+        //
     }
 
     /**

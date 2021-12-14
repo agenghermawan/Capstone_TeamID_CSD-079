@@ -30,7 +30,6 @@ class DokterController extends Controller
             ->get();
         return view('backend.Dokter.index',compact('data'));
         };
-
     }
 
     /**
@@ -63,7 +62,6 @@ class DokterController extends Controller
             'rumahSakit' => 'required',
             'sebagaiDokter' => 'required',
         ])->validate();
-
         Dokter::create($request->all());
         Alert::success('Success Title', 'Ditunggu, Data kamu sedang di verifikasi');
         return redirect()->route('LandingPage');
@@ -121,7 +119,8 @@ class DokterController extends Controller
     }
     public function Permintaan($id)
     {
-        return view('backend.Dokter.Permintaan',['data' => User::with('dokter')->findOrFail($id)]);
+        $data = User::with('dokter')->where('id',$id)->first();
+        return view('backend.Dokter.Permintaan',compact('data'));
     }
     public function jawabanPermintaan(Request $request, $id)
     {
@@ -133,7 +132,18 @@ class DokterController extends Controller
             $getDokter->status = $request->status;
             $getDokter->save();
         }
-        Alert::toast('Kamu Berhasil Memperbarui data dokter','success');
-        return view('backend.Dokter.Permintaan',['data' => User::with('dokter')->findOrFail($id)]);
+        if (\Auth::user()->role_pengguna == 'Dokter'){
+            $dataDiriSendiri = \Auth::user()->id;
+            $data = User::whereRelation('dokter', 'status', 'active')
+                ->where('id',$dataDiriSendiri)
+                ->get();
+            Alert::toast('Kamu Berhasil Menyetujui sebagai dokter','success');
+            return view('backend.Dokter.index',compact('data'));
+        }else{
+            $data = User::whereRelation('dokter', 'status', 'active')
+                ->get();
+        Alert::toast('Kamu Berhasil Menyetujui sebagai dokter','success');
+            return view('backend.Dokter.index',compact('data'));
+        };
     }
 }

@@ -47,7 +47,7 @@
 
 @endsection
 @section('content')
-    <div class="h1 my-5 text-center text-base text-blue-500 font-bold animate-pulse text-lg"> Daftar Data Rumah Sakit </div>
+    <div class="h1 my-5 text-center text-base text-blue-500 font-bold animate-pulse text-lg"> Daftar Data Obat </div>
     <div class="w-full mt-5">
         <table class="min-w-full divide-y divide-gray-200" id="myTable">
             <thead class="bg-gray-50">

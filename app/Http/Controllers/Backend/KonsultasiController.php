@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Artikel;
+use App\Models\Dokter;
+use App\Models\jawabanKonsultasi;
+use App\Models\konsultasi;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Http;
 
-class PenggunaController extends Controller
+class KonsultasiController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,10 +19,7 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        $data = User::all();
-        return view('backend.Pengguna.index',compact('data'))->with([
-            'data' => $data
-        ]);
+        return view('backend.Konsultasi.index',['data' => konsultasi::with('jawabankonsultasi')->get()]);
     }
 
     /**
@@ -29,7 +29,7 @@ class PenggunaController extends Controller
      */
     public function create()
     {
-        return view('backend.Pengguna.create');
+        return view('backend.Konsultasi.create');
     }
 
     /**
@@ -51,8 +51,15 @@ class PenggunaController extends Controller
      */
     public function show($id)
     {
-        $data = User::find($id);
-        return view('backend.Pengguna.detail',compact('data'));
+        $data = konsultasi::with('jawabankonsultasi')->where('id',$id)->first();
+        $datajawabankonsultasi = jawabanKonsultasi::with('user','konsultasi')->where('konsultasi_id',$id)->first();
+        if ($datajawabankonsultasi == null) {
+            return view('backend.Konsultasi.show',compact('data','datajawabankonsultasi'));
+        }else{
+            $idDokter = $datajawabankonsultasi->user->id;
+            $datadokter = Dokter::where('user_id', $idDokter)->first();
+            return view('backend.Konsultasi.show',compact('data','datajawabankonsultasi','datadokter'));
+        }
     }
 
     /**
@@ -75,14 +82,13 @@ class PenggunaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $data = $request->all();
-        $findId = User::findOrFail($id);
-        $data['profile_photo_path'] = $request->file('profile_photo_path')->storeAs('asset/user',$request->file('profile_photo_path')->getClientOriginalName(),'public');
-        $findId->update($data);
-        \Alert::toast('Berhasil Memperbarui Data','success');
-        return back()->with([
-            'message' => 'Berhasil Di Update'
+        jawabanKonsultasi::create([
+            'konsultasi_id' => $id,
+            'jawabanKonsultasi' => $request->jawabanKonsultasi,
+            'user_id' => $request->user_id,
         ]);
+        \Alert::success('Berhasil Menjawab Konsultas','Terima kasih');
+        return back();
     }
 
     /**

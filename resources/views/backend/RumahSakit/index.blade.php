@@ -93,7 +93,8 @@
                             <p class="text-xs text-gray-400"> {{ $item->jamOperasional }} </p>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                            <a href="{{ route('rumahSakit.show', $item->id) }}" class="rounded bg-blue-200 p-2"> Detail </a>
+                            <a href="{{ route('rumahSakit.show', $item->id) }}" class="rounded bg-blue-200 p-2 mr-2"> Detail </a>
+                            <a href="{{ route('rumahSakit.edit', $item->id) }}" class="rounded bg-blue-200 p-2"> Edit </a>
                         </td>
                     </tr>
                 @endforeach

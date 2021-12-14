@@ -55,13 +55,13 @@
                 <div class="button-description flex justify-end p-2">
                     @if (empty($item) == null)
                         @if ($item->status == 'non-active')
-                            <a href="{{ route('dokter_permintaan', $item->id) }}"
+                            <a href="{{ route('dokter_permintaan', $item->user_id) }}"
                                class="bg-blue-300 rounded md text-base font-medium text-white mr-2 p-2 w-64 text-center border transition duration-500 ease-in-out transform  hover:scale-110">
                                 Terima Permintaan
                             </a>
                         @endif
                     @endif
-                    <a href="{{ route('dokter.edit', 1) }}"
+                    <a href="{{ route('dokter.edit', $item->id) }}"
                        class="bg-blue-300 rounded md text-base font-medium text-white mr-2 p-2 w-32 text-center border transition duration-500 ease-in-out transform  hover:scale-110">
                         Detail
                     </a>

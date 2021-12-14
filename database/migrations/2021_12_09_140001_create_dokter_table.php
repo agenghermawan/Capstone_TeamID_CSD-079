@@ -16,13 +16,13 @@ class CreateDokterTable extends Migration
         Schema::create('dokter', function (Blueprint $table) {
             $table->id();
             $table->string('user_id');
+            $table->string('rumahsakit_id');
             $table->string('fullname');
             $table->string('telp');
             $table->string('alamat');
             $table->string('noStr');
             $table->string('email');
             $table->string('kota');
-            $table->string('rumahSakit');
             $table->string('deskripsi')->nullable();
             $table->string('sebagaiDokter');
             $table->string('status')->default('non-active');
