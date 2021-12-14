@@ -21,7 +21,7 @@ class RumahSakitController extends Controller
        return view('frontend.RumahSakit.show',compact('data','nama'));
     }
 
-    public function detail($id){
+    public function detail($id, $nama){
         $dataRumahsakit = RumahSakit::where('id',$id)->first();
         $getfieldPoliklinik = $dataRumahsakit->poliklinik;
         $count = count($getfieldPoliklinik);
@@ -30,7 +30,7 @@ class RumahSakitController extends Controller
                 $dataPoliklinik = Poliklinik::where('nama', $item)->get();
                 array_push($data,$dataPoliklinik);
             }
-        $dataDokter = Dokter::with('user')->where('rumahSakit',$id)->get();
-        return view('frontend.RumahSakit.detail',compact('data','dataRumahsakit','dataDokter'));
+        $dataDokter = Dokter::with('user')->where('rumahsakit_id',$id)->get();
+        return view('frontend.RumahSakit.detail',compact('data','dataRumahsakit','dataDokter','nama'));
     }
 }

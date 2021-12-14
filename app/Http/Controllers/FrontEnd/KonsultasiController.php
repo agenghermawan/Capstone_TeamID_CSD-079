@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dokter;
+use App\Models\jawabanKonsultasi;
 use App\Models\konsultasi;
 use Illuminate\Http\Request;
+use Auth;
 
 class KonsultasiController extends Controller
 {
@@ -56,7 +59,15 @@ class KonsultasiController extends Controller
      */
     public function show($id)
     {
-        //
+        $data = konsultasi::with('jawabankonsultasi')->where('id',$id)->first();
+        $datajawabankonsultasi = jawabanKonsultasi::with('user','konsultasi')->where('konsultasi_id',$id)->first();
+        if ($datajawabankonsultasi == null) {
+            return view('frontend.Profile.detail',compact('data','datajawabankonsultasi'));
+        }else{
+            $idDokter = $datajawabankonsultasi->user->id;
+            $datadokter = Dokter::where('user_id', $idDokter)->first();
+            return view('frontend.Profile.detail',compact('data','datajawabankonsultasi','datadokter'));
+        }
     }
 
     /**

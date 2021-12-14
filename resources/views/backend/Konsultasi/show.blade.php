@@ -45,39 +45,7 @@
                          {!! $data->pertanyaan !!}
                     </div>
                 </div>
-                <div class="jawaban mt-5">
-                    @if(!$data->jawabankonsultasi->isEmpty())
-                        <div class="border border-blue-100 rounded p-5">
-                            <p> Telah Dijawab Oleh </p>
-                            <div class="content flex p-5">
-                                <div class="image">
-                                    @if(Auth::user()->profile_photo_path == null)
-                                        <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}" class="rounded-full" width="60px" height="60px" alt="">
-                                    @else
-                                        <img src="{{Storage::url(Auth::user()->profile_photo_path)}}" alt="" class="rounded-full" width="60px" height="60px">
-                                    @endif
-                                </div>
-                                <div class="name ml-4">
-                                    @if($datadokter == null)
-                                        <h2> {{$datajawabankonsultasi->user->name}}  </h2>
-                                    @else
-                                        <h2> {{$datadokter->fullname}} ({{$datadokter->sebagaiDokter}} </h2>
-                                    @endif
-                                    <p class="text-sm text-blue-700"> {{ $data->created_at->diffForHumans() }}</p>
-                                </div>
-                            </div>
-                            <div class="jawaban border p-5">
-                               <p> Topik : {{$datajawabankonsultasi->konsultasi->judulKonsultasi}}
-                                </p>
-                                <h2> Jawaban  : </h2>
-                               <p>  {!! $datajawabankonsultasi->jawabanKonsultasi !!} </p>
-                            </div>
-
-                        </div>
-                    @else
-                        <textarea name="jawabanKonsultasi" id="" cols="30" rows="10">Jawab Pertanyaan konsultasi disini !!</textarea>
-                    @endif
-                </div>
+          a
                 <div class="forAction mt-4 w-full">
                     @if($datajawabankonsultasi == null)
                     <button type="submit" name="status" value="diterima" class="bg-blue-300 px-3 py-2 rounded w-full md:w-64 text-white shadow-md transform transtition hover:scale-105 duration-300">  <p class="animate-bounce">Jawab Pertanyaan  </p>

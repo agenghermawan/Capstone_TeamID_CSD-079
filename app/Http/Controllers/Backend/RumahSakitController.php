@@ -87,7 +87,7 @@ class RumahSakitController extends Controller
     {
         $dataPoliklinik = Poliklinik::all();
         $data = RumahSakit::findOrFail($id);
-        return view('backend.RumahSakit.detail',compact('dataPoliklinik','data'));
+        return view('backend.RumahSakit.edit',compact('dataPoliklinik','data'));
     }
 
     /**

@@ -23,9 +23,9 @@ class RumahSakit extends Model
     }*/
 
     public function user(){
-        $this->hasMany(User::class);
+       return  $this->hasMany(User::class);
     }
     public function poliklinik(){
-        $this->hasMany(Poliklinik::class);
+       return $this->hasMany(Poliklinik::class);
     }
 }

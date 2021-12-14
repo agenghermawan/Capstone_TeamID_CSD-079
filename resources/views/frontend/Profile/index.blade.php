@@ -157,8 +157,10 @@
                                                 @endif
                                             </div>
                                                 <div class="col-md-10 text-left">
-                                                    <h2>{{$konsultasi->judulKonsultasi}}</h2>
-                                                    <p>Pertanyaan : {{$konsultasi->ditulisOleh}} | {{$konsultasi->created_at->diffForHumans()}}</p>
+                                                    <a href="{{route('konsultasi.show',$konsultasi->id)}}">
+                                                        <h2>{{$konsultasi->judulKonsultasi}}</h2>
+                                                        <p>Pertanyaan : {{$konsultasi->ditulisOleh}} | {{$konsultasi->created_at->diffForHumans()}}</p>
+                                                    </a>
                                                 </div>
                                         </div>
                                             <div class="col-md-12 py-4 fs-3">

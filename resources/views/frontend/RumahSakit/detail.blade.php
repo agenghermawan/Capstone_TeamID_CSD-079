@@ -19,7 +19,7 @@
                     <div class="info">
                         <div class="about">
                             <h2>Tentang</h2>
-                            <p>{{$dataRumahsakit->tentang}}</p>
+                            <p>{!! $dataRumahsakit->tentang !!}</p>
                         </div>
                         <div class="facility">
                             <h2>Fasilitas</h2>
@@ -54,16 +54,19 @@
                                 @foreach($dataDokter as $dokter)
                                 <div class="card-doctor">
                                     @if($dokter->user->profile_photo_path == null)
+{{--                                        <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}" >--}}
+                                        <img src="{{asset('image/avatar doktor.jpg')}}" >
+                                    @else
                                         <img src="{{Storage::url($dokter->user->profile_photo_path)}}"
+                                             alt="">
                                     @endif
-                                        <img src="{{Storage::url($dokter->user->profile_photo_path)}}"
-                                        alt="">
+
                                     <div class="card-doctor-body">
                                         <div class="card-doctor-text">
                                             <h3>{{$dokter->fullname}}</h3>
                                             <p>{{$dokter->sebagaiDokter}}</p>
                                         </div>
-                                        <a href="{{ route('buatjanji_frontend') }}">Buat Janji</a>
+                                        <a href="{{ route('buatjanji_frontend',[$dokter->user->id, $dataRumahsakit->id,$nama]) }}" class="bg-primary text-light rounded-3 shadow-sm">Buat Janji</a>
                                     </div>
                                 </div>
                                 @endforeach

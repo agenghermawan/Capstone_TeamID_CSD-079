@@ -7,59 +7,63 @@
                 <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
                     alt="">
                 <div class="header-appointment-text">
-                    <h1>Dr.Frankstein</h1>
-                    <p>Kedokteran Jiwa dan Psikiatri</p>
+                    <h1>{{$data->fullname}}</h1>
+                    <p>{{$data->sebagaiDokter}}</p>
                 </div>
             </div>
             <div class="profile">
                 <h2>Profil Dokter</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo perspiciatis temporibus voluptatem
-                    accusantium distinctio. Eius, optio ipsum corrupti magni et fugiat quo praesentium vitae pariatur ad
-                    totam nam cumque explicabo! <br><br>
-                    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quis ex non suscipit vitae sit perferendis nam
-                    ipsum id vel. Necessitatibus quo sit veniam facilis, mollitia omnis delectus aliquam repellendus
-                    quisquam?
+                <p> {!! $data->deskripsi !!}
                 </p>
             </div>
             <div class="location">
                 <h2>Lokasi & Jadwal Praktik</h2>
                 <div class="location-form">
                     <div class="hospital">
-                        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8aG9zcGl0YWx8ZW58MHx8MHx8&auto=format&fit=crop&w=800&q=60"
+                        <img src="{{Storage::url($rumahsakit->photo)}}"
                             alt="">
                         <div class="hospital-text">
-                            <h3>7AM PM Covid Test 19 Klinik Cipinang Bali</h3>
+                            <h3>{{$rumahsakit->nama}}</h3>
+                            <h4>{{$rumahsakit->alamat}}</h4>
+                            <p> {{$rumahsakit->kota}} | {{$rumahsakit->provinsi}} | {{$rumahsakit->kodepos}}</p>
                         </div>
                     </div>
-                    <select name="" id="" class="form-control">
-                        <option value="">Sabtu, 11 Desember 2021</option>
-                        <option value="">Sabtu, 11 Desember 2021</option>
-                        <option value="">Sabtu, 11 Desember 2021</option>
-                        <option value="">Sabtu, 11 Desember 2021</option>
-                    </select>
+
+                        <h4 @class(['pt-5'])> Pilih Jadwal </h4>
+                        <div class="input-group my-3">
+                            <span class="input-group-text" id="basic-addon1"> <i class="fas fa-calendar-check"></i> </span>
+                            <input type="date" class="form-control p-2" style="height: 44px" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                        </div>
+
+                        <div class="input-group my-3">
+                            <span class="input-group-text" id="basic-addon1"> <i class="fas fa-clock"></i> </span>
+                            <input type="text" class="form-control p-2" style="height: 44px" value="{{$rumahsakit->jamOperasional}}" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" disabled>
+                        </div>
+
+                        <a @class(['btn btn-primary','p-3','rounded-3']) href="" > Buat Janji Sekarang </a>
                 </div>
             </div>
             <div class="experience">
                 <h2>Pengalaman Praktik</h2>
-                <p>Dokter Jiwa dan Psikiatri - 7AM PM Covid Test 19 Klinik Cipinang Bali</p>
+                @foreach($data->pengalamanPraktik as $item)
+                 <p>{{$item['pengalamanPraktik']}}</p>
+                @endforeach
             </div>
             <div class="history">
                 <h2>Riwayat Pendidikan</h2>
-                <p>Sp.A - Dokter Spesialis Jiwa dan Psikiatri - Universitas Indonesia</p>
+                @foreach($data->riwayatPendidikan as $item)
+                    <p>{{$item['riwayatPendidikan']}}</p>
+                @endforeach
             </div>
         </div>
         <aside>
             <button>Buat Janji Konsultasi</button>
             <div class="skill">
-                <h2>Tindakan Medis</h2>
+                <h2 @class([''])>Tindakan Medis</h2>
                 <ul>
-                    <li>Konsultasi Psikologi</li>
-                    <li>Konsultasi Psikologi</li>
-                    <li>Konsultasi Psikologi</li>
-                    <li>Konsultasi Psikologi</li>
-                    <li>Konsultasi Psikologi</li>
-                    <li>Konsultasi Psikologi</li>
-                    <li>Konsultasi Psikologi</li>
+                    @foreach($poliklinik->tindakanmedis as $tindakanmedis)
+                        <li>{{$tindakanmedis['tindakanmedis']}}</li>
+                    @endforeach
                 </ul>
             </div>
         </aside>
@@ -157,7 +161,6 @@
         .location-form select {
             width: 100%;
             height: 50px;
-            margin-top: 2.5%;
             border-radius: 5px;
         }
 
@@ -217,7 +220,6 @@
         .skill ul {
             display: flex;
             flex-wrap: wrap;
-            margin-left: 10%;
         }
 
         .skill ul li {

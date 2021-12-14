@@ -10,13 +10,13 @@
             <h2>Laboratorium</h2>
             <div class="card-hospital-container">
                 @foreach($data as $item)
-                <a href="{{ route('rumahSakit_detail_frontend', $item->id) }}" class="card-hospital">
+                <a href="{{ route('rumahSakit_detail_frontend', [$item->id, $nama]) }}" class="card-hospital">
                     <img
                         src="{{Storage::url($item->photo)}}" />
                     <div class="card-hospital-content">
                         <h3>{{$item->nama}}</h3>
                         <h4>{{$nama}}</h4>
-                        <p> {{$item->tentang}}</p>
+                        <p> {!!  $item->tentang !!}</p>
                         <p>{{$item->alamat}}</p>
                     </div>
                 </a>
@@ -88,7 +88,8 @@
         }
 
         .card-hospital-content {
-            padding: 5%;
+            padding-left: 5%;
+            padding-top: 2%;
         }
 
         .card-hospital-content>h3 {

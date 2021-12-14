@@ -62,7 +62,7 @@ Data Dokter
                             </a>
                         @endif
                     @endif
-                    <a href="{{ route('dokter.edit', 1) }}"
+                    <a href="{{ route('dokter.edit', $item->dokter->id) }}"
                         class="bg-blue-300 rounded md text-base font-medium text-white mr-2 p-2 w-32 text-center border transition duration-500 ease-in-out transform  hover:scale-110">
                         Detail
                     </a>

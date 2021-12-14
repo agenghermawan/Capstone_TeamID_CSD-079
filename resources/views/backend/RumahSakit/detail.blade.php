@@ -1,271 +1,133 @@
 @extends('layouts.app')
 
 @section('css')
-
+    <style>
+        #myTable {
+            border: none;
+            border-collapse: separate;
+            border-spacing: 0 1em;
+            text-align: left;
+        }
+        #myTable thead th,
+        #myTable thead td {
+            padding: 20px;
+            border: none;
+        }
+        #myTable_paginate .paginate_button {
+            background-color: lightblue;
+            border: none;
+            border-radius: 20px;
+        }
+        #myTable_length select {
+            border-radius: 10px;
+            background-color: lightblue;
+        }
+        #myTable_filter input {
+            margin-left: 15px;
+            border-radius: 10px;
+            background-color: lightblue;
+        }
+    </style>
 @endsection
+
 @section('content')
-    @include('sweetalert::alert')
-    <form class="w-full bg-white p-10" enctype="multipart/form-data" method="POST"
-          action="{{ route('rumahSakit.update',$data->id) }}">
-        <h1 class="text-base mb-4 tracking-wide text-gray-700 font-bold uppercase border-b pb-2 md:text-center">
-            Ubah Data Rumah Sakit
-        </h1>
-        @method('put')
-        @csrf
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-
-        @if (session('message'))
-            <div class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-gray-100 rounded-lg" role="alert">
-                <p> {{ session('message') }}</p>
-                <span class="absolute inset-y-0 right-0 flex items-center mr-4">
-                    <svg class="w-4 h-4 fill-current" role="button" viewBox="0 0 20 20">
-                        <path
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd" fill-rule="evenodd"></path>
-                    </svg>
-                </span>
-            </div>
-        @endif
-        <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
-                <label class="block  tracking-wide text-gray-700 text-sm mb-2" for="nama">
-                    Nama
-                </label>
-                <input value="{{$data->nama}}"
-                    class="rounded w-full text-black-700 border-gray-300 focus:border-gray-300 py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 @error('nama') is-invalid @enderror"
-                    id="nama" name="nama" type="text">
-                @error('nama')
-                <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                @enderror
-            </div>
-            <div class="w-full md:w-1/2 px-3">
-                <label class="block  tracking-wide text-gray-700 text-sm mb-2" for="alamat">
-                    Alamat
-                </label>
-                <input value="{{$data->alamat}}"
-                    class="rounded w-full text-black-700 border-gray-300 focus:border-gray-300 py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 @error('alamat') is-invalid @enderror"
-                    id="alamat" name="alamat" type="text">
-                @error('alamat')
-                <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                @enderror
+    <div class="bg-white p-10 shadow-lg rounded-xl">
+        <h4 class="font-sm text-base mb-4 font-semibold"> {{$data->nama}}</h4>
+        <div class="image grid grid-cols-1 gap-5 md:grid-cols-2">
+            <img src="{{ Storage::url($data->photo)}}" class="w-full h-80 object-cover" height="400px" alt="">
+            <div class="border-b">
+                <iframe class="rounded shadow-lg "
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.4501488816986!2d106.82132961534131!3d-6.335688695414971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69edd3edb84d21%3A0x58e186ff58dc127!2sRumah%20Sakit%20Umum%20Zahirah!5e0!3m2!1sen!2sid!4v1638525047855!5m2!1sen!2sid"
+                        width="600" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                <p class="text-sm mt-4 subpixel-antialiased text-blue-600">{{$data->alamat}}</p>
             </div>
         </div>
 
-        <div class="flex flex-wrap -mx-3 mb-6 ">
-            <div class="w-full md:w-1/3 px-3 mb-6">
-                <label for="provinsi" class="block text-gray-700 text-sm  mb-2  tracking-wide">Provinsi</label>
-                <input type="text" name="provinsi" value="{{$data->provinsi}}"
-                       class="rounded  border-gray-300 w-full focus:border-gray-300 transform transtition hover:scale-105 duration-500 ease-in-out focus:bg-white">
-                @error('provinsi')
-                <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                @enderror
+
+        <div class="grid grid-cols-1 gap-4 md:grid-cols-2 border-b border-blue-200">
+            <div class="pt-10 pb-10 pr-10">
+                <h4 class="mb-4 text-blue-500 font-bold"> Tentang </h4>
+                <p class="text-base text-justify ">{{$data->tentang}}</p>
             </div>
-
-            <div class="w-full md:w-1/3 px-3 mb-6">
-                <label for="kodepos" class="block text-gray-700 text-sm mb-2  tracking-wide">Kode
-                    Pos</label>
-                <input type="text" name="kodepos" value="{{$data->kodepos}}"
-                       class="rounded  border-gray-300 w-full focus:border-gray-300 transform
-                transtition hover:scale-105 duration-500 ease-in-out focus:bg-white @error('kodepos') is-invalid @enderror">
-
-                @error('kodepos')
-                <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="w-full md:w-1/3 px-3 mb-6">
-                <label for="kota" class="block text-gray-700 text-sm mb-2 tracking-wide">Kota</label>
-                <input type="text" name="kota" value="{{$data->kota}}"
-                       class="rounded  border-gray-300 w-full focus:border-none
-                transform transtition hover:scale-105 duration-500 ease-in-out focus:bg-white @error('kota') is-invalid @enderror">
-                @error('kota')
-                <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                @enderror
-            </div>
-        </div>
-        <div class="flex flex-wrap -mx-3 mb-6">
-            <div class="w-full px-3">
-                <label class="block tracking-wide text-gray-700 text-sm mb-2" for="tentang">
-                    Tentang
-                </label>
-
-                <textarea name="tentang" id="" cols="30" rows="2"
-                          class="rounded w-full
-                text-black-700 border-gray-300 focus:border-gray-300 py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 @error('tentang') is-invalid @enderror"> {{$data->tentang}}</textarea>
-
-                @error('tentang')
-                <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                @enderror
-
-            </div>
-        </div>
-
-        <div class="flex flex-wrap -mx-3 mb-2">
-            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                <label class="block  tracking-wide text-gray-700 text-sm mb-2" for="notelp">
-                    TELP
-                </label>
-                <input value="{{$data->notelp}}"
-                    class="rounded w-full  text-black-700 border-gray-300 focus:border-gray-300 py-3 px-4 mb-3
-                    focus:bg-white transform transition hover:scale-105 duration-500 @error('notelp') is-invalid @enderror"
-                    id="notelp" name="notelp" type="text" placeholder="">
-                @error('notelp')
-                <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                <label class="block  tracking-wide text-gray-700 text-sm mb-2" for="lokasiGmaps">
-                    Url Maps
-                </label>
-                <input value="{{$data->lokasiGmaps}}"
-                    class="rounded w-full  text-black-700 border-gray-300 focus:border-gray-300 py-3
-                    px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 @error('lokasiGmaps') is-invalid @enderror"
-                    id="lokasiGmaps" type="text" name="lokasiGmaps" placeholder="">
-                @error('lokasiGmaps')
-                <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                @enderror
-            </div>
-
-            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                <label class="block  tracking-wide text-gray-700 text-sm mb-2" for="jamOperasional">
-                    Jam Operasional
-                </label>
-                <input value="{{$data->jamOperasional}}"
-                    class="rounded w-full  text-black-700 border-gray-300 focus:border-gray-300 py-3 px-4 mb-3
-                    focus:bg-white transform transition hover:scale-105 duration-500 @error('jamOperasional') is-invalid @enderror"
-                    id="jamOperasional" name="jamOperasional" type="text" placeholder="10:00 - 20:00">
-                @error('jamOperasional')
-                <p class="text-red-500 text-xs italic">{{ $message }}</p>
-                @enderror
-            </div>
-        </div>
-
-        <h5 class="text-xs tracking-wide font-bold text-gray-700 "> Fasilitas </h5>
-        <div class="fasilitas border-b border-gray-300 mb-6">
-            <div class="flex flex-wrap -mx-3 my-6">
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label for="fasilitas" class="inline-flex items-center">
-                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Farmasi"
-                               class="rounded border-gray-200">
-                        <span class="ml-2 text-sm tracking-wide text-gray-700" id="fasilitas"> Farmasi </span>
-                    </label>
-                </div>
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label for="" class="inline-flex items-center">
-                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Intalasi Berjalan"
-                               class="rounded border-gray-200">
-                        <span class="ml-2 text-sm tracking-wide text-gray-700"> Intalasi Berjalan </span>
-                    </label>
-                </div>
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label for="" class="inline-flex items-center">
-                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Kafetaria"
-                               class="rounded border-gray-200">
-                        <span class="ml-2 text-sm tracking-wide text-gray-700"> Kafetaria </span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="flex flex-wrap -mx-3 my-6">
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label for="" class="inline-flex items-center">
-                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Instalasi Rawat Inap "
-                               class="rounded border-gray-200">
-                        <span class="ml-2 text-sm tracking-wide text-gray-700"> Instalasi Rawat Inap </span>
-                    </label>
-                </div>
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label for="" class="inline-flex items-center">
-                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Ambulans"
-                               class="rounded border-gray-200">
-                        <span class="ml-2 text-sm tracking-wide text-gray-700"> Ambulans </span>
-                    </label>
-                </div>
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label for="" class="inline-flex items-center">
-                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="ATM"
-                               class="rounded border-gray-200">
-                        <span class="ml-2 text-sm tracking-wide text-gray-700"> ATM </span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="flex flex-wrap -mx-3 my-6">
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label for="" class="inline-flex items-center">
-                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Area Parkir"
-                               class="rounded border-gray-200">
-                        <span class="ml-2 text-sm tracking-wide text-gray-700"> Area parkir </span>
-                    </label>
-                </div>
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label for="" class="inline-flex items-center">
-                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Intalasi Radiologi"
-                               class="rounded border-gray-200">
-                        <span class="ml-2 text-sm tracking-wide text-gray-700"> Intalasi Radiologi </span>
-                    </label>
-                </div>
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label for="" class="inline-flex items-center">
-                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Unit Gawat Darurat (UGD)"
-                               class="rounded border-gray-200">
-                        <span class="ml-2 text-sm tracking-wide text-gray-700"> Unit Gawat Darurat (UGD) </span>
-                    </label>
-                </div>
-            </div>
-
-            <div class="flex flex-wrap -mx-3 my-6">
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label for="" class="inline-flex items-center">
-                        <input type="checkbox" id="fasilitas" name="fasilitas[]" value="Instalasi Laboratorium"
-                               class="rounded border-gray-200">
-                        <span class="ml-2 text-sm tracking-wide text-gray-700"> Instalasi Laboratorium </span>
-                    </label>
-                </div>
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label for="Ruang Tunggu " class="inline-flex items-center">
-                        <input type="checkbox" id="Ruang Tunggu " name="fasilitas[]" value="Ruang Tunggu"
-                               class="rounded border-gray-200">
-                        <span class="ml-2 text-sm tracking-wide text-gray-700"> Ruang Tunggu </span>
-                    </label>
-                </div>
-                <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                    <label for="IGD" class="inline-flex items-center">
-                        <input type="checkbox" id="IGD" name="fasilitas[]" value="Instalasi Gawat Darurat (IGD)"
-                               class="rounded border-gray-200">
-                        <span class="ml-2 text-sm tracking-wide text-gray-700"> Instalasi Gawat Darurat (IGD) </span>
-                    </label>
-                </div>
-            </div>
-        </div>
-
-        <h5 class="text-xs tracking-wide font-bold text-gray-700 "> Poli klinik</h5>
-        <div class="poliklinik border-b border-gray-300">
-            @foreach ($dataPoliklinik as $item)
-                <div class="flex flex-wrap -mx-3 my-6">
-                    <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                        <label for="poliklinik" class="inline-flex items-center">
-                            <input type="checkbox" id="poliklinik" name="poliklinik[]" value="{{ $item->nama }}"
-                                   class="rounded border-gray-200">
-                            <span class="ml-2 text-sm tracking-wide text-gray-700" id="fasilitas"> {{ $item->nama }}
-                            </span>
-                        </label>
+            <div class="p-10">
+                <div class="grid grid-cols-1 md:grid-cols-2 text-sm ">
+                    <div class="fasilitas">
+                        <h4 class="font-bold text-blue-500 mb-4"> Fasilitas </h4>
+                        <ul class="list-disc">
+                            @foreach($data->fasilitas as $item)
+                                <li> {{$item}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    <div class="fasilitas">
+                        <h4 class="font-bold text-blue-500 mb-4"> Fasilitas </h4>
+                        <ul class="list-disc">
+                            @foreach($data->poliklinik as $item)
+                                <li> {{$item}}</li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
-            @endforeach
-            <button
-                class="from-gray-400 to-gray-100 bg-gradient-to-l  rounded-lg p-2 mt-5 w-full text-white shadow-2xl md:w-52 xl:w-30 lg:w-40 transform transtition hover:scale-105 duration-500"
-                type="submit"> Submit </button>
+            </div>
         </div>
-    </form>
+
+        <div class="w-full mt-5">
+            <h4 class="text-center font-bold text-blue-700"> Daftar Dokter</h4>
+            <table class="min-w-full divide-y divide-gray-200" id="myTable">
+                <thead class="bg-gray-50">
+                <tr>
+                    <th scope="col"
+                        class="px-6 py-3  text-xs text-center font-medium text-gray-500 uppercase tracking-wider">
+                        Nama
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3  text-xs text-center font-medium text-gray-500 uppercase tracking-wider">
+                        Alamat
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3  text-xs font-medium text-center text-gray-500 uppercase tracking-wider">
+                        Total Poli Klinik
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3  text-xs font-medium text-center text-gray-500 uppercase tracking-wider">
+                        No Telp
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3  text-xs font-medium text-center text-gray-500 uppercase tracking-wider">
+                        Detail
+                    </th>
+                </tr>
+                </thead>
+                <tbody class="bg-white divide-y divide-gray-200">
+                @for ($i = 0; $i < 15; $i++)
+                    <tr>
+                        <td class="px-6 py-4 whitespace-nowrap">
+                            <div class="flex items-center">
+                                <div class="ml-4">
+                                    <div class="text-sm text-center font-medium text-gray-900">
+                                        Dki Jakarta
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                            <p class="text-xs text-gray-400"> Orang </p>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-center">
+                            <p class="text-xs text-gray-400"> Orang </p>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
+                            <p class="text-xs text-gray-400"> Orang </p>
+                        </td>
+                        <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
+                            <a href="{{ route('rumahSakit.show', 1) }}" class="rounded bg-blue-300 p-2"> Detail </a>
+                        </td>
+                    </tr>
+                @endfor
+
+                </tbody>
+            </table>
+        </div>
+
+    </div>
 @endsection

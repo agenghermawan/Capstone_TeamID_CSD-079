@@ -43,7 +43,7 @@
                                             <input type="text" name="fullname" class="form-control"
                                                 style="width: 400px;border-radius:50px; border:1px solid gray" required
                                                 placeholder="">
-                                            @error('name')
+                                            @error('fullname')
                                                 <p class="text-xs text-red">{{ $message }}</p>
                                             @enderror
                                         </div>
@@ -52,7 +52,7 @@
                                             <input type="text" name="telp" class="form-control"
                                                 style="width: 400px;border-radius:50px; border:1px solid gray" required
                                                 value="{{ Auth::user()->telp }}" placeholder="">
-                                            @error('name')
+                                            @error('telp')
                                                 <p class="text-xs text-red">{{ $message }}</p>
                                             @enderror
                                         </div>
@@ -76,7 +76,7 @@
                                             <input type="text" name="noStr" class="form-control"
                                                 style="width: 400px;border-radius:50px; border:1px solid gray" required
                                                 value="" placeholder="">
-                                            @error('email')
+                                            @error('noStr')
                                                 <p class="text-xs text-red">{{ $message }}</p>
                                             @enderror
                                         </div>
@@ -108,13 +108,16 @@
                                     <div class="col-md-6">
                                         <div class="from-group mb-2 col-md-12" id="strhide">
                                             <label for="" class="mb-1">Asal Rumah Sakit</label>
-                                            <select class="form-control" name="rumahSakit"
+                                            <select class="form-control" name="rumahsakit_id"
                                                 id="exampleFormControlSelect1" name="role_pengguna"
                                                 style="width: 400px;border-radius:50px; border:1px solid gray" required>
                                                 @foreach($data as $item)
                                                     <option value="{{$item->id}}">{{$item->nama}}</option>
                                                 @endforeach
                                             </select>
+                                                @error('rumahsakit_id')
+                                                <p class="text-xs text-red">{{ $message }}</p>
+                                                @enderror
                                         </div>
                                         <button
                                             class="form-control mt-2 bg-primary text-center text-light text-decoration-none"
@@ -130,7 +133,7 @@
                                                 <input type="text" name="sebagaiDokter" class="form-control"
                                                     style="width: 400px;border-radius:50px; border:1px solid gray"
                                                     required value="" placeholder="">
-                                                @error('name')
+                                                @error('sebagaiDokter')
                                                     <p class="text-xs text-red">{{ $message }}</p>
                                                 @enderror
                                             </div>

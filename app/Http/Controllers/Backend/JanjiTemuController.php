@@ -1,13 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\FrontEnd;
+namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use App\Models\konsultasi;
 use Illuminate\Http\Request;
-use Auth;
 
-class ProfileController extends Controller
+class JanjiTemuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,8 +14,7 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $dataKonsultasi = konsultasi::where('ditulisOleh', Auth::user()->name)->get();
-        return view('frontend.Profile.index',compact('dataKonsultasi'));
+        return view('backend.JanjiTemu.create');
     }
 
     /**
@@ -49,7 +46,7 @@ class ProfileController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**

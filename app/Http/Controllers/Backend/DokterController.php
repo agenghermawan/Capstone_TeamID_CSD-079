@@ -59,7 +59,7 @@ class DokterController extends Controller
             'email' => 'required',
             'alamat' => 'required',
             'kota' => 'required',
-            'rumahSakit' => 'required',
+            'rumahsakit_id' => 'required',
             'sebagaiDokter' => 'required',
         ])->validate();
         Dokter::create($request->all());
@@ -86,7 +86,7 @@ class DokterController extends Controller
      */
     public function edit($id)
     {
-        $data = User::with('dokter','rumahsakit')->find($id);
+        $data = Dokter::with('user')->where('id',$id)->first();
         return view('backend.Dokter.edit',compact('data'));
     }
 
@@ -99,7 +99,21 @@ class DokterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+        $getId = Dokter::where('id',$id)->first();
+        Validator::make($request->all(), [
+            'name' => 'required',
+            'email' => 'required',
+            'alamat' => 'required',
+            'jenis_kelamin' => 'required',
+            'kota' => 'required',
+            'deskripsi' => 'required',
+            'pengalamanPraktik' => 'required',
+            'riwayatPendidikan' => 'required',
+        ])->validate();
+
+        $getId->update($request->all());
+        Alert::toast('Berhasil di perbarui','success');
+        return back();
     }
 
     /**

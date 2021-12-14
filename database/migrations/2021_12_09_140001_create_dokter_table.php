@@ -23,8 +23,10 @@ class CreateDokterTable extends Migration
             $table->string('noStr');
             $table->string('email');
             $table->string('kota');
-            $table->string('deskripsi')->nullable();
+            $table->longText('deskripsi')->nullable();
             $table->string('sebagaiDokter');
+            $table->longText('pengalamanPraktik')->nullable();
+            $table->longText('riwayatPendidikan')->nullable();
             $table->string('status')->default('non-active');
             $table->timestamps();
         });

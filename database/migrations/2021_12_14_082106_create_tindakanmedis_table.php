@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateJanjitemuTable extends Migration
+class CreateTindakanmedisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,8 @@ class CreateJanjitemuTable extends Migration
      */
     public function up()
     {
-        Schema::create('janjitemu', function (Blueprint $table) {
+        Schema::create('tindakanmedis', function (Blueprint $table) {
             $table->id();
-            $table->string('rumahsakit_id');
-            $table->string('user_id');
-            $table->date('tanggal');
-            $table->string('jam');
             $table->timestamps();
         });
     }
@@ -30,6 +26,6 @@ class CreateJanjitemuTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('janjitemu');
+        Schema::dropIfExists('tindakanmedis');
     }
 }

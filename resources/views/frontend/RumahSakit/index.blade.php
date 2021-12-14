@@ -18,7 +18,7 @@
                     <div class="card-hospital">
                         <img src=""/>
                         <h3>{{$item -> nama}}</h3>
-                        <p>{{$item -> deskripsi}}</p>
+                        <p>{!! $item->deskripsi !!}</p>
                         <a href="{{ route('rumahSakit_show_frontend', $item->nama) }}" >Lihat Rumah Sakit</a>
                     </div>
                 @endforeach
