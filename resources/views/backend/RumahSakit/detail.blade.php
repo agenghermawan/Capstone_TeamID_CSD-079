@@ -47,7 +47,7 @@
         <div class="grid grid-cols-1 gap-4 md:grid-cols-2 border-b border-blue-200">
             <div class="pt-10 pb-10 pr-10">
                 <h4 class="mb-4 text-blue-500 font-bold"> Tentang </h4>
-                <p class="text-base text-justify ">{{$data->tentang}}</p>
+                <p class="text-base text-justify ">{!! $data->tentang !!}</p>
             </div>
             <div class="p-10">
                 <div class="grid grid-cols-1 md:grid-cols-2 text-sm ">

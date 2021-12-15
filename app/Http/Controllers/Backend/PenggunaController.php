@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Validator;
 
 class PenggunaController extends Controller
 {
@@ -76,6 +77,22 @@ class PenggunaController extends Controller
     public function update(Request $request, $id)
     {
         $data = $request->all();
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'profile_photo_path' => 'required|image',
+            'jenis_kelamin' => 'required',
+            'email' => 'required|email',
+            'provinsi' => 'required',
+            'kode_pos' => 'required',
+            'tanggal_lahir' => 'required',
+        ]);
+
+        if ($validator->fails()) {
+            \Alert::error('Gagal memperbarui profile');
+            return redirect()->back()->withErrors($validator)
+                ->withInput();
+        }
+
         $findId = User::findOrFail($id);
         $data['profile_photo_path'] = $request->file('profile_photo_path')->storeAs('asset/user',$request->file('profile_photo_path')->getClientOriginalName(),'public');
         $findId->update($data);
@@ -93,6 +110,8 @@ class PenggunaController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = User::find($id);
+        $data -> delete($id);
+        return redirect()->route('pengguna.index');
     }
 }

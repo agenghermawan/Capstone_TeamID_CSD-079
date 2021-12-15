@@ -13,6 +13,8 @@
             selector: 'textarea',
         });
     </script>
+
+    @yield('texteditor')
 </head>
 
 <body style="font-family: 'Poppins', sans-serif;" >

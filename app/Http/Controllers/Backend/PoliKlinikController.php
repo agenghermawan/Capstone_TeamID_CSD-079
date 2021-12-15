@@ -46,6 +46,7 @@ class PoliKlinikController extends Controller
 
 
         Poliklinik::create($request->all());
+        \Alert::toast('berhasil menambahkan data poliklinik','success');
         return back()->with([
             'message' => 'Berhasil menambahkan data Poli Klinik',
         ]);
@@ -70,7 +71,7 @@ class PoliKlinikController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('backend.poliklinik.edit',['data' => Poliklinik::find($id)]);
     }
 
     /**
@@ -82,7 +83,16 @@ class PoliKlinikController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $findId = Poliklinik::find($id);
+        Validator::make($request->all(), [
+            'nama' => 'required',
+            'deskripsi' => 'required|max:150',
+            'tindakanmedis' => 'required',
+        ]);
+
+        $findId->update($request->all());
+        \Alert::toast('berhasil mempeerbaruin data klinik','success');
+        return redirect()->route('poliklinik.index');
     }
 
     /**

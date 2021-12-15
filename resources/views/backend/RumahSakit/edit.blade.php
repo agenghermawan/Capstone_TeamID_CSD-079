@@ -6,11 +6,11 @@
 @section('content')
     @include('sweetalert::alert')
     <form class="w-full bg-white p-10" enctype="multipart/form-data" method="POST"
-          action="{{ route('rumahSakit.store') }}">
+          action="{{ route('rumahSakit.update',$data->id) }}">
         <h1 class="text-base mb-4 tracking-wide text-gray-700 font-bold uppercase border-b pb-2 md:text-center">
             Form Data Rumah Sakit
         </h1>
-        @method('POST')
+        @method('put')
         @csrf
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -42,7 +42,7 @@
                 </label>
                 <input
                     class="rounded w-full text-black-700 border-gray-300 focus:border-gray-300 py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 @error('nama') is-invalid @enderror"
-                    id="nama" name="nama" type="text">
+                    id="nama" name="nama" type="text" value="{{$data->nama}}">
                 @error('nama')
                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror
@@ -53,7 +53,7 @@
                 </label>
                 <input
                     class="rounded w-full text-black-700 border-gray-300 focus:border-gray-300 py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 @error('alamat') is-invalid @enderror"
-                    id="alamat" name="alamat" type="text">
+                    id="alamat" name="alamat" type="text" value="{{$data->alamat}}">
                 @error('alamat')
                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror
@@ -64,7 +64,7 @@
             <div class="w-full md:w-1/3 px-3 mb-6">
                 <label for="provinsi" class="block text-gray-700 text-sm  mb-2  tracking-wide">Provinsi</label>
                 <input type="text" name="provinsi"
-                       class="rounded  border-gray-300 w-full focus:border-gray-300 transform transtition hover:scale-105 duration-500 ease-in-out focus:bg-white">
+                       class="rounded  border-gray-300 w-full focus:border-gray-300 transform transtition hover:scale-105 duration-500 ease-in-out focus:bg-white" value="{{$data->provinsi}}">
                 @error('provinsi')
                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror
@@ -75,7 +75,7 @@
                     Pos</label>
                 <input type="text" name="kodepos"
                        class="rounded  border-gray-300 w-full focus:border-gray-300 transform
-                transtition hover:scale-105 duration-500 ease-in-out focus:bg-white @error('kodepos') is-invalid @enderror">
+                transtition hover:scale-105 duration-500 ease-in-out focus:bg-white @error('kodepos') is-invalid @enderror" value="{{$data->kodepos}}">
 
                 @error('kodepos')
                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
@@ -86,7 +86,7 @@
                 <label for="kota" class="block text-gray-700 text-sm mb-2 tracking-wide">Kota</label>
                 <input type="text" name="kota"
                        class="rounded  border-gray-300 w-full focus:border-none
-                transform transtition hover:scale-105 duration-500 ease-in-out focus:bg-white @error('kota') is-invalid @enderror">
+                transform transtition hover:scale-105 duration-500 ease-in-out focus:bg-white @error('kota') is-invalid @enderror" value="{{$data->kota}}">
                 @error('kota')
                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror
@@ -112,9 +112,9 @@
                     Tentang
                 </label>
 
-                <textarea name="tentang" id="" cols="30" rows="2"
+                <textarea name="tentang" id="myTextarea" cols="30" rows="2"
                           class="rounded w-full
-                text-black-700 border-gray-300 focus:border-gray-300 py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 @error('tentang') is-invalid @enderror"></textarea>
+                text-black-700 border-gray-300 focus:border-gray-300 py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 @error('tentang') is-invalid @enderror" ></textarea>
 
                 @error('tentang')
                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
@@ -130,7 +130,7 @@
                 </label>
                 <input
                     class="rounded w-full  text-black-700 border-gray-300 focus:border-gray-300 py-3 px-4 mb-3
-                    focus:bg-white transform transition hover:scale-105 duration-500 @error('notelp') is-invalid @enderror"
+                    focus:bg-white transform transition hover:scale-105 duration-500 @error('notelp') is-invalid @enderror" value="{{$data->notelp}}"
                     id="notelp" name="notelp" type="text" placeholder="">
                 @error('notelp')
                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
@@ -144,7 +144,7 @@
                 <input
                     class="rounded w-full  text-black-700 border-gray-300 focus:border-gray-300 py-3
                     px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 @error('lokasiGmaps') is-invalid @enderror"
-                    id="lokasiGmaps" type="text" name="lokasiGmaps" placeholder="">
+                    id="lokasiGmaps" type="text" name="lokasiGmaps" placeholder="" value="{{$data->lokasiGmaps}}">
                 @error('lokasiGmaps')
                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror
@@ -157,7 +157,7 @@
                 <input
                     class="rounded w-full  text-black-700 border-gray-300 focus:border-gray-300 py-3 px-4 mb-3
                     focus:bg-white transform transition hover:scale-105 duration-500 @error('jamOperasional') is-invalid @enderror"
-                    id="jamOperasional" name="jamOperasional" type="text" placeholder="10:00 - 20:00">
+                    id="jamOperasional" name="jamOperasional" type="text" placeholder="10:00 - 20:00" value="{{$data->jamOperasional}}">
                 @error('jamOperasional')
                 <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror
@@ -284,4 +284,17 @@
                 type="submit"> Submit </button>
         </div>
     </form>
+@endsection
+
+@section('texteditor')
+    <script>
+        tinymce.init({
+            selector: '#myTextarea',
+            setup: function (editor) {
+                editor.on('init', function (e) {
+                    editor.setContent('<p>{{$item->tentang}}</p>');
+                });
+            }
+        });
+    </script>
 @endsection

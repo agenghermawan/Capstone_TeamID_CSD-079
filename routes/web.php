@@ -14,7 +14,6 @@ use App\Http\Controllers\Backend\ImageUploadController;
 use App\Http\Controllers\Backend\KategoriObatController;
 use App\Http\Controllers\Backend\KonsultasiController;
 use App\Http\Controllers\Auth\RegisteredUserController;
-use App\Http\Controllers\FrontEnd\KonsultasiController;
 
 
 /*
@@ -50,7 +49,7 @@ Route::get('detail/obat/{id}',[App\Http\Controllers\Frontend\ObatController::cla
 Route::get('kategori/obat/{kategori}',[App\Http\Controllers\Frontend\ObatController::class, 'kategori'] )->name('obatKategori_frontend');
 
 Route::resource('profile/user',App\Http\Controllers\Frontend\ProfileController::class);
-Route::resource('konsultasi',KonsultasiController::class);
+Route::resource('konsultasi',App\Http\Controllers\Frontend\KonsultasiController::class);
 
 Route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('dokter/daftarPermintaan',[DokterController::class,'daftarPermintaan'])->name('dokter_daftarPermintaan');
@@ -59,6 +58,9 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard');
     Route::get('covid', [getDataCovidController::class, 'index'])->name('backendGetDataCovid');
     Route::post('image_upload', [ImageUploadController::class, 'store'])->name('image_upload');
+    Route::post('update/pengguna', [PenggunaController::class, 'store'])->name('image_upload');
+
+
     Route::get('callback/register',[RegisteredUserController::class, 'callbacDocter'] )->name('callbacDocter');
 
 
@@ -74,7 +76,7 @@ Route::middleware('auth')->prefix('admin')->group(function(){
 });
 
 Route::middleware('auth')->prefix('user')->group(function(){
-    Route::resource()
+    Route::get('buat/janji',[App\Http\Controllers\Frontend\BuatJanjiController::class, 'create'])->name('create.janji');
 });
 
 

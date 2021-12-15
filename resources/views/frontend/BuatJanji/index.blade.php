@@ -40,7 +40,7 @@
                             <input type="text" class="form-control p-2" style="height: 44px" value="{{$rumahsakit->jamOperasional}}" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" disabled>
                         </div>
 
-                        <a @class(['btn btn-primary','p-3','rounded-3']) href="" > Buat Janji Sekarang </a>
+                        <a @class(['btn btn-primary','p-3','rounded-3']) href="{{route('create.janji')}}" > Buat Janji Sekarang </a>
                 </div>
             </div>
             <div class="experience">

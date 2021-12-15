@@ -10,6 +10,7 @@
     @yield('opsionalCss')
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
           integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <script src="https://cdn.tiny.cloud/1/tmrao508v4qd0k76bb3ztge1vkvrlu25nec5c1fzm5tftz7y/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script>
         tinymce.init({
@@ -22,7 +23,7 @@
 
     @include('frontend.component.header')
     @yield('contentFrontEnd')
-    @include('frontend.component.footer')
+    @yield('footer')
 
     @include('frontend.component.script')
     @yield('opsionalJs')

@@ -52,6 +52,7 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
         Auth::login($user);
+        \Alert::toast('Berhasil Mendaftar','success');
         return redirect(RouteServiceProvider::HOME);
     }
 

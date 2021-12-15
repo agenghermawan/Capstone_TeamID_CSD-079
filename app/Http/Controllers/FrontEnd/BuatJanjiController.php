@@ -17,5 +17,6 @@ class BuatJanjiController extends Controller
         return view('frontend.BuatJanji.index',compact('data','rumahsakit','poliklinik'));
     }
     public function create(){
+        return view('frontend.BuatJanji.create');
     }
 }

@@ -21,8 +21,6 @@
                 </ul>
             </div>
         @endif
-
-
         @if (session('message'))
             <div class="relative py-3 pl-4 pr-10 leading-normal text-red-700 bg-gray-100 rounded-lg" role="alert">
                 <p> {{ session('message') }}</p>
@@ -42,7 +40,7 @@
                 </label>
                 <input
                     class="rounded w-full text-black-700 border-gray-300 focus:border-gray-300 py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 @error('nama') is-invalid @enderror"
-                    id="nama" name="nama" type="text">
+                    id="nama" name="nama" type="text"  required>
                 @error('nama')
                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror
@@ -53,7 +51,7 @@
                 </label>
                 <input
                     class="rounded w-full text-black-700 border-gray-300 focus:border-gray-300 py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 @error('alamat') is-invalid @enderror"
-                    id="alamat" name="alamat" type="text">
+                    id="alamat" name="alamat" type="text"  required>
                 @error('alamat')
                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
                 @enderror
@@ -63,7 +61,7 @@
         <div class="flex flex-wrap -mx-3 mb-6 ">
             <div class="w-full md:w-1/3 px-3 mb-6">
                 <label for="provinsi" class="block text-gray-700 text-sm  mb-2  tracking-wide">Provinsi</label>
-                <input type="text" name="provinsi"
+                <input type="text" name="provinsi" required
                     class="rounded  border-gray-300 w-full focus:border-gray-300 transform transtition hover:scale-105 duration-500 ease-in-out focus:bg-white">
                 @error('provinsi')
                     <p class="text-red-500 text-xs italic">{{ $message }}</p>
@@ -73,7 +71,7 @@
             <div class="w-full md:w-1/3 px-3 mb-6">
                 <label for="kodepos" class="block text-gray-700 text-sm mb-2  tracking-wide">Kode
                     Pos</label>
-                <input type="text" name="kodepos"
+                <input type="text" name="kodepos" required
                     class="rounded  border-gray-300 w-full focus:border-gray-300 transform
                 transtition hover:scale-105 duration-500 ease-in-out focus:bg-white @error('kodepos') is-invalid @enderror">
 
@@ -84,7 +82,7 @@
 
             <div class="w-full md:w-1/3 px-3 mb-6">
                 <label for="kota" class="block text-gray-700 text-sm mb-2 tracking-wide">Kota</label>
-                <input type="text" name="kota"
+                <input type="text" name="kota" required
                     class="rounded  border-gray-300 w-full focus:border-none
                 transform transtition hover:scale-105 duration-500 ease-in-out focus:bg-white @error('kota') is-invalid @enderror">
                 @error('kota')
@@ -101,7 +99,7 @@
                             d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
                     </svg>
                 </span>
-                <input type="file" name="photo"
+                <input type="file" name="photo" required
                     class="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
             </div>
         </div>
@@ -128,7 +126,7 @@
                 <label class="block  tracking-wide text-gray-700 text-sm mb-2" for="notelp">
                     TELP
                 </label>
-                <input
+                <input required
                     class="rounded w-full  text-black-700 border-gray-300 focus:border-gray-300 py-3 px-4 mb-3
                     focus:bg-white transform transition hover:scale-105 duration-500 @error('notelp') is-invalid @enderror"
                     id="notelp" name="notelp" type="text" placeholder="">
@@ -141,7 +139,7 @@
                 <label class="block  tracking-wide text-gray-700 text-sm mb-2" for="lokasiGmaps">
                     Url Maps
                 </label>
-                <input
+                <input required
                     class="rounded w-full  text-black-700 border-gray-300 focus:border-gray-300 py-3
                     px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 @error('lokasiGmaps') is-invalid @enderror"
                     id="lokasiGmaps" type="text" name="lokasiGmaps" placeholder="">
@@ -154,7 +152,7 @@
                 <label class="block  tracking-wide text-gray-700 text-sm mb-2" for="jamOperasional">
                     Jam Operasional
                 </label>
-                <input
+                <input required
                     class="rounded w-full  text-black-700 border-gray-300 focus:border-gray-300 py-3 px-4 mb-3
                     focus:bg-white transform transition hover:scale-105 duration-500 @error('jamOperasional') is-invalid @enderror"
                     id="jamOperasional" name="jamOperasional" type="text" placeholder="10:00 - 20:00">

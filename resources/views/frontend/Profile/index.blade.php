@@ -3,9 +3,12 @@
 @section('contentFrontEnd')
     @include('sweetalert::alert')
     <div class="container mt-5">
+
         <div class="col-md-12">
             <div class="row">
+
                 <div class="col-md-12">
+
                     <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-home" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Profile</button>
@@ -20,6 +23,15 @@
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                             <div class="card p-5">
+                                @if ($errors->any())
+                                    <div class="alert alert-danger">
+                                        <ul>
+                                            @foreach ($errors->all() as $error)
+                                                <li>{{ $error }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </div>
+                                @endif
                                 <div class="row justify-content-between">
                                     <div class="col-md-10">
                                         <h1 class="pb-3"> Profil Saya </h1>
@@ -43,6 +55,9 @@
                                                             <div class="">
                                                                 <label for="inputProfile">
                                                                     <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}" class="rounded-circle" width="60px" height="60px" alt="">
+                                                                    @error('profile_photo_path')
+                                                                        <p> {{$message}} </p>
+                                                                    @enderror
                                                                 </label>
                                                             </div>
                                                             <input type="file" id="inputProfile" name="profile_photo_path" style="visibility: hidden">
@@ -50,7 +65,10 @@
                                                         </div>
                                                         <div class="form-group my-3">
                                                             <label for="" class="mb-2"> Masukan nama anda:</label>
-                                                            <input type="text" class="form-control p-3" placeholder="nama"  name="name" value="{{Auth::user()->name}}">
+                                                            <input type="text" class="form-control p-3" placeholder="name"  name="name" value="{{Auth::user()->name}}">
+                                                            @error('name')
+                                                                <p> {{$message}} </p>
+                                                            @enderror
                                                         </div>
                                                         <div class="form-group mt-4">
                                                             <label for="jenis_kelamin">Pilih Jenis Kelamin :</label>
@@ -62,20 +80,32 @@
                                                         <div class="mb-3">
                                                             <label for="exampleInputEmail1" class="form-label">Masukan Email anda :</label>
                                                             <input type="email" name="email" value="{{Auth::user()->email}}" class="form-control p-3" id="exampleInputEmail1" aria-describedby="emailHelp">
+                                                            @error('email')
+                                                             <p> {{$message}} </p>
+                                                            @enderror
                                                             <div id="emailHelp" class="form-text">kami menjaga data privasi anda</div>
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="provinsi" class="form-label">Masukan Provinsi anda :</label>
                                                             <input type="text" name="provinsi" class="form-control p-3" id="provinsi" aria-describedby="emailHelp">
+                                                            @error('provinsi')
+                                                              <p> {{$message}} </p>
+                                                            @enderror
                                                         </div>
                                                         <div class="mb-3">
                                                             <label for="exampleInputEmail1" class="form-label">Masukan Kode Pos anda :</label>
                                                             <input type="number" name="kode_pos" value="{{Auth::user()->kode_pos}}" class="form-control p-3" id="exampleInputEmail1" aria-describedby="emailHelp">
                                                         </div>
+                                                        @error('kode_pos')
+                                                         <p> {{$message}} </p>
+                                                        @enderror
                                                         <div class="mb-3">
                                                             <label for="exampleInputEmail1" class="form-label">Masukan Masukan Tanggal Lahir anda  :</label>
                                                             <input type="date" name="tanggal_lahir" value="{{Auth::user()->tanggal_lahir}}" class="form-control p-3" id="exampleInputEmail1" aria-describedby="emailHelp">
                                                         </div>
+                                                        @error('tanggal_lahir')
+                                                         <p> {{$message}} </p>
+                                                        @enderror
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -91,7 +121,11 @@
                                 <div class="col-md-12 border-bottom py-4">
                                     <div class="row">
                                         <div class="col-md-1">
-                                            <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}" class="rounded-circle" width="60px" height="60px" alt="">
+                                            @if(Auth::user()->profile_photo_path == null)
+                                                <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}" class="rounded-circle" width="60px" height="60px" alt="">
+                                            @else
+                                                <img src="{{Storage::url(Auth::user()->profile_photo_path)}}" class="rounded-circle" width="60px" height="60px" alt="">
+                                            @endif
                                         </div>
                                         <div class="col-md-8">
                                             <h3>{{ Auth::user()->name }}</h3>
@@ -126,7 +160,7 @@
                                     <h1 class="text-center p-5"> Konsultasi dengan Dokter </h1>
                                     <h3> Anda belum pernah konsultasi dengan dokter !! Konsultasi sekarang </h3>
                                     <div class="mt-4 text-center">
-                                        <h3 class="text-center justify-content-center">
+                                        <h3 class="text-center justify-content-center pb-5">
                                             <a href="{{route('konsultasi.create')}}" class="bg-primary p-3 text-light rounded">
                                             Konsultasi Sekarang   </a>
                                         </h3>
@@ -214,6 +248,12 @@
 
         </div>
     </div>
+@endsection
+
+@section('footer')
+    <footer class="fixed-bottom">
+        <h2>© Copyright Webdev. All Rights Reserved</h2>
+    </footer>
 @endsection
 
 @section('opsionalCss')

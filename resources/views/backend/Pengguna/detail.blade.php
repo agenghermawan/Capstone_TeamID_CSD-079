@@ -60,84 +60,101 @@
         <div class="col-span-1 xl:col-span-2">
             <div class="bg-white p-5 mb-10 rounded-lg">
                 <h4 class="text-base font-semibold border-b pb-2 mb-3 mt-2 text-gray-700"> Informasi Pengguna </h4>
-                <form action="">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-2 xl:grid-cols-2">
                         <div class="mb-4">
                             <label for="" class="block mb-2 text-xs text-gray-700"> Nama :</label>
                             <input type="text" name="name"
-                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100"
+                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100" required
                                 value="{{ $data->name }}">
+                            @error('name')
+                                <p class="text-sm text-red-500">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="mb-4">
                             <label for="" class="block mb-2 text-xs text-gray-700"> Email :</label>
                             <input type="text" name="email"
-                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100"
+                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100"  required
                                 value="{{ $data->email }}">
+                            @error('email')
+                            <p class="text-sm text-red-500">{{$message}}</p>
+                            @enderror
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-2 xl:grid-cols-2">
                         <div class="mb-4 col-span-2">
                             <label for="" class="block mb-2 text-xs text-gray-700"> Alamat :</label>
                             <input type="text" name="alamat"
-                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100"
+                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100" required
                                 value="{{ $data->alamat }}">
+                            @error('alamat')
+                            <p class="text-sm text-red-500">{{$message}}</p>
+                            @enderror
                         </div>
                     </div>
-                </form>
             </div>
             <div class="bg-white p-5 mb-10 rounded-lg">
                 <h4 class="text-base font-semibold border-b pb-2 mb-3 mt-2 text-blue-700"> Informasi Pengguna </h4>
-                <form action="{{ route('pengguna.update', $data->id) }}" method="POST">
-                    @method('PUT')
-                    @csrf
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-2 xl:grid-cols-2">
                         <div class="mb-4">
                             <label for="" class="block mb-2 text-xs text-gray-700"> Telp :</label>
                             <input type="text" name="telp"
-                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100"
+                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100" required
                                 value="{{ $data->telp }}">
+                            @error('telp')
+                            <p class="text-sm text-red-500">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="mb-4">
                             <label for="" class="block mb-2 text-xs text-gray-700"> Kode Pos :</label>
                             <input type="text" name="kode_pos"
-                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100"
+                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100" required
                                 value="{{ $data->kode_pos }}">
+                            @error('kode_pos')
+                            <p class="text-sm text-red-500">{{$message}}</p>
+                            @enderror
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-2 xl:grid-cols-2">
                         <div class="mb-4">
                             <label for="" class="block mb-2 text-xs text-gray-700"> Jenis Kelamin :</label>
                             <input type="text" name="jenis_kelamin"
-                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100"
+                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100" required
                                 value="{{ $data->jenis_kelamin }}">
+                            @error('jenis_kelamin')
+                            <p class="text-sm text-red-500">{{$message}}</p>
+                            @enderror
                         </div>
                         <div class="mb-4">
                             <label for="" class="block mb-2 text-xs text-gray-700"> Umur :</label>
                             <input type="text" name="umur"
-                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100"
+                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100" required
                                 value="{{ $data->umur }}">
+                            @error('umur')
+                            <p class="text-sm text-red-500">{{$message}}</p>
+                            @enderror
                         </div>
                     </div>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-2 xl:grid-cols-2">
                         <div class="mb-4 col-span-2">
                             <label for="" class="block mb-2 text-xs text-gray-700"> Provinsi :</label>
                             <input type="text" name="provinsi"
-                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100"
+                                class="rounded shadow-sm w-full border p-2 border-gray-400 border-opacity-25 appearance-none focus:border-gray-500 text-gray-500 text-sm focus:border-opacity-100"  required
                                 value="{{ $data->provinsi }}">
+                            @error('provinsi')
+                            <p class="text-sm text-red-500">{{$message}}</p>
+                            @enderror
                         </div>
                     </div>
                     <div class="flex justify-between">
-                        <button class="bg-blue-300 rounded shadow-md p-2 w-32 text-center text-white" type="submit">
-                            Perbarui Data</button>
-                        <a href="" class="rounded p-3 text-blue-400 text-sm"> <i class="fas fa-trash mr-2"></i>
-                            Delete Data </a>
+                        <form action="{{ route('pengguna.destroy',$data->id) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button type="submit" class="rounded p-3 text-blue-400 text-sm"> <i class="fas fa-trash mr-2"></i>
+                                Delete Pengguna </button>
+                        </form>
                     </div>
-                </form>
             </div>
         </div>
-
-
-
     </div>
 
 @endsection

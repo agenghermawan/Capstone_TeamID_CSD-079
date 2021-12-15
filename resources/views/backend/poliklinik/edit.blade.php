@@ -6,11 +6,11 @@
 @section('content')
     @include('sweetalert::alert')
     <form class="w-full bg-white p-10" enctype="multipart/form-data" method="POST"
-        action="{{ route('poliklinik.store') }}">
+          action="{{ route('poliklinik.update',$data->id) }}">
         <h1 class="text-base mb-4 tracking-wide text-blue-700 font-bold uppercase border-b pb-2 md:text-center">
             Form Data Poli Klinik
         </h1>
-        @method('POST')
+        @method('put')
         @csrf
 
         @if (session('message'))
@@ -32,9 +32,9 @@
                 </label>
                 <input
                     class="rounded w-full text-black-700 border-blue-300 focus:border-none py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500"
-                    id="nama" name="nama" type="text">
+                    id="nama" name="nama" type="text" value="{{$data->nama}}">
                 @error('nama')
-                    <p class="text-red-5000 text-xs italic">{{ $message }}</p>
+                <p class="text-red-5000 text-xs italic">{{ $message }}</p>
                 @enderror
             </div>
         </div>
@@ -45,10 +45,10 @@
                     Deksripsi
                 </label>
                 <textarea name="deskripsi" id="deskripsi" cols="30"
-                    class="rounded w-full text-black-700 border-blue-300 focus:border-none py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 "
-                    rows="2"></textarea>
+                          class="rounded w-full text-black-700 border-blue-300 focus:border-none py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 "
+                          rows="2" required></textarea>
                 @error('deskripsi')
-                    <p class="text-red-50 text-xs italic">{{ $message }}</p>
+                   <p class="text-red-50 text-xs italic">{{ $message }}</p>
                 @enderror
             </div>
         </div>
@@ -61,22 +61,21 @@
                         <div class="flex -mx-3 md:mb-6">
                             <div class="w-full md:flex md:flex-wrap px-3 mb-6 md:mb-0">
                                 <input REZ
-                                    class="rounded w-full  text-black-700 border-blue-300 mr-2 focus:border-none py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 md:w-3/4"
-                                    name="tindakanmedis" type="text" placeholder="Tindakan Medis">
+                                       class="rounded w-full  text-black-700 border-blue-300 mr-2 focus:border-none py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500 md:w-3/4"
+                                       name="tindakanmedis" type="text"  placeholder="Tindakan Medis">
 
                                 <button data-repeater-delete type="button"
-                                    class="rounded md:1/4 text-blue-700 border-blue-300 focus:border-none py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500"
-                                    value="Delete" /> <i class="fas fa-trash mr-1"></i> Hapus </button>
+                                        class="rounded md:1/4 text-blue-700 border-blue-300 focus:border-none py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500"
+                                        value="Delete" /> <i class="fas fa-trash mr-1"></i> Hapus </button>
                             </div>
                         </div>
                     </div>
                 </div>
                 <button data-repeater-create type="button" value="Add"
-                    class="rounded md:1/4 text-blue-700 border-blue-300 focus:border-none py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500" />
+                        class="rounded md:1/4 text-blue-700 border-blue-300 focus:border-none py-3 px-4 mb-3 focus:bg-white transform transition hover:scale-105 duration-500" />
                 <i class="fas fa-plus-square mr-1"></i> Tambahkan tindakan medis </button>
             </div>
         </div>
-
         <button
             class="from-blue-400 to-blue-100 bg-gradient-to-l  rounded-lg p-2 mt-5 w-full text-white shadow-2xl md:w-52 xl:w-30 lg:w-40 transform transtition hover:scale-105 duration-500"
             type="submit"> Submit </button>
