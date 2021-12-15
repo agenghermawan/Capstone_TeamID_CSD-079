@@ -17,6 +17,24 @@ class BuatJanjiController extends Controller
         return view('frontend.BuatJanji.index',compact('data','rumahsakit','poliklinik'));
     }
     public function create(){
-        return view('frontend.BuatJanji.create');
+        $tanggalJanji = request('tanggal_janji');
+        $jamjanji = request('jam_janji');
+
+        // Mencari data dokter berdasarkan ID dokter yang dipilih
+        $dokterID = request('dokter_id');
+        $dataDokter = Dokter::where('id',$dokterID)->first();
+
+        //Mencari data berdasrarkan ID rumah sakit yang dipilih
+        $rumahSakitID = request('rumahsakit_id');
+        $dataRumahSakit = RumahSakit::where('id',$rumahSakitID)->first();
+
+        $poliklinikID = request('poliklinik_id');
+        $dataPoliklinik = Poliklinik::where('id',$poliklinikID)->first();
+
+        return view('frontend.BuatJanji.create',compact('tanggalJanji','jamjanji','dataDokter','dataRumahSakit','dataPoliklinik'));
+    }
+
+    public function konfirmasi(Request $request){
+        dd($request->all());
     }
 }

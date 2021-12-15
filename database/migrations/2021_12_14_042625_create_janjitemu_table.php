@@ -17,6 +17,7 @@ class CreateJanjitemuTable extends Migration
             $table->id();
             $table->string('rumahsakit_id');
             $table->string('poliklinik_id');
+            $table->string('dokter_id');
             $table->string('email');
             $table->string('nama');
             $table->string('alamat');
@@ -26,6 +27,10 @@ class CreateJanjitemuTable extends Migration
             $table->string('ktp');
             $table->string('telp');
             $table->string('kota');
+            $table->string('tanggal_janji');
+            $table->string('jam_janji');
+            $table->string('status')->default('request');
+
             $table->timestamps();
         });
     }

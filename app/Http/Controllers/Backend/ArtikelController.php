@@ -84,7 +84,8 @@ class ArtikelController extends Controller
      */
     public function edit($id)
     {
-        //
+        $data = Artikel::find($id);
+        return view('backend.Artikel.edit',compact('data'));
     }
 
     /**
@@ -96,7 +97,30 @@ class ArtikelController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->photo == null){
+           $artikel =  Artikel::find($id);
+           $artikel->title = $request->title;
+           $artikel->isiArtikel = $request->isiArtikel;
+           $artikel->ditulisOleh = $request->ditulisOleh;
+           $artikel->kategori = $request->kategori;
+           $artikel->refrensi = $request->refrensi;
+           $artikel->save();
+
+            \Alert::toast('Berhasil mempebarui Artikel','success');
+            return redirect()->route('artikel.index');
+        }
+        else{
+            $data= $request->all();
+            Validator::make($data, [
+            'photo' => 'required|image'
+            ])->validate();
+            $findID = Artikel::find($id);
+            $data['photo'] = $request->file('photo')->storeAs('assets/Artikel', $request->file('photo')->getClientOriginalName(), 'public');
+            $findID->update($data);
+            \Alert::toast('Berhasil mempebarui Artikel','success');
+            return redirect()->route('artikel.index');
+        }
+
     }
 
     /**
@@ -107,6 +131,9 @@ class ArtikelController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $artikelID = Artikel::find($id);
+        $artikelID->delete($id);
+        \Alert::toast('berhasil menghapus artikel','success');
+        return redirect()->route('artikel.index');
     }
 }

@@ -10,6 +10,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
           integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
     <title>Hello, world!</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- CDN Font Awesome  -->
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
     <style>
         html,body{
@@ -38,34 +44,34 @@
     <div class="container-fluid">
             <div class="row" id="firstPage">
                 <div class="col-md" style="background-color: #F5F5F7;height: 100%">
-                    <div style="padding: 5%">
+                    <div style="padding:7% 10% 10% 10%">
                         <h4 class="mb-3"> Rumah Sakit Cilandak</h4>
                         <div class="d-flex gap-2">
-                                <img src="{{asset('image/rumahsakit.jpg')}}" class="rounded shadow-md image" width="250px" height="200px" style="object-fit: cover" alt="">
-                                <p class="align-items-start d-flex text-justify" style="color: "> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                                    when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+                                <img src="{{Storage::url($dataRumahSakit->photo)}}" class="rounded shadow-md image" width="100%" height="200px" style="object-fit: cover" alt="">
                         </div>
+                        <p class="align-items-start d-flex text-justify mt-4" style="color: "> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+                            when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
                         <div class="maps">
                         </div>
                         <div class="card p-3 mb-2 mt-2 shadow" style="background-color: #b9c3fe">
-                            <h5> Lorem Ipsum is simply dummy text of </h5>
+                            <h5> {{$dataRumahSakit->alamat}}</h5>
                         </div>
                         <div class="card p-3 shadow mb-2" style="background-color: #F5F5F7">
                             <h6> Waktu </h6>
-                           <p style="font-size: 14px">  Tanggal : Senin 25 September 2000 <br>
-                            Jam : 10:00 - 20:00</p>
+                           <p style="font-size: 12px">  Tanggal : {{date('D d m Y',strtotime($tanggalJanji))}} <br>
+                            Jam &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{$jamjanji}}</p>
                         </div>
                         <div class="card p-3 shadow mb-2" style="background-color: #F5F5F7">
-                            <h6> Poli Anak </h6>
-                           <p style="font-size: 12px"> Lorem Ipsum is simply dummy text of the printing and typesetting industry.  </p>
+                            <h6> Poliklinik </h6>
+                            <p style="font-size: 12px"> {{$dataPoliklinik->nama}}</p>
                         </div>
                         <div class="card p-3 shadow" style="background-color: #F5F5F7">
                             <h6> Tindakan Medis </h6>
-                            <ul style="font-size: 12px">
-                                <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
-                                <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
-                                <li>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</li>
-                            </ul>
+                            @foreach($dataPoliklinik->tindakanmedis as $item)
+                                <ul style="font-size: 12px">
+                                    <li>{{$item['tindakanmedis']}}</li>
+                                </ul>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -75,20 +81,29 @@
                         <h4 class="pt-2"> SEHATKU</h4>
                     </div>
                     <h5> Buat Janji Dokter</h5>
-                    <div class="form-group">
+                    <form action="{{route('konfirmasi.janji')}}" method="post">
+                        @csrf
+                        @method('post')
+                        <input type="hidden" name="tanggal_janji" value="{{$tanggalJanji}}">
+                        <input type="hidden" name="jam_janji" value="{{$jamjanji}}">
+                        <input type="hidden" name="rumahsakit_id" value="{{$dataRumahSakit->id}}">
+                        <input type="hidden" name="poliklinik_id" value="{{$dataPoliklinik->id}}">
+                        <input type="hidden" name="dokter_id" value="{{$dataDokter->id}}">
+
+                        <div class="form-group">
                         <div class="col-md-12">
                             <div class="row g-2">
                                 <div class="col-md">
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Email  :</label>
-                                        <input type="email" name="email" class="form-control " id="exampleInputEmail1" value="{{Auth::user()->email}}" aria-describedby="emailHelp" >
+                                        <label for="email" class="form-label">Email  :</label>
+                                        <input type="email" name="email" class="form-control " id="email" value="{{Auth::user()->email}}" required>
                                         <div id="emailHelp" class="form-text fs-6">We'll never share your email with anyone else.</div>
                                     </div>
                                 </div>
                                 <div class="col-md">
                                     <div class="mb-3">
-                                        <label for="exampleInputEmail1" class="form-label">Nama  :</label>
-                                        <input type="email" name="nama" class="form-control " value="{{Auth::user()->name}}" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                        <label for="nama" class="form-label">Nama  :</label>
+                                        <input type="text" name="nama" class="form-control " value="{{Auth::user()->name}}" id="nama"  required >
                                     </div>
                                 </div>
                             </div>
@@ -96,52 +111,52 @@
                         <div class="row g-2">
                             <div class="col-md">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Alamat  :</label>
-                                    <input type="email" name="alamat" class="form-control " value="{{Auth::user()->alamat}}" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    <label for="alamat" class="form-label">Alamat  :</label>
+                                    <input type="text" name="alamat" class="form-control " value="{{Auth::user()->alamat}}" id="alamat" required>
                                 </div>
                             </div>
                         </div>
                         <div class="row g-2">
                             <div class="col-md">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Provinsi  :</label>
-                                    <input type="text" name="provinsi" class="form-control " value="{{Auth::user()->provinsi}}" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    <label for="provinsi" class="form-label">Provinsi  :</label>
+                                    <input type="text" name="provinsi" class="form-control " value="{{Auth::user()->provinsi}}" id="provinsi" required >
                                 </div>
                             </div>
                             <div class="col-md">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Kode Pos  :</label>
-                                    <input type="text" name="kode_pos" class="form-control " value="{{Auth::user()->kode_pos}}" id="exampleInputEmail1" aria-describedby="emailHelp" >
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row g-2">
-                            <div class="col-md">
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Tanggal Lahir  :</label>
-                                    <input type="text" name="tanggal_lahir" class="form-control " value="{{date('l, d F Y', strtotime(Auth::user()->tanggal_lahir))}}" id="exampleInputEmail1" aria-describedby="emailHelp" >
-                                </div>
-                            </div>
-                            <div class="col-md">
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Telp  :</label>
-                                    <input type="text" name="telp" class="form-control " value="{{Auth::user()->telp}}" id="exampleInputEmail1" aria-describedby="emailHelp" >
+                                    <label for="kode_pos" class="form-label">Kode Pos  :</label>
+                                    <input type="text" name="kode_pos" class="form-control " value="{{Auth::user()->kode_pos}}" id="kode_pos"  required >
                                 </div>
                             </div>
                         </div>
                         <div class="row g-2">
                             <div class="col-md">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Masukkan No KTP</label>
-                                    <input type="text" name="ktp" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <label for="tanggal_lahir" class="form-label">Tanggal Lahir  :</label>
+                                    <input type="date" name="tanggal_lahir" class="form-control " value="{{date('l, d F Y', strtotime(Auth::user()->tanggal_lahir))}}" id="tanggal_lahir" required >
+                                </div>
+                            </div>
+                            <div class="col-md">
+                                <div class="mb-3">
+                                    <label for="telp" class="form-label">Telp  :</label>
+                                    <input type="text" name="telp" class="form-control " value="{{Auth::user()->telp}}" id="telp"  required >
                                 </div>
                             </div>
                         </div>
                         <div class="row g-2">
                             <div class="col-md">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Kota</label>
-                                    <input type="text" name="kota" class="form-control " id="exampleInputEmail1" aria-describedby="emailHelp">
+                                    <label for="ktp" class="form-label">Masukkan No KTP</label>
+                                    <input type="text" name="ktp" class="form-control" id="ktp"  required>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-2">
+                            <div class="col-md">
+                                <div class="mb-3">
+                                    <label for="kota" class="form-label">Kota</label>
+                                    <input type="text" name="kota" class="form-control" id="kota"  required>
                                 </div>
                             </div>
                         </div>
@@ -163,13 +178,13 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tidak</button>
-                                        <button type="button" class="btn btn-primary">Buat Janji Sekarang</button>
+                                        <button type="submit" class="btn btn-primary">Selanjutnya Sekarang</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-
                     </div>
+                    </form>
                 </div>
             </div>
 

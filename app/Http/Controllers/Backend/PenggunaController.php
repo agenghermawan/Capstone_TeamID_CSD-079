@@ -114,4 +114,8 @@ class PenggunaController extends Controller
         $data -> delete($id);
         return redirect()->route('pengguna.index');
     }
+
+    public function updateBackend(){
+
+    }
 }

@@ -57,8 +57,7 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::put('dokter/jawaban/{id}',[DokterController::class,'jawabanPermintaan'])->name('jawaban_permintaan');
     Route::get('dashboard', [DashboardController::class,'index'])->name('dashboard');
     Route::get('covid', [getDataCovidController::class, 'index'])->name('backendGetDataCovid');
-    Route::post('image_upload', [ImageUploadController::class, 'store'])->name('image_upload');
-    Route::post('update/pengguna', [PenggunaController::class, 'store'])->name('image_upload');
+    Route::post('update/pengguna', [PenggunaController::class, 'updateBackend'])->name('updatePenggunaBackend');
 
 
     Route::get('callback/register',[RegisteredUserController::class, 'callbacDocter'] )->name('callbacDocter');
@@ -73,10 +72,13 @@ Route::middleware('auth')->prefix('admin')->group(function(){
     Route::resource('poliklinik', PoliKlinikController::class);
     Route::resource('kategori-obat', KategoriObatController::class);
     Route::resource('konsultasi-dokter', KonsultasiController::class);
+
+    Route::resource('janji-dokter', \App\Http\Controllers\Backend\JanjiTemuController::class);
 });
 
 Route::middleware('auth')->prefix('user')->group(function(){
     Route::get('buat/janji',[App\Http\Controllers\Frontend\BuatJanjiController::class, 'create'])->name('create.janji');
+    Route::post('konfirmasi/janji',[App\Http\Controllers\Frontend\BuatJanjiController::class, 'konfirmasi'])->name('konfirmasi.janji');
 });
 
 

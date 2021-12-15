@@ -14,6 +14,8 @@ class JanjiTemuController extends Controller
      */
     public function index()
     {
+        $tanggal = $request->tanggal_janji;
+        dd($tanggal);
         return view('backend.JanjiTemu.create');
     }
 
@@ -35,7 +37,6 @@ class JanjiTemuController extends Controller
      */
     public function store(Request $request)
     {
-        //
     }
 
     /**

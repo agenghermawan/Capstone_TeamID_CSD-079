@@ -30,36 +30,52 @@
                     </div>
 
                         <h4 @class(['pt-5'])> Pilih Jadwal </h4>
+                    <form action="{{route('create.janji')}}">
                         <div class="input-group my-3">
                             <span class="input-group-text" id="basic-addon1"> <i class="fas fa-calendar-check"></i> </span>
-                            <input type="date" class="form-control p-2" style="height: 44px" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+                            <input type="date" class="form-control p-2" name="tanggal_janji" style="height: 44px" placeholder="tanggal_janji" aria-label="tanggal_janji" aria-describedby="basic-addon1">
                         </div>
-
-                        <div class="input-group my-3">
-                            <span class="input-group-text" id="basic-addon1"> <i class="fas fa-clock"></i> </span>
-                            <input type="text" class="form-control p-2" style="height: 44px" value="{{$rumahsakit->jamOperasional}}" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" disabled>
+                        <div class=" my-3">
+                            <h4> Pilih Jam untuk janji bersama dokter anda</h4>
+                            <select name="jam_janji" id="" class="form-control" required style="height: 44px">
+                                <option value="">Pilih Jam</option>
+                                <option value="{{$rumahsakit->jamOperasional}}">{{$rumahsakit->jamOperasional}}</option>
+                            </select>
                         </div>
+                        <input type="hidden" name="dokter_id" value="{{$data->id}}">
+                        <input type="hidden" name="rumahsakit_id" value="{{$rumahsakit->id}}">
+                        <input type="hidden" name="poliklinik_id" value="{{$poliklinik->id}}">
+{{--                        <button @class(['btn btn-primary','p-3','rounded-3']) href="{{route('create.janji',['$data->id','$rumahsakit->id'])}}" > Buat Janji Sekarang </button>--}}
+                        <button @class(['btn btn-primary','p-3','rounded-3']) type="submit" > Buat Janji Sekarang </button>
+                    </form>
 
-                        <a @class(['btn btn-primary','p-3','rounded-3']) href="{{route('create.janji')}}" > Buat Janji Sekarang </a>
                 </div>
             </div>
             <div class="experience">
                 <h2>Pengalaman Praktik</h2>
-                @foreach($data->pengalamanPraktik as $item)
-                 <p>{{$item['pengalamanPraktik']}}</p>
-                @endforeach
+                @if($data->pengalamanPraktik == null)
+                    <p> Belum mempunyai Pengalaman Praktik</p>
+                @else
+                    @foreach($data->pengalamanPraktik as $item)
+                     <p>{{$item['pengalamanPraktik']}}</p>
+                    @endforeach
+                @endif
             </div>
             <div class="history">
                 <h2>Riwayat Pendidikan</h2>
-                @foreach($data->riwayatPendidikan as $item)
-                    <p>{{$item['riwayatPendidikan']}}</p>
-                @endforeach
+                @if($data->riwayatPendidikan == null)
+                    <p> Tidak mempunyai Riwayat Pendidikan</p>
+                @else
+                    @foreach($data->riwayatPendidikan as $item)
+                        <p>{{$item['riwayatPendidikan']}}</p>
+                    @endforeach
+                @endif
             </div>
         </div>
         <aside>
             <button>Buat Janji Konsultasi</button>
             <div class="skill">
-                <h2 @class([''])>Tindakan Medis</h2>
+                <h2>Tindakan Medis</h2>
                 <ul>
                     @foreach($poliklinik->tindakanmedis as $tindakanmedis)
                         <li>{{$tindakanmedis['tindakanmedis']}}</li>
