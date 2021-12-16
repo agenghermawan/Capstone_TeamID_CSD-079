@@ -46,10 +46,13 @@ Route::get('Janji/dokter/{id}/{rumahsakitid}/{nama}',[App\Http\Controllers\Front
 
 Route::get('obat',[App\Http\Controllers\Frontend\ObatController::class, 'index'] )->name('obat_frontend');
 Route::get('detail/obat/{id}',[App\Http\Controllers\Frontend\ObatController::class, 'show'] )->name('obatShow_frontend');
+
 Route::get('kategori/obat/{kategori}',[App\Http\Controllers\Frontend\ObatController::class, 'kategori'] )->name('obatKategori_frontend');
 
-Route::resource('profile/user',App\Http\Controllers\Frontend\ProfileController::class);
 Route::resource('konsultasi',App\Http\Controllers\Frontend\KonsultasiController::class);
+
+Route::get('success/buatjanji',[App\Http\Controllers\Frontend\SupportController::class, 'konfirmasi'] )->name('success.buatjanji');
+Route::get('success/account',[App\Http\Controllers\Frontend\SupportController::class, 'account'] )->name('success.account');
 
 Route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('dokter/daftarPermintaan',[DokterController::class,'daftarPermintaan'])->name('dokter_daftarPermintaan');
@@ -79,6 +82,7 @@ Route::middleware('auth')->prefix('admin')->group(function(){
 Route::middleware('auth')->prefix('user')->group(function(){
     Route::get('buat/janji',[App\Http\Controllers\Frontend\BuatJanjiController::class, 'create'])->name('create.janji');
     Route::post('konfirmasi/janji',[App\Http\Controllers\Frontend\BuatJanjiController::class, 'konfirmasi'])->name('konfirmasi.janji');
+    Route::resource('profile/user',App\Http\Controllers\Frontend\ProfileController::class);
 });
 
 

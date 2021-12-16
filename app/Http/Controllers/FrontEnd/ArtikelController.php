@@ -8,13 +8,21 @@ use Illuminate\Http\Request;
 
 class ArtikelController extends Controller
 {
-     public function index()
+    public function index()
     {
-        $data = Artikel::all();
-        return  view('frontend.Artikel.index',compact('data'));
+        if (request('searchArtikel')){
+            $keywoard = \request('searchArtikel');
+            $data = Artikel::where('title', 'like', "%{$keywoard}%")->latest()->get();
+            return  view('frontend.Artikel.index',compact('data'));
+        }
+        else{
+            $data = Artikel::all();
+            return  view('frontend.Artikel.index',compact('data'));
+        }
     }
     public function show($id){
         $data = Artikel::findOrFail($id);
-        return view('frontend.Artikel.detail',compact('data'));
+        $artikelTerkait = Artikel::all()->take(4);
+        return view('frontend.Artikel.detail',compact('data','artikelTerkait'));
     }
 }

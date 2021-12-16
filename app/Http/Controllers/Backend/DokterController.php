@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Dokter;
+use App\Models\JanjiTemu;
 use App\Models\RumahSakit;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -86,8 +87,10 @@ class DokterController extends Controller
      */
     public function edit($id)
     {
+        $countPasien = JanjiTemu::where('dokter_id',$id)->count();
+        $pasienTerakhir = JanjiTemu::where('dokter_id',$id)->get();
         $data = Dokter::with('user')->where('id',$id)->first();
-        return view('backend.Dokter.edit',compact('data'));
+        return view('backend.Dokter.edit',compact('data','countPasien','pasienTerakhir'));
     }
 
     /**

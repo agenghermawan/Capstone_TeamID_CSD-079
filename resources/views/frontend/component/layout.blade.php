@@ -19,7 +19,7 @@
     </script>
 </head>
 
-<body>
+<body style="background-color: #f6f8fd">
 
     @include('frontend.component.header')
     @yield('contentFrontEnd')

@@ -207,38 +207,20 @@
                         </div>
 
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                            <div class="card p-5">
-                                <h1 class="pb-3"> Profil Saya </h1>
-
-                                <div class="col-md-12 border-bottom pb-4">
-                                    <div class="row">
-                                        <div class="col-md-1">
-                                            <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}" class="rounded-circle" width="60px" height="60px" alt="">
-                                        </div>
-                                        <div class="col-md-8">
-                                            <h3>{{ Auth::user()->name }}</h3>
-                                            <h3>{{ Auth::user()->email }}</h3>
-                                            <h3>{{ Auth::user()->telp }}</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 mt-5">
-                                    <div class="row justify-content-between">
-                                        <div class="col-md-8">
-                                            <h3 class="pb-3"> Jenis Kelamin </h3>
-                                            <h3 class="pb-3"> Provinsi</h3>
-                                            <h3 class="pb-3"> Jenis Kelamin</h3>
-                                            <h3 class="pb-3"> Umur</h3>
-                                        </div>
-                                        <div class="col-md-4">
-                                            <h3 class="pb-3"> {{Auth::user()->jenis_kelamin}}
-                                                <h3 class="pb-3"> {{Auth::user()->provinsi}}  </h3>
-                                                <h3 class="pb-3"> {{Auth::user()->kode_pos}}  </h3>
-                                                <h3 class="pb-3"> {{Auth::user()->Umur}}  </h3>
+                                @if($dataKonsultasi->isEmpty() == true)
+                                    <div class="card p-5">
+                                        <div class="row text-center">
+                                            <h1 class="text-center p-5"> Buat Janji dengan Dokter </h1>
+                                            <h3> Anda belum pernah membuat janji dengan dokter !! Buat Janji sekarang </h3>
+                                            <div class="mt-4 text-center">
+                                                <h3 class="text-center justify-content-center pb-5">
+                                                    <a href="{{route('konsultasi.create')}}" class="bg-primary p-3 text-light rounded">
+                                                        Buat Janji Sekarang   </a>
+                                                </h3>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </div>
+                                    @endif
                         </div>
                     </div>
 

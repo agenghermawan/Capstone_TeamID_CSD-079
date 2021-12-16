@@ -16,6 +16,7 @@ class CreateJanjitemuTable extends Migration
         Schema::create('janjitemu', function (Blueprint $table) {
             $table->id();
             $table->string('rumahsakit_id');
+            $table->string('user_id');
             $table->string('poliklinik_id');
             $table->string('dokter_id');
             $table->string('email');
@@ -29,8 +30,8 @@ class CreateJanjitemuTable extends Migration
             $table->string('kota');
             $table->string('tanggal_janji');
             $table->string('jam_janji');
+            $table->string('catatan')->nullable();
             $table->string('status')->default('request');
-
             $table->timestamps();
         });
     }

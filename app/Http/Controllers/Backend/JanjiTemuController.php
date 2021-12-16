@@ -3,7 +3,10 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Models\JanjiTemu;
 use Illuminate\Http\Request;
+use Mail;
+use App\Mail\SuccessBuatJanji;
 
 class JanjiTemuController extends Controller
 {
@@ -37,6 +40,12 @@ class JanjiTemuController extends Controller
      */
     public function store(Request $request)
     {
+        $data= $request->all();
+        $dataEmail = $data['email'];
+        JanjiTemu::create($data);
+        Mail::to($dataEmail)->send(new SuccessBuatJanji());
+        \Alert::success('kamu berhasil melakukan pengajuan janji dengan dokter silahkan tunggu konfirmasi','success');
+        return redirect()->route('success.buatjanji');
     }
 
     /**

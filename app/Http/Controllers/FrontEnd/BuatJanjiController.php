@@ -35,6 +35,10 @@ class BuatJanjiController extends Controller
     }
 
     public function konfirmasi(Request $request){
-        dd($request->all());
+        $data = $request->all();
+        $dataRumahsakit =  RumahSakit::where('id',$data['rumahsakit_id'])->first();
+        $dataDokter =  Dokter::where('id',$data['dokter_id'])->first();
+        $dataPoliklinik =  Poliklinik::where('id',$data['poliklinik_id'])->first();
+        return view('frontend.BuatJanji.konfirmasi',compact('data','dataRumahsakit','dataDokter','dataPoliklinik'));
     }
 }

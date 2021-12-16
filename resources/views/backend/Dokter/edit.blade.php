@@ -31,16 +31,8 @@
         </div>
         <div class="col-span-1 flex items-center justify-center text-center">
             <div class="p-5">
-                <h5 class="text-blue-700"> 20K </h5>
+                <h5 class="text-blue-700"> {{ $countPasien }}</h5>
                 <p class="text-blue-400 text-sm"> Pasien </p>
-            </div>
-            <div class="p-5">
-                <h5 class="text-blue-700"> 20K </h5>
-                <p class="text-blue-400 text-sm"> Pasien </p>
-            </div>
-            <div class="p-5">
-                <h5 class="text-blue-700"> 20K </h5>
-                <p class="text-blue-400 text-sm "> Pasien </p>
             </div>
         </div>
     </div>
@@ -197,17 +189,25 @@
                         <div class="border-l-4 border-blue-500 border-opacity-100 border-solid  pl-4 flex w-full flex-wrap">
                             <div class="item w-full md:w-1/2 text-base text-blue-400 mb-2">
                                 <h4 class="text-blue-600"> Pengalaman Praktik  </h4>
+                                @if($data->pengalamanPraktik == null)
+                                    <p> Belum mengisi pengalaman praktik </p>
+                                @else
                                 @foreach($data->pengalamanPraktik as $item)
                                     <p> {{$item['pengalamanPraktik']}} </p>
                                 @endforeach
+                                    @endif
                             </div>
                         </div>
                         <div class="border-l-4 border-blue-500 border-opacity-100 border-solid  pl-4 flex w-full flex-wrap">
                             <div class="item w-full md:w-1/2 text-base text-blue-400 mb-2">
                                 <h4 class="text-blue-600"> Riwayat Pendidikan  </h4>
+                                @if($data->riwayatPendidikan == null)
+                                    <p> Belum mengisi riwayat pendidikan </p>
+                                @else
                                 @foreach($data->riwayatPendidikan as $itempendidikan)
                                     <p> {{$itempendidikan['riwayatPendidikan']}}  </p>
                                 @endforeach
+                                    @endif
                             </div>
                         </div>
                     <div class="bg-white col-span-1 rounded shadow-sm md:pt-4">
@@ -223,22 +223,21 @@
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-5">
         <div class="bg-white col-span-1 rounded shadow-sm p-10">
             <h1 class="mb-5 text-blue-500"> Daftar Pasien Terkahir </h1>
-            @for ($i = 0; $i < 3; $i++)
+            @forelse($pasienTerakhir as $item)
                 <div class="content flex w-full mb-5 ">
                     <div class="w-full flex  md:w-3/4">
                         <div class="image">
-                            <img src="{{ asset('image/profile.jpg') }}" class="w-12 h-12 rounded-full" alt="">
+                            <img src="https://ui-avatars.com/api/?name={{$item->nama}}" class="w-12 h-12 rounded-full" alt="">
                         </div>
                         <div class="text pl-4">
-                            <h4> Ageng Hermawan </h4>
-                            <p> 10:00 - 12:00</p>
+                            <h4> {{$item->nama}} </h4>
+                            <p> {{$item->jam_janji}}</p>
                         </div>
                     </div>
-                    <div class="w-full   md:1/4 flex justify-end">
-                        <h4> Detail </h4>
-                    </div>
                 </div>
-            @endfor
+                @empty
+                <h3 class="text-lg tracking-wide text-blue-700"> Anda belum memiliki pasien </h3>
+            @endforelse
         </div>
     </div>
 @endsection
