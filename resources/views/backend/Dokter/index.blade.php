@@ -25,27 +25,27 @@ Data Dokter
                 <div class="head flex items-center">
                     <div class="image-head  w-1/4">
                         @if ($item->profile_photo_path == null)
-                            <img src="{{ asset('image/avatar doktor.jpg') }}" class="w-20 h-20 rounded-full" alt="">
+                            <img src="{{ asset('image/avatar doktor.jpg') }}" class="w-20 h-20 rounded-full" alt="avatar">
                         @else
-                            <img src="{{ asset('image/profile.jpg') }}" class="w-20 h-20 rounded-full " alt="">
+                            <img src="{{ Storage::url($item->profile_photo_path) }}" class="w-20 h-20 rounded-full " alt="{{$item->name}}">
                         @endif
                     </div>
                     <div class="name w-3/4 font-semibold">
-                        <h4 class="text-blue-700"> {{ $item->name }} </h4>
-                        <h4 class="text-sm text-blue-500"> Dokter Anak </h4>
+                        <h4 class="text-blue-700"> {{ $item->dokter->fullname }} </h4>
+                        <h4 class="text-sm text-blue-500"> {{$item->dokter->sebagaiDokter}} </h4>
                     </div>
                 </div>
                 <div class="description pt-5 pb-5 border-b">
-                    @if ($item->deskripsi == null)
+                    @if ($item->dokter->deskripsi == null)
                         <p class="text-sm"> Belum ada deskripsi dokter
                         </p>
                     @else
-                        <p class="text-sm"> {{ $item->deskripsi }}
+                        <p class="text-sm"> {{ $item->dokter->deskripsi }}
                         </p>
                     @endif
                     <div class="contanct text-sm mt-4 text-blue-500">
-                        <p><i class="fa fa-phone-alt mr-3"></i>{{ $item->telp }}</p>
-                        <p><i class="far fa-envelope mr-2"></i> {{ $item->email }}</p>
+                        <p><i class="fa fa-phone-alt mr-3"></i>{{ $item->dokter->telp }}</p>
+                        <p><i class="far fa-envelope mr-2"></i> {{ $item->dokter->email }}</p>
                         @if (empty($item->dokter))
                             <p><i class="far fa-envelope mr-2"></i> Belum Mengajukan Sebagai Doktor </p>
                         @elseif(empty($item->dokter) == null)

@@ -154,7 +154,7 @@
                         </div>
 
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                            @if($dataKonsultasi->isEmpty() == true)
+                            @if($dataKonsultasi->isEmpty())
                             <div class="card p-5">
                                 <div class="row text-center">
                                     <h1 class="text-center p-5"> Konsultasi dengan Dokter </h1>
@@ -207,20 +207,95 @@
                         </div>
 
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                                @if($dataKonsultasi->isEmpty() == true)
+                                @if($dataJanjiDokter->isEmpty())
                                     <div class="card p-5">
                                         <div class="row text-center">
                                             <h1 class="text-center p-5"> Buat Janji dengan Dokter </h1>
                                             <h3> Anda belum pernah membuat janji dengan dokter !! Buat Janji sekarang </h3>
                                             <div class="mt-4 text-center">
                                                 <h3 class="text-center justify-content-center pb-5">
-                                                    <a href="{{route('konsultasi.create')}}" class="bg-primary p-3 text-light rounded">
+                                                    <a href="{{route('rumahSakit_frontend')}}" class="bg-primary p-3 text-light rounded">
                                                         Buat Janji Sekarang   </a>
                                                 </h3>
                                             </div>
                                         </div>
                                     </div>
-                                    @endif
+                            @else
+                            <div class="card" style="padding: 2% 5% 0 2%">
+                                <h2 class="mb-4 text-center"> Janji Temu Anda  </h2>
+                                @foreach($dataJanjiDokter as $item)
+                                <div class="row">
+                                    <div class="col-md d-flex">
+                                        <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}" class="rounded-circle" width="60px" height="60px" alt="">
+                                        <div class="col-md-9" style="margin-left: 20px">
+                                            <h2> {{$item -> nama}} </h2>
+                                            <?php
+                                            $dataRumahsakit = \App\Models\RumahSakit::where('id',$item->rumahsakit_id)->first();
+                                            $dataDokter = \App\Models\Dokter::where('id',$item->dokter_id)->first();
+                                            $dataPoliklinik = \App\Models\Poliklinik::where('id',$item->poliklinik_id)->first();
+                                            ?>
+                                            <h3>{{$dataRumahsakit->nama}}</h3>
+                                        </div>
+                                    </div>
+                                    <div class="col-md text-center">
+                                        <h4> Tanggal Janji : {{ date('d M Y', strtotime($item->tanggal_janji))}}</h4>
+                                        <h4> Status : {{$item->status}} </h4>
+                                    </div>
+                                </div>
+                                <div class="deskripsi mt-5 mb-5">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <h4> Konsultan </h4>
+                                                        </td>
+                                                        <td>
+                                                            <h4> {{$dataDokter->fullname}} </h4>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h4> Spesialisasi</h4>
+                                                        </td>
+                                                        <td>
+                                                            <h4> {{$dataPoliklinik->nama}} </h4>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="row">
+                                                <table>
+                                                    <tr>
+                                                        <td>
+                                                            <h4> Alamat </h4>
+                                                        </td>
+                                                        <td>
+                                                            <h4> {{$item->alamat}} </h4>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <h4> Waktu Konsultasi</h4>
+                                                        </td>
+                                                        <td>
+                                                            <h4> {{$item->jam_janji}} </h4>
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="mt-4">
+                                        <a class="btn btn-primary fs-5 rounded p-3" href="{{route('detail.janji',$item->id)}}"> Lihat Detail  </a>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                            @endif
                         </div>
                     </div>
 
@@ -233,8 +308,8 @@
 @endsection
 
 @section('footer')
-    <footer class="fixed-bottom">
-        <h2>© Copyright Webdev. All Rights Reserved</h2>
+    <footer class="">
+        <h2>© Copyright CSD-079. All Rights Reserved</h2>
     </footer>
 @endsection
 

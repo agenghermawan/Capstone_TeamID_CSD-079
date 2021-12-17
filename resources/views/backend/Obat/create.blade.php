@@ -99,10 +99,8 @@
 
 @section('script')
     <script>
-        ClassicEditor
-            .create(document.querySelector('#anjuranLainnya'))
-            .catch(error => {
-                console.error(error);
-            });
+        tinymce.init({
+            selector: 'textarea',
+        });
     </script>
 @endsection

@@ -2,14 +2,14 @@
 
 @section('content')
     @include('sweetalert::alert')
-    <div class="grid grid-cols-3 gap-10  mt-4 content-dashboard">
-        <div class="col-span-2 left-content-dashboard">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10  mt-4 content-dashboard">
+        <div class="left-content-dashboard md:col-span-2">
             <div class="title flex justify-between">
                 <h5> General Reports </h5>
                 <h5> Relaod Data</h5>
             </div>
             <!-- Chart Top -->
-            <div class="content-card grid gap-4 grid-cols-4 mt-5">
+            <div class="content-card grid gap-4 grid-cols-1 md:grid-cols-4 mt-5">
                 <div
                     class="card h-100 p-5 bg-white shadow-md transform transtition hover:scale-110 duration-500 from-blue-300 bg-gradient-to-tr to-blue-200">
                     <div class="title-content-card flex justify-between">
@@ -54,17 +54,25 @@
                 </div>
             </div>
             <!-- Chart -->
-            <div class="report grid grid-cols-12 gap-4 mt-5">
-                <div class="col-span-8 ">
+            <div class="report grid grid-cols-1 md:grid-cols-12 gap-4 mt-5">
+                <div class="md:col-span-8 ">
                     Report Data
                     <div class="bg-white w-100  mt-5">
-                        <div class="shadow-lg rounded-lg overflow-hidden">
-                            <div class="py-3 px-5 ">Transaksi</div>
-                            <canvas class="p-10" id="chartBar"></canvas>
+                        <div class="shadow-lg rounded-lg overflow-hidden " style="height: 425px">
+                            <div class="grid md:flex">
+                                <div>
+                                    <img src="{{ asset('image/avatar doktor.jpg') }}" class="w-64" alt="">
+                                </div>
+                                <div class="md:p-10">
+                                    <h1 class="text-2xl font-semibold"> {{$greetings }} Dokter  </h1>
+                                    <h1 class="text-lg tracking-wide">  Dr Ageng  </h1>
+                                    <h1> Poli Anak </h1>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-span-4">
+                <div class="md:col-span-4">
                     Weekly Top
                     <div class="bg-white w-100 h-100 mt-5">
                         <div class="shadow-lg rounded-lg overflow-hidden">
@@ -196,17 +204,17 @@
             </div>
         </div>
 
-
         <!-- Right -->
         <div class="right-content-dashboard">
             <h1> Transaction </h1>
+            @forelse($janjiTemu as $item)
             <div class="card-transaction bg-white mt-5 flex p-5">
                 <div class="grid grid-cols-12 md:w-100">
                     <div class="transaction-left col-span-10 flex">
                         <img src="{{ asset('image/profile.jpg') }}" class="rounded w-12 h-12" alt="">
                         <div class="text pl-4">
-                            <h5> Ageng Hermawan</h5>
-                            <h5> 25 Sept 2000 </h5>
+                            <h5> {{$item->nama}}</h5>
+                            <h5> {{$item->tanggal_janji}} </h5>
                         </div>
                     </div>
                     <div class="transaction-right col-span-2">
@@ -214,50 +222,11 @@
                     </div>
                 </div>
             </div>
-            <div class="card-transaction bg-white mt-5 flex p-5">
-                <div class="grid grid-cols-12 md:w-100">
-                    <div class="transaction-left col-span-10 flex">
-                        <img src="{{ asset('image/profile.jpg') }}" class="rounded w-12 h-12" alt="">
-                        <div class="text pl-4">
-                            <h5> Ageng Hermawan</h5>
-                            <h5> 25 Sept 2000 </h5>
-                        </div>
-                    </div>
-                    <div class="transaction-right col-span-2">
-                        <p> 201 Pasien</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card-transaction bg-white mt-5 flex p-5">
-                <div class="grid grid-cols-12 md:w-100">
-                    <div class="transaction-left col-span-10 flex">
-                        <img src="{{ asset('image/profile.jpg') }}" class="rounded w-12 h-12" alt="">
-                        <div class="text pl-4">
-                            <h5> Ageng Hermawan</h5>
-                            <h5> 25 Sept 2000 </h5>
-                        </div>
-                    </div>
-                    <div class="transaction-right col-span-2">
-                        <p> 201 Pasien</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card-transaction bg-white mt-5 flex p-5">
-                <div class="grid grid-cols-12 md:w-100">
-                    <div class="transaction-left col-span-10 flex">
-                        <img src="{{ asset('image/profile.jpg') }}" class="rounded w-12 h-12" alt="">
-                        <div class="text pl-4">
-                            <h5> Ageng Hermawan</h5>
-                            <h5> 25 Sept 2000 </h5>
-                        </div>
-                    </div>
-                    <div class="transaction-right col-span-2">
-                        <p> 201 Pasien</p>
-                    </div>
-                </div>
-            </div>
+            @empty
+                <h1 class="font-semibold tracking-wide text-center p-10 text-2xl"> Belum ada Janji Temu dengan pasien </h1>
+                @endforelse
             <div class="bg-gradient-to-r from-blue-500 mt-5 p-5 text-white text-center">
-                <a href="" class="mt-"> View More</a>
+                <a href="{{route('janji-dokter.index')}}" class="mt-"> View More</a>
             </div>
             <div class="card-notes bg-white w-100 mt-5 p-5">
                 Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the

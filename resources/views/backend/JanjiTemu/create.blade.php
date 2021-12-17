@@ -20,7 +20,6 @@
 @section('content')
     @include('sweetalert::alert')
 
-
 @endsection
 
 

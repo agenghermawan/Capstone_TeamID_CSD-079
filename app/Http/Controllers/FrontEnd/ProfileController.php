@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use App\Http\Controllers\Controller;
+use App\Models\JanjiTemu;
 use App\Models\konsultasi;
+use App\Models\RumahSakit;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -16,8 +18,9 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        $dataKonsultasi = konsultasi::where('ditulisOleh', Auth::user()->name)->get();
-        return view('frontend.Profile.index',compact('dataKonsultasi'));
+        $dataKonsultasi = konsultasi::where('ditulisOleh', Auth::user()->id)->get();
+        $dataJanjiDokter = JanjiTemu::where('user_id', Auth::user()->id)->get();
+        return view('frontend.Profile.index',compact('dataKonsultasi','dataJanjiDokter'));
     }
 
     /**

@@ -16,52 +16,47 @@
         </div>
         <div class="whyUs-container">
             <div class="card-1-whyUs">
-                <h2>Why Choose Webdev</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                    dolore magna aliqua. Duis aute irure dolor in reprehenderit Asperiores dolores sed et. Tenetur quia eos.
-                    Autem tempore quibusdam vel necessitatibus optio ad corporis. </p>
+                <h2>SEHATKU</h2>
+                <p>Upaya kami adalah untuk selalu memberikan perawatan medis terbaik dengan cara yang cepat dan efisien untuk memastikan kepuasan pasien.
+                    Sejumlah besar pasien internasional memilih kita karena tim ahli kami yang terdiri dari dokter, staf yang setia, dan infrastruktur canggih setara dengan standar global,
+                    menjadikan kami nama yang dipercaya tidak hanya untuk pasien dari dalam negeri, tetapi di seluruh dunia.</p>
                 <button>learn more > </button>
             </div>
             <div class="card-2-whyUs">
                 <img src="Assets/google-docs.png" alt="">
                 <h3>Lorem Ipsum</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique, eum repellendus officia rerum
-                    exercitationem nulla sed. </p>
+                <p>Kami percaya perawatan medis berkualitas tinggi di seluruh dunia haruslah menjangkau nyaman, terjangkau, aman, nyaman dan efisien </p>
             </div>
             <div class="card-2-whyUs">
                 <img src="Assets/google-docs.png" alt="">
                 <h3>Lorem Ipsum</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique, eum repellendus officia rerum
-                    exercitationem nulla sed. </p>
+                <p>Cara kerja yang efisien dan terorganisir memungkinkan kami melayani pasien dengan perawatan kesehatan terbaik. </p>
             </div>
             <div class="card-2-whyUs">
                 <img src="Assets/google-docs.png" alt="">
                 <h3>Lorem Ipsum</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Similique, eum repellendus officia rerum
-                    exercitationem nulla sed. </p>
+                <p>Kami berkomitmen untuk memberikan solusi medis bahkan untuk kasus yang paling sulit untuk kepentingan pasien dari seluruh dunia.</p>
             </div>
         </div>
 
         <div class="Services-container">
             <h2>Services</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Duis aute irure dolor in reprehenderit Asperiores dolores sed et. Tenetur quia eos. Autem
-                tempore quibusdam vel necessitatibus optio ad corporis. </p>
+            <p>Kami memberikan layanan terbaik disetiap fiturnya dengan pelayanan yang mudah dan aman</p>
             <div class="card-service-container">
                 <div class="card-service">
-                    <img src="{{ asset('image/google-docs.png') }}" alt="">
-                    <h3>Lorem Ipsum</h3>
-                    <p>Illum aperiam neque et officia magnam officiis. </p>
+                    <img src="{{ asset('image/chat.png') }}" alt="">
+                    <h3>Chat dengan dokter</h3>
+                    <p>Tanya Dokter Kapan pun & di Mana pun secara langsung </p>
                 </div>
                 <div class="card-service">
-                    <img src="{{ asset('image/google-docs.png') }}" alt="">
-                    <h3>Lorem Ipsum</h3>
-                    <p>Illum aperiam neque et officia magnam officiis. </p>
+                    <img src="{{ asset('image/meeting.png') }}" alt="">
+                    <h3>Buat janji RS</h3>
+                    <p>Cari rumah sakit terdekat dan buat janji dengan langkah mudah</p>
                 </div>
                 <div class="card-service">
-                    <img src="{{ asset('image/google-docs.png') }}" alt="">
-                    <h3>Lorem Ipsum</h3>
-                    <p>Illum aperiam neque et officia magnam officiis. </p>
+                    <img src="{{ asset('image/info.png') }}" alt="">
+                    <h3>Info kesehatan</h3>
+                    <p>Menyediakan Informasi terupdate mengenai penyakit, obat, dan pola hidup sehat</p>
                 </div>
             </div>
         </div>

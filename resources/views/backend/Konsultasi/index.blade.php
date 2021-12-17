@@ -21,9 +21,13 @@
     <div class="grid container grid-cols-1 md:grid-cols-2 gap-4 lg:grid-cols-3 w-full mt-10">
         @foreach($data as $item)
             <a href="{{route('konsultasi-dokter.show',$item->id)}}">
-                    <div class="bg-white p-5 shadow-md md:flex rounded transition transform hover:scale-105 ease-in-out duration-500">
+                @php
+                    $dataKonsultasi = \App\Models\User::where('id',$item->ditulisOleh)->first();
+                    $jawaban = \App\Models\jawabanKonsultasi::where('konsultasi_id',$item->id)->first();
+                @endphp
+                    <div class="bg-white p-5 shadow-md md:flex rounded transition transform hover:scale-105 ease-in-out duration-500 h-28">
                     <div class="img">
-                        <img src="https://ui-avatars.com/api/?name={{$item->ditulisOleh}}" class="rounded-full" width="60px" height="60px" alt="">
+                        <img src="https://ui-avatars.com/api/?name={{$dataKonsultasi->name}}" class="rounded-full" width="60px" height="60px" alt="">
                     </div>
                     <div class="ml-3 md:w-64">
         {{--                @if(empty($item->jawabankonsultasi))--}}
@@ -31,8 +35,14 @@
         {{--                @elseif(empty($item->jawabankonsultasi))--}}
         {{--                     <h1 class="">{{$item->judulKonsultasi}} <span> <i class="fas fa-check-circle"> </i></span></h1>--}}
         {{--                @endif--}}
-                         <h1 class="">{{$item->judulKonsultasi}} <span> <i class="fas fa-check-circle"> </i></span></h1>
-                        <p class="text-sm text-blue-500"> {{$item->ditulisOleh}}  </p>
+                         <h1 class="">{{$item->judulKonsultasi}}
+                             @if($jawaban == null )
+                             <span> <i class="fas fa-comment-slash"> </i></span>
+                        @else
+                            <span> <i class="fas fa-comment"> </i></span>
+                        @endif
+                             <p class="text-sm text-blue-500"> {{$dataKonsultasi->name}}  </p>
+                        </h1>
                     </div>
                     <div class="ml-3  justify-end w-full md:text-right">
                         <span class="text-xs text-blue-300"> {{$item->created_at->diffForHumans()}}</span>

@@ -2,7 +2,6 @@
 
 @section('css')
 
-
 @endsection
 @section('content')
     @include('sweetalert::alert')
@@ -10,23 +9,20 @@
     <div class="bg-white grid rounded-lg grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-7">
         <div class="col-span-1 flex items-center border-r">
             <div class="image w-1/4 ">
-                @if($data -> profile_photo_path == null)
-                    <img src="{{asset('image/avatar doktor.jpg')}}" class="w-20 h-20 rounded-full" alt="">
-                @else
-                    <img src="{{ asset('image/profile.jpg') }}" class="w-20 h-20 rounded-full " alt="">
-                @endif
+                <img src="{{ Storage::url($data->profile_photo_path) }}" class="w-20 h-20 rounded-full" alt="">
+                <i class="fas fa-exchange-alt text-blue-300"></i>
             </div>
             <div class="name">
-                <h4 class="text-blue-700 text-base tracking-wide"> Ageng Hermawan </h4>
-                <h4 class="text-blue-500 text-sm tracking-wide"> Dokter Anak </h4>
+                <h4 class="text-blue-700 text-base tracking-wide -mt-2"> {{$data->dokter->fullname}} </h4>
+                <h4 class="text-blue-500 text-sm tracking-wide"> {{$data->dokter->sebagaiDokter}} </h4>
             </div>
         </div>
         <div class="col-span-1 border-r px-4">
             <h4 class="text-sm text-blue-700 font-normal"> Kontak Detail </h4>
             <ul class="list-none mt-2 text-sm font-normal text-blue-400">
-                <li> {{$data->email}} </li>
-                <li> {{$data->status}}</li>
-                <li> {{$data->telp}}</li>
+                <li> {{$data->dokter->email}} </li>
+                <li> {{$data->dokter->status}}</li>
+                <li> {{$data->dokter->telp}}</li>
             </ul>
         </div>
         <div class="col-span-1 flex items-center justify-center text-center">
@@ -40,28 +36,33 @@
     <div class="grid grid-cols-1 gap-3 md:grid-cols-2 xl:grid-cols-2 mt-4">
         <div class="left-element-detail bg-white col-span-1 p-10">
             <p class=" text-base text-blue-500 "> <i class="fas fa-user-shield"></i> Profile </p>
-        <form action="{{route('dokter.update', $data->id)}}" method="POST">
+        <form action="{{route('dokter.update', $data->dokter->id)}}" method="POST" enctype="multipart/form-data">
             @method('PUT')
                 @csrf
             <div class="form mt-4 text-blue-600 grid grid-cols-1 md:grid-cols-2 gap-4 xl:grid-cols-2">
                 <div class="form-group">
                     <label for="name" class="block text-sm text-blue-400"> Nama Anda : </label>
-                    <input type="text" class="border-blue-300 w-full bg-blue-50 rounded mt-2" name="name" value="{{$data->fullname}}">
+                    <input type="text" class="border-blue-300 w-full bg-blue-50 rounded mt-2" name="fullname" value="{{$data->dokter->fullname}}">
                 </div>
                 @error('fullname')
                  <p class="text-red-500 text-sm"> {{$message}} </p>
                 @enderror
                 <div class="form-group">
                     <label for="email" class="block text-sm text-blue-400"> Email : </label>
-                    <input type="text" class="border-blue-300 bg-blue-50 w-full rounded mt-2" name="email" value="{{$data->email}}">
+                    <input type="text" class="border-blue-300 bg-blue-50 w-full rounded mt-2" name="email" value="{{$data->dokter->email}}">
                 </div>
+                @error('email')
+                <p class="text-red-500 text-sm"> {{$message}} </p>
+                @enderror
             </div>
             <div class="form mt-4 text-blue-600 grid grid-cols-1 ">
                 <div class="form-group">
                     <label for="alamat" class="block text-sm text-blue-400"> Alamat : </label>
-                    <input type="text" name="alamat" value="{{$data->alamat}}" class="border-blue-300  bg-blue-50 w-full rounded mt-2">
+                    <input type="text" name="alamat" value="{{$data->dokter->alamat}}" class="border-blue-300  bg-blue-50 w-full rounded mt-2">
                 </div>
-
+                @error('alamat')
+                 <p class="text-red-500 text-sm"> {{$message}} </p>
+                @enderror
             </div>
             <div class="form mt-4 text-blue-600 grid grid-cols-1 md:grid-cols-2 gap-4 xl:grid-cols-2">
                 <div class="form-group">
@@ -73,13 +74,25 @@
                 </div>
                 <div class="form-group">
                     <label for="kota" class="block text-sm text-blue-400"> Kota : </label>
-                    <input type="text" name="kota" value="{{$data->kota}}" class="border-blue-300 bg-blue-50 w-full rounded mt-2">
+                    <input type="text" name="kota" value="{{$data->dokter->kota}}" class="border-blue-300 bg-blue-50 w-full rounded mt-2">
                 </div>
+                @error('kota')
+                <p class="text-red-500 text-sm"> {{$message}} </p>
+                @enderror
             </div>
             <div class="form mt-4 text-blue-600 grid grid-cols-1 ">
                 <div class="form-group">
                     <label for="deskripsi" class="block text-sm text-blue-400"> Description :</label>
-                    <textarea name="deskripsi" class="rounded w-full bg-blue-50 border-blue-300 mt-2" id="" rows="2"></textarea>
+                    <textarea name="deskripsi" class="rounded w-full bg-blue-50 border-blue-300 mt-2" id="" rows="2">{{$data->dokter->deskripsi}}</textarea>
+                </div>
+            </div>
+            <div class="form mt-4 text-blue-600 grid grid-cols-1 ">
+                <div class="form-group">
+                    <label for="photo" class="block text-sm text-blue-400"> Photo :</label>
+                    <input type="file" class="border p-3" id="photo" name="profile_photo_path">
+                    @error('profile_photo_path')
+                    <p class="text-red-500 text-sm"> {{$message}} </p>
+                    @enderror
                 </div>
             </div>
             <div class="tindakan border-t border-gray-300 pt-5">
@@ -138,7 +151,6 @@
             </div>
         </form>
         </div>
-
         <div class="left-element-detail col-span-1 w-full bg-white pt-10 ">
             <p class="text-base text-blue-500 mt-4 ml-10"><i class="fas fa-user mr-2"></i> Profile Data Anda </p>
             <div class="content p-10">
@@ -146,53 +158,53 @@
                         <div class="border-l-4 border-blue-500 border-opacity-100 border-solid  pl-4 flex w-full flex-wrap">
                             <div class="item w-full md:w-1/2 text-base text-blue-400 mb-2">
                                 <h4 class="text-blue-600"> Nama  </h4>
-                                <p> {{$data->fullname}} </p>
+                                <p> {{$data->dokter->fullname}} </p>
                             </div>
                         </div>
                         <div class="border-l-4 border-blue-500 border-opacity-100 border-solid  pl-4 flex w-full flex-wrap">
                             <div class="item w-full md:w-1/2 text-base text-blue-400 mb-2">
                                 <h4 class="text-blue-600"> Nama  </h4>
-                                <p> {{$data->telp}} </p>
+                                <p> {{$data->dokter->telp}} </p>
                             </div>
                         </div>
                         <div class="border-l-4 border-blue-500 border-opacity-100 border-solid  pl-4 flex w-full flex-wrap">
                             <div class="item w-full md:w-1/2 text-base text-blue-400 mb-2">
                                 <h4 class="text-blue-600"> Nama  </h4>
-                                <p> {{$data->sebagaiDokter}} </p>
+                                <p> {{$data->dokter->sebagaiDokter}} </p>
                             </div>
                         </div>
                           <div class="border-l-4 border-blue-500 border-opacity-100 border-solid  pl-4 flex w-full flex-wrap">
                             <div class="item w-full md:w-1/2 text-base text-blue-400 mb-2">
                                 <h4 class="text-blue-600"> Alamat  </h4>
-                                <p> {{$data->alamat}} </p>
+                                <p> {{$data->dokter->alamat}} </p>
                             </div>
                         </div>
                         <div class="border-l-4 border-blue-500 border-opacity-100 border-solid  pl-4 flex w-full flex-wrap">
                             <div class="item w-full md:w-1/2 text-base text-blue-400 mb-2">
                                 <h4 class="text-blue-600"> No Str  </h4>
-                                <p> {{$data->noStr}} </p>
+                                <p> {{$data->dokter->noStr}} </p>
                             </div>
                         </div>
                         <div class="border-l-4 border-blue-500 border-opacity-100 border-solid  pl-4 flex w-full flex-wrap">
                             <div class="item w-full md:w-1/2 text-base text-blue-400 mb-2">
                                 <h4 class="text-blue-600"> Email  </h4>
-                                <p> {{$data->email}} </p>
+                                <p> {{$data->dokter->email}} </p>
                             </div>
                         </div>
                         <div class="border-l-4 border-blue-500 border-opacity-100 border-solid  pl-4 flex w-full flex-wrap">
                             <div class="item w-full md:w-1/2 text-base text-blue-400 mb-2">
                                 <h4 class="text-blue-600"> Kota  </h4>
-                                <p> {{$data->kota}} </p>
+                                <p> {{$data->dokter->kota}} </p>
                             </div>
                         </div>
 
                         <div class="border-l-4 border-blue-500 border-opacity-100 border-solid  pl-4 flex w-full flex-wrap">
                             <div class="item w-full md:w-1/2 text-base text-blue-400 mb-2">
                                 <h4 class="text-blue-600"> Pengalaman Praktik  </h4>
-                                @if($data->pengalamanPraktik == null)
+                                @if($data->dokter->pengalamanPraktik == null)
                                     <p> Belum mengisi pengalaman praktik </p>
                                 @else
-                                @foreach($data->pengalamanPraktik as $item)
+                                @foreach($data->dokter->pengalamanPraktik as $item)
                                     <p> {{$item['pengalamanPraktik']}} </p>
                                 @endforeach
                                     @endif
@@ -201,10 +213,10 @@
                         <div class="border-l-4 border-blue-500 border-opacity-100 border-solid  pl-4 flex w-full flex-wrap">
                             <div class="item w-full md:w-1/2 text-base text-blue-400 mb-2">
                                 <h4 class="text-blue-600"> Riwayat Pendidikan  </h4>
-                                @if($data->riwayatPendidikan == null)
+                                @if($data->dokter->riwayatPendidikan == null)
                                     <p> Belum mengisi riwayat pendidikan </p>
                                 @else
-                                @foreach($data->riwayatPendidikan as $itempendidikan)
+                                @foreach($data->dokter->riwayatPendidikan as $itempendidikan)
                                     <p> {{$itempendidikan['riwayatPendidikan']}}  </p>
                                 @endforeach
                                     @endif
@@ -213,7 +225,7 @@
                     <div class="bg-white col-span-1 rounded shadow-sm md:pt-4">
                         <h4 class="text-blue-500"> Deskripsi / Informasi Lainnya </h4>
                         <div class="mt-3 text-blue-900">
-                            <p class="text-justify text-sm">{!! $data->deskripsi !!}</p>
+                            <p class="text-justify text-sm">{!! $data->dokter->deskripsi !!}</p>
                         </div>
                     </div>
                 </div>

@@ -11,8 +11,17 @@ use PHPUnit\Framework\Constraint\Count;
 class RumahSakitController extends Controller
 {
     public function index (){
-        $data = Poliklinik::all();
-        return view('frontend.RumahSakit.index',compact('data'));
+
+        if (request('searchRumahsakit')){
+            $keywoard = \request('searchRumahsakit');
+            $data = Poliklinik::where('nama', 'like', "%{$keywoard}%")->latest()->get();
+            return  view('frontend.rumahsakit.index',compact('data'));
+        }
+        else{
+            $data = Poliklinik::all();
+            return  view('frontend.RumahSakit.index',compact('data'));
+        }
+
     }
 
     public function show ($nama){

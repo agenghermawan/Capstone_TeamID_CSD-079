@@ -8,12 +8,6 @@
     <title>Dashboard Sehatku</title>
     @include('layouts.style')
     <script src="https://cdn.tiny.cloud/1/tmrao508v4qd0k76bb3ztge1vkvrlu25nec5c1fzm5tftz7y/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
-{{--    <script>--}}
-{{--        tinymce.init({--}}
-{{--            selector: 'textarea',--}}
-{{--        });--}}
-{{--    </script>--}}
-
     @yield('texteditor')
 </head>
 
@@ -82,18 +76,6 @@
                     </li>
                     <li>
                         <a
-                            href="{{ route('dashboard') }}"
-                            class="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
-                            :class="{'justify-center': !isSidebarOpen}"
-                        >
-                            <i class="fas fa-briefcase-medical mr-2"></i>
-                            <span :class="{ 'lg:hidden': !isSidebarOpen }">
-                                Konsultasi
-                            </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a
                             href="{{ route('dokter.index') }}"
                             class="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
                             :class="{'justify-center': !isSidebarOpen}"
@@ -118,7 +100,7 @@
                         </li>
                     <li>
                         <a
-                            href="{{ route('dashboard') }}"
+                            href="{{ route('janji-dokter.index') }}"
                             class="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
                             :class="{'justify-center': !isSidebarOpen}"
                         >
@@ -263,7 +245,7 @@
                         </li>
                         <li>
                             <a
-                                href="{{ route('dashboard') }}"
+                                href="{{ route('janji-dokter.index') }}"
                                 class="flex items-center p-2 space-x-2 rounded-md hover:bg-gray-100"
                                 :class="{'justify-center': !isSidebarOpen}"
                             >

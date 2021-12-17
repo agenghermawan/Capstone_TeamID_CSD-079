@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Dokter;
+use App\Models\JanjiTemu;
 use App\Models\Poliklinik;
 use App\Models\RumahSakit;
 use Illuminate\Http\Request;
@@ -40,5 +41,13 @@ class BuatJanjiController extends Controller
         $dataDokter =  Dokter::where('id',$data['dokter_id'])->first();
         $dataPoliklinik =  Poliklinik::where('id',$data['poliklinik_id'])->first();
         return view('frontend.BuatJanji.konfirmasi',compact('data','dataRumahsakit','dataDokter','dataPoliklinik'));
+    }
+
+    public function detail($id){
+        $data = JanjiTemu::where('id',$id)->first();
+        $dataRumahSakit = RumahSakit::where('id',$data->rumahsakit_id)->first();
+        $dataDokter = Dokter::where('id',$data->dokter_id)->first();
+        $dataPoliklinik = Poliklinik::where('id',$data->poliklinik_id)->first();
+        return view('frontend.BuatJanji.detail',compact('data','dataRumahSakit','dataDokter','dataPoliklinik'));
     }
 }

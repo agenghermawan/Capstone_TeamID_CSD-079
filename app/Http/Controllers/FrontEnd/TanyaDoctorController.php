@@ -1,18 +1,15 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Dokter;
 use App\Models\JanjiTemu;
-use App\Models\Poliklinik;
-use App\Models\RumahSakit;
+use App\Models\jawabanKonsultasi;
+use App\Models\konsultasi;
 use Illuminate\Http\Request;
-use Mail;
-use App\Mail\SuccessBuatJanji;
 use Auth;
-
-class JanjiTemuController extends Controller
+class TanyaDoctorController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,9 +18,15 @@ class JanjiTemuController extends Controller
      */
     public function index()
     {
-        $getID = Dokter::with('user')->where('user_id',Auth::user()->id)->first();
-        $data = JanjiTemu::where('dokter_id', $getID->id)->get();
-        return view('backend.JanjiTemu.index',compact('data','getID'));
+        if (\request('searchKonsultasi')){
+            $keywoard = \request('searchKonsultasi');
+            $dataKonsultasi = konsultasi::where('judulKonsultasi', 'like', "%{$keywoard}%")->latest()->get();
+            return view('frontend.TanyaDokter.index',compact('dataKonsultasi'));
+        }else{
+            $dataKonsultasi = konsultasi::all();
+            return view('frontend.TanyaDokter.index',compact('dataKonsultasi'));
+        }
+
     }
 
     /**
@@ -44,12 +47,7 @@ class JanjiTemuController extends Controller
      */
     public function store(Request $request)
     {
-        $data= $request->all();
-        $dataEmail = $data['email'];
-        JanjiTemu::create($data);
-        Mail::to($dataEmail)->send(new SuccessBuatJanji());
-        \Alert::success('kamu berhasil melakukan pengajuan janji dengan dokter silahkan tunggu konfirmasi','success');
-        return redirect()->route('success.buatjanji');
+        //
     }
 
     /**
@@ -60,11 +58,15 @@ class JanjiTemuController extends Controller
      */
     public function show($id)
     {
-        $data = JanjiTemu::where('id',$id)->first();
-        $dataRumahSakit = RumahSakit::where('id',$data->rumahsakit_id)->first();
-        $dataDokter = Dokter::where('id',$data->dokter_id)->first();
-        $dataPoliklinik = Poliklinik::where('id',$data->poliklinik_id)->first();
-        return view('backend.JanjiTemu.show',compact('data','dataRumahSakit','dataDokter','dataPoliklinik'));
+        $data = konsultasi::with('jawabankonsultasi')->where('id',$id)->first();
+        $datajawabankonsultasi = jawabanKonsultasi::with('user','konsultasi')->where('konsultasi_id',$id)->first();
+        if ($datajawabankonsultasi == null) {
+            return view('frontend.Profile.detail',compact('data','datajawabankonsultasi'));
+        }else{
+            $idDokter = $datajawabankonsultasi->user->id;
+            $datadokter = Dokter::where('user_id', $idDokter)->first();
+            return view('frontend.Profile.detail',compact('data','datajawabankonsultasi','datadokter'));
+        }
     }
 
     /**

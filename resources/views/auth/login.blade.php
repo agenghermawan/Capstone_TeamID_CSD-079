@@ -33,7 +33,7 @@
                                 <div class="from-group mb-2 col-md-12">
                                     <label for="" class="mb-1"> Email address</label>
                                     <input type="text" name="email" class="form-control"
-                                        style="width: 400px;border-radius:50px; border:1px solid gray" placeholder="">
+                                        style="width: 400px;border-radius:50px; border:1px solid lightblue" placeholder="">
                                     @error('email')
                                         <p class="text-sm text-red-300"> {{ $message }}</p>
                                     @enderror
@@ -41,7 +41,7 @@
                                 <div class="from-group">
                                     <label for="" class="mb-1"> Password</label>
                                     <input type="password" name="password" class="form-control"
-                                        style="width: 400px;border-radius:50px; border:1px solid gray" placeholder="">
+                                        style="width: 400px;border-radius:50px; border:1px solid ligtblue" placeholder="">
                                     @error('password')
                                         <p class="text-sm text-red-300"> {{ $message }}</p>
                                     @enderror

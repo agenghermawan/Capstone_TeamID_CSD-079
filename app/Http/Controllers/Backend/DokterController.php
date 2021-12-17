@@ -7,6 +7,7 @@ use App\Models\Dokter;
 use App\Models\JanjiTemu;
 use App\Models\RumahSakit;
 use App\Models\User;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Validator;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -89,7 +90,7 @@ class DokterController extends Controller
     {
         $countPasien = JanjiTemu::where('dokter_id',$id)->count();
         $pasienTerakhir = JanjiTemu::where('dokter_id',$id)->get();
-        $data = Dokter::with('user')->where('id',$id)->first();
+        $data = User::whereRelation('dokter','id',$id)->first();
         return view('backend.Dokter.edit',compact('data','countPasien','pasienTerakhir'));
     }
 
@@ -102,19 +103,25 @@ class DokterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $getId = Dokter::where('id',$id)->first();
-        Validator::make($request->all(), [
-            'name' => 'required',
-            'email' => 'required',
-            'alamat' => 'required',
-            'jenis_kelamin' => 'required',
-            'kota' => 'required',
-            'deskripsi' => 'required',
-            'pengalamanPraktik' => 'required',
-            'riwayatPendidikan' => 'required',
-        ])->validate();
+        $dokter = Dokter::find($id);
+        $dokter->fullname = $request->fullname;
+        $dokter->email = $request->email;
+        $dokter->alamat = $request->alamat;
+        $dokter->kota = $request->kota;
+        $dokter->deskripsi = $request->deskripsi;
+        $dokter->pengalamanPraktik = $request->pengalamanPraktik;
+        $dokter->riwayatPendidikan = $request->riwayatPendidikan;
+        $dokter->save();
 
-        $getId->update($request->all());
+
+
+        $updatePhoto = User::where('id',$dokter->user_id)->first();
+        $updatePhoto->jenis_kelamin = $request->jenis_kelamin;
+        if($updatePhoto->profile_photo_path == null){
+            $updatePhoto->profile_photo_path = $request->file('profile_photo_path')->storeAs('assets/user',$request->file('profile_photo_path')->getClientOriginalName(),'public');
+        }
+        $updatePhoto->save();
+
         Alert::toast('Berhasil di perbarui','success');
         return back();
     }

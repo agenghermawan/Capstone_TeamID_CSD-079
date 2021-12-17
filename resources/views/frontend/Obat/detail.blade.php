@@ -16,37 +16,37 @@
 
             <div class="info description">
                 <h2>Deskripsi</h2>
-                <p>{{$data->deskripsi}}</p>
+                <p>{!!  $data->deskripsi !!}</p>
             </div>
 
             <div class="info indication">
                 <h2>Manfaat</h2>
-                <p>{{$data->manfaat}}</p>
+                <p>{!! $data->manfaat !!}</p>
             </div>
 
             <div class="info composition">
                 <h2>Komposisi</h2>
-                <p>{{$data->golongan}}</p>
+                <p>{!! $data->golongan !!}</p>
             </div>
 
             <div class="info dose">
                 <h2>Dosis dan aturan</h2>
-                <p>{{$data->dosisdanaturan}}</p>
+                <p>{!! $data->dosisdanaturan !!}</p>
             </div>
 
             <div class="info how-to-use">
                 <h2>Efek Samping</h2>
-                <p>{{$data->efekSamping}}</p>
+                <p>{!! $data->efekSamping !!}</p>
             </div>
 
             <div class="info manufacture">
                 <h2>Manufaktur</h2>
-                <p>{{$data->merkDagang}}</p>
+                <p>{!! $data->merkDagang !!}</p>
             </div>
 
             <div class="info registration-number">
                 <h2>Interaksi</h2>
-                <p>{{$data->interaksi}}</p>
+                <p>{!! $data->interaksi !!}</p>
             </div>
         </div>
         <aside>

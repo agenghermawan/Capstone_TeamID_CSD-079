@@ -1,7 +1,7 @@
 <!-- Navigation -->
 
-<div class="container">
-    <nav class="navbar navbar-expand-lg  static-top p-5">
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg  p-5">
         <a class="navbar-brand d-flex " href="{{ route('LandingPage') }}">
             <img src="{{ asset('icon/consultation.png') }}" width="30" height="30" class="d-inline-block align-top"
                 alt="">
@@ -22,7 +22,16 @@
                     <a class="nav-link" href="{{ route('artikel_frontend') }}">Article</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('obat_frontend') }}">Obat</a>
+                    <div class="dropdown">
+                        <a class=" dropdown-toggle nav-link" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                            Info
+                        </a>
+
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <li><a class="dropdown-item fs-4 " href="#">Obat</a></li>
+                            <li><a class="dropdown-item fs-4 " href="#">Penyakit</a></li>
+                        </ul>
+                    </div>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('rumahSakit_frontend') }}">Rumah Sakit</a>
@@ -30,14 +39,17 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('dataCovid_frontend') }}">Covid</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('tanyaDokter.index')}}">Konsultasi</a>
+                </li>
                 @auth
                     <li class="nav-item">
-                        <div class="dropdown">
-                            <a class="dropdown-toggle nav-link" type="button" id="dropdownMenuButton1"
+                        <div class="dropdown  dropstart static-top">
+                            <a class="dropdown-toggle  nav-link" type="button" id="dropdownMenuButton1"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ Auth::user()->name }}
                             </a>
-                            <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="dropdownMenuButton1" style="font-size: 12px">
+                            <ul class="dropdown-menu " aria-labelledby="dropdownMenuButton1" style="font-size: 12px">
 
                             @if (Auth::user()->role_pengguna == 'Dokter')
                                  <?php
@@ -69,20 +81,20 @@
                                 @endif
                                 @if(Auth::user()->role_pengguna == 'Pengguna')
                                     <li>
-                                        <a class="dropdown-item fs-3 l px-5" style="font-size: 10px"
+                                        <a class="dropdown-item fs-4  px-5" style="font-size: 10px"
                                            href="{{ route('user.index') }}">Dashboard Anda</a>
                                     </li>
                                 @endif
                                 @if(Auth::user()->role_pengguna == 'Admin')
                                     <li>
-                                        <a class="dropdown-item fs-3 l px-5" style="font-size: 10px"
+                                        <a class="dropdown-item fs-4  px-5" style="font-size: 10px"
                                            href="{{ route('dashboard') }}">Dashboard Anda</a>
                                     </li>
                                 @endif
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
-                                        <button class="dropdown-item fs-3 px-5" type="submit">Logout</button>
+                                        <button class="dropdown-item fs-4 px-5" type="submit">Logout</button>
                                     </form>
                                 </li>
                             </ul>

@@ -14,7 +14,7 @@
                 <form action="{{route('konsultasi.store')}}" method="post" class="border-top pt-5 my-5">
                     @csrf
                     @method('post')
-                    <input type="hidden" value="{{Auth::user()->name}}" name="ditulisOleh">
+                    <input type="hidden" value="{{Auth::user()->id}}" name="ditulisOleh">
                     <div class="form-group">
                         <label for="" class="mb-2"> <h3> Judul (Title) Topik tentang pertanyaan </h3> </label>
                         <input type="text" name="judulKonsultasi" class="form-control p-4 rounded-3 shadow p-3 fs-3">

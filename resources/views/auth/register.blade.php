@@ -37,7 +37,7 @@
                                     <div class="from-group mb-2 col-md-12">
                                         <label for="" class="mb-1"> Nama (Maks. 18 karakter)</label>
                                         <input type="text" name="name" class="form-control"
-                                            style="width: 400px;border-radius:50px; border:1px solid gray" required
+                                            style="width: 400px;border-radius:50px; border:1px solid lightblue" required
                                             placeholder="">
                                         @error('name')
                                             <p class="text-xs text-red">{{ $message }}</p>
@@ -46,7 +46,7 @@
                                     <div class="from-group mb-2 col-md-12">
                                         <label for="" class="mb-1"> Email address</label>
                                         <input type="text" name="email" class="form-control"
-                                            style="width: 400px;border-radius:50px; border:1px solid gray" required
+                                            style="width: 400px;border-radius:50px; border:1px solid lightblue" required
                                             placeholder="">
                                         @error('email')
                                             <p class="text-xs text-red">{{ $message }}</p>
@@ -55,18 +55,18 @@
                                     <div class="from-group">
                                         <label for="" class="mb-1"> Password</label>
                                         <input type="password" name="password" class="form-control"
-                                            style="width: 400px;border-radius:50px; border:1px solid gray" required
+                                            style="width: 400px;border-radius:50px; border:1px solid lightblue" required
                                             placeholder="">
                                         @error('password')
                                             <p class="text-xs text-red">{{ $message }}</p>
                                         @enderror
                                     </div>
                                     <div class="from-group my-3">
-                                        <a href="" class="text-decoration-none"> Lupa Password </a>
+                                        <a href="{{route('login')}}" class="text-decoration-none"> Sudah Punya akun ?? login disini </a>
                                     </div>
                                     <div class="from-group mb-3">
                                         <a class="form-control bg-primary text-center text-light text-decoration-none"
-                                            required style="width: 400px;border-radius:50px; border:1px solid gray"
+                                            required style="width: 400px;border-radius:50px; border:1px solid lightblue"
                                             id="continue"> Continue
                                         </a>
                                     </div>
@@ -79,7 +79,7 @@
                                             Dokter</label>
                                         <select class="form-control" id="exampleFormControlSelect1"
                                             name="role_pengguna"
-                                            style="width: 400px;border-radius:50px; border:1px solid gray" required>
+                                            style="width: 400px;border-radius:50px; border:1px solid lightblue" required>
                                             <option value="Pengguna">Pengguna</option>
                                             <option value="Dokter">Dokter</option>
                                         </select>
@@ -89,13 +89,13 @@
                                 {{-- <div class="from-group mb-2 col-md-12" id="strhide" style="display: none">
                                     <label for="" class="mb-1">No Str</label>
                                     <input type="text" name="no_str" class="form-control"
-                                        style="width: 400px;border-radius:50px; border:1px solid gray" placeholder=""
+                                        style="width: 400px;border-radius:50px; border:1px solid lightblue" placeholder=""
                                         required>
                                 </div> --}}
                                 <div class="from-group mb-2 col-md-12">
                                     <label for="" class="mb-1">No Telp</label>
                                     <input type="text" name="telp" class="form-control"
-                                        style="width: 400px;border-radius:50px; border:1px solid gray" placeholder=""
+                                        style="width: 400px;border-radius:50px; border:1px solid lightblue" placeholder=""
                                         required>
                                     @error('telps')
                                         <p class="text-xs text-red">{{ $message }}</p>
@@ -103,13 +103,13 @@
                                 </div>
                                 <div class="from-group mb-3">
                                     <button class="form-control bg-info text-center text-light text-decoration-none"
-                                        style="width: 400px;border-radius:50px; border:1px solid gray" type="submit"
+                                        style="width: 400px;border-radius:50px; border:1px solid lightblue" type="submit"
                                         id="back">
                                         Back
                                     </button>
                                 </div>
                                 <button class="form-control bg-primary text-center text-light text-decoration-none"
-                                    style="width: 400px;border-radius:50px; border:1px solid gray" type="submit">
+                                    style="width: 400px;border-radius:50px; border:1px solid lightblue" type="submit">
                                     Submit
                                 </button>
                             </div>
