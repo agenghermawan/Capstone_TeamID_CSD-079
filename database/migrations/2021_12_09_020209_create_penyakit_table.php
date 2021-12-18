@@ -16,10 +16,14 @@ class CreatePenyakitTable extends Migration
         Schema::create('penyakit', function (Blueprint $table) {
             $table->id();
             $table->string('namaPenyakit');
-            $table->string('deskripsiPenyakit');
+            $table->longText('deskripsiSingkat');
             $table->string('ditulisOleh');
             $table->string('photoPenyakit');
-            $table->longText('isiPenyakit');
+            $table->longText('gejala');
+            $table->longText('penyebab');
+            $table->longText('faktorRisiko');
+            $table->longText('pengobatan');
+            $table->longText('pencegahan');
             $table->timestamps();
         });
     }

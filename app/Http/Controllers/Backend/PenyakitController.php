@@ -39,8 +39,15 @@ class PenyakitController extends Controller
     {
         $data = $request->all();
         \Validator::make($data,[
-            'isiPenyakit' => 'required',
+            'deskripsiSingkat' => 'required',
+            'ditulisOleh' => 'required',
+            'gejala' => 'required',
+            'penyebab' => 'required',
+            'faktorRisiko' => 'required',
+            'pengobatan' => 'required',
+            'pencegahan' => 'required',
             'photoPenyakit' => 'required|image:jpg,png',
+
         ])->validate();
         $data['photoPenyakit'] = $request->file('photoPenyakit')->store('assets/photoPenyakit','public',$request->file('photoPenyakit')->getClientOriginalName());
         Penyakit::create($data);

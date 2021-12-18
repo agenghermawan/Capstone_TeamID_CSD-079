@@ -13,7 +13,7 @@ class Penyakit extends Model implements HasMedia
     use HasFactory, InteractsWithMedia;
     protected $table = 'penyakit';
     protected $fillable = [
-        'namaPenyakit','isiPenyakit','deskripsiPenyakit','photoPenyakit','ditulisOleh'
+        'namaPenyakit','deskripsiSingkat','photoPenyakit','ditulisOleh','gejala','penyebab','faktorRisiko','pengobatan','pencegahan'
     ];
 
         public function registerMediaConversions(Media $media = null): void

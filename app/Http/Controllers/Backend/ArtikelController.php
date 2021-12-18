@@ -20,7 +20,7 @@ class ArtikelController extends Controller
         if (\Auth::user()->role_pengguna == 'Dokter') {
             $getId = \Auth::user()->id;
             $dataArtikelSendiri = User::with('dokter')->where('id', $getId)->first();
-            $getFullname = $dataArtikelSendiri->dokter->fullname;
+            $getFullname = $dataArtikelSendiri->name;
             return view('backend.Artikel.index', ['data' => Artikel::where('ditulisOleh', $getFullname)->get()]);
         } else{
             $data = Artikel::all();

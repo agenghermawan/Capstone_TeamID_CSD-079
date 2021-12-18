@@ -28,8 +28,8 @@
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item fs-4 " href="#">Obat</a></li>
-                            <li><a class="dropdown-item fs-4 " href="#">Penyakit</a></li>
+                            <li><a class="dropdown-item fs-4 " href="{{route('obat_frontend')}}">Obat</a></li>
+                            <li><a class="dropdown-item fs-4 " href="{{route('listpenyakit.frontend')}}">Penyakit</a></li>
                         </ul>
                     </div>
                 </li>

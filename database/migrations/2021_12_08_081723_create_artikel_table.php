@@ -20,7 +20,7 @@ class CreateArtikelTable extends Migration
             $table->string('ditulisOleh');
             $table->string('kategori');
             $table->string('refrensi');
-            $table->string('photo');
+            $table->string('photo')->nullable();
             $table->timestamps();
         });
     }

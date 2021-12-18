@@ -47,7 +47,7 @@
                                 Deskripsi Penyakit
                             </label>
                             <div class="mt-1">
-                                <textarea id="deskripsiPenyakit" name="deskripsiPenyakit" rows="3"
+                                <textarea id="deskripsiPenyakit" name="deskripsiSingkat" rows="3"
                                     class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
                             </div>
                         </div>
@@ -69,9 +69,70 @@
                                 <p class="text-red text-xs">{{$message}}</p>
                             @enderror
                         </label>
-                        <div class="space-y-1 text-center">
-                            <textarea name="isiPenyakit" id="editor" cols="20" rows="5" ></textarea>
+
+                        <div>
+                            <label for="deskripsiPenyakit" class="block text-sm font-medium text-gray-700">
+                                Deskripsi Singkat
+                            </label>
+                            <div class="mt-1">
+                                <textarea id="deskripsiSingkat" name="deskripsiSingkat" rows="3"
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                            </div>
                         </div>
+
+                        <div>
+                            <label for="deskripsiPenyakit" class="block text-sm font-medium text-gray-700">
+                                Gejala
+                            </label>
+                            <div class="mt-1">
+                                <textarea id="gejala" name="gejala" rows="3"
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="deskripsiPenyakit" class="block text-sm font-medium text-gray-700">
+                                Penyebab
+                            </label>
+                            <div class="mt-1">
+                                <textarea id="penyebab" name="penyebab" rows="3"
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="deskripsiPenyakit" class="block text-sm font-medium text-gray-700">
+                                Faktor Risiko
+                            </label>
+                            <div class="mt-1">
+                                <textarea id="deskripsiPenyakit" name="faktorRisiko" rows="3"
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <label for="deskripsiPenyakit" class="block text-sm font-medium text-gray-700">
+                                Pengobatan
+                            </label>
+                            <div class="mt-1">
+                                <textarea id="pengobatan" name="pengobatan" rows="3"
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                            </div>
+                        </div>
+
+
+                        <div>
+                            <label for="deskripsiPenyakit" class="block text-sm font-medium text-gray-700">
+                                Pencegahan
+                            </label>
+                            <div class="mt-1">
+                                <textarea id="deskripsiPenyakit" name="pencegahan" rows="3"
+                                          class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
+                            </div>
+                        </div>
+
+
                         @error('isiPenyakit')
                           <p class="text-red text-xs">{{$message}}</p>
                         @enderror

@@ -88,3 +88,11 @@
     </form>
 @endsection
 
+@section('texteditor')
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+        });
+    </script>
+@endsection
+

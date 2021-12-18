@@ -1,16 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Backend;
+namespace App\Http\Controllers\FrontEnd;
 
-use App\Models\Artikel;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
 
 class PenyakitController extends Controller
 {
     public function index()
     {
-        return  view('frontend.Penyakit');
+        return  view('frontend.Penyakit.index');
     }
 }

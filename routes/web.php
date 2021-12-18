@@ -55,6 +55,9 @@ Route::get('success/buatjanji',[App\Http\Controllers\Frontend\SupportController:
 Route::get('success/account',[App\Http\Controllers\Frontend\SupportController::class, 'account'] )->name('success.account');
 
 
+Route::get('daftar/penyakit',[App\Http\Controllers\Frontend\PenyakitController::class, 'index'] )->name('listpenyakit.frontend');
+
+
 Route::resource('tanyaDokter',App\Http\Controllers\Frontend\TanyaDoctorController::class);
 
 Route::middleware('auth')->prefix('admin')->group(function(){
@@ -87,7 +90,6 @@ Route::middleware('auth')->prefix('user')->group(function(){
     Route::post('konfirmasi/janji',[App\Http\Controllers\Frontend\BuatJanjiController::class, 'konfirmasi'])->name('konfirmasi.janji');
     Route::resource('profile/user',App\Http\Controllers\Frontend\ProfileController::class);
     Route::get('detail/janji/{id}',[App\Http\Controllers\Frontend\BuatJanjiController::class, 'detail'])->name('detail.janji');
-
     Route::resource('konsultasi',App\Http\Controllers\Frontend\KonsultasiController::class);
 
 });
