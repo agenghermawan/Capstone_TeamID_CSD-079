@@ -15,7 +15,7 @@
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-3 mt-5">
         @foreach ($dataPenyakit as $item)
             <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700">
-                <img class="rounded-t-lg" src="{{ Storage::url($item->photoPenyakit) }}" alt="">
+                <img class="rounded-t-lg" src="{{ Storage::url($item->photoPenyakit) }}" alt="" style="height: 254px;object-fit:cover;width:100%">
                 <div class="p-5">
                     <a href="#">
                         <h5 class="text-gray-900 font-bold text-2xl tracking-tight mb-2 dark:text-white">

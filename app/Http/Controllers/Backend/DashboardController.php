@@ -24,27 +24,47 @@ class DashboardController extends Controller
         $mytime = Carbon::now();
         $day = Carbon::now()->format('l');
 
-        $getID = Dokter::where('user_id',Auth::user()->id)->first();
-        $janjiTemu = JanjiTemu::where('dokter_id', $getID->id)->get()->take(2);
-
-        $greetings = "";
-        $time = date("H");
-        $timezone = date("e");
-        if ($time < "12") {
-            $greetings = "Selamat Pagi";
-        } else
-            if ($time >= "12" && $time < "17") {
-                $greetings = "Selamat Siang";
+        if(Auth::user()->role_pengguna == 'Dokter'){
+            $getID = Dokter::where('user_id',Auth::user()->id)->first();
+            $janjiTemu = JanjiTemu::where('dokter_id', $getID->id)->get()->take(2);
+    
+            $greetings = "";
+            $time = date("H");
+            $timezone = date("e");
+            if ($time < "12") {
+                $greetings = "Selamat Pagi";
             } else
-                if ($time >= "17" && $time < "19") {
-                    $greetings = "Selamat Sore";
+                if ($time >= "12" && $time < "17") {
+                    $greetings = "Selamat Siang";
                 } else
-                    if ($time >= "19") {
-                        $greetings = "Selamat Malam";
+                    if ($time >= "17" && $time < "19") {
+                        $greetings = "Selamat Sore";
+                    } else
+                        if ($time >= "19") {
+                            $greetings = "Selamat Malam";
+                        }
+            return view('backend.dashboard',compact('dataIndonesia','countRumahSakit','countPengguna','countDokter','greetings', 'janjiTemu'));
+
+        }else {
+            $getID = User::where('id',Auth::user()->id)->first();
+            $janjiTemu = JanjiTemu::where('dokter_id', $getID->id)->get()->take(2);
+    
+            $greetings = "";
+            $time = date("H");
+            $timezone = date("e");
+            if ($time < "12") {
+                $greetings = "Selamat Pagi";
+            } else
+                if ($time >= "12" && $time < "17") {
+                    $greetings = "Selamat Siang";
+                } else
+                    if ($time >= "17" && $time < "19") {
+                        $greetings = "Selamat Sore";
+                    } else
+                        if ($time >= "19") {
+                            $greetings = "Selamat Malam";
+                        }
                     }
-
-
-
-        return view('backend.dashboard',compact('dataIndonesia','countRumahSakit','countPengguna','countDokter','greetings', 'janjiTemu'));
-    }
+                    return view('backend.dashboard',compact('dataIndonesia','countRumahSakit','countPengguna','countDokter','greetings', 'janjiTemu'));
+        }
 }

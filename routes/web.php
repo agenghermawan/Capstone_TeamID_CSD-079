@@ -32,33 +32,33 @@ Route::get('/', function () {
 
 
 // Route::get('penyakit',[App\Http\Controllers\Frontend\ArtikelController::class, 'index'] );
-Route::get('artikel',[App\Http\Controllers\Frontend\ArtikelController::class, 'index'] )->name('artikel_frontend');
-Route::get('detail/artikel/{id}',[App\Http\Controllers\Frontend\ArtikelController::class, 'show'] )->name('artikelShow_frontend');
-Route::get('rumahsakit',[App\Http\Controllers\Frontend\RumahSakitController::class, 'index'] )->name('rumahSakit_frontend');
-Route::get('rumahsakit/show/{nama}',[App\Http\Controllers\Frontend\RumahSakitController::class, 'show'] )->name('rumahSakit_show_frontend');
-Route::get('rumahsakit/detail/{id}/{nama}',[App\Http\Controllers\Frontend\RumahSakitController::class, 'detail'] )->name('rumahSakit_detail_frontend');
+Route::get('artikel',[App\Http\Controllers\FrontEnd\ArtikelController::class, 'index'] )->name('artikel_frontend');
+Route::get('detail/artikel/{id}',[App\Http\Controllers\FrontEnd\ArtikelController::class, 'show'] )->name('artikelShow_frontend');
+Route::get('rumahsakit',[App\Http\Controllers\FrontEnd\RumahSakitController::class, 'index'] )->name('rumahSakit_frontend');
+Route::get('rumahsakit/show/{nama}',[App\Http\Controllers\FrontEnd\RumahSakitController::class, 'show'] )->name('rumahSakit_show_frontend');
+Route::get('rumahsakit/detail/{id}/{nama}',[App\Http\Controllers\FrontEnd\RumahSakitController::class, 'detail'] )->name('rumahSakit_detail_frontend');
 
-Route::get('DataCovid/indonesia',[App\Http\Controllers\Frontend\DataCovidController::class, 'index'] )->name('dataCovid_frontend');
-
-
-Route::get('Janji/dokter/{id}/{rumahsakitid}/{nama}',[App\Http\Controllers\Frontend\BuatJanjiController::class, 'index'] )->name('buatjanji_frontend');
+Route::get('DataCovid/indonesia',[App\Http\Controllers\FrontEnd\DataCovidController::class, 'index'] )->name('dataCovid_frontend');
 
 
-Route::get('obat',[App\Http\Controllers\Frontend\ObatController::class, 'index'] )->name('obat_frontend');
-Route::get('detail/obat/{id}',[App\Http\Controllers\Frontend\ObatController::class, 'show'] )->name('obatShow_frontend');
-
-Route::get('kategori/obat/{kategori}',[App\Http\Controllers\Frontend\ObatController::class, 'kategori'] )->name('obatKategori_frontend');
+Route::get('Janji/dokter/{id}/{rumahsakitid}/{nama}',[App\Http\Controllers\FrontEnd\BuatJanjiController::class, 'index'] )->name('buatjanji_frontend');
 
 
+Route::get('obat',[App\Http\Controllers\FrontEnd\ObatController::class, 'index'] )->name('obat_frontend');
+Route::get('detail/obat/{id}',[App\Http\Controllers\FrontEnd\ObatController::class, 'show'] )->name('obatShow_frontend');
 
-Route::get('success/buatjanji',[App\Http\Controllers\Frontend\SupportController::class, 'konfirmasi'] )->name('success.buatjanji');
-Route::get('success/account',[App\Http\Controllers\Frontend\SupportController::class, 'account'] )->name('success.account');
-
-
-Route::get('daftar/penyakit',[App\Http\Controllers\Frontend\PenyakitController::class, 'index'] )->name('listpenyakit.frontend');
+Route::get('kategori/obat/{kategori}',[App\Http\Controllers\FrontEnd\ObatController::class, 'kategori'] )->name('obatKategori_frontend');
 
 
-Route::resource('tanyaDokter',App\Http\Controllers\Frontend\TanyaDoctorController::class);
+
+Route::get('success/buatjanji',[App\Http\Controllers\FrontEnd\SupportController::class, 'konfirmasi'] )->name('success.buatjanji');
+Route::get('success/account',[App\Http\Controllers\FrontEnd\SupportController::class, 'account'] )->name('success.account');
+
+
+Route::get('daftar/penyakit',[App\Http\Controllers\FrontEnd\PenyakitController::class, 'index'] )->name('listpenyakit.frontend');
+Route::get('detail/penyakit/{id}',[App\Http\Controllers\FrontEnd\PenyakitController::class, 'detail'] )->name('detailpenyakit.frontend');
+
+Route::resource('tanyaDokter',App\Http\Controllers\FrontEnd\TanyaDoctorController::class);
 
 Route::middleware('auth')->prefix('admin')->group(function(){
     Route::get('dokter/daftarPermintaan',[DokterController::class,'daftarPermintaan'])->name('dokter_daftarPermintaan');
@@ -86,11 +86,11 @@ Route::middleware('auth')->prefix('admin')->group(function(){
 });
 
 Route::middleware('auth')->prefix('user')->group(function(){
-    Route::get('buat/janji',[App\Http\Controllers\Frontend\BuatJanjiController::class, 'create'])->name('create.janji');
-    Route::post('konfirmasi/janji',[App\Http\Controllers\Frontend\BuatJanjiController::class, 'konfirmasi'])->name('konfirmasi.janji');
-    Route::resource('profile/user',App\Http\Controllers\Frontend\ProfileController::class);
-    Route::get('detail/janji/{id}',[App\Http\Controllers\Frontend\BuatJanjiController::class, 'detail'])->name('detail.janji');
-    Route::resource('konsultasi',App\Http\Controllers\Frontend\KonsultasiController::class);
+    Route::get('buat/janji',[App\Http\Controllers\FrontEnd\BuatJanjiController::class, 'create'])->name('create.janji');
+    Route::post('konfirmasi/janji',[App\Http\Controllers\FrontEnd\BuatJanjiController::class, 'konfirmasi'])->name('konfirmasi.janji');
+    Route::resource('profile/user',App\Http\Controllers\FrontEnd\ProfileController::class);
+    Route::get('detail/janji/{id}',[App\Http\Controllers\FrontEnd\BuatJanjiController::class, 'detail'])->name('detail.janji');
+    Route::resource('konsultasi',App\Http\Controllers\FrontEnd\KonsultasiController::class);
 
 });
 

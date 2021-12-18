@@ -3,61 +3,51 @@
 @section('contentFrontEnd')
     <main>
 
-        <img src="{{Storage::url($data->photoObat)}}" alt="">
+        <img src="{{Storage::url($data->photoPenyakit)}}" alt="">
         <div class="detail-drugs-container">
-            <h1>{{$data -> namaObat}}</h1>
+            <h1> Batuk </h1>
             <p><b>{{$data->bentukObat}}</b></p>
             <p>*termasuk obat {{$data->golongan}}</p>
 
             <div class="info category">
-                <h2>Kategori</h2>
-                <p>{{$data->kategori}}</p>
-            </div>
-
-            <div class="info description">
-                <h2>Deskripsi</h2>
-                <p>{!!  $data->deskripsi !!}</p>
+                <h2>Deskripsi Penyakit</h2>
+                <p>{!! $data->deskripsiSingkat!!}</p>
             </div>
 
             <div class="info indication">
-                <h2>Manfaat</h2>
-                <p>{!! $data->manfaat !!}</p>
+                <h2>Gejala</h2>
+                <p>{!! $data->gejala !!}</p>
             </div>
 
             <div class="info composition">
-                <h2>Komposisi</h2>
-                <p>{!! $data->golongan !!}</p>
+                <h2>Penyebab</h2>
+                <p>{!! $data->penyebab !!}</p>
             </div>
 
             <div class="info dose">
-                <h2>Dosis dan aturan</h2>
-                <p>{!! $data->dosisdanaturan !!}</p>
+                <h2>Faktor dan Resiko </h2>
+                <p>{!! $data->faktorRisiko !!}</p>
             </div>
 
             <div class="info how-to-use">
-                <h2>Efek Samping</h2>
-                <p>{!! $data->efekSamping !!}</p>
+                <h2>Pengobatan</h2>
+                <p>{!! $data->pengobatan !!}</p>
             </div>
 
             <div class="info manufacture">
-                <h2>Manufaktur</h2>
-                <p>{!! $data->merkDagang !!}</p>
-            </div>
-
-            <div class="info registration-number">
-                <h2>Interaksi</h2>
-                <p>{!! $data->interaksi !!}</p>
+                <h2>Pencegahan</h2>
+                <p>{!! $data->pencegahan !!}</p>
             </div>
         </div>
         <aside>
             <h1>Rekomendasi Obat lain</h1>
             <div class="card-recommendation-container">
-                @foreach($dataRekomendasi as $item)
+                @foreach($rekomendasi as $item)
                     <div class="card-recommendation">
-                        <img src="{{Storage::url($item->photo)}}" alt="">
-                        <h2>{{$item->nama}}</h2>
+                        <img src="{{Storage::url($item->photoPenyakit)}}" alt="">
+                        <h2> Tes </h2>
                         <p>Rp.200000</p>
-                        <button>Detail</button>
+                        <a href="" class="btn btn-info rounded-lg shadow" style="width: 100px">Detail</a>
                     </div>
                 @endforeach
             </div>
