@@ -38,7 +38,7 @@
                                  $jawabanKonsultasi = \App\Models\jawabanKonsultasi::where('konsultasi_id',$konsultasi->id)->first();
                                 ?>
                                 @if($dataDokter->profile_photo_path == null)
-                                    <img src="https://ui-avatars.com/api/?name={{$dataDokter->name}}" class="rounded-circle" width="60px" height="60px" alt="">
+                                    <img src="https://ui-avatars.com/api/?name={{$dataDokter->name}}" class="rounded-circle" width="60px" height="60px" alt="avatar">
                                 @else
                                     <img src="{{Storage::url(Auth::user()->profile_photo_path)}}" alt="" class="rounded-circle" width="60px" height="60px">
                                 @endif

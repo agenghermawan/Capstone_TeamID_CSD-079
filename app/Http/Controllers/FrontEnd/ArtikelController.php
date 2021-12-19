@@ -10,7 +10,7 @@ class ArtikelController extends Controller
 {
     public function index()
     {
-        if (request('searchArtikel')){
+        if(request('searchArtikel')){
             $keywoard = \request('searchArtikel');
             $data = Artikel::where('title', 'like', "%{$keywoard}%")->latest()->get();
             return  view('frontend.Artikel.index',compact('data'));

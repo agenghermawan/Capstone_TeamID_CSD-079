@@ -53,211 +53,278 @@
                     </div>
                 </div>
             </div>
-            <!-- Chart -->
-            <div class="report grid grid-cols-1 md:grid-cols-12 gap-4 mt-5 ">
-                <div class="md:col-span-8 ">
-                    Data Pribadi
-                    <div class="bg-white w-100  mt-5">
-                        <div class="shadow-lg rounded-lg overflow-hidden " style="height: 425px">
-                            <div class="grid md:flex">
-                                <div class="p-10">
-                                    <img src="{{ asset('image/avatar doktor.jpg') }}" class="w-64 h-64 rounded-full" alt="">
-                                </div>
-                                <div class="md:p-10">
-                                    <h1 class="text-2xl font-semibold"> {{$greetings }}   </h1>
+
+
+            @if(Auth::user()->role_pengguna == 'Dokter')
+            <div class="grid grid-cols-1 md:grid-cols-3">
+                <div class="col-span-1">
+                    <div class="p-10 flex">
+                        <div class="imageAvatar">
+                            <img src="{{ asset('image/avatar doktor.jpg') }}" class="w-64 h-64 rounded-full" alt="">
+                        </div>
+                        <div class="info">
+                            <div class="md:p-10">
+                                <h1 class="text-2xl font-semibold"> {{$greetings }}   </h1>
+                                @if(Auth::user()->role_pengguna ==  'Dokter')
                                     <h1 class="text-lg tracking-wide mt-7"> {{$dataDokter->dokter->fullname}} </h1>
                                     <p class="text-sm text-blue-300"> {{$dataDokter->dokter->telp}}</p>
-                                    <h1> Alamat : {{$dataDokter->dokter->alamat}}</h1>
-                                </div>
-                            </div>
-                            <div class="description p-10">
-                                @if($dataDokter->dokter->deskripsi)
-                                    <h1 class="text-lg tracking-wide"> Deskripsi </h1>
-                                    <p class="text-sm ">   {{$dataDokter->dokter->deskripsi}} </p>
+
+                                    <div class="button mt-3">
+                                        <a href="{{route('janji-dokter.index')}}" class="bg-blue-300 p-3  shadow rounded"> Janji Temu </a>
+                                    </div>
+
                                 @else
-                                    <h1 class="text-lg tracking-wide"> Deskripsi </h1>
-                                    <p> Lorem Ipsum dolar mit</p>
+                                    <h1 class="text-lg tracking-wide mt-7"> Hallo Admin :)</h1>
+                                    <h1 class="text-lg tracking-wide mt-7"> {{Auth::user()->name}} </h1>
                                 @endif
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="md:col-span-4 ">
-                    Weekly Top
-                    <div class="bg-white mt-5" style="width: 65%; height: 200px">
-                        <div class="shadow-lg rounded-lg overflow-hidden">
-                            <div class="py-3 px-5">Informasi Covid</div>
-                            <canvas id="chartDoughnut"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Maps Content -->
-            <div class="w-100 h-100 grid grid-cols-12 mt-5">
-                <div class="col-span-12 bg-white p-5">
-                    Official Store
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.956854657923!2d107.63165751534372!3d-6.895764295017193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7a5573862af%3A0x173078800fac4efc!2sDicoding%20Space!5e0!3m2!1sen!2sid!4v1637827009762!5m2!1sen!2sid"
-                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
-            <div class="w-100 h-100 bg-white mt-5 p-5">
-                <div class="flex flex-col">
-                    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                        <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                            <div
-                                class="
-                                                    shadow
-                                                    overflow-hidden
-                                                    border-b border-gray-200
-                                                    sm:rounded-lg
-                                                    ">
-                                <table class="min-w-full divide-y divide-gray-200">
-                                    <thead class="bg-gray-50">
-                                        <tr>
-                                            <th scope="col"
-                                                class="
-                                                                    px-6
-                                                                    py-3
-                                                                    text-left text-xs
-                                                                    font-medium
-                                                                    text-gray-500
-                                                                    uppercase
-                                                                    tracking-wider
-                                                                    ">
-                                                Name
-                                            </th>
-                                            <th scope="col"
-                                                class="
-                                                                px-6
-                                                                py-3
-                                                                text-left text-xs
-                                                                font-medium
-                                                                text-gray-500
-                                                                uppercase
-                                                                tracking-wider
-                                                                ">
-                                                Title
-                                            </th>
-                                            <th scope="col"
-                                                class="
-                                                                    px-6
-                                                                    py-3
-                                                                    text-left text-xs
-                                                                    font-medium
-                                                                    text-gray-500
-                                                                    uppercase
-                                                                    tracking-wider
-                                                                    ">
-                                                Email
-                                            </th>
-                                            <th scope="col"
-                                                class="
-                                                                    px-6
-                                                                    py-3
-                                                                    text-left text-xs
-                                                                    font-medium
-                                                                    text-gray-500
-                                                                    uppercase
-                                                                    tracking-wider
-                                                                    ">
-                                                Role
-                                            </th>
-                                            <th scope="col" class="relative px-6 py-3">
-                                                <span class="sr-only">Edit</span>
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody class="bg-white divide-y divide-gray-200">
-                                        @for ($i = 0; $i < 6; $i++)
-                                            <tr>
-                                                <td class="px-6 py-4 whitespace-nowrap">
-                                                    <div class="flex items-center">
-                                                        <div class="ml-4">
-                                                            <div class="text-sm font-medium text-gray-900">
-                                                                Flora Wu
+                <div class="col-span-2">
+                    <div class="w-100 h-100 bg-white mt-5 p-5">
+                        <div class="flex flex-col">
+                            <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                    <div
+                                        class="
+                                                            shadow
+                                                            overflow-hidden
+                                                            border-b border-gray-200
+                                                            sm:rounded-lg
+                                                            ">
+                                        <table class="min-w-full divide-y divide-gray-200">
+                                            <thead class="bg-gray-50">
+                                                <tr>
+                                                    <th scope="col"
+                                                        class="
+                                                                            px-6
+                                                                            py-3
+                                                                            text-left text-xs
+                                                                            font-medium
+                                                                            text-gray-500
+                                                                            uppercase
+                                                                            tracking-wider
+                                                                            ">
+                                                        Nama Pasien
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="
+                                                                        px-6
+                                                                        py-3
+                                                                        text-left text-xs
+                                                                        font-medium
+                                                                        text-gray-500
+                                                                        uppercase
+                                                                        tracking-wider
+                                                                        ">
+                                                        Tanggal
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="
+                                                                            px-6
+                                                                            py-3
+                                                                            text-left text-xs
+                                                                            font-medium
+                                                                            text-gray-500
+                                                                            uppercase
+                                                                            tracking-wider
+                                                                            ">
+                                                        Jam Janji
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="
+                                                                            px-6
+                                                                            py-3
+                                                                            text-left text-xs
+                                                                            font-medium
+                                                                            text-gray-500
+                                                                            uppercase
+                                                                            tracking-wider
+                                                                            ">
+                                                        Rumah Sakit
+                                                    </th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="bg-white divide-y divide-gray-200">
+                                                @foreach ($janjiTemu as $item)
+                                                    <tr>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">
+                                                                    {{$item->nama}}
+                                                                    </div>
+                                                                </div>
                                                             </div>
-                                                        </div>
-                                                    </div>
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap">
-                                                    <div class="text-sm text-gray-500">
-                                                        Software engineer, IT
-                                                    </div>
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap">
-                                                    <div class="text-sm text-gray-500">
-                                                        flora.wu@example.com
-                                                    </div>
-                                                </td>
-                                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                                    Admin
-                                                </td>
-                                                <td
-                                                    class="
-                                                                    px-6
-                                                                    py-4
-                                                                    whitespace-nowrap
-                                                                    text-right text-sm
-                                                                    font-medium
-                                                                    ">
-                                                    <a href="#" class="text-indigo-600 hover:text-indigo-900">Edit</a>
-                                                </td>
-                                            </tr>
-                                        @endfor
-                                    </tbody>
-                                </table>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-500">
+                                                                {{$item->tanggal_janji}}
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-500">
+                                                                {{$item->jam_janji}}
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                            @php
+                                                              $getRumahsakit =  \App\Models\RumahSakit::where('id',$item->rumahsakit_id)->first();
+                                                            @endphp
+                                                            {{$getRumahsakit -> nama}}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+            @else
+                <div class="grid grid-cols-1 md:grid-cols-3">
+                    <div class="col-span-1">
+                        <div class="p-10 flex">
+                            <div class="imageAvatar">
+                                <img src="{{ asset('image/avatar doktor.jpg') }}" class="w-64 h-64 rounded-full" alt="">
+                            </div>
+                            <div class="info">
+                                <div class="md:p-10">
+                                    <h1 class="text-2xl font-semibold"> {{$greetings }}   </h1>
+                                    @if(Auth::user()->role_pengguna ==  'Dokter')
+                                        <h1 class="text-lg tracking-wide mt-7"> {{$dataDokter->dokter->fullname}} </h1>
+                                        <p class="text-sm text-blue-300"> {{$dataDokter->dokter->telp}}</p>
+                                        <h1> Alamat : {{$dataDokter->dokter->alamat}}</h1>
 
-        <!-- Right -->
-        <div class="right-content-dashboard">
-            <h1> Transaction </h1>
-            @forelse($janjiTemu as $item)
-            <div class="card-transaction bg-white mt-5 flex p-5">
-                <div class="grid grid-cols-12 md:w-100">
-                    <div class="transaction-left col-span-10 flex">
-                        <img src="{{ asset('image/profile.jpg') }}" class="rounded w-12 h-12" alt="">
-                        <div class="text pl-4">
-                            <h5> {{$item->nama}}</h5>
-                            <h5> {{$item->tanggal_janji}} </h5>
+                                        <div class="button">
+                                            <a href="{{route('janji-dokter.index')}}"></a>
+                                        </div>
+                                    @else
+                                        <h1 class="text-lg tracking-wide mt-7"> Hallo Admin :)</h1>
+                                        <h1 class="text-lg tracking-wide mt-7"> {{Auth::user()->name}} </h1>
+                                    @endif
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="transaction-right col-span-2">
-                        <p> 201 Pasien</p>
+                    <div class="col-span-2">
+                        <div class="w-100 h-100 bg-white mt-5 p-5">
+                            <div class="flex flex-col">
+                                <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+                                    <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                                        <div
+                                            class="
+                                                            shadow
+                                                            overflow-hidden
+                                                            border-b border-gray-200
+                                                            sm:rounded-lg
+                                                            ">
+                                            <table class="min-w-full divide-y divide-gray-200">
+                                                <thead class="bg-gray-50">
+                                                <tr>
+                                                    <th scope="col"
+                                                        class="
+                                                                            px-6
+                                                                            py-3
+                                                                            text-left text-xs
+                                                                            font-medium
+                                                                            text-gray-500
+                                                                            uppercase
+                                                                            tracking-wider
+                                                                            ">
+                                                        Nama Pasien
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="
+                                                                        px-6
+                                                                        py-3
+                                                                        text-left text-xs
+                                                                        font-medium
+                                                                        text-gray-500
+                                                                        uppercase
+                                                                        tracking-wider
+                                                                        ">
+                                                        Tanggal
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="
+                                                                            px-6
+                                                                            py-3
+                                                                            text-left text-xs
+                                                                            font-medium
+                                                                            text-gray-500
+                                                                            uppercase
+                                                                            tracking-wider
+                                                                            ">
+                                                        Jam Janji
+                                                    </th>
+                                                    <th scope="col"
+                                                        class="
+                                                                            px-6
+                                                                            py-3
+                                                                            text-left text-xs
+                                                                            font-medium
+                                                                            text-gray-500
+                                                                            uppercase
+                                                                            tracking-wider
+                                                                            ">
+                                                        Rumah Sakit
+                                                    </th>
+                                                </tr>
+                                                </thead>
+                                                <tbody class="bg-white divide-y divide-gray-200">
+                                                @foreach ($getlatestJanji as $item)
+                                                    <tr>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="flex items-center">
+                                                                <div class="ml-4">
+                                                                    <div class="text-sm font-medium text-gray-900">
+                                                                        {{$item->nama}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-500">
+                                                                {{$item->tanggal_janji}}
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap">
+                                                            <div class="text-sm text-gray-500">
+                                                                {{$item->jam_janji}}
+                                                            </div>
+                                                        </td>
+                                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                                            @php
+                                                                $getRumahsakit =  \App\Models\RumahSakit::where('id',$item->rumahsakit_id)->first();
+                                                            @endphp
+                                                            {{$getRumahsakit -> nama}}
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            @empty
-                <h1 class="font-semibold tracking-wide text-center p-10 text-2xl"> Belum ada Janji Temu dengan pasien </h1>
-                @endforelse
-            <div class="bg-gradient-to-r from-blue-500 mt-5 p-5 text-white text-center">
-                <a href="{{route('janji-dokter.index')}}" class="mt-"> View More</a>
-            </div>
-            <div class="card-notes bg-white w-100 mt-5 p-5">
-                Lorem ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
-                industry's standard dummy text ever since the 1500s.
-            </div>
-            <div class="card-docter mt-10">
-                <h1> Daftar Dokter</h1>
-                @for ($i = 0; $i < 5; $i++)
-                    <div class=" bg-white mt-4 p-5 grid grid-cols-12">
-                        <div class="col-span-2">
-                            <img src="{{ asset('image/dokter.png') }}" alt="">
-                        </div>
-                        <div class="col-span-6">
-                            <h5> Caca Monica </h5>
-                            <h6> Dokter Anak</h6>
-                        </div>
-                        <div class="col-span-4">
-                            <h5> Umur : 21 Tahun</h5>
-                        </div>
-                    </div>
-                @endfor
+            @endif
+
+            <!-- Maps Content -->
+            <div class="w-100 h-100 grid grid-cols-12 mt-5">
+                <div class="col-span-12 bg-white p-5">
+                    Lokasi Perusahaan
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.956854657923!2d107.63165751534372!3d-6.895764295017193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7a5573862af%3A0x173078800fac4efc!2sDicoding%20Space!5e0!3m2!1sen!2sid!4v1637827009762!5m2!1sen!2sid"
+                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
             </div>
         </div>
     </div>

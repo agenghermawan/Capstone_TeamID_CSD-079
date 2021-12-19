@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AfterDoctor;
+use App\Mail\TerimaPermintaanJanji;
 use App\Models\Dokter;
 use App\Models\JanjiTemu;
 use App\Models\Poliklinik;
@@ -56,8 +58,13 @@ class JanjiTemuController extends Controller
         $dataDokter = Dokter::where('id',$data['dokter_id'])->first();
         $dataPoliklinik = Poliklinik::where('id',$data['poliklinik_id'])->first();
         $dataEmail = $data['email'];
+        $EmailDoctor =  $dataDokter->email;
+
         JanjiTemu::create($data);
         Mail::to($dataEmail)->send(new SuccessBuatJanji($data,$dataRumahsakit,$dataDokter,$dataPoliklinik));
+
+        Mail::to($EmailDoctor)->send(new AfterDoctor($data,$dataRumahsakit,$dataDokter,$dataPoliklinik));
+
         \Alert::success('kamu berhasil melakukan pengajuan janji dengan dokter silahkan tunggu konfirmasi','success');
         return redirect()->route('success.buatjanji');
     }
@@ -97,7 +104,19 @@ class JanjiTemuController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data= JanjiTemu::find($id);
+        $getEmail = $data->email;
+
+        $dataRumahsakit = RumahSakit::where('id',$data->rumahsakit_id)->first();
+        $dataDokter = Dokter::where('id',$data->dokter_id)->first();
+        $dataPoliklinik = Poliklinik::where('id',$data->poliklinik_id)->first();
+
+        $data->status = $request->status;
+        $data->save();
+
+        Mail::to($getEmail)->send(new TerimaPermintaanJanji($data,$dataRumahsakit,$dataDokter,$dataPoliklinik));
+        \Alert::success('Berhasil memperbarui Data','Kami sudah memberikan informasi persetujuan kepada Pasien');
+        return back();
     }
 
     /**

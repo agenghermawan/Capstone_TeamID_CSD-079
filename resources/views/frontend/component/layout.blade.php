@@ -23,7 +23,7 @@
 
     @include('frontend.component.header')
     @yield('contentFrontEnd')
-    @yield('footer')
+    @include('frontend.component.footer')
 
     @include('frontend.component.script')
     @yield('opsionalJs')

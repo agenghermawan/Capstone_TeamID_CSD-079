@@ -84,7 +84,7 @@
                                 @if(Auth::user()->role_pengguna == 'Admin')
                                     <li>
                                         <a class="dropdown-item fs-4  px-5" style="font-size: 10px"
-                                           href="{{ route('dashboard') }}"> <i class="fas text-primary fa-clinic-medical mr-4"> Dashboard Anda</a>
+                                           href="{{ route('dashboard') }}"> <i class="fas text-primary fa-clinic-medical mr-4"> </i> Dashboard Anda</a>
                                     </li>
                                 @endif
                                 <li>

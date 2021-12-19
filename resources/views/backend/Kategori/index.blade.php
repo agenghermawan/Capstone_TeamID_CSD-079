@@ -37,50 +37,38 @@
 
 @section('content')
     <div class="h1 my-5 text-center text-base text-blue-500 font-bold"> Daftar Kategori Obat </div>
-    <a href="{{ route('obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Data Obat</a>
-    <a href="{{ route('kategori-obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Kategori Obat</a>
-
+    <div class="grid-cols-1 grid lg:grid-cols-7">
+            <a href="{{ route('obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5 mr-2"> Tambahkan Data Obat</a>
+            <a href="{{ route('kategori-obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Kategori Obat</a>
+    </div>
     <div class="w-full mt-5">
         <table class="min-w-full divide-y divide-gray-200" id="myTable">
             <thead class="bg-gray-50">
-            <tr>
-                <th scope="col"
-                    class="px-6 py-3  text-xs text-text-left font-medium text-black uppercase tracking-wider">
-                    Kategori Obat
-                </th>
-                <th scope="col"
-                    class="px-6 py-3  text-xs text-text-left font-medium text-black uppercase tracking-wider">
-                    Deskripsi
-                </th> <th scope="col"
-                    class="px-6 py-3  text-xs text-text-left font-medium text-black uppercase tracking-wider">
-                    Obat
-                </th>
-                <th scope="col"
-                    class="px-6 py-3  text-xs font-medium text-text-left text-black uppercase tracking-wider">
-                    Detail
-                </th>
-            </tr>
+                <tr>
+                    <th scope="col"
+                        class="px-6 py-3  text-xs text-center  font-medium text-black uppercase tracking-wider">
+                        Kategori Obat
+                    </th>
+                    <th scope="col"
+                        class="px-6 py-3  text-xs text-center  font-medium text-black uppercase tracking-wider">
+                        Deskripsi
+                    </th> <th scope="col"
+                        class="px-6 py-3  text-xs  text-center  font-medium text-black uppercase tracking-wider">
+                        Gambar
+                    </th>
+                </tr>
             </thead>
             <tbody class="bg-white divide-y divide-gray-200 rounded">
             @foreach($data as $item)
                 <tr>
-                    <td class="px-6 py-4 whitespace-nowrap">
-                        <div class="flex items-center">
-                            <div class="ml-4">
-                                <div class="text-sm text-center font-medium text-gray-900">
-                                    <p class="py-3"> {{ $item->nama }} </p>
-                                </div>
-                            </div>
-                        </div>
+                    <td class="px-6 py-4 whitespace-nowrap text-center ">
+                        <p class="text-sm text-gray-900"> {{ $item->nama }} </p>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-left">
-                        <p class="text-xs text-gray-900"> {{ $item->deskripsi }} </p>
-                    </td> <td class="px-6 py-4 whitespace-nowrap text-left">
-                        <img src="{{Storage::url($item->photo)}}" class="w-48" alt="">
+                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                        <p class="text-sm text-gray-900"> {{ $item->deskripsi }} </p>
                     </td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-left">
-                        <a href="{{ route('obat.show', $item->id) }}" class="rounded py-3 px-3"> <i
-                                class="fas fa-eye text-gray-900"></i> </a>
+                    <td class="px-6 py-4 whitespace-nowrap text-center">
+                            <img src="{{Storage::url($item->photo)}}" class="w-24" alt="KategoriObat">
                     </td>
                 </tr>
                 @endforeach

@@ -27,7 +27,7 @@ class DashboardController extends Controller
         if(Auth::user()->role_pengguna == 'Dokter'){
             $dataDokter = User::with('dokter')->where('id',Auth::user()->id)->first();
             $getID = Dokter::where('user_id',Auth::user()->id)->first();
-            $janjiTemu = JanjiTemu::where('dokter_id', $getID->id)->get()->take(2);
+            $janjiTemu = JanjiTemu::where('dokter_id', $getID->id)->get()->take(5);
 
             $greetings = "";
             $time = date("H");
@@ -47,8 +47,11 @@ class DashboardController extends Controller
             return view('backend.dashboard',compact('dataIndonesia','countRumahSakit','countPengguna','countDokter','greetings', 'janjiTemu','dataDokter'));
 
         }else {
+
+            $getlatestJanji = JanjiTemu::where('id', 'DESC')->get()->take(5);
+
             $getID = User::where('id',Auth::user()->id)->first();
-            $janjiTemu = JanjiTemu::where('dokter_id', $getID->id)->get()->take(2);
+            $janjiTemu = JanjiTemu::where('dokter_id', $getID->id)->get()->take(5);
 
             $greetings = "";
             $time = date("H");
@@ -66,6 +69,6 @@ class DashboardController extends Controller
                             $greetings = "Selamat Malam";
                         }
                     }
-                    return view('backend.dashboard',compact('dataIndonesia','countRumahSakit','countPengguna','countDokter','greetings', 'janjiTemu'));
+                    return view('backend.dashboard',compact('dataIndonesia','countRumahSakit','countPengguna','countDokter','greetings', 'janjiTemu','getlatestJanji'));
         }
 }

@@ -40,7 +40,7 @@
         }
         @media only screen and (min-width: 1200px) {
             .readmore {
-                margin-top: 50px;
+                margin-top: 25px;
             }
         }
     </style>

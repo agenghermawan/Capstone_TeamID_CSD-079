@@ -19,7 +19,8 @@ class CreateArtikelTable extends Migration
             $table->longText('isiArtikel');
             $table->string('ditulisOleh');
             $table->string('kategori');
-            $table->string('refrensi');
+            $table->string('refrensi',255);
+            $table->string('penulis_id');
             $table->string('photo')->nullable();
             $table->timestamps();
         });

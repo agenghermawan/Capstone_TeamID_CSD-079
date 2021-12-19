@@ -9,9 +9,12 @@
 <div style="margin: auto;width: 80%;text-align: center">
     <img src="{{asset('image/kisspng-physician-fotolia-doctor-of-medicine-doctors-and-nurses-5ab5d9e27dafc1.4044242415218672345148.png')}}" width="200px" height="200px" alt="">
 </div>
-    <div class="container" style="border-top: 2px solid blue">
-    <h2 style="text-align: center;margin-top: 10px;font-family: 'Poppins', sans-serif;"> Terima kasih telah Membuat Janji Dengan Dokter Kami </h2>
-    <h3 style="font-family: 'Poppins', sans-serif;"> Yth. Bapak / Ibu {{$data['nama']}}</h3>
+<div class="container" style="border-top: 2px solid blue">
+    <div style="text-align: center;margin: auto;width: 80%;margin-top: 25px;margin-bottom: 10px;">
+        <a style="background-color: mediumslateblue; padding: 10px; font-family: 'Poppins',sans-serif;border-radius: 8px;color: white;text-decoration: none" href="{{route('user.index')}}"> Permintaan Janji dengan Dokter telah <strong> Diterima  </strong> </a>
+    </div>
+
+    <h3 style="font-family: 'Poppins', sans-serif;margin-top: 10px"> Yth. Bapak / Ibu {{$data->nama}}</h3>
 
     <h4 style="margin-top: 20px;font-family: 'Poppins', sans-serif;"> Berikut merupakan detail jadwal konsultasi yang anda pilih : </h4>
     <table style="font-family: 'Poppins', sans-serif;">
@@ -21,7 +24,7 @@
         </tr>
         <tr>
             <td style="font-family: 'Poppins',sans-serif"> Spesialisai </td>
-            <td style="font-family: 'Poppins',sans-serif"> <strong>  {{$dataPoliklinik->nama}}</td>
+            <td style="font-family: 'Poppins',sans-serif"> <strong> {{$dataPoliklinik->nama}}</td>
         </tr>
         <tr>
             <td style="font-family: 'Poppins',sans-serif"> Rumah Sakit </td>
@@ -46,16 +49,13 @@
     </table>
 
 
-        <div style="text-align: center;margin: auto;width: 80%;margin-top: 25px;margin-bottom: 10px;">
-            <a style="background-color: mediumslateblue; padding: 10px; font-family: 'Poppins',sans-serif;border-radius: 8px;color: white;text-decoration: none" href="{{route('user.index')}}"> Detail Konsultasi Anda </a>
-        </div>
-        <h4 style="font-family: 'Poppins', sans-serif;margin-top: 25px"> Setelah klik tombol tersebut, Anda akan di arahkan ke halaman daftar konsultasi Anda</h4>
-        <h4 style="font-family: 'Poppins', sans-serif;"> * Harap Segera Menunggu Proses Persetujuan dari Dokter yang anda Pilih dan akan di kabarkan melalui email anda</h4>
+    <h4 style="font-family: 'Poppins', sans-serif;"> * Harap Segera datang tepat waktu ke Rumah sakit yang anda pilih dan sesuaikan dengan poliklinik yang anda butuhkan </h4>
+    <h4 style="font-family: 'Poppins', sans-serif;"> * Terima kasih telah menggunakan Aplikasi Kami </h4>
 
-        <h4 style="margin-top: 20px;font-family: 'Poppins',sans-serif;"> Salam Hangat</h4>
-        <br>
-        <br>
-        <br>
-        <h4 style="margin-top: 20px;font-family: 'Poppins',sans-serif;"> SEHATKUAPP</h4>
+    <h4 style="margin-top: 20px;font-family: 'Poppins',sans-serif;"> Salam Hangat</h4>
+    <br>
+    <br>
+    <br>
+    <h4 style="margin-top: 20px;font-family: 'Poppins',sans-serif;"> SEHATKUAPP</h4>
 </body>
 </html>

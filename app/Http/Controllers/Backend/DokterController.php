@@ -91,7 +91,8 @@ class DokterController extends Controller
         $countPasien = JanjiTemu::where('dokter_id',$id)->count();
         $pasienTerakhir = JanjiTemu::where('dokter_id',$id)->get();
         $data = User::whereRelation('dokter','id',$id)->first();
-        return view('backend.Dokter.edit',compact('data','countPasien','pasienTerakhir'));
+        $rumahsakit = RumahSakit::all();
+        return view('backend.Dokter.edit',compact('data','countPasien','pasienTerakhir','rumahsakit'));
     }
 
     /**
@@ -105,6 +106,7 @@ class DokterController extends Controller
     {
         $dokter = Dokter::find($id);
         $dokter->fullname = $request->fullname;
+        $dokter->rumahsakit_id = $request->rumahsakit_id;
         $dokter->email = $request->email;
         $dokter->alamat = $request->alamat;
         $dokter->kota = $request->kota;
@@ -112,7 +114,6 @@ class DokterController extends Controller
         $dokter->pengalamanPraktik = $request->pengalamanPraktik;
         $dokter->riwayatPendidikan = $request->riwayatPendidikan;
         $dokter->save();
-
 
 
         $updatePhoto = User::where('id',$dokter->user_id)->first();

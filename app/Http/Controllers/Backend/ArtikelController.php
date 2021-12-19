@@ -22,6 +22,7 @@ class ArtikelController extends Controller
             $dataArtikelSendiri = User::with('dokter')->where('id', $getId)->first();
             $getFullname = $dataArtikelSendiri->name;
             return view('backend.Artikel.index', ['data' => Artikel::where('ditulisOleh', $getFullname)->get()]);
+
         } else{
             $data = Artikel::all();
             return view('backend.Artikel.index', compact('data'));
@@ -54,6 +55,7 @@ class ArtikelController extends Controller
             'kategori' => 'required',
             'refrensi' => 'required',
             'photo' => 'required|image:jpg,png',
+            'penulis_id' => 'required',
         ])->validate();
 
         $data['photo']  = $request->file('photo')->store('artikel','public', $request->file('photo')->getClientOriginalName());

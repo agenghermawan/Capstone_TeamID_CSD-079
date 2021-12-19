@@ -18,13 +18,13 @@
                                 height: 100px;
                                 object-fit: cover;" alt="">
                                 <div class="col-md text-center px-2 pt-2">
-                                    <h3>{{$item->nama}}</h3>
+                                    <h3 class="fs-6 text">{{$item->nama}}</h3>
                                 </div>
                         </a>
                     </div>
                 @endforeach
             </div>
-                
+
         </div>
     </main>
 @endsection

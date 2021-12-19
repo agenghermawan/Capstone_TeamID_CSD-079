@@ -37,10 +37,11 @@
 
 @section('title','Daftar Data Obat')
 @section('buttonHeader')
-    <div class="md:flex inline-block">
+    <div class="md:flex inline-block ">
         <p class="animate-bounce md:mr-4">
-            <a href="{{ route('kategori-obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5 animate-bounce"> Tambahkan Kategori Obat </a>
-        </p>  <p class="animate-bounce">
+            <a href="{{ route('kategori-obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5 animate-bounce sm:mt-5"> Tambahkan Kategori Obat </a>
+        </p>
+        <p class="animate-bounce mt-7 md:mt-0">
             <a href="{{ route('obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5 animate-bounce"> Tambahkan Data Obat</a>
         </p>
     </div>

@@ -10,6 +10,6 @@ class Artikel extends Model
     use HasFactory;
     protected $table = 'artikel';
     protected $fillable = [
-        'title', 'isiArtikel', 'ditulisOleh', 'kategori','refrensi','photo'
+        'title', 'isiArtikel', 'ditulisOleh', 'kategori','refrensi','photo','penulis_id'
     ];
 }

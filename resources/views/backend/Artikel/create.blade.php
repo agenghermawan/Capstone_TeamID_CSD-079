@@ -12,6 +12,7 @@
     </div>
     <form action="{{ route('artikel.store') }}" enctype="multipart/form-data" method="POST">
         @csrf
+        <input type="hidden" value="{{Auth::user()->id}}" name="penulis_id">
         <div class="grid grid-cols-1 md:grid-cols-2 mt-4 lg:gap-4">
             <div class="content-form-article sm:col-span-2 col-span-1 bg-white p-5 text-sm text-gray-700 rounded-md">
                 @if (session('message'))

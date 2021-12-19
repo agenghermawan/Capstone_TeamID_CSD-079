@@ -99,8 +99,8 @@
             <form action="{{route('janji-dokter.update',$data->id)}}" method="post">
                 @csrf
                 @method('put')
-                    <button type="submit" name="status" value="selesai" class="bg-white bg-blue-300 rounded p-3 text-white"> Tandai Sudah selesai </button>
-                    <button type="submit" name="status" value="ditolak" class="bg-white bg-red-300 rounded p-3 text-white"> Ditolak  </button>
+                    <button type="submit" name="status" value="Permintaan Diterima" class="bg-white bg-blue-300 rounded p-3 text-white"> Tandai Sudah selesai </button>
+                    <button type="submit" name="status" value="Permintaan Ditolak" class="bg-white bg-red-300 rounded p-3 text-white"> Ditolak  </button>
                 </form>
 
         </div>

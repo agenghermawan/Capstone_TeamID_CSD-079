@@ -14,7 +14,15 @@
                  <div class="bg-white shadow-md p-5">
                      <a href="{{route('artikel.show',$item->id)}}">
                          <div class="flex">
-                             <img src="{{ asset('image/profile.jpg') }}" class="rounded-full object-cover w-12 h-12" alt="">
+                             @php
+                                $getAvatar = \App\Models\User::where('id',$item->penulis_id)->first();
+                             @endphp
+                             @if($getAvatar->profile_photo_url == null)
+                                  <img src="{{ asset('image/avatar doktor.jpg') }}" class="w-64 h-64 rounded-full" alt="">
+                             @else
+                             <img src="{{ $getAvatar->profile_photo_url }}" class="rounded-full object-cover w-12 h-12" alt="">
+                             @endif
+
                              <div class="px-4">
                                  <p> {{ $item->ditulisOleh }}</p>
                                  <h2 style="font-size: 14px"> {{$item->title}}</h2>
