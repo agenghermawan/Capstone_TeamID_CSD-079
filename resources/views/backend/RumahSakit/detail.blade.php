@@ -54,17 +54,25 @@
                     <div class="fasilitas">
                         <h4 class="font-bold text-blue-500 mb-4"> Fasilitas </h4>
                         <ul class="list-disc">
-                            @foreach($data->fasilitas as $item)
-                                <li> {{$item}}</li>
-                            @endforeach
+                            @if($data->fasilitas == null)
+                                <p class="text-sm"> Belum memiliki fasilitas </p>
+                            @else
+                                @foreach($data->fasilitas as $item)
+                                    <li> {{$item}}</li>
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                     <div class="fasilitas">
                         <h4 class="font-bold text-blue-500 mb-4"> Fasilitas </h4>
                         <ul class="list-disc">
-                            @foreach($data->poliklinik as $item)
-                                <li> {{$item}}</li>
-                            @endforeach
+                            @if($data->poliklinik == null)
+                                <p class="text-sm"> Belum memiliki fasilitas </p>
+                            @else
+                                @foreach($data->poliklinik as $item)
+                                    <li> {{$item}}</li>
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>
@@ -99,32 +107,31 @@
                 </tr>
                 </thead>
                 <tbody class="bg-white divide-y divide-gray-200">
-                @for ($i = 0; $i < 15; $i++)
+                @foreach ($dataDokter as $dokter)
                     <tr>
                         <td class="px-6 py-4 whitespace-nowrap">
                             <div class="flex items-center">
                                 <div class="ml-4">
                                     <div class="text-sm text-center font-medium text-gray-900">
-                                        Dki Jakarta
+                                        {{$dokter->email}}
                                     </div>
                                 </div>
                             </div>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center">
-                            <p class="text-xs text-gray-400"> Orang </p>
+                            <p class="text-xs text-gray-400"> {{$dokter->fullname}} </p>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center">
                             <p class="text-xs text-gray-400"> Orang </p>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center text-sm text-gray-500">
-                            <p class="text-xs text-gray-400"> Orang </p>
+                            <p class="text-xs text-gray-400"> {{$dokter->telp}} </p>
                         </td>
                         <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                             <a href="{{ route('rumahSakit.show', 1) }}" class="rounded bg-blue-300 p-2"> Detail </a>
                         </td>
                     </tr>
-                @endfor
-
+                @endforeach
                 </tbody>
             </table>
         </div>

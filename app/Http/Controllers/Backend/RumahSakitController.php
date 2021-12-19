@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use Alert;
 use App\Http\Controllers\Controller;
+use App\Models\Dokter;
 use App\Models\Poliklinik;
 use App\Models\RumahSakit;
 use Illuminate\Http\Request;
@@ -74,7 +75,8 @@ class RumahSakitController extends Controller
     public function show($id)
     {
         $data = RumahSakit::findOrFail($id);
-        return view('backend.RumahSakit.detail',compact('data'));
+        $dataDokter = Dokter::where('rumahsakit_id',$data->id)->get();
+        return view('backend.RumahSakit.detail',compact('data','dataDokter'));
     }
 
     /**

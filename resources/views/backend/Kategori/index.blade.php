@@ -36,7 +36,7 @@
 @endsection
 
 @section('content')
-    <div class="h1 my-5 text-center text-base text-blue-500 font-bold"> Daftar Data Rumah Sakit </div>
+    <div class="h1 my-5 text-center text-base text-blue-500 font-bold"> Daftar Kategori Obat </div>
     <a href="{{ route('obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Data Obat</a>
     <a href="{{ route('kategori-obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Kategori Obat</a>
 
@@ -63,7 +63,6 @@
             </thead>
             <tbody class="bg-white divide-y divide-gray-200 rounded">
             @foreach($data as $item)
-                {{$item}}
                 <tr>
                     <td class="px-6 py-4 whitespace-nowrap">
                         <div class="flex items-center">
@@ -77,7 +76,7 @@
                     <td class="px-6 py-4 whitespace-nowrap text-left">
                         <p class="text-xs text-gray-900"> {{ $item->deskripsi }} </p>
                     </td> <td class="px-6 py-4 whitespace-nowrap text-left">
-                        <img src="{{Storage::url($item->photo)}}" class="w-448" alt="">
+                        <img src="{{Storage::url($item->photo)}}" class="w-48" alt="">
                     </td>
                     <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-left">
                         <a href="{{ route('obat.show', $item->id) }}" class="rounded py-3 px-3"> <i
