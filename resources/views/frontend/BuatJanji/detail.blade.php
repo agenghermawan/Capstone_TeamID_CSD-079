@@ -56,7 +56,7 @@
                                 <p> Kode Pos </p>
                                 <p> Tanggal Lahir </p>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-9">
                                 <p>: {{$data->nama}} </p>
                                 <p>: {{$data->email}} </p>
                                 <p>: {{$data->alamat}} </p>
@@ -76,7 +76,7 @@
                                 <p> Kode Pos </p>
                                 <p> No Telp </p>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-8">
                                 <p>: {{$dataRumahSakit->nama}} </p>
                                 <p>: {{$data->email}} </p>
                                 <p>: {{$data->kota}} </p>

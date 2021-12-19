@@ -28,8 +28,8 @@
                         </a>
 
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <li><a class="dropdown-item fs-4 " href="{{route('obat_frontend')}}">Obat</a></li>
-                            <li><a class="dropdown-item fs-4 " href="{{route('listpenyakit.frontend')}}">Penyakit</a></li>
+                            <li><a class="dropdown-item fs-4 px-5 py-2" href="{{route('obat_frontend')}}"><i class="fas fa-capsules text-primary  "></i> Obat</a></li>
+                            <li><a class="dropdown-item fs-4 px-5 py-2" href="{{route('listpenyakit.frontend')}}"><i class="fas fa-viruses text-primary "></i> Penyakit</a></li>
                         </ul>
                     </div>
                 </li>
@@ -65,16 +65,12 @@
                                          @if($data->dokter->status == 'non-active')
                                              <li>
                                                  <a class="dropdown-item fs-3 l px-5" style="font-size: 10px;pointer-events: none"
-                                                    href="{{ route('callbacDocter') }}"  >Menunggu Persetujuan</a>
-                                             </li>
-                                             <li>
-                                                 <a class="dropdown-item fs-3 l px-5" style="font-size: 10px;"
-                                                    href="{{ route('callbacDocter') }}"  >Profile Anda </a>
+                                                    href="{{ route('callbacDocter') }}"><i class="fas text-primary fa-clock mr-4"></i> Menunggu Persetujuan</a>
                                              </li>
                                          @elseif($data->dokter->status == 'active')
                                              <li>
-                                                 <a class="dropdown-item fs-3 l px-5" style="font-size: 10px"
-                                                    href="{{ route('dashboard') }}">Dashboard Dokter</a>
+                                                 <a class="dropdown-item fs-4 px-5" style="font-size: 10px"
+                                                    href="{{ route('dashboard') }}"><i class="fas text-primary fa-clinic-medical mr-4"></i> Dashboard Dokter</a>
                                              </li>
                                          @endif
                                      @endif
@@ -82,19 +78,19 @@
                                 @if(Auth::user()->role_pengguna == 'Pengguna')
                                     <li>
                                         <a class="dropdown-item fs-4  px-5" style="font-size: 10px"
-                                           href="{{ route('user.index') }}">Dashboard Anda</a>
+                                           href="{{ route('user.index') }}"><i class="fas text-primary fa-clinic-medical mr-4"></i> Dashboard Anda</a>
                                     </li>
                                 @endif
                                 @if(Auth::user()->role_pengguna == 'Admin')
                                     <li>
                                         <a class="dropdown-item fs-4  px-5" style="font-size: 10px"
-                                           href="{{ route('dashboard') }}">Dashboard Anda</a>
+                                           href="{{ route('dashboard') }}"> <i class="fas text-primary fa-clinic-medical mr-4"> Dashboard Anda</a>
                                     </li>
                                 @endif
                                 <li>
                                     <form action="{{ route('logout') }}" method="POST">
                                         @csrf
-                                        <button class="dropdown-item fs-4 px-5" type="submit">Logout</button>
+                                        <button class="dropdown-item fs-4 px-5" type="submit"><i class="fas fa-sign-out-alt text-primary mr-4"></i> Logout</button>
                                     </form>
                                 </li>
                             </ul>

@@ -3,11 +3,13 @@
 @section('contentFrontEnd')
     <main>
         <div class="searchbar">
-            <input type="text" placeholder="Obat Batuk ata vitamin">
-            <button>Cari</button>
+            <form action="{{route('rumahSakit_show_frontend',$nama)}}" style="width: 100%" class="d-flex">
+                <input type="text" class="form-control shadow fs-3" name="searchRumahSakit" placeholder="Silahkan cari Rumah Sakit Terdekat Anda (Kota , Alamat , Provinsi)   ....">
+                <button class="btn btn-primary rounded" type="submit"> <i class="fas fa-search fa-3x"></i> </button>
+            </form>
         </div>
         <div class="hospital-page-container">
-            <h2>Laboratorium</h2>
+            <h2>Telusuri Rumah Sakit</h2>
             <div class="card-hospital-container">
                 @foreach($data as $item)
                 <a href="{{ route('rumahSakit_detail_frontend', [$item->id, $nama]) }}" class="card-hospital">

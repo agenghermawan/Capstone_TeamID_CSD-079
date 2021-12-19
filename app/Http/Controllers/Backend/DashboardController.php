@@ -25,9 +25,10 @@ class DashboardController extends Controller
         $day = Carbon::now()->format('l');
 
         if(Auth::user()->role_pengguna == 'Dokter'){
+            $dataDokter = User::with('dokter')->where('id',Auth::user()->id)->first();
             $getID = Dokter::where('user_id',Auth::user()->id)->first();
             $janjiTemu = JanjiTemu::where('dokter_id', $getID->id)->get()->take(2);
-    
+
             $greetings = "";
             $time = date("H");
             $timezone = date("e");
@@ -43,12 +44,12 @@ class DashboardController extends Controller
                         if ($time >= "19") {
                             $greetings = "Selamat Malam";
                         }
-            return view('backend.dashboard',compact('dataIndonesia','countRumahSakit','countPengguna','countDokter','greetings', 'janjiTemu'));
+            return view('backend.dashboard',compact('dataIndonesia','countRumahSakit','countPengguna','countDokter','greetings', 'janjiTemu','dataDokter'));
 
         }else {
             $getID = User::where('id',Auth::user()->id)->first();
             $janjiTemu = JanjiTemu::where('dokter_id', $getID->id)->get()->take(2);
-    
+
             $greetings = "";
             $time = date("H");
             $timezone = date("e");

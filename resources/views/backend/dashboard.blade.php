@@ -2,7 +2,7 @@
 
 @section('content')
     @include('sweetalert::alert')
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10  mt-4 content-dashboard">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10  mt-4 content-dashboard">
         <div class="left-content-dashboard md:col-span-2">
             <div class="title flex justify-between">
                 <h5> General Reports </h5>
@@ -54,30 +54,40 @@
                 </div>
             </div>
             <!-- Chart -->
-            <div class="report grid grid-cols-1 md:grid-cols-12 gap-4 mt-5">
+            <div class="report grid grid-cols-1 md:grid-cols-12 gap-4 mt-5 ">
                 <div class="md:col-span-8 ">
-                    Report Data
+                    Data Pribadi
                     <div class="bg-white w-100  mt-5">
                         <div class="shadow-lg rounded-lg overflow-hidden " style="height: 425px">
                             <div class="grid md:flex">
-                                <div>
-                                    <img src="{{ asset('image/avatar doktor.jpg') }}" class="w-64" alt="">
+                                <div class="p-10">
+                                    <img src="{{ asset('image/avatar doktor.jpg') }}" class="w-64 h-64 rounded-full" alt="">
                                 </div>
                                 <div class="md:p-10">
-                                    <h1 class="text-2xl font-semibold"> {{$greetings }} Dokter  </h1>
-                                    <h1 class="text-lg tracking-wide">  Dr Ageng  </h1>
-                                    <h1> Poli Anak </h1>
+                                    <h1 class="text-2xl font-semibold"> {{$greetings }}   </h1>
+                                    <h1 class="text-lg tracking-wide mt-7"> {{$dataDokter->dokter->fullname}} </h1>
+                                    <p class="text-sm text-blue-300"> {{$dataDokter->dokter->telp}}</p>
+                                    <h1> Alamat : {{$dataDokter->dokter->alamat}}</h1>
                                 </div>
+                            </div>
+                            <div class="description p-10">
+                                @if($dataDokter->dokter->deskripsi)
+                                    <h1 class="text-lg tracking-wide"> Deskripsi </h1>
+                                    <p class="text-sm ">   {{$dataDokter->dokter->deskripsi}} </p>
+                                @else
+                                    <h1 class="text-lg tracking-wide"> Deskripsi </h1>
+                                    <p> Lorem Ipsum dolar mit</p>
+                                @endif
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="md:col-span-4">
+                <div class="md:col-span-4 ">
                     Weekly Top
-                    <div class="bg-white w-100 h-100 mt-5">
+                    <div class="bg-white mt-5" style="width: 65%; height: 200px">
                         <div class="shadow-lg rounded-lg overflow-hidden">
                             <div class="py-3 px-5">Informasi Covid</div>
-                            <canvas class="p-10" id="chartDoughnut"></canvas>
+                            <canvas id="chartDoughnut"></canvas>
                         </div>
                     </div>
                 </div>

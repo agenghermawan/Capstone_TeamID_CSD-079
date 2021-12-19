@@ -6,7 +6,7 @@
             <h1>Kunjungan ke Rumah Sakit Lebih Mudah</h1>
             <p>Cari rumah sakit dan buat janji dengan langkah mudah</p>
             <form action="{{route('rumahSakit_frontend')}}" style="width: 100%" class="d-flex">
-                <input type="text" class="form-control shadow fs-3 p-4" name="searchRumahsakit" placeholder="Silahkan cari Obat yang anda butuhkan ....">
+                <input type="text" class="form-control shadow fs-3 p-4" name="searchPoliklinik" placeholder="Silahkan cari Poliklinik yang anda butuhkan ....">
                 <button class="btn btn-primary rounded" type="submit"> <i class="fas fa-search fa-3x"></i> </button>
             </form>
         </div>

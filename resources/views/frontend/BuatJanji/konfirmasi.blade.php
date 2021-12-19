@@ -36,6 +36,7 @@
         <input type="hidden" value="{{$data['tanggal_janji']}}" name="tanggal_janji">
         <input type="hidden" value="{{$data['jam_janji']}}" name="jam_janji">
         <input type="hidden" value="{{Auth::user()->id}}" name="user_id">
+        <input type="hidden" value="Menunggu Persetujuan Dokter" name="status">
         @csrf
     <div class="row">
             <div class="col-md-8">
@@ -117,7 +118,6 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <img src="{{Storage::url($dataRumahsakit->photo)}}" class="rounded img-thumbnail" width="250px" height="170px" style="object-fit: cover" alt="{{$dataRumahsakit->nama}}">
-
                             </div>
                             <div class="col-md-6">
                                 <h5> {{$dataRumahsakit->nama}}</h5>

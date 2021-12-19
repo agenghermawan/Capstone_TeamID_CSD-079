@@ -22,7 +22,7 @@
                     </div>
                     <div class="name w-3/4 md:w-2/4 font-semibold  ">
                         <h4 class="text-blue-700"> {{ $item->name }} </h4>
-                        <h4 class="text-sm text-blue-500"> Pengguna </h4>
+                        <h4 class="text-sm text-blue-500"> {{$item->role_pengguna}} </h4>
                     </div>
                 </div>
                 <div class="description p-5 border-b">

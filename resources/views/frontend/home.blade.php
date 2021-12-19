@@ -6,9 +6,9 @@
         <div class="banner-container">
             <div class="banner-text">
                 <h1>Welcome to SEHATKU</h1>
-                <p>Chat dokter, kunjungi rumah sakit, beli obat, cek lab dan update informasi seputar kesehatan, semua bisa
+                <p class="mb-5">Chat dokter, kunjungi rumah sakit, beli obat, cek lab dan update informasi seputar kesehatan, semua bisa
                     di WebDev</p>
-                <button class="btn-appointment">Buat Janji </button>
+                <a class="btn-appointment" href="{{route('rumahSakit_frontend')}}">Buat Janji </a>
             </div>
             <div class="banner-img">
                 <img src="{{ asset('image/PikPng.com_medical-png_832417.png') }}" alt="">

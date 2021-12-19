@@ -52,8 +52,14 @@ class RegisteredUserController extends Controller
 
         event(new Registered($user));
         Auth::login($user);
-        \Alert::toast('Berhasil Mendaftar','success');
-        return redirect(RouteServiceProvider::HOME);
+        if ($request->role_pengguna == 'Dokter'){
+            \Alert::success('Berhasil Mendaftar Silahkan lanjutkan pendaftaran anda','success');
+            return redirect(RouteServiceProvider::HOME);
+
+        }else{
+            \Alert::success('Berhasil Mendaftar','success');
+            return redirect(RouteServiceProvider::HOME);
+        }
     }
 
     public function callbacDocter(){

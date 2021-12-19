@@ -7,11 +7,15 @@
         <div class="bg-white col-span-1 xl:col-span-1 p-5 h-auto rounded-xl">
             <div class="image-information items-center flex border-b pb-5">
                 <div class="image w-1/4">
-                    <img src="{{ asset('image/profile.jpg') }}" class="w-24 h-24 rounded-full" alt="">
+                    @if(Auth::user()->profile_photo_path == null)
+                        <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}" class="rounded-full" width="60px" height="60px" alt="">
+                    @else
+                        <img src="{{Storage::url(Auth::user()->profile_photo_path)}}" alt="" class="rounded-full" width="60px" height="60px">
+                    @endif
                 </div>
-                <div class="name-information w-3/4 ">
+                <div class="name-information w-3/4">
                     <h4 class="font-bold text-gray-500 text-lg"> {{ $data->name }}</h4>
-                    <p> Pengguna </p>
+                    <p> {{$data->role_pengguna}} </p>
                 </div>
             </div>
 

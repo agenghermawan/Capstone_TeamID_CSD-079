@@ -12,8 +12,8 @@ class RumahSakitController extends Controller
 {
     public function index (){
 
-        if (request('searchRumahsakit')){
-            $keywoard = \request('searchRumahsakit');
+        if (request('searchPoliklinik')){
+            $keywoard = \request('searchPoliklinik');
             $data = Poliklinik::where('nama', 'like', "%{$keywoard}%")->latest()->get();
             return  view('frontend.rumahsakit.index',compact('data'));
         }
@@ -25,9 +25,20 @@ class RumahSakitController extends Controller
     }
 
     public function show ($nama){
-       $data = RumahSakit::where('poliklinik', 'like', "%{$nama}%")->get();
-       /*Modal::whereIn('column', $ids)->get(); */
-       return view('frontend.RumahSakit.show',compact('data','nama'));
+        if (request('searchRumahSakit')){
+            $search =  request('searchRumahSakit');
+            $data = RumahSakit::where('nama', 'like', "%{$search}%")
+                                ->orWhere('kota', 'like', "%{$search}%")
+                                ->orWhere('provinsi', 'like', "%{$search}%")
+                                ->orWhere('alamat', 'like', "%{$search}%")
+                                 ->latest()->get();
+            return view('frontend.RumahSakit.show',compact('data','nama'));
+        }
+        else{
+            $data = RumahSakit::where('poliklinik', 'like', "%{$nama}%")->get();
+            /*Modal::whereIn('column', $ids)->get(); */
+            return view('frontend.RumahSakit.show',compact('data','nama'));
+        }
     }
 
     public function detail($id, $nama){

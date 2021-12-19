@@ -65,7 +65,7 @@
                     Kami mengirimkan barang bukti Buat Janji dokter ke email anda <br> Lihat didalam profile Anda terdapat history Buat janji dokter
                 </p>
                 <div class="d-flex justify-content-center">
-                    <a class="btn btn-view d-inline-flex text-white" href="{{route('LandingPage')}}">
+                    <a class="btn btn-view d-inline-flex text-white" href="{{route('user.index')}}">
                         Kembali ke Halaman utama
                     </a>
                 </div>

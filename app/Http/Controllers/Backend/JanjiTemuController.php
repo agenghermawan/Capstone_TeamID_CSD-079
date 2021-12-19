@@ -21,9 +21,16 @@ class JanjiTemuController extends Controller
      */
     public function index()
     {
-        $getID = Dokter::with('user')->where('user_id',Auth::user()->id)->first();
-        $data = JanjiTemu::where('dokter_id', $getID->id)->get();
-        return view('backend.JanjiTemu.index',compact('data','getID'));
+        if (Auth::user()->role_pengguna == 'Dokter'){
+            $getID = Dokter::with('user')->where('user_id',Auth::user()->id)->first();
+            $data = JanjiTemu::where('dokter_id', $getID->id)->get();
+            return view('backend.JanjiTemu.index',compact('data','getID'));
+        }else{
+            $getID = Dokter::with('user')->where('user_id',Auth::user()->id)->first();
+            $data = JanjiTemu::all();
+            return view('backend.JanjiTemu.index',compact('data','getID'));
+        }
+
     }
 
     /**
@@ -45,9 +52,12 @@ class JanjiTemuController extends Controller
     public function store(Request $request)
     {
         $data= $request->all();
+        $dataRumahsakit = RumahSakit::where('id',$data['rumahsakit_id'])->first();
+        $dataDokter = Dokter::where('id',$data['dokter_id'])->first();
+        $dataPoliklinik = Poliklinik::where('id',$data['poliklinik_id'])->first();
         $dataEmail = $data['email'];
         JanjiTemu::create($data);
-        Mail::to($dataEmail)->send(new SuccessBuatJanji());
+        Mail::to($dataEmail)->send(new SuccessBuatJanji($data,$dataRumahsakit,$dataDokter,$dataPoliklinik));
         \Alert::success('kamu berhasil melakukan pengajuan janji dengan dokter silahkan tunggu konfirmasi','success');
         return redirect()->route('success.buatjanji');
     }

@@ -1,40 +1,5 @@
 @extends('layouts.app')
 
-@section('css')
-    <style>
-        #myTable {
-            border: none;
-            border-collapse: separate;
-            border-spacing: 0 1em;
-            text-align: left;
-        }
-
-        #myTable thead th,
-        #myTable thead td {
-            padding: 20px;
-            border: none;
-        }
-
-        #myTable_paginate .paginate_button {
-            background-color: lightblue;
-            border: none;
-            border-radius: 20px;
-        }
-
-        #myTable_length select {
-            border-radius: 10px;
-            background-color: lightblue;
-        }
-
-        #myTable_filter input {
-            margin-left: 15px;
-            border-radius: 10px;
-            background-color: lightblue;
-        }
-
-    </style>
-@endsection
-
 @section('content')
     @include('sweetalert::alert')
     <div class="h1 my-5 md:text-center text-lg font-bold text-blue-300"> Daftar Data Rumah Sakit </div>
@@ -52,8 +17,9 @@
             <div class="bg-white p-10 shadow-md rounded-md">
                 <h4 class="font-lg font-semibold"> {{ $item->nama }}</h4>
                   {!!$item->deskripsi !!}
+                <a class="bg-blue-100 rounded-lg text-sm p-2" href="{{route('poliklinik.edit',$item->id)}}"><i class="fas fa-edit"></i></a>
+
                 <div class="md:flex gap-2">
-                    <a class="bg-blue-100 rounded-lg text-sm p-2" href="{{route('poliklinik.edit',$item->id)}}">Edit Poliklinik</a>
                     <div x-data="{ open: false }">
                         <button @click="open = ! open" class="bg-blue-100 rounded-lg text-sm p-2">Lihat Tindakan Medis</button>
                         <span x-show="open">

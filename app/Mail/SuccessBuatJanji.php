@@ -11,13 +11,22 @@ class SuccessBuatJanji extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $data;
+    private $dataRumahsakit;
+    private $dataDokter;
+    private $dataPoliklinik;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($data,$dataRumahsakit,$dataDokter,$dataPoliklinik)
     {
+        $this->data = $data;
+        $this->dataRumahsakit = $dataRumahsakit;
+        $this->dataDokter = $dataDokter;
+        $this->dataPoliklinik = $dataPoliklinik;
     }
 
     /**
@@ -27,7 +36,11 @@ class SuccessBuatJanji extends Mailable
      */
     public function build()
     {
-        return $this->subject('Telah berhasil membuat janji')->markdown('emails.orders.afterconfirmation',[
+        return $this->subject('Pembuatan Janji Temu dengan Dokter (SEHATKUAPP)')->markdown('emails.orders.afterconfirmation',[
+            'data' => $this->data,
+            'dataRumahSakit' => $this->dataRumahsakit,
+            'dataDokter' => $this->dataDokter,
+            'dataPoliklinik' => $this->dataPoliklinik,
         ]);
     }
 }
