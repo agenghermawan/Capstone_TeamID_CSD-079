@@ -23,18 +23,15 @@
             </div>
             <div class="card-2-whyUs">
                 <img src="Assets/google-docs.png" alt="">
-                <h3>Lorem Ipsum</h3>
-                <p>Kami percaya perawatan medis berkualitas tinggi di seluruh dunia haruslah menjangkau nyaman, terjangkau, aman, nyaman dan efisien </p>
+                <p class="text-dark">Kami percaya perawatan medis berkualitas tinggi di seluruh dunia haruslah menjangkau nyaman, terjangkau, aman, nyaman dan efisien </p>
             </div>
             <div class="card-2-whyUs">
                 <img src="Assets/google-docs.png" alt="">
-                <h3>Lorem Ipsum</h3>
-                <p>Cara kerja yang efisien dan terorganisir memungkinkan kami melayani pasien dengan perawatan kesehatan terbaik. </p>
+                <p class="text-dark" >Cara kerja yang efisien dan terorganisir memungkinkan kami melayani pasien dengan perawatan kesehatan terbaik. </p>
             </div>
             <div class="card-2-whyUs">
                 <img src="Assets/google-docs.png" alt="">
-                <h3>Lorem Ipsum</h3>
-                <p>Kami berkomitmen untuk memberikan solusi medis bahkan untuk kasus yang paling sulit untuk kepentingan pasien dari seluruh dunia.</p>
+                <p class="text-dark" >Kami berkomitmen untuk memberikan solusi medis bahkan untuk kasus yang paling sulit untuk kepentingan pasien dari seluruh dunia.</p>
             </div>
         </div>
 

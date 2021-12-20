@@ -11,7 +11,6 @@
                 <li class="bg-white space-y-1 flex flex-col absolute">
                     <a href="{{route('dokter_daftarPermintaan')}}" class="py-2"> Daftar Permintaan </a>
                     <a href="{{route('dokter.index')}}" class="py-2"> Dokter Aktif </a>
-                    <a href="{{route('dokter.create')}}" class="py-2"> Tambahkan Dokter</a>
                 </li>
             </uli>
         </div>

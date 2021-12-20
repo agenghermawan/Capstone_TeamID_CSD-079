@@ -60,7 +60,11 @@
                 <div class="col-span-1">
                     <div class="p-10 flex">
                         <div class="imageAvatar">
-                            <img src="{{ asset('image/avatar doktor.jpg') }}" class="w-64 h-64 rounded-full" alt="">
+                            @if(Auth::user()->profile_photo_path == null)
+                                <img src="{{ asset('image/avatar doktor.jpg') }}" class="md:w-64 md:h-64 w-32 h-32 rounded-full" alt="">
+                            @else
+                                <img src="{{ Storage::url(Auth::user()->profile_photo_path)  }}" class="md:w-64 md:h-64 w-32 h-32 rounded-full" alt="">
+                            @endif
                         </div>
                         <div class="info">
                             <div class="md:p-10">
@@ -68,11 +72,9 @@
                                 @if(Auth::user()->role_pengguna ==  'Dokter')
                                     <h1 class="text-lg tracking-wide mt-7"> {{$dataDokter->dokter->fullname}} </h1>
                                     <p class="text-sm text-blue-300"> {{$dataDokter->dokter->telp}}</p>
-
                                     <div class="button mt-3">
                                         <a href="{{route('janji-dokter.index')}}" class="bg-blue-300 p-3  shadow rounded"> Janji Temu </a>
                                     </div>
-
                                 @else
                                     <h1 class="text-lg tracking-wide mt-7"> Hallo Admin :)</h1>
                                     <h1 class="text-lg tracking-wide mt-7"> {{Auth::user()->name}} </h1>
@@ -190,10 +192,14 @@
                     <div class="col-span-1">
                         <div class="p-10 flex">
                             <div class="imageAvatar">
-                                <img src="{{ asset('image/avatar doktor.jpg') }}" class="w-64 h-64 rounded-full" alt="">
+                                @if(Auth::user()->profile_photo_path == null)
+                                   <img src="{{ asset('image/avatar doktor.jpg') }}" class="md:w-64 md:h-64 w-32 h-32 rounded-full" alt="">
+                                @else
+                                    <img src="{{ Storage::url(Auth::user()->profile_photo_path)  }}" class="md:w-64 md:h-64 w-32 h-32 rounded-full" alt="">
+                                @endif
                             </div>
                             <div class="info">
-                                <div class="md:p-10">
+                                <div class="md:p-10 pl-10">
                                     <h1 class="text-2xl font-semibold"> {{$greetings }}   </h1>
                                     @if(Auth::user()->role_pengguna ==  'Dokter')
                                         <h1 class="text-lg tracking-wide mt-7"> {{$dataDokter->dokter->fullname}} </h1>

@@ -29,7 +29,7 @@ class ObatController extends Controller
     public function create()
     {
         $data = KategoriObat::all();
-        return  view('backend.obat.create',compact('data'));
+        return  view('backend.Obat.create',compact('data'));
     }
 
     /**

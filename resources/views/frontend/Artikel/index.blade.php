@@ -4,7 +4,7 @@
 
     <main class="container-fluid">
         <div class="searchbar mb-5">
-            <form action="{{route('artikel_frontend')}}" style="width: 80%" class="d-flex">
+            <form action="{{route('artikel_frontend')}}" style="width: 100%" class="d-flex">
                 <input type="text" class="form-control shadow fs-3" name="searchArtikel" placeholder="Silahkan cari Artikel yang anda sukai ....">
                 <button class="btn btn-primary rounded" type="submit"> <i class="fas fa-search fa-3x"></i> </button>
             </form>

@@ -14,19 +14,19 @@
                 <div class="shadow sm:rounded-md sm:overflow-hidden">
                     <div class="px-4 py-5 bg-white space-y-6 sm:p-6 shadow-md rounded-xl">
                         <div class="grid grid-cols-6 gap-6">
-                            <div class="col-span-3 sm:col-span-6">
+                            <div class="md:col-span-6 col-span-6">
                                 <div class="mt-1 flex rounded-md shadow-sm">
                                     <input type="text" name="namaPenyakit" id="namaPenyakit"
                                         class="focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-r-md sm:text-sm border-gray-300" required
                                         placeholder="Nama Penyakit">
                                     @error('namaPenyakit')
-                                    <p class="text-red text-xs">{{$message}}</p>
+                                      <p class="text-red text-xs">{{$message}}</p>
                                     @enderror
                                 </div>
                             </div>
                         </div>
                         <div class="grid grid-cols-6 gap-6">
-                            <div class="col-span-3 sm:col-span-6">
+                            <div class="md:col-span-6 col-span-6">
                                 <div class="mt-1 flex rounded-md shadow-sm">
                                     <span
                                         class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">

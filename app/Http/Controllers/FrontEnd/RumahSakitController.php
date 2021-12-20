@@ -15,7 +15,7 @@ class RumahSakitController extends Controller
         if (request('searchPoliklinik')){
             $keywoard = \request('searchPoliklinik');
             $data = Poliklinik::where('nama', 'like', "%{$keywoard}%")->latest()->get();
-            return  view('frontend.rumahsakit.index',compact('data'));
+            return  view('frontend.RumahSakit.index',compact('data'));
         }
         else{
             $data = Poliklinik::all();

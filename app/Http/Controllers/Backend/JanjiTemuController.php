@@ -31,7 +31,7 @@ class JanjiTemuController extends Controller
             return view('backend.JanjiTemu.index',compact('data','getID'));
         }else{
             $getID = Dokter::with('user')->where('user_id',Auth::user()->id)->first();
-            $data = JanjiTemu::all();
+            $data = JanjiTemu::paginate(8);
             return view('backend.JanjiTemu.index',compact('data','getID'));
         }
 

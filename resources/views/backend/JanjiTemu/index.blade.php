@@ -89,7 +89,7 @@
                         @endforeach
                     </table>
                 </div>
-                {{$data->links()}}
+                {{ $data->links() }}
             </div>
         </div>
     </div>
