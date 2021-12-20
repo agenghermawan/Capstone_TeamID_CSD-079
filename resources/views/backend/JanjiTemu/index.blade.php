@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Daftar Janji dengan Pasien
+    <span class="text-blue-700"> Daftar Janji dengan Pasien </span>
 @endsection
 @section('buttonHeader')
     <div x-data="{ open: false }">
@@ -67,7 +67,7 @@
                                 </div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
-                                <div class="text-sm text-gray-900">{{$item->tanggal_janji}}</div>
+                                <div class="text-sm text-gray-900">{{date('D d M Y', strtotime($item->tanggal_janji))}}</div>
                                 <div class="text-sm text-gray-500">{{$item->jam_janji}}</div>
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap">
@@ -75,8 +75,11 @@
                                   {{$item->status}}
                                 </span>
                             </td>
+                            @php
+                               $rumahSakit =  \App\Models\RumahSakit::where('id',$item->rumahsakit_id)->first();
+                            @endphp
                             <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                {{$item->kota}}
+                                {{$rumahSakit->nama}}
                             </td>
                             <td class="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
                                 <a href="{{route('janji-dokter.show',$item->id)}}" class="text-indigo-600 hover:text-indigo-900"><i class="fas fa-eye"></i></a>
@@ -86,6 +89,7 @@
                         @endforeach
                     </table>
                 </div>
+                {{$data->links()}}
             </div>
         </div>
     </div>

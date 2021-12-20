@@ -1,5 +1,4 @@
 @extends('frontend.component.layout')
-
 @section('contentFrontEnd')
     @include('sweetalert::alert')
     <main>
@@ -66,68 +65,88 @@
                 <a href="{{ route('artikel_frontend') }}">Lihat Semua</a>
             </div>
             <div class="article-content">
-                <div class="card-article">
-                    <img src="{{ asset('image/boxed-water-is-better-XXQW_4VqrA0-unsplash.jpg') }}" alt="">
-                    <h3>Air putih adalah obat segala penyakit</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quisquam consectetur iste minus,
-                        consequatur nihil beatae adipisci blanditiis! Totam dolore facilis, sint minima unde beatae porro
-                        repellat temporibus quae autem?</p>
-                </div>
-                <div class="card-article">
-                    <img src="{{ asset('image/boxed-water-is-better-XXQW_4VqrA0-unsplash.jpg') }}" alt="">
-                    <h3>Air putih adalah obat segala penyakit</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quisquam consectetur iste minus,
-                        consequatur nihil beatae adipisci blanditiis! Totam dolore facilis, sint minima unde beatae porro
-                        repellat temporibus quae autem?</p>
-                </div>
-                <div class="card-article">
-                    <img src="{{ asset('image/boxed-water-is-better-XXQW_4VqrA0-unsplash.jpg') }}" alt="">
-                    <h3>Air putih adalah obat segala penyakit</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quisquam consectetur iste minus,
-                        consequatur nihil beatae adipisci blanditiis! Totam dolore facilis, sint minima unde beatae porro
-                        repellat temporibus quae autem?</p>
-                </div>
-                <div class="card-article">
-                    <img src="{{ asset('image/boxed-water-is-better-XXQW_4VqrA0-unsplash.jpg') }}" alt="">
-                    <h3>Air putih adalah obat segala penyakit</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab quisquam consectetur iste minus,
-                        consequatur nihil beatae adipisci blanditiis! Totam dolore facilis, sint minima unde beatae porro
-                        repellat temporibus quae autem?</p>
-                </div>
+                @foreach($dataArtikel as $item)
+                    <div class="card-article pb-2">
+                        @if($item->photo != null)
+                            <img src="{{ Storage::url($item->photo) }}" alt="{{$item->title}}" style="object-fit: cover">
+                        @else
+                            <img src="{{ asset('image/application.png')}}" alt="{{$item->title}}" style="object-fit: cover" width="100%">
+                        @endif
+                        <h3>{{$item->title}}</h3>
+                    </div>
+                @endforeach
             </div>
         </div>
-        <div class="drugs-container">
-            <h2>Obat dan Vitamin</h2>
-            <p>Dapatkan informasi seputar kandungan, aturan, petunjuk penggunaan obat dan vitamin di sini</p>
-            <div class="card-drugs-container">
-                <div class="card-drugs">
-                    <img
-                        src="https://img.icons8.com/external-itim2101-blue-itim2101/64/000000/external-drug-medical-and-health-itim2101-blue-itim2101.png" />
-                    <h3>Flu dan Batuk</h3>
+        <div class="content-2-1 mx-auto p-0  position-relative" style="font-family: 'Poppins', sans-serif">
+            <div class="text-center title-text">
+                <h1 class="text-title fs-1" >3 Keys Benefit</h1>
+                <p class="text-caption fs-3" style="margin-left: 3rem; margin-right: 3rem">
+                    You can easily manage your business with a powerful tools
+                </p>
+            </div>
+
+            <div class="grid-padding text-center">
+                <div class="row">
+                    <div class="col-lg-4 column">
+                        <div class="icon">
+                            <img src="{{asset('image/Content-2-2.png')}}"
+                                 alt="" />
+                        </div>
+                        <h3 class="icon-title fs-1">Mudah Digunakan</h3>
+                        <p class="icon-caption fs-2">
+                            Mempermudah dalam melakukan konsultasi <br />
+                            kesehatan dan janji dengan dokter pilihan
+                        </p>
+                    </div>
+                    <div class="col-lg-4 column">
+                        <div class="icon">
+                            <img src="{{asset('image/Content-2-3.png')}}"
+                                 alt="" />
+                        </div>
+                        <h3 class="icon-title fs-1">Analisis secara Real Time</h3>
+                        <p class="icon-caption fs-2">
+                            Kamu bisa melakukan konsultasi <br />
+                            dengan dokter secara langsung
+                        </p>
+                    </div>
+                    <div class="col-lg-4 column">
+                        <div class="icon">
+                            <img src="{{asset('image/Content-2-4.png')}}"
+                                 alt="" />
+                        </div>
+                        <h3 class="icon-title fs-1">Data Anda Terjamin</h3>
+                        <p class="icon-caption fs-2">
+                            Privasi data kamu terjaga<br />
+                            oleh kami
+                        </p>
+                    </div>
                 </div>
-                <div class="card-drugs">
-                    <img
-                        src="https://img.icons8.com/external-itim2101-blue-itim2101/64/000000/external-drug-medical-and-health-itim2101-blue-itim2101.png" />
-                    <h3>Flu dan Batuk</h3>
+            </div>
+
+            <div class="card-block">
+                <div class="card">
+                    <div class="d-flex flex-lg-row flex-column align-items-center">
+                        <div class="me-lg-3">
+                            <img
+                                src="{{asset('image/Content-2-1.png')}}"
+                                alt="" />
+                        </div>
+                        <div class="flex-grow-1 text-lg-start text-center card-text">
+                            <h3 class="card-title fs-1">
+                                Konsultasi cepat dengan dokter kamu
+                            </h3>
+                            <p class="card-caption fs-3 mt-4">
+                               Aplikasi ini Mempermudah dalam melakukan konsultasi
+                                kesehatan <br class="d-none d-lg-block" />
+                                dan janji dengan dokter pilihan
+                            </p>
+                        </div>
+                        <div class="card-btn-space">
+                            <a href="{{route('tanyaDokter.index')}}" class="btn btn-card text-white">Konsultasi Sekarang </a>
+                            <a href="{{route('user.index')}}" class="btn btn-outline">Buat Janji Sekarang </a>
+                        </div>
+                    </div>
                 </div>
-                <div class="card-drugs">
-                    <img
-                        src="https://img.icons8.com/external-itim2101-blue-itim2101/64/000000/external-drug-medical-and-health-itim2101-blue-itim2101.png" />
-                    <h3>Flu dan Batuk</h3>
-                </div>
-                <div class="card-drugs">
-                    <img
-                        src="https://img.icons8.com/external-itim2101-blue-itim2101/64/000000/external-drug-medical-and-health-itim2101-blue-itim2101.png" />
-                    <h3>Flu dan Batuk</h3>
-                </div>
-                <div class="card-drugs">
-                    <img
-                        src="https://img.icons8.com/external-itim2101-blue-itim2101/64/000000/external-drug-medical-and-health-itim2101-blue-itim2101.png" />
-                    <h3>Flu dan Batuk</h3>
-                </div>
-                <a href="{{ route('obat_frontend') }}" class="card-drugs">
-                    <h3>Lihat Semua</h3>
-                </a>
             </div>
         </div>
     </main>

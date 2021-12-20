@@ -9,8 +9,11 @@
     <div class="bg-white grid rounded-lg grid-cols-1 md:grid-cols-2 xl:grid-cols-3 p-7">
         <div class="col-span-1 flex items-center border-r">
             <div class="image w-1/4 ">
-                <img src="{{ Storage::url($data->profile_photo_path) }}" class="w-20 h-20 rounded-full" alt="">
-                <i class="fas fa-exchange-alt text-blue-300"></i>
+                @if($data->profile_photo_path != null)
+                    <img src="{{ Storage::url($data->profile_photo_path) }}" class="w-20 h-20 rounded-full object-cover" alt="">
+                @else
+                    <img src="{{ asset('image/avatar doktor.jpg') }}" class="w-20 h-20 rounded-full object-cover" alt="">
+                @endif
             </div>
             <div class="name">
                 <h4 class="text-blue-700 text-base tracking-wide -mt-2"> {{$data->dokter->fullname}} </h4>
@@ -101,10 +104,16 @@
             </div>
             <div class="form mt-4 text-blue-600 grid grid-cols-1 ">
                 <div class="form-group">
-                    <label for="photo" class="block text-sm text-blue-700"> Photo :</label>
+                    <label for="photo" class="block text-sm text-blue-700"> Photo :
+                    @if($data->profile_photo_path != null)
+                        <img src="{{ Storage::url($data->profile_photo_path) }}" class="w-20 h-20 rounded-full object-cover" alt="">
+                    @else
+                        <img src="{{ asset('image/avatar doktor.jpg') }}" class="w-20 h-20 rounded-full object-cover" alt="">
+                    @endif
                     <input type="file" class="border p-3" id="photo" name="profile_photo_path">
+                    </label>
                     @error('profile_photo_path')
-                    <p class="text-red-500 text-sm"> {{$message}} </p>
+                     <p class="text-red-500 text-sm"> {{$message}} </p>
                     @enderror
                 </div>
             </div>
@@ -254,18 +263,19 @@
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-5">
         <div class="bg-white col-span-1 rounded shadow-sm p-10">
-            <h1 class="mb-5 text-blue-500"> Daftar Pasien Terkahir </h1>
+            <h1 class="mb-5 text-blue-700"> Daftar Pasien Terkahir </h1>
             @forelse($pasienTerakhir as $item)
                 <div class="content flex w-full mb-5 ">
                     <div class="w-full flex  md:w-3/4">
                         <div class="image">
                             <img src="https://ui-avatars.com/api/?name={{$item->nama}}" class="w-12 h-12 rounded-full" alt="">
                         </div>
-                        <div class="text pl-4">
+                        <div class="text pl-4 text-blue-500">
                             <h4> {{$item->nama}} </h4>
                             <p> {{$item->jam_janji}}</p>
                         </div>
                     </div>
+                    <div class="md:1/4 text-blue-500"> <p> {{$item->status}} </p></div>
                 </div>
                 @empty
                 <h3 class="text-lg tracking-wide text-blue-700"> Anda belum memiliki pasien </h3>

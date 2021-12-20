@@ -1,20 +1,25 @@
 @extends('layouts.app')
 
 @section('title')
-Data Dokter
+    @if(Auth::user()->role_pengguna == 'Dokter')
+       <span class="text-blue-700">  Data Kamu </span>
+    @else
+        Daftar Data Dokter
+    @endif
 @endsection
 @section('buttonHeader')
     <div x-data="{ open: false }">
-        <button x-on:click="open = ! open" class="bg-gradient-to-r  md:justify-items-end from-blue-300 to-blue-200 p-2 w-64 rounded">Daftar Dokter</button>
+        <button x-on:click="open = ! open" class="bg-gradient-to-r  md:justify-items-end from-blue-300 to-blue-200 p-2 w-64  text-white rounded">Daftar Dokter</button>
+        @if(Auth::user()->role_pengguna == 'Admin')
         <div x-show="open" x-transition>
             <uli>
                 <li class="bg-white space-y-1 flex flex-col absolute">
                     <a href="{{route('dokter_daftarPermintaan')}}" class="py-2"> Daftar Permintaan </a>
                     <a href="" class="py-2"> Dokter Aktif </a>
-                    <a href="{{route('dokter.create')}}" class="py-2"> Tambahkan Dokter</a>
                 </li>
             </uli>
         </div>
+       @endif
     </div>
 @endsection
 @section('content')

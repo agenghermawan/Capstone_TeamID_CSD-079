@@ -10,15 +10,14 @@
     <img src="{{asset('image/kisspng-physician-fotolia-doctor-of-medicine-doctors-and-nurses-5ab5d9e27dafc1.4044242415218672345148.png')}}" width="200px" height="200px" alt="">
 </div>
 <div class="container" style="border-top: 2px solid blue">
-
-    <h4 style="margin-top: 20px;font-family: 'Poppins', sans-serif;"> Yth. Bapak / Ibu {{$getDokter->fullname}} </h4>
-
     <div style="text-align: center;margin: auto;width: 80%;margin-top: 25px;margin-bottom: 10px;">
-        <a style="background-color: red; padding: 10px; font-family: 'Poppins',sans-serif;border-radius: 8px;color: white;text-decoration: none" href="{{route('LandingPage')}}">
-            Selamat pendaftan anda sebagai dokter telah diterima </a>
     </div>
+    <h4 style="margin-top: 20px;font-family: 'Poppins', sans-serif;"> Yth. Bapak / Ibu {{$data->nama}} </h4>
 
-    <h4 style="font-family: 'Poppins', sans-serif;"> *  Kamu bisa akses dashboard dokter untuk memberikan layanan kesehatan kepada masyarakat,  Terima kasih telah menggunakan aplikasi SEHATKUAPP</h4>
+    <h4 style="margin-top: 20px;font-family: 'Poppins', sans-serif;"> Terima kasih telah menggunakan Aplikasi SEHATKUAPP untuk mempermudah kamu bertemu dokter yang kamu inginkan </h4>
+
+    <a style="background-color: red; padding: 10px; font-family: 'Poppins',sans-serif;border-radius: 8px;color: white;text-decoration: none" href="{{route('user.index')}}"> Ingin Konsultasi kembali , Klik Disini  </strong> </a>
+
     <h4 style="margin-top: 20px;font-family: 'Poppins',sans-serif;"> Salam Hangat</h4>
     <br>
     <br>

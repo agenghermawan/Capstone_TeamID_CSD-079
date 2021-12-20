@@ -14,7 +14,11 @@
                     <div class="col-md-6 my-5">
                         <div class="row">
                             <div class="col-md-6">
+                                @if($item->photo != null)
                                 <img src="{{ Storage::url($item->photo) }}" alt="" class="rounded-lg shadow-lg" width="100%" style="object-fit: cover" height="200px">
+                                @else
+                                    <img src="{{ asset('image/application.png')}}" alt="" class="rounded-lg shadow-lg" width="100%" height="200px">
+                                    @endif
                             </div>
                             <div class="col-md-6 fs-3">
                                 <h1 class="pt-3"> {{$item->title}}</h1>
@@ -40,7 +44,7 @@
         }
         @media only screen and (min-width: 1200px) {
             .readmore {
-                margin-top: 25px;
+                margin-top: 0;
             }
         }
     </style>

@@ -11,14 +11,15 @@ class SuccesRegister extends Mailable
 {
     use Queueable, SerializesModels;
 
+    private $getDokter;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($getDokter)
     {
-        //
+        $this->getDokter = $getDokter;
     }
 
     /**
@@ -28,6 +29,8 @@ class SuccesRegister extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.successregister');
+        return $this->markdown('emails.successregister',[
+            'getDokter' => $this->getDokter,
+        ]);
     }
 }

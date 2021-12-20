@@ -13,7 +13,7 @@
             <h1 class="ml-5" style="font-size: 24px"> {{$dataArtikel->ditulisOleh}}</h1>
         </div>
         <div class="header-text">
-            <h4 class="text-lg font-semibold tracking-wide text-blue-700" style="font-size: 48px"> {{ $dataArtikel->title }} </h3>
+            <h4 class="text-lg font-semibold tracking-wide text-blue-700" style="font-size: 24px"> {{ $dataArtikel->title }} </h3>
                 <div class="md:flex md:justify-between my-5">
                     <p class="text-blue-500">{{ $dataArtikel->kategori }}</p>
                     <p class="text-blue-500">{{ $dataArtikel->created_at }}</p>

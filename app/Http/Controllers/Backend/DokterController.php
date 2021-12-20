@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\SuccesRegister;
 use App\Models\Dokter;
 use App\Models\JanjiTemu;
 use App\Models\RumahSakit;
@@ -11,6 +12,7 @@ use Illuminate\Database\Query\Builder;
 use Illuminate\Http\Request;
 use Validator;
 use RealRashid\SweetAlert\Facades\Alert;
+use Mail;
 
 class DokterController extends Controller
 {
@@ -53,7 +55,8 @@ class DokterController extends Controller
      */
     public function store(Request $request)
     {
-        Validator::make($request->all(), [
+        $data = $request->all();
+        Validator::make($data, [
             'fullname' => 'required',
             'noStr' => 'required',
             'telp' => 'required',
@@ -64,7 +67,11 @@ class DokterController extends Controller
             'rumahsakit_id' => 'required',
             'sebagaiDokter' => 'required',
         ])->validate();
-        Dokter::create($request->all());
+
+        $dataRumahsakit = RumahSakit::where('id',$data['rumahsakit_id'])->first();
+        Dokter::create($data);
+
+
         Alert::success('Success Title', 'Ditunggu, Data kamu sedang di verifikasi');
         return redirect()->route('LandingPage');
     }
@@ -89,7 +96,7 @@ class DokterController extends Controller
     public function edit($id)
     {
         $countPasien = JanjiTemu::where('dokter_id',$id)->count();
-        $pasienTerakhir = JanjiTemu::where('dokter_id',$id)->get();
+        $pasienTerakhir = JanjiTemu::where('dokter_id',$id)->get()->take(5);
         $data = User::whereRelation('dokter','id',$id)->first();
         $rumahsakit = RumahSakit::all();
         return view('backend.Dokter.edit',compact('data','countPasien','pasienTerakhir','rumahsakit'));
@@ -153,9 +160,11 @@ class DokterController extends Controller
         if ($request->status == 'diterima'){
             $getDokter -> status = 'active';
             $getDokter->save();
+            \Mail::to($getDokter->email)->send(new SuccesRegister($getDokter));
         }elseif ($request->status == 'ditolak'){
             $getDokter->status = $request->status;
             $getDokter->save();
+            \Mail::to($request->email)->send(new SuccesRegister($getDokter));
         }
         if (\Auth::user()->role_pengguna == 'Dokter'){
             $dataDiriSendiri = \Auth::user()->id;

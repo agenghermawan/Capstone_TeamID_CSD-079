@@ -14,7 +14,9 @@
                     <p>Ditinjau oleh: <b>dr. {{$data->ditulisOleh}}</b></p>
                     <p>{{  $data->created_at->diffForHumans()}}</p>
                 </div>
+                @if($data->photo !== null)
                 <img class="article-banner" src="{{ Storage::url($data->photo)}}" alt="" width="100%" height="400px" style="object-fit: cover">
+                @endif
                 <p class="article-content">
                     {!! $data->isiArtikel !!}
                 </p>
@@ -23,9 +25,13 @@
                 <h1>Artikel Terkait</h1>
                 <div class="row">
                     @foreach($artikelTerkait as $item)
-                        <div class="col-md-3  shadow-md">
+                        <div class="col-md-3 shadow-md">
                             <a href="{{route('artikelShow_frontend',$item->id)}}">
-                                <img src="{{ Storage::url($item->photo) }}" alt="{{$item->title}}" width="100%">
+                                @if($item->photo != null)
+                                    <img src="{{ Storage::url($item->photo) }}" alt="" class="rounded-lg shadow-lg" width="100%">
+                                @else
+                                    <img src="{{ asset('image/application.png')}}" alt="" class="rounded-lg shadow-lg" width="100%" >
+                                @endif
                                 <h3>{{$item->title}}</h3>
                                 <p>
                                     Kategori : {{$item->kategori}}

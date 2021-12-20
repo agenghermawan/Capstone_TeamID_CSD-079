@@ -26,12 +26,9 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', function () {
-    return view('frontend.home');
-})->name('LandingPage');
 
+Route::get('/',[App\Http\Controllers\FrontEnd\LandingPageController::class, 'index'] )->name('LandingPage');
 
-// Route::get('penyakit',[App\Http\Controllers\Frontend\ArtikelController::class, 'index'] );
 Route::get('artikel',[App\Http\Controllers\FrontEnd\ArtikelController::class, 'index'] )->name('artikel_frontend');
 Route::get('detail/artikel/{id}',[App\Http\Controllers\FrontEnd\ArtikelController::class, 'show'] )->name('artikelShow_frontend');
 Route::get('rumahsakit',[App\Http\Controllers\FrontEnd\RumahSakitController::class, 'index'] )->name('rumahSakit_frontend');

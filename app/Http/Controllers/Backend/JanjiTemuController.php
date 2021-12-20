@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Mail\AfterDoctor;
+use App\Mail\RejectedJanji;
+use App\Mail\SelesaiBuaJanji;
 use App\Mail\TerimaPermintaanJanji;
 use App\Models\Dokter;
 use App\Models\JanjiTemu;
@@ -25,7 +27,7 @@ class JanjiTemuController extends Controller
     {
         if (Auth::user()->role_pengguna == 'Dokter'){
             $getID = Dokter::with('user')->where('user_id',Auth::user()->id)->first();
-            $data = JanjiTemu::where('dokter_id', $getID->id)->get();
+            $data = JanjiTemu::where('dokter_id', $getID->id)->paginate(8);
             return view('backend.JanjiTemu.index',compact('data','getID'));
         }else{
             $getID = Dokter::with('user')->where('user_id',Auth::user()->id)->first();
@@ -114,7 +116,13 @@ class JanjiTemuController extends Controller
         $data->status = $request->status;
         $data->save();
 
-        Mail::to($getEmail)->send(new TerimaPermintaanJanji($data,$dataRumahsakit,$dataDokter,$dataPoliklinik));
+        if($request->status == 'Permintaan Diterima'){
+            Mail::to($getEmail)->send(new TerimaPermintaanJanji($data,$dataRumahsakit,$dataDokter,$dataPoliklinik));
+        }elseif($request->status == 'Permintaan Ditolak'){
+            Mail::to($getEmail)->send(new RejectedJanji($data,$dataRumahsakit,$dataDokter,$dataPoliklinik));
+        }elseif($request->status == 'Selesai'){
+            Mail::to($getEmail)->send(new SelesaiBuaJanji($data,$dataRumahsakit,$dataDokter,$dataPoliklinik));
+        }
         \Alert::success('Berhasil memperbarui Data','Kami sudah memberikan informasi persetujuan kepada Pasien');
         return back();
     }
