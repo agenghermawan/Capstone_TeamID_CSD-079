@@ -1,7 +1,7 @@
 <!-- Navigation -->
 
 <div class="container-fluid">
-    <nav class="navbar navbar-expand-lg  p-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light p-5">
         <a class="navbar-brand d-flex " href="{{ route('LandingPage') }}">
             <img src="{{ asset('icon/consultation.png') }}" width="30" height="30" class="d-inline-block align-top"
                 alt="">
@@ -9,8 +9,7 @@
                 <h2 class="pt-2 "> SEHATKU </h2>
             </div>
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

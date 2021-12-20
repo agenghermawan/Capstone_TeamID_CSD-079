@@ -426,7 +426,7 @@
                                     <div class="p-4 text-lg font-medium border-b">SEHATKUAPP & services</div>
                                     <ul class="flex flex-col p-2 my-3 space-y-3">
                                         <li>
-                                            <a href="#" class="flex items-start px-2 py-1 space-x-2 rounded-md hover:bg-gray-100">
+                                            <a href="{{route('janji-dokter.index')}}" class="flex items-start px-2 py-1 space-x-2 rounded-md hover:bg-gray-100">
                           <span class="block mt-1">
                             <svg
                                 class="w-6 h-6 text-gray-500"
@@ -455,7 +455,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="#" class="flex items-start px-2 py-1 space-x-2 rounded-md hover:bg-gray-100">
+                                            <a href="{{route('konsultasi-dokter.index')}}" class="flex items-start px-2 py-1 space-x-2 rounded-md hover:bg-gray-100">
                           <span class="block mt-1">
                             <svg
                                 class="w-6 h-6 text-gray-500"
@@ -483,38 +483,20 @@
                                     </ul>
                                 </div>
                             </div>
-                            <div class="relative" x-data="{ isOpen: false }">
-                                <div
-                                    @click.away="isOpen = false"
-                                    x-show.transition.opacity="isOpen"
-                                    class="absolute w-40 max-w-sm mt-3 transform bg-white rounded-md shadow-lg -translate-x-3/4 min-w-max"
-                                >
-                                    <div class="p-4 font-medium border-b">
-                                        <span class="text-gray-800">Options</span>
-                                    </div>
-                                    <ul class="flex flex-col p-2 my-2 space-y-1">
-                                        <li>
-                                            <a href="#" class="block px-2 py-1 transition rounded-md hover:bg-gray-100">Link</a>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="block px-2 py-1 transition rounded-md hover:bg-gray-100">Another Link</a>
-                                        </li>
-                                    </ul>
-                                    <div class="flex items-center justify-center p-4 text-blue-700 underline border-t">
-                                        <a href="#">See All</a>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
                         @endif
                         <!-- avatar button -->
                         <div class="relative" x-data="{ isOpen: false }" style="z-index: 1;">
                             <button @click="isOpen = !isOpen" class="p-1 bg-gray-200 rounded-full focus:outline-none focus:ring" >
+                                @if(Auth::user()->profile_photo_path != null)
+                                    <img src="{{ Storage::url(Auth::user()->profile_photo_path) }}" class="w-8 h-8 rounded-full object-cover" alt="{{Auth::user()->name}}">
+                                @else
                                 <img
                                     class="object-cover w-8 h-8 rounded-full"
                                     src="{{asset('image/avatar doktor.jpg')}}"
                                     alt=""
                                 />
+                                    @endif
                             </button>
                             <!-- green dot -->
                             <div class="absolute right-0 p-1 bg-green-400 rounded-full bottom-3 animate-ping"></div>
@@ -530,8 +512,6 @@
                                     @php
                                         $dataID = Auth::user()->id;
                                         $getData = \App\Models\User::with('Dokter')->where('id',$dataID)->first();
-
-
                                     @endphp
                                     @if(empty($getData->dokter))
                                             <span class="text-gray-800">{{Auth::user()->name}}</span>

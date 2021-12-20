@@ -54,11 +54,14 @@ class ArtikelController extends Controller
             'ditulisOleh' => 'required',
             'kategori' => 'required',
             'refrensi' => 'required',
-            'photo' => 'required|image:jpg,png',
+            'photo' => 'nullable',
             'penulis_id' => 'required',
         ])->validate();
 
-        $data['photo']  = $request->file('photo')->store('artikel','public', $request->file('photo')->getClientOriginalName());
+        if ($request->photo != null){
+            $data['photo']  = $request->file('photo')->store('artikel','public', $request->file('photo')->getClientOriginalName());
+        }
+
         Artikel::create($data);
         \Alert::toast('berhasil menambahkan data artikel','success');
         return back()->with([

@@ -31,7 +31,7 @@
 
                 <div class="form-group lg:p-5">
                     <p class="mb-2"> Isi Artikel </p>
-                    <textarea name="isiArtikel" id="editor" style="height: 400px" class="rounded" rows="10"></textarea>
+                    <textarea name="isiArtikel" id="editor" style="height: 500px" class="rounded" rows="10"></textarea>
                     @error('isiArtikel')
                         <p class="text-sm text-red-500">{{$message}} </p>
                     @enderror

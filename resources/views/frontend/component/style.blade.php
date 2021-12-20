@@ -37,10 +37,4 @@
         border-bottom-left-radius: 5px;
         padding-left: 15px;
     }
-
-    .searchbar button {
-        width: 5%;
-        height: 50px;
-    }
-
 </style>

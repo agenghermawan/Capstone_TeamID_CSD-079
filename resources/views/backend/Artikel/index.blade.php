@@ -15,16 +15,15 @@
                      <a href="{{route('artikel.show',$item->id)}}">
                          <div class="flex">
                              @php
-                                $getAvatar = \App\Models\User::where('id',$item->penulis_id)->first();
+                                $getDataPenulis = \App\Models\User::with('dokter')->where('id',$item->penulis_id)->first();
                              @endphp
-                             @if($getAvatar->profile_photo_url == null)
-                                  <img src="{{ asset('image/avatar doktor.jpg') }}" class="w-64 h-64 rounded-full" alt="">
+                             @if($getDataPenulis->profile_photo_path == null)
+                                  <img src="{{ asset('image/avatar doktor.jpg') }}" class="w-12 h-12 rounded-full" alt="">
                              @else
-                             <img src="{{ $getAvatar->profile_photo_url }}" class="rounded-full object-cover w-12 h-12" alt="">
+                                <img src="{{Storage::url($getDataPenulis->profile_photo_path)}}" class="rounded-full object-cover w-12 h-12" alt="">
                              @endif
-
                              <div class="px-4">
-                                 <p> {{ $item->ditulisOleh }}</p>
+                                 <p> {{ $getDataPenulis->dokter->fullname }}</p>
                                  <h2 style="font-size: 14px"> {{$item->title}}</h2>
                              </div>
                          </div>
