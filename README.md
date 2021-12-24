@@ -1,66 +1,131 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+<!-- PROJECT LOGO -->
+<br />
+<div align="center">
+  <a href="https://github.com/github_username/repo_name">
+    <img src="images/logo.png" alt="Logo" width="80" height="80">
+  </a>
+<h3 align="center">SEHATKUAPP</h3>
+  <p align="center">
+    <br />
+    <a href="https://github.com/agenghermawan/Capstone_TeamID_CSD-079"><strong>Explore the docs »</strong></a>
+    <br />
+    <br />
+    <a href="http://appsehatku.my.id/">View Demo</a>
+  </p>
+</div>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+<!-- ABOUT THE PROJECT -->
+## Tentang Aplikasi ini
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Aplikasi untuk menyederhanakan akses kesehatan secara online agar bisa berkonsultasi langsung dengan dokter, memberikan informasi rumah sakit yang tersedia, informasi tentang obat dan penyakit, membuat janji dengan dokter, informasi tentang covid 19, dan artikel tentang kesehatan yang dapat membantu masyarakat.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Membuat dengan menggunakan
 
-## Learning Laravel
+* [Laravel](https://laravel.com)
+* [TailwindCSS](https://tailwindcss.com/)
+* [MYSQL](https://www.mysql.com/)
+* [Bootstrap](https://getbootstrap.com)
+* [JQuery](https://jquery.com)
+* [Freepik](https://www.freepik.com/)
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+<!-- GETTING STARTED -->
+## MULAI
 
-## Laravel Sponsors
+Langkah Langkah Melakukan installasi aplikasi ini:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Kebutuhan Aplikasi
 
-### Premium Partners
+Aplikasi yang dibutuhkan sebelum melakukan installasi
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+* Composer
+  ```sh
+  https://getcomposer.org/
+  ```
+* Code Editor
+  ```sh
+  1. Visual Studio
+  2. PhpStrom
+  ```
+* PHP 7.4
+  ```sh
+  https://www.php.net/
+  ```
+* Framework yang digunakan ( Tertera pada atas )
+* MYSQL
+  ```sh
+  https://www.mysql.com/
+  ```
+ 
 
-## Contributing
+### Instalasi
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+1. Clone repo ini
+   ```sh
+   git clone https://github.com/agenghermawan/Capstone_TeamID_CSD-079.git
+   ```
+2. Install Composer packages
+   ```sh
+   Install composer yang telah di download sebelumnya
+   ```
+3. Buka terminal cmd pada folder yang telah kita clone tadi
+4. Jalankan perintah
+    ``` sh 
+    composer install 
+    ```
+    Pada termintal tersebut (Jangan lupa arahkan directory berdasarkan folder yang telah kita clone tadi )
+6. Menunggu hingga proses install selesai
+7. Jika selesai, Jalankan di terminal dengan perintah
+    ```sh
+    php artisan serve
+    ```
+    Perintah di atas untuk menjalankan aplikasi 
+8.  Install MYSQL yang telah di download
+9.  Buat database baru pada mysql (phpmyadmin) dengan nama sehatku-app (opsional)
+10.  Masuk kedalam folder yang telah kita clone tadi
+11.  Lalu duplikat file .env.example, setelah di duplikat ubah (rename) file menjadi .env
+12.  kembali ke terminal lalu ketikan perintah 
+     ```sh
+     php artisan key:generate
+     ```
+13.  Buka file env yang telah kita rename tadi lalu seting 
+     ```sh
+     DB_DATABASE, DB_USERNAME, DB_PASSWORD
+     ```
+     Sesuaikan dengan Database mysql kamu
+14.  Jalankan perintah pada terminal
+     ```sh
+     php artisan migrate
+     ```
+     Untuk melakukan migrate table yang telah dibuat
+15.  Aplikasi Siap digunakan
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-## Security Vulnerabilities
+## Fitur aplikasi
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+- Konsultasi dengan dokter
+- Janji temu dengan dokter
+- Informasi
+    - Informasi terkait obat-obatan
+    - Informasi terkait rumah sakit
+    - Informasi terkait penyakit
+    - Informasi terkait Covid di indonesia
+    - Artikel tentang kesehatan
+    - Verifikasi menggunakan email
 
+
+<!-- LICENSE -->
 ## License
+Copyright CAPSTONE CSD-079
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+<!-- CONTACT -->
+## Contact
+
+- Ageng Hermawan ( Backend Developer )
+- Fahmi Firmansyah ( Frontend Developer )
+- Project Link: [https://github.com/agenghermawan/Capstone_TeamID_CSD-079.git](https://github.com/agenghermawan/Capstone_TeamID_CSD-079.git)
+
