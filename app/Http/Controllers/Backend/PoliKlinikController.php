@@ -40,7 +40,7 @@ class PoliKlinikController extends Controller
     {
         Validator::make($request->all(),[
             'nama' => 'required',
-            'deskripsi' => 'required|max:150',
+            'deskripsi' => 'required',
             'tindakanmedis' => 'required',
         ])->validate();
 

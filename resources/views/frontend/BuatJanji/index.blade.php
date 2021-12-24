@@ -4,8 +4,13 @@
     <main>
         <div class="appointment-container">
             <div class="header-appointment">
-                <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80"
-                    alt="">
+                @if($data->user->profile_photo_path == null)
+                <img src="{{asset('image/avatar doktor.jpg')}}"
+                    alt="avatarDokter">
+                @else
+                    <img src="{{Storage::url($data->user->profile_photo_path)}}"
+                         alt="gambarDokter">
+                @endif
                 <div class="header-appointment-text">
                     <h1>{{$data->fullname}}</h1>
                     <p>{{$data->sebagaiDokter}}</p>
@@ -13,8 +18,12 @@
             </div>
             <div class="profile">
                 <h2>Profil Dokter</h2>
-                <p> {!! $data->deskripsi !!}
-                </p>
+                   @if($data->deskripsi == null)
+                       <p> Dokter belum memperbarui Profilenya </p>
+                    @else
+                     {!! $data->deskripsi !!}
+                   @endif
+            
             </div>
             <div class="location">
                 <h2>Lokasi & Jadwal Praktik</h2>
@@ -33,7 +42,7 @@
                     <form action="{{route('create.janji')}}">
                         <div class="input-group my-3">
                             <span class="input-group-text" id="basic-addon1"> <i class="fas fa-calendar-check"></i> </span>
-                            <input type="date" class="form-control p-2" name="tanggal_janji" style="height: 44px" placeholder="tanggal_janji" aria-label="tanggal_janji" aria-describedby="basic-addon1">
+                            <input type="date" class="form-control p-2" name="tanggal_janji" style="height: 44px" placeholder="tanggal_janji" aria-label="tanggal_janji" aria-describedby="basic-addon1" required>
                         </div>
                         <div class=" my-3">
                             <h4> Pilih Jam untuk janji bersama dokter anda</h4>
@@ -46,7 +55,7 @@
                         <input type="hidden" name="rumahsakit_id" value="{{$rumahsakit->id}}">
                         <input type="hidden" name="poliklinik_id" value="{{$poliklinik->id}}">
 {{--                        <button @class(['btn btn-primary','p-3','rounded-3']) href="{{route('create.janji',['$data->id','$rumahsakit->id'])}}" > Buat Janji Sekarang </button>--}}
-                        <button @class(['btn btn-primary','p-3','rounded-3']) type="submit" > Buat Janji Sekarang </button>
+                        <button @class(['btn btn-primary','p-3','rounded-3','fs-3']) type="submit" > Buat Janji Sekarang </button>
                     </form>
 
                 </div>
@@ -73,7 +82,6 @@
             </div>
         </div>
         <aside>
-            <button>Buat Janji Konsultasi</button>
             <div class="skill">
                 <h2>Tindakan Medis</h2>
                 <ul>

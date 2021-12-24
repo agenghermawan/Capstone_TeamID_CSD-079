@@ -1,5 +1,15 @@
 @extends('layouts.app')
 
+
+@section('title')
+    @if(Auth::user()->role_pengguna == 'Dokter')
+       <span class="text-blue-700">  Dashboard Dokter </span>
+    @else
+        Dashboard Admin
+    @endif
+@endsection
+
+
 @section('content')
     @include('sweetalert::alert')
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10  mt-4 content-dashboard">
@@ -323,15 +333,7 @@
                 </div>
             @endif
 
-            <!-- Maps Content -->
-            <div class="w-100 h-100 grid grid-cols-12 mt-5">
-                <div class="col-span-12 bg-white p-5">
-                    Lokasi Perusahaan
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3960.956854657923!2d107.63165751534372!3d-6.895764295017193!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e68e7a5573862af%3A0x173078800fac4efc!2sDicoding%20Space!5e0!3m2!1sen!2sid!4v1637827009762!5m2!1sen!2sid"
-                        width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-                </div>
-            </div>
+    
         </div>
     </div>
 @endsection

@@ -128,8 +128,11 @@
                     <div class="rumahsakit  gap-2">
                         <div class="row">
                             <div class="col-md-6">
-                                    {{--                        <img src="{{Storage::url($dataDokter->photo)}}" class="rounded img-thumbnail" width="250px" height="200px" style="object-fit: cover" alt="">--}}
-                                    <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80" class="rounded img-thumbnail" width="250px" height="170px" style="object-fit: cover" alt="{{$dataDokter->fullname}}">
+                                @if($dataDokter->user->profile_photo_path == null)
+                                    <img src="{{ asset('image/avatar doktor.jpg') }}" class="rounded img-thumbnail" width="250px" height="200px" style="object-fit: cover" alt="{{$dataDokter->fullname}}">
+                                @else
+                                    <img src="{{ Storage::url($dataDokter->user->profile_photo_path) }}" class="rounded img-thumbnail" width="250px" height="200px" style="object-fit: cover" alt="{{$dataDokter->fullname}}">
+                                @endif
                             </div>
                             <div class="col-md-6">
                                 <h5> {{$dataDokter->fullname}}</h5>
@@ -144,7 +147,7 @@
                         </div>
                         <div class="group d-flex justify-content-between">
                             <p> Tanggal Janji : <p>
-                                    <p> <strong>  {{$data['tanggal_janji']}} </strong> </p>
+                                    <p> <strong>  {{date('D d M Y',strtotime($data['tanggal_janji']))}} </strong> </p>
                         </div>
                         <div class="group d-flex justify-content-between">
                             <p> Jam Janji : <p>

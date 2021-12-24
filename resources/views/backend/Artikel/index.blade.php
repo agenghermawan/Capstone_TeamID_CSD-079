@@ -23,11 +23,15 @@
                                 <img src="{{Storage::url($getDataPenulis->profile_photo_path)}}" class="rounded-full object-cover w-12 h-12" alt="">
                              @endif
                              <div class="px-4">
-                                 @if($getDataPenulis->dokter->fullname == null)
-                                    <p> {{ $getDataPenulis->dokter->fullname }}</p>
+                                 @if(Auth::user()->role_pengguna == 'Dokter')
+                                     @if($getDataPenulis->dokter->fullname == null)
+                                        <p> {{ $getDataPenulis->dokter->fullname }}</p>
+                                     @else
+                                         <p> {{ $getDataPenulis->name }}</p>
+                                     @endif
                                  @else
                                      <p> {{ $getDataPenulis->name }}</p>
-                                 @endif
+                                @endif
                                  <h2 style="font-size: 14px"> {{$item->title}}</h2>
                              </div>
                          </div>

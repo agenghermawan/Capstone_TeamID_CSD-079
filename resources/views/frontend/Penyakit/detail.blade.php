@@ -3,15 +3,12 @@
 @section('contentFrontEnd')
     <main>
 
-        <img src="{{Storage::url($data->photoPenyakit)}}" alt="">
+        <img src="{{ Storage::url($data->photoPenyakit) }}" alt="">
         <div class="detail-drugs-container">
-            <h1> Batuk </h1>
-            <p><b>{{$data->bentukObat}}</b></p>
-            <p>*termasuk obat {{$data->golongan}}</p>
-
+            <h1> {{ $data->namaPenyakit }} </h1>
             <div class="info category">
                 <h2>Deskripsi Penyakit</h2>
-                <p>{!! $data->deskripsiSingkat!!}</p>
+                <p>{!! $data->deskripsiSingkat !!}</p>
             </div>
 
             <div class="info indication">
@@ -40,14 +37,14 @@
             </div>
         </div>
         <aside>
-            <h1>Rekomendasi Obat lain</h1>
+            <h1>Rekomendasi Penyakit lain</h1>
             <div class="card-recommendation-container">
-                @foreach($rekomendasi as $item)
+                @foreach ($rekomendasi as $item)
                     <div class="card-recommendation">
-                        <img src="{{Storage::url($item->photoPenyakit)}}" alt="">
-                        <h2> Tes </h2>
-                        <p>Rp.200000</p>
-                        <a href="" class="btn btn-info rounded-lg shadow" style="width: 100px">Detail</a>
+                        <img src="{{ Storage::url($item->photoPenyakit) }}" alt="">
+                        <h2> {{ $item->namaPenyakit }} </h2>
+                        <a href="{{ route('detailpenyakit.frontend', $item->id) }}"
+                            class="btn btn-info rounded-lg p-2 shadow" style="width: 100px">Detail</a>
                     </div>
                 @endforeach
             </div>

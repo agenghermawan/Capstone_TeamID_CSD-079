@@ -1,6 +1,9 @@
 @extends('frontend.component.layout')
 
 @section('contentFrontEnd')
+     <div class="container-fluid">
+            <img src="{{asset('image/obat.jpg')}}" class="rounded shadow" height="500px"  style="object-fit: cover" width="100%"  alt="obat">
+        </div>
     <main>
         <div class="searchbar mb-5">
             <form action="{{route('obat_frontend')}}" style="width: 100%" class="d-flex">
@@ -11,18 +14,25 @@
         <div class="drugs-page-container">
             <h2>Obat dan Vitamin Berdasarkan Kategori</h2>
                 <div class="row">
-                @foreach($data as $item)
-                    <div class="col-md-1">
-                            <a href="{{ route('obatKategori_frontend',$item->nama) }}">
-                                <img src="{{ Storage::url($item->photo)}}" class="rounded" style="width: 100%;
-                                height: 100px;
-                                object-fit: cover;" alt="">
-                                <div class="col-md text-center px-2 pt-2">
-                                    <h3 class="fs-6 text">{{$item->nama}}</h3>
+                    @foreach($data as $item)
+                    <div class="col-md-3">
+                    <div class="card mb-3" style="max-width: 540px;">
+                        <a href="{{ route('obatKategori_frontend',$item->nama) }}">
+                            <div class="row g-0 p-5">
+                                <div class="col-md-4">
+                                    <img src="{{ Storage::url($item->photo)}}" class="img-fluid rounded-start" alt="...">
                                 </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title fs-1">{{$item->nama}}</h5>
+                                        <p class="card-text">{{$item->deskripsi}}</p>
+                                    </div>
+                                </div>
+                            </div>
                         </a>
                     </div>
-                @endforeach
+                    </div>
+                    @endforeach
             </div>
 
         </div>

@@ -49,8 +49,7 @@
                         <div class="d-flex gap-2">
                                 <img src="{{Storage::url($dataRumahSakit->photo)}}" class="rounded shadow-md image" width="100%" height="200px" style="object-fit: cover" alt="">
                         </div>
-                        <p class="align-items-start d-flex text-justify mt-4" style="color: "> Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-                            when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries</p>
+                         <p class="align-items-start d-flex text-justify mt-4" style="color: "> {!! $dataRumahSakit->tentang !!}</p>
                         <div class="maps">
                         </div>
                         <div class="card p-3 mb-2 mt-2 shadow" style="background-color: #b9c3fe">
@@ -58,7 +57,7 @@
                         </div>
                         <div class="card p-3 shadow mb-2" style="background-color: #F5F5F7">
                             <h6> Waktu </h6>
-                           <p style="font-size: 12px">  Tanggal : {{date('D d m Y',strtotime($tanggalJanji))}} <br>
+                           <p style="font-size: 12px">  Tanggal : {{date('D d M Y',strtotime($tanggalJanji))}} <br>
                             Jam &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : {{$jamjanji}}</p>
                         </div>
                         <div class="card p-3 shadow mb-2" style="background-color: #F5F5F7">

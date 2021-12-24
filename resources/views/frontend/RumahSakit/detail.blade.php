@@ -66,7 +66,7 @@
                                             <h3>{{$dokter->fullname}}</h3>
                                             <p>{{$dokter->sebagaiDokter}}</p>
                                         </div>
-                                        <a href="{{ route('buatjanji_frontend',[$dokter->user->id, $dataRumahsakit->id,$nama]) }}" class="bg-primary text-light rounded-3 shadow-sm">Buat Janji</a>
+                                        <a href="{{ route('buatjanji_frontend',[$dokter->user->id, $dataRumahsakit->id,$nama]) }}" class="bg-primary text-light rounded-3 shadow-sm fs-4">Buat Janji</a>
                                     </div>
                                 </div>
                                 @endforeach

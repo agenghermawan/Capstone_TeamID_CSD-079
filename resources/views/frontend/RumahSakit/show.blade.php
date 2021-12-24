@@ -8,22 +8,25 @@
                 <button class="btn btn-primary rounded" type="submit"> <i class="fas fa-search fa-3x"></i> </button>
             </form>
         </div>
+
         <div class="hospital-page-container">
             <h2>Telusuri Rumah Sakit</h2>
-            <div class="card-hospital-container">
-                @foreach($data as $item)
-                <a href="{{ route('rumahSakit_detail_frontend', [$item->id, $nama]) }}" class="card-hospital">
-                    <img
-                        src="{{Storage::url($item->photo)}}" />
-                    <div class="card-hospital-content">
-                        <h3>{{$item->nama}}</h3>
-                        <h4>{{$nama}}</h4>
-                        <p> {!!  $item->tentang !!}</p>
-                        <p>{{$item->alamat}}</p>
+                    <div class="row ">
+                        @foreach($data as $item)
+                        <div class="col-md-3 mb-4">
+                            <div class="card shadow rounded" style="width: 100%;">
+                                <img
+                                    src="{{Storage::url($item->photo)}}" class="rounded" style="border-radius:35px" height="300px" />
+                                <div class="card-body">
+                                    <h5 class="card-title fs-2">{{$item->nama}}</h5>
+                                    <p class="fs-3"> {{$nama}}</p>
+                                    <p class="card-text fs-4">{{ \Illuminate\Support\Str::limit($item->tentang, 100, '...') }}</p>
+                                    <a href="{{ route('rumahSakit_detail_frontend', [$item->id, $nama]) }}" class="btn btn-primary rounded shadow px-4 fs-2 py-2">Detail</a>
+                                </div>
+                            </div>
+                        </div>
+                         @endforeach
                     </div>
-                </a>
-                @endforeach
-            </div>
         </div>
     </main>
 @endsection

@@ -3,19 +3,21 @@
 @section('contentFrontEnd')
     <main>
         <div class="searchbar">
-            <input type="text" placeholder="Obat Batuk ata vitamin">
-            <button>Cari</button>
+            <form action="{{route('obatKategori_frontend',$kategori)}}" style="width: 100%" class="d-flex">
+                <input type="text" class="form-control shadow fs-3" name="searchObat" placeholder="Silahkan cari Obat yang anda butuhkan ....">
+                <button class="btn btn-primary rounded" type="submit"> <i class="fas fa-search fa-3x"></i> </button>
+            </form>
         </div>
         <div class="drugs-page-container">
-            <h2>Obat Flu dan Batuk</h2>
+            <h2> Pilih Obat berdasarkan Kategori {{$kategori}}</h2>
 
             <div class="card-drugs-container">
                 @foreach($data as $item)
-                    <a href="{{ route('obatShow_frontend',$item->id) }}" class="card-drugs">
+                    <a href="{{ route('obatShow_frontend',$item->id) }}" class="card-drugs bg-white rounded shadow">
                         <img src="{{Storage::url($item->photoObat)}}" />
-                        <h3>{{$item->namaObat}}</h3>
-                        <p>{{$item->bentukObat}}</p>
-                        <h3>{{$item->golongan}}</h3>
+                        <h3 class="fs-1">{{$item->namaObat}}</h3>
+                        <p c\lass="fs-2">{{$item->bentukObat}}</p>
+                        <h3 class="fs-2">{{$item->golongan}}</h3>
                     </a>
                 @endforeach
             </div>

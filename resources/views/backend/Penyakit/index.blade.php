@@ -12,6 +12,7 @@
         Data Penyakit</a>
 @endsection
 @section('content')
+  @include('vendor.sweetalert.alert')
     <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 lg:grid-cols-3 gap-3 mt-5">
         @foreach ($dataPenyakit as $item)
             <div class="bg-white shadow-md border border-gray-200 rounded-lg max-w-sm dark:bg-gray-800 dark:border-gray-700">

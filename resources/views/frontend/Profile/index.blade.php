@@ -156,6 +156,7 @@
                         <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                             @if($dataKonsultasi->isEmpty())
                             <div class="card p-5">
+                               
                                 <div class="row text-center">
                                     <h1 class="text-center p-5"> Konsultasi dengan Dokter </h1>
                                     <h3> Anda belum pernah konsultasi dengan dokter !! Konsultasi sekarang </h3>
@@ -209,6 +210,9 @@
                         <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
                                 @if($dataJanjiDokter->isEmpty())
                                     <div class="card p-5">
+                                         <div class="d-flex justify-content-center">
+                                            <img src="{{asset('image/415.jpg')}}" class="rounded shadow" height="200px" width="200px" alt="">
+                                         </div>  
                                         <div class="row text-center">
                                             <h1 class="text-center p-5"> Buat Janji dengan Dokter </h1>
                                             <h3> Anda belum pernah membuat janji dengan dokter !! Buat Janji sekarang </h3>
@@ -222,9 +226,9 @@
                                     </div>
                             @else
                             <div class="card" style="padding: 2% 5% 0 2%">
-                                <h2 class="mb-4 text-center"> Janji Temu Anda  </h2>
+                                <h2 class="mb-4 text-center"> Riwayat Janji Temu Anda  </h2>
                                 @foreach($dataJanjiDokter as $item)
-                                <div class="row">
+                                <div class="row p-5">
                                     <div class="col-md d-flex">
                                         <img src="https://ui-avatars.com/api/?name={{Auth::user()->name}}" class="rounded-circle" width="60px" height="60px" alt="">
                                         <div class="col-md-9" style="margin-left: 20px">
@@ -241,58 +245,11 @@
                                         <h4> Tanggal Janji : {{ date('d M Y', strtotime($item->tanggal_janji))}}</h4>
                                         <h4> Status : {{$item->status}} </h4>
                                     </div>
-                                </div>
-                                <div class="deskripsi mt-5 mb-5">
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <table>
-                                                    <tr>
-                                                        <td>
-                                                            <h4> Konsultan </h4>
-                                                        </td>
-                                                        <td>
-                                                            <h4> {{$dataDokter->fullname}} </h4>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4> Spesialisasi</h4>
-                                                        </td>
-                                                        <td>
-                                                            <h4> {{$dataPoliklinik->nama}} </h4>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="row">
-                                                <table>
-                                                    <tr>
-                                                        <td>
-                                                            <h4> Alamat </h4>
-                                                        </td>
-                                                        <td>
-                                                            <h4> {{$item->alamat}} </h4>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>
-                                                            <h4> Waktu Konsultasi</h4>
-                                                        </td>
-                                                        <td>
-                                                            <h4> {{$item->jam_janji}} </h4>
-                                                        </td>
-                                                    </tr>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
                                     <div class="mt-4">
-                                        <a class="btn btn-primary fs-5 rounded p-3" href="{{route('detail.janji',$item->id)}}"> Lihat Detail  </a>
+                                        <a class="btn btn-primary fs-3 rounded p-3" href="{{route('detail.janji',$item->id)}}"> Lihat Detail  </a>
                                     </div>
                                 </div>
+                                     
                                 @endforeach
                             </div>
                             @endif
@@ -308,11 +265,5 @@
 @endsection
 
 @section('footer')
-    <footer class="">
-        <h2>© Copyright CSD-079. All Rights Reserved</h2>
-    </footer>
-@endsection
-
-@section('opsionalCss')
-
+    class="fixed-bottom"
 @endsection

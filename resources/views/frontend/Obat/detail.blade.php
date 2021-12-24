@@ -1,22 +1,21 @@
 @extends('frontend.component.layout')
 
 @section('contentFrontEnd')
-    <main>
-
-        <img src="{{Storage::url($data->photoObat)}}" alt="">
+    <main style="background-color:white">
+        <img src="{{ Storage::url($data->photoObat) }}" alt="">
         <div class="detail-drugs-container">
-            <h1>{{$data -> namaObat}}</h1>
-            <p><b>{{$data->bentukObat}}</b></p>
-            <p>*termasuk obat {{$data->golongan}}</p>
+            <h1>{{ $data->namaObat }}</h1>
+            <p><b>{{ $data->bentukObat }}</b></p>
+            <p>*termasuk obat {{ $data->golongan }}</p>
 
             <div class="info category">
                 <h2>Kategori</h2>
-                <p>{{$data->kategori}}</p>
+                <p>{{ $data->kategori }}</p>
             </div>
 
             <div class="info description">
                 <h2>Deskripsi</h2>
-                <p>{!!  $data->deskripsi !!}</p>
+                <p>{!! $data->deskripsi !!}</p>
             </div>
 
             <div class="info indication">
@@ -50,14 +49,14 @@
             </div>
         </div>
         <aside>
-            <h1>Rekomendasi Obat lain</h1>
+            <h1>Rekomendasi Kategori lain</h1>
             <div class="card-recommendation-container">
-                @foreach($dataRekomendasi as $item)
+                @foreach ($dataRekomendasi as $item)
                     <div class="card-recommendation">
-                        <img src="{{Storage::url($item->photo)}}" alt="">
-                        <h2>{{$item->nama}}</h2>
-                            <p>Rp.200000</p>
-                        <button>Detail</button>
+                        <img src="{{ Storage::url($item->photoObat) }}" alt="">
+                        <h2>{{ $item->namaObat }}</h2>
+                        <a href="{{ route('obatShow_frontend', $item->id) }}"
+                            class="btn btn-primary text-light p-3 fs-4 rounded">Detail</a>
                     </div>
                 @endforeach
             </div>

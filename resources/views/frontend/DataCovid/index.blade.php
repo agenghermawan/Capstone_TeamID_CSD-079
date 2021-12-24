@@ -5,36 +5,34 @@
     <main>
         <div class="covid-container">
             <h1>Data Covid 19 di Indonesia</h1>
-            <p>Update 07 Dec 2021 16:00</p>
+            <p>Update 21 Dec 2021 16:00</p>
             <div class="covid-card-container">
             @foreach($dataIndonesia as $item)
-                <div class="covid-card">
-                    <div class="covid-card-number">
-                        <h2> {{ $item->positif }}</h2>
-                        <p>(+261)</p>
+                <div class="row ">
+                    <div class="col-md-3 p-5 text-dark card opacity-50">
+                        <div class="covid-card-number">
+                            <h2> {{ $item->positif }}</h2>
+                        </div>
+                        <h3>KASUS KONFIRMASI</h3>
                     </div>
-                    <h3>KASUS KONFIRMASI</h3>
-                </div>
-                <div class="covid-card">
-                    <div class="covid-card-number">
-                        <h2>{{$item->sembuh}}</h2>
-                        <p>(96,5%)</p>
+                    <div class="col-md-3  card p-5 text-dark opacity-50">
+                        <div class="covid-card-number">
+                            <h2>{{$item->sembuh}}</h2>
+                        </div>
+                        <h3>KASUS SEMBUH</h3>
                     </div>
-                    <h3>KASUS SEMBUH</h3>
-                </div>
-                <div class="covid-card">
-                    <div class="covid-card-number">
-                        <h2>{{$item->meninggal}}</h2>
-                        <p>(3,4%)</p>
+                    <div class="col-md-3 card p-5 text-dark opacity-50">
+                        <div class="covid-card-number">
+                            <h2>{{$item->meninggal}}</h2>
+                        </div>
+                        <h3>KASUS MENINGGAL</h3>
                     </div>
-                    <h3>KASUS MENINGGAL</h3>
-                </div>
-                <div class="covid-card">
-                    <div class="covid-card-number">
-                        <h2>{{$item->dirawat}}</h2>
-                        <p>(0,1%)</p>
+                    <div class="col-md-3 card text-dark p-5 opacity-50">
+                        <div class="covid-card-number">
+                            <h2>{{$item->dirawat}}</h2>
+                        </div>
+                        <h3>KASUS AKTIF</h3>
                     </div>
-                    <h3>KASUS AKTIF</h3>
                 </div>
             @endforeach
             </div>
@@ -107,5 +105,55 @@
             font-size: 1.5em;
         }
 
+        @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+            .covid-container > h1 {
+                font-size: 3em;
+                margin-top: 10%;
+            }
+
+            .covid-card-container {
+                flex-direction: column;
+            }
+
+            .covid-card {
+                width: 100%;
+                margin-bottom: 5%;
+            }
+        }
+
+        /* Mobile landscape */
+        @media only screen and (min-width: 481px) and (max-width: 767px) {
+            .covid-container > h1 {
+                font-size: 3em;
+                margin-top: 10%;
+            }
+
+            .covid-card-container {
+                flex-direction: column;
+            }
+
+            .covid-card {
+                width: 100%;
+                margin-bottom: 5%;
+            }
+        }
+
+        /* tablet ipad (potrait) */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            .covid-container > h1 {
+                font-size: 3em;
+                margin-top: 10%;
+            }
+
+            .covid-card-container {
+                flex-wrap: wrap;
+            }
+
+            .covid-card {
+                width: 47%;
+                margin: 0 1.5%;
+                margin-bottom: 2.5%;
+            }
+        }
     </style>
 @endsection

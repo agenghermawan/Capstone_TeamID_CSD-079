@@ -34,10 +34,13 @@
 
     </style>
 @endsection
+@section('title')
+   Daftar Kategori Obat
+@endsection
 
 @section('content')
-    <div class="h1 my-5 text-center text-base text-blue-500 font-bold"> Daftar Kategori Obat </div>
-    <div class="grid-cols-1 grid lg:grid-cols-7">
+
+    <div class="grid-cols-1 grid lg:grid-cols-7 mt-5">
             <a href="{{ route('obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5 mr-2"> Tambahkan Data Obat</a>
             <a href="{{ route('kategori-obat.create') }}" class="bg-blue-400 p-3 text-white rounded mb-5"> Tambahkan Kategori Obat</a>
     </div>

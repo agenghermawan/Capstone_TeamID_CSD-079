@@ -5,6 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-4">
+                      <img src="{{asset('image/415.jpg')}}" height="300px" width="500" class="rounded shadow" style="object-fit: cover">
                 <div class="card p-5 mb-3">
                     <h2> Konsultasi Sekarang</h2>
                 </div>

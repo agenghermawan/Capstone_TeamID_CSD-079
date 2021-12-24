@@ -1,14 +1,12 @@
 @extends('layouts.app')
 
-@section('css')
-
-
-@endsection
-@section('content')
-    <div class="container mt-4 grid grid-cols-1 md:grid-cols-2 lg:flex">
-        <a href="{{ route('pengguna.create') }}" class="bg-gradient-to-r from-blue-300 to-blue-200 p-2 rounded"> Daftar
+@section('title')
+      <a class="bg-gradient-to-r from-blue-300 to-blue-200 p-2 rounded text-white"> Daftar
             Pengguna</a>
-    </div>
+@endsection
+
+
+@section('content')
     <div class="grid container grid-cols-1 md:grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-3 w-full mt-10">
         @foreach ($data as $item)
             <div class="col-span-1 bg-white p-10 rounded shadow-xl">

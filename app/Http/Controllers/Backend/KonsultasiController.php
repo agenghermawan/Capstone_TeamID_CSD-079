@@ -87,7 +87,7 @@ class KonsultasiController extends Controller
             'jawabanKonsultasi' => $request->jawabanKonsultasi,
             'user_id' => $request->user_id,
         ]);
-        \Alert::success('Berhasil Menjawab Konsultas','Terima kasih');
+        \Alert::success('Berhasil Menjawab Konsultasi','Terima kasih');
         return back();
     }
 

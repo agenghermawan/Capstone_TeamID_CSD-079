@@ -17,8 +17,11 @@
                             </div>
                             <div class="my-4">
                             <h4> Deskripsi </h4>
+                                @if($dataDokter->deskripsi == null)
+                                 <p> Dokter belum memperbarui Profilenya </p>
+                                @else
                                 <p> {{$dataDokter->deskripsi}}</p>
-
+                                @endif
                                 <h4> Pengalaman Praktik </h4>
                                 @if($dataDokter->PengalamanPraktik == null)
                                     <p> Belum mempunyai pengalaman praktik </p>

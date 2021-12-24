@@ -3,14 +3,20 @@
 @section('contentFrontEnd')
     <main>
         <div class="header-hospital-page">
-            <h1>Kunjungan ke Rumah Sakit Lebih Mudah</h1>
-            <p>Cari rumah sakit dan buat janji dengan langkah mudah</p>
-            <form action="{{route('rumahSakit_frontend')}}" style="width: 100%" class="d-flex">
-                <input type="text" class="form-control shadow fs-3 p-4" name="searchPoliklinik" placeholder="Silahkan cari Poliklinik yang anda butuhkan ....">
-                <button class="btn btn-primary rounded" type="submit"> <i class="fas fa-search fa-3x"></i> </button>
-            </form>
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{asset('image/4855148.jpg')}}" class="rounded shadow" width="100%" alt="">
+                </div>
+                <div class="col-md-6">
+                    <h1 style="font-size: 48px">Kunjungan ke Rumah Sakit Lebih Mudah</h1>
+                    <p style="font-size:24px">Cari rumah sakit dan buat janji dengan langkah mudah</p>
+                    <form action="{{route('rumahSakit_frontend')}}" style="width: 100%" class="d-flex mt-5">
+                        <input type="text" class="form-control shadow fs-3 p-4" name="searchPoliklinik" placeholder="Silahkan cari Poliklinik yang anda butuhkan ....">
+                        <button class="btn btn-primary rounded" type="submit"> <i class="fas fa-search fa-3x"></i> </button>
+                    </form>
+                </div>
+            </div>
         </div>
-
         <div class="hospital-page-container">
             <h2>Telusuri Berdasarkan Poliklinik</h2>
             <div class="card-hospital-container">
@@ -18,7 +24,7 @@
                     <div class="card-hospital">
                         <img src=""/>
                         <h3>{{$item -> nama}}</h3>
-                        <p>{!! $item->deskripsi !!}</p>
+                        <p>{{ Illuminate\Support\Str::limit($item->deskripsi, 60, '...') }}</p>
                         <a href="{{ route('rumahSakit_show_frontend', $item->nama) }}" >Lihat Rumah Sakit</a>
                     </div>
                 @endforeach

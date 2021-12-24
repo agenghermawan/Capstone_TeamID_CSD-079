@@ -1,680 +1,677 @@
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  /* --text-color: #1e5f8d; */
-  --text-color: #2c4964;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* --text-color: #1e5f8d; */
+    --text-color: #2c4964;
 }
 
 html {
-  font-size: 62.5%;
-  font-family: "Roboto", sans-serif;
+    font-size: 62.5%;
+    font-family: "Roboto", sans-serif;
 }
 
 li {
-  list-style: none;
+    list-style: none;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
 }
 
 .header {
-  border-bottom: 1px solid #e2e8f0;
+    border-bottom: 1px solid #e2e8f0;
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2.5rem;
 }
 
 .hamburger {
-  display: none;
+    display: none;
 }
 
 .bar {
-  display: block;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  -webkit-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
-  background-color: #101010;
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: #101010;
 }
 
 .nav-menu {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 1.5% 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 1.5% 0;
 }
 
 .nav-item {
-  margin-left: 5rem;
+    margin-left: 5rem;
 }
 
 .nav-link {
-  font-size: 1.6rem;
-  font-weight: 400;
-  color: #475569;
+    font-size: 1.6rem;
+    font-weight: 400;
+    color: #475569;
 }
 
 .nav-link:hover {
-  color: #482ff7;
+    color: #482ff7;
 }
 
 .nav-logo {
-  font-size: 2.1rem;
-  font-weight: 500;
-  color: #482ff7;
+    font-size: 2.1rem;
+    font-weight: 500;
+    color: #482ff7;
 }
 
 /* Banner */
 
 .banner-container {
-  display: flex;
-  background-color: #dde7ee;
-  background-attachment: fixed;
+    display: flex;
+    background-color: #dde7ee;
+    background-attachment: fixed;
 }
 
 .banner-text {
-  width: 50%;
-  padding: 5% 0 0 5%;
+    width: 50%;
+    padding: 5% 0 0 5%;
 }
 
 .banner-text h1 {
-  color: var(--text-color);
-  font-size: 5em;
-  margin-bottom: 1.5%;
+    color: var(--text-color);
+    font-size: 5em;
+    margin-bottom: 1.5%;
 }
 
 .banner-text p {
-  color: var(--text-color);
-  font-size: 1.5em;
+    color: var(--text-color);
+    font-size: 1.5em;
 }
 
 .btn-appointment {
-  background-color: #1a77cc;
-  color: #f5f5f5;
-  border: none;
-  padding: 2% 3%;
-  border-radius: 20px;
-  margin-top: 3%;
+    background-color: #1a77cc;
+    color: #f5f5f5;
+    border: none;
+    padding: 2% 3%;
+    border-radius: 20px;
+    margin-top: 3%;
 }
 
 .banner-img {
-  width: 50%;
-  display: flex;
-  justify-content: center;
-  margin: 0 5%;
-  padding: 3% 0 0 0;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin: 0 5%;
+    padding: 3% 0 0 0;
 }
 
 .banner-img img {
-  max-width: 100%;
-  width: 100%;
-  object-fit: cover;
-  height: auto;
+    max-width: 100%;
+    width: 100%;
+    object-fit: cover;
+    height: auto;
 }
 
 /* Why us */
 
 .whyUs-container {
-  display: flex;
-  padding: 0 5%;
-  margin-top: -10%;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 5%;
+    display: flex;
+    padding: 0 5%;
+    margin-top: -10%;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 5%;
 }
 
 .card-1-whyUs {
-  width: 30%;
-  height: auto;
-  background-color: #1a77cc;
-  color: #f5f5f5;
-  padding: 3%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  border-radius: 10px;
+    width: 30%;
+    height: auto;
+    background-color: #1a77cc;
+    color: #f5f5f5;
+    padding: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
 }
 
 .card-1-whyUs h2 {
-  font-size: 3em;
-  margin-bottom: 5%;
+    font-size: 3em;
+    margin-bottom: 5%;
 }
 
 .card-1-whyUs p {
-  font-size: 1.5em;
-  line-height: 175%;
+    font-size: 1.5em;
+    line-height: 175%;
 }
 
 .card-1-whyUs button {
-  background-color: #4299eb;
-  color: #f5f5f5;
-  border: none;
-  padding: 3% 6%;
-  border-radius: 20px;
-  margin-top: 5%;
+    background-color: #4299eb;
+    color: #f5f5f5;
+    border: none;
+    padding: 3% 6%;
+    border-radius: 20px;
+    margin-top: 5%;
 }
 
 .card-2-whyUs {
-  width: 20%;
-  height: fit-content;
-  padding: 3%;
-  background-color: #fff;
-  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    width: 20%;
+    height: fit-content;
+    padding: 3%;
+    background-color: #fff;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .card-2-whyUs img {
-  max-width: 100%;
-  width: 15%;
+    max-width: 100%;
+    width: 15%;
 }
 
 .card-2-whyUs h3 {
-  font-size: 2em;
-  text-align: center;
-  margin: 10% 0;
+    font-size: 2em;
+    text-align: center;
+    margin: 10% 0;
 }
 
 .card-2-whyUs p {
-  text-align: center;
-  font-size: 1.5em;
-  color: #a1a1a1;
-  line-height: 125%;
+    text-align: center;
+    font-size: 1.5em;
+    color: #a1a1a1;
+    line-height: 125%;
 }
 
 /* Service */
 .Services-container {
-  padding: 5%;
-  /* background-color: #f1f7fc; */
+    padding: 5%;
+    /* background-color: #f1f7fc; */
 }
 
 .Services-container h2 {
-  font-size: 3em;
-  margin-bottom: 1%;
-  text-align: center;
-  color: #2c4964;
+    font-size: 3em;
+    margin-bottom: 1%;
+    text-align: center;
+    color: #2c4964;
 }
 
 .Services-container p {
-  color: #2c4964;
-  font-size: 1.5em;
-  margin-bottom: 5%;
-  text-align: center;
+    color: #2c4964;
+    font-size: 1.5em;
+    margin-bottom: 5%;
+    text-align: center;
 }
 
 .card-service-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .card-service {
-  width: 30%;
-  height: auto;
-  padding: 3%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  background-color: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  color: #2c4964;
-  text-align: center;
-  /* box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2); */
+    width: 30%;
+    height: auto;
+    padding: 3%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    color: #2c4964;
+    text-align: center;
+    /* box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2); */
 }
 
 .card-service img {
-  max-width: 100%;
-  width: 20%;
-  height: auto;
-  margin: 5% 0;
+    max-width: 100%;
+    width: 20%;
+    height: auto;
+    margin: 5% 0;
 }
 
 .card-service h3 {
-  margin-bottom: 5%;
-  font-size: 2em;
+    margin-bottom: 5%;
+    font-size: 2em;
 }
 
 .card-service p {
-  text-align: center;
-  font-size: 1.5em;
+    text-align: center;
+    font-size: 1.5em;
 }
 
 .card-service:hover {
-  background-color: #1a77cc;
-  color: #fff;
+    background-color: #1a77cc;
+    color: #fff;
 }
 
 /* Make Appointment */
 
 .makeAppointment-container {
-  background-color: #f1f7fc;
-  padding: 5%;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
+    background-color: #f1f7fc;
+    padding: 5%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .makeAppointment-container h2 {
-  text-align: center;
-  font-size: 3em;
-  color: var(--text-color);
-  margin-bottom: 2%;
+    text-align: center;
+    font-size: 3em;
+    color: var(--text-color);
+    margin-bottom: 2%;
 }
 
 .makeAppointment-container p {
-  text-align: center;
-  font-size: 1.5em;
-  line-height: 150%;
-  color: var(--text-color);
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 150%;
+    color: var(--text-color);
 }
 
 .form-appointment {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  width: 100%;
-  height: auto;
-  margin: 3% 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    margin: 3% 0;
 }
 
 .form-appointment input,
 select {
-  width: 30%;
-  height: 40px;
-  margin: 1% 0;
+    width: 30%;
+    height: 40px;
+    margin: 1% 0;
 }
 
 .makeAppointment-container button {
-  width: 15%;
-  height: auto;
-  padding: 1% 0;
-  background-color: #1a77cc;
-  color: #f5f5f5;
-  border: none;
-  border-radius: 20px;
+    width: 15%;
+    height: auto;
+    padding: 1% 0;
+    background-color: #1a77cc;
+    color: #f5f5f5;
+    border: none;
+    border-radius: 20px;
 }
 
-/* Article */
-
 .article-container {
-  padding: 5%;
-  background-color: #f1f7fc;
+    padding: 5%;
+    background-color: #f1f7fc;
 }
 
 .article-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 3%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 3%;
 }
 
 .article-header h2 {
-  font-size: 3em;
-  color: var(--text-color);
+    font-size: 3em;
+    color: var(--text-color);
 }
 
 .article-header a {
-  font-size: 1.75em;
-  padding: 0.5%;
-  border-radius: 5px;
-  color: var(--text-color);
+    font-size: 1.75em;
+    padding: 0.5%;
+    border-radius: 5px;
+    color: var(--text-color);
 }
 
 .article-header a:hover {
-  background-color: var(--text-color);
-  color: #f5f5f5;
+    background-color: var(--text-color);
+    color: #f5f5f5;
 }
 
 .article-content {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .card-article {
-  width: 22.5%;
-  height: auto;
-  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
+    width: 22.5%;
+    height: auto;
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
 }
 
 .card-article img {
-  max-width: 100%;
-  width: 100%;
-  height: auto;
-  object-fit: cover;
-  max-height: 200px;
-  border-radius: 10px 10px 0 0;
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 200px;
+    border-radius: 10px 10px 0 0;
 }
 
 .card-article h3 {
-  font-size: 1.5em;
-  padding: 5%;
-  padding-bottom: 0;
+    font-size: 1.5em;
+    padding: 5%;
+    padding-bottom: 0;
 }
 
 .card-article p {
-  padding: 5%;
-  line-height: 150%;
-  text-align: justify;
+    padding: 5%;
+    line-height: 150%;
+    text-align: justify;
 }
 
 /* drugs */
 
 .drugs-container {
-  padding: 5%;
-  color: #2c4964;
+    padding: 5%;
+    color: #2c4964;
 }
 
 .drugs-container h2 {
-  text-align: center;
-  font-size: 3em;
-  margin-bottom: 1%;
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: 1%;
 }
 
 .drugs-container p {
-  text-align: center;
-  font-size: 1.5em;
-  margin-bottom: 5%;
+    text-align: center;
+    font-size: 1.5em;
+    margin-bottom: 5%;
 }
 
 .card-drugs-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .card-drugs {
-  width: 30%;
-  height: auto;
-  min-height: 75px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  padding: 1.5% 0;
-  margin-bottom: 3%;
-  color: #2c4964;
+    width: 30%;
+    height: auto;
+    min-height: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 1.5% 0;
+    margin-bottom: 3%;
+    color: #2c4964;
 }
 
 .card-drugs img {
-  max-width: 100%;
-  width: 25%;
-  height: auto;
+    max-width: 100%;
+    width: 25%;
+    height: auto;
 }
 
 .card-drugs h3 {
-  font-size: 1.5em;
+    font-size: 1.5em;
 }
 
 .card-drugs:hover {
-  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.2);
 }
 
 /* footer */
 
 footer {
-  background-color: #f1f7fc;
-  padding: 2%;
+    background-color: #f1f7fc;
+    padding: 2%;
 }
 
 footer h2 {
-  text-align: center;
-  font-weight: 400;
+    text-align: center;
+    font-weight: 400;
 }
 
 @media only screen and (max-width: 768px) {
-  .nav-menu {
-    position: fixed;
-    left: -100%;
-    top: 5rem;
-    flex-direction: column;
-    background-color: #fff;
-    width: 100%;
-    border-radius: 10px;
-    text-align: center;
-    transition: 0.3s;
-    box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-  }
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 5rem;
+        flex-direction: column;
+        background-color: #fff;
+        width: 100%;
+        border-radius: 10px;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+    }
 
-  .nav-menu.active {
-    left: 0;
-  }
+    .nav-menu.active {
+        left: 0;
+    }
 
-  .nav-item {
-    margin: 2.5rem 0;
-  }
+    .nav-item {
+        margin: 2.5rem 0;
+    }
 
-  .hamburger {
-    display: block;
-    cursor: pointer;
-  }
+    .hamburger {
+        display: block;
+        cursor: pointer;
+    }
 
-  .hamburger.active .bar:nth-child(2) {
-    opacity: 0;
-  }
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
 
-  .hamburger.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
 
-  .hamburger.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
 }
 
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-  .banner-container {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+@media only screen and (min-device-width: 300px) and (max-device-width: 480px) {
+    .banner-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-  .banner-text {
-    width: 90%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+    .banner-text {
+        width: 90%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-  .banner-text h1 {
-    font-size: 3em;
-  }
+    .banner-text h1 {
+        font-size: 3em;
+    }
 
-  .banner-img {
-    width: 90%;
-    height: auto;
-    margin-top: 5%;
-  }
+    .banner-img {
+        width: 90%;
+        height: auto;
+        margin-top: 5%;
+    }
 
-  .banner-img img {
-    width: 90%;
-    height: auto;
-  }
+    .banner-img img {
+        width: 90%;
+        height: auto;
+    }
 
-  .whyUs-container {
-    margin-top: 10%;
-    flex-direction: column;
-  }
+    .whyUs-container,
+    .rightwhyUs {
+        margin-top: 10%;
+        flex-direction: column;
+    }
 
-  .card-1-whyUs {
-    width: 90%;
-    text-align: center;
-    margin-bottom: 5%;
-  }
+    .card-1-whyUs {
+        width: 90%;
+        text-align: center;
+        margin-bottom: 5%;
+    }
 
-  .card-2-whyUs {
-    width: 90%;
-    margin-bottom: 5%;
-  }
+    .card-2-whyUs {
+        width: 90%;
+        margin-bottom: 5%;
+    }
 
-  .card-service-container {
-    flex-direction: column;
-  }
+    .card-service-container {
+        flex-direction: column;
+    }
 
-  .card-service {
-    width: 100%;
-    margin-bottom: 5%;
-  }
+    .card-service {
+        width: 100%;
+        margin-bottom: 5%;
+    }
 
-  .form-appointment input,
-  select {
-    width: 100%;
-    margin: 2.5%;
-  }
+    .form-appointment input,
+    select {
+        width: 100%;
+        margin: 2.5%;
+    }
 
-  .makeAppointment-container button {
-    width: 95%;
-    height: 40px;
-    border-radius: 5px;
-  }
+    .makeAppointment-container button {
+        width: 95%;
+        height: 40px;
+        border-radius: 5px;
+    }
 
-  .article-header h2 {
-    font-size: 2em;
-  }
+    .article-header h2 {
+        font-size: 2em;
+    }
 
-  .article-header a {
-    font-size: 1.25em;
-  }
+    .article-header a {
+        font-size: 1.25em;
+    }
 
-  .article-content {
-    flex-direction: column;
-  }
+    .article-content {
+        flex-direction: column;
+    }
 
-  .card-article {
-    width: 100%;
-    margin: 5% 0;
-  }
+    .card-article {
+        width: 100%;
+        margin: 5% 0;
+    }
 
-  .card-drugs {
-    width: 100%;
-    margin-bottom: 5%;
-  }
+    .card-drugs {
+        width: 100%;
+        margin-bottom: 5%;
+    }
 }
 
 /* Mobile landscape */
-@media only screen and (min-width: 481px) and (max-width: 767px) {
-  .banner-container {
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
+@media only screen and (min-width: 100px) and (max-width: 767px) {
+    .banner-container {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
 
-  .banner-text {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
+    .banner-text {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
 
-  .banner-text h1 {
-    font-size: 2.75em;
-  }
+    .banner-text h1 {
+        font-size: 2.75em;
+    }
 
-  .banner-img {
-    width: 50%;
-  }
+    .banner-img {
+        width: 50%;
+    }
 
-  .whyUs-container {
-    flex-direction: column;
-    margin-top: 5%;
-  }
+    .whyUs-container {
+        flex-direction: column;
+        margin-top: 5%;
+    }
 
-  .card-1-whyUs,
-  .card-2-whyUs {
-    width: 90%;
-    margin-bottom: 5%;
-  }
+    .card-1-whyUs,
+    .card-2-whyUs {
+        width: 90%;
+        margin-bottom: 5%;
+    }
 
-  .form-appointment {
-    flex-direction: column;
-  }
+    .form-appointment {
+        flex-direction: column;
+    }
 
-  .form-appointment input,
-  .form-appointment select {
-    width: 100%;
-  }
+    .form-appointment input,
+    .form-appointment select {
+        width: 100%;
+    }
 
-  .card-service-container {
-    flex-direction: column;
-  }
+    .card-service-container {
+        flex-direction: column;
+    }
 
-  .card-service {
-    width: 90%;
-    margin-bottom: 5%;
-  }
+    .card-service {
+        width: 90%;
+        margin-bottom: 5%;
+    }
 
-  .card-article {
-    width: 45%;
-    margin-bottom: 5%;
-  }
+    .card-article {
+        width: 45%;
+        margin-bottom: 5%;
+    }
 
-  .card-drugs {
-    width: 45%;
-  }
+    .card-drugs {
+        width: 45%;
+    }
 }
 
 /* tablet ipad (potrait) */
-@media (min-width: 768px) and (max-width: 1023px) {
-  .banner-text h1 {
-    font-size: 3em;
-  }
+@media (min-width: 768px) and (max-width: 1200px) {
+    .banner-text h1 {
+        font-size: 3em;
+    }
 
-  .banner-text p {
-    font-size: 1.25em;
-  }
+    .banner-text p {
+        font-size: 1.25em;
+    }
 
-  .whyUs-container {
-    flex-direction: column;
-    margin-top: 5%;
-  }
+    .whyUs-container {
+        flex-direction: column;
+        margin-top: 5%;
+    }
 
-  .card-1-whyUs {
-    width: 90%;
-    margin-bottom: 5%;
-  }
+    .card-1-whyUs {
+        width: 90%;
+        margin-bottom: 5%;
+    }
 
-  .card-2-whyUs {
-    width: 90%;
-    margin-bottom: 5%;
-  }
+    .card-2-whyUs {
+        width: 90%;
+        margin-bottom: 5%;
+    }
 
-  .card-article {
-    width: 45%;
-    margin-bottom: 5%;
-  }
+    .card-article {
+        width: 45%;
+        margin-bottom: 5%;
+    }
 }
 
-/* tablet ipad (landscape) */
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+@media (min-width: 1024px) and (max-width: 1600px) {
+    .whyUs-container {
+        margin-top: -10%;
+    }
+    .rightwhyUs {
+        margin-top: -20%;
+    }
 }
-
-@media (min-width: 1024px) and (max-width: 1200px) {
-  .whyUs-container {
-    margin-top: -4%;
-  }
-}
-
 
 .content-2-1 .btn:focus,
 .content-2-1 .btn:active {
@@ -753,9 +750,9 @@ footer h2 {
 
 .content-2-1 .btn-card:hover {
     --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-    0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        0 4px 6px -2px rgba(0, 0, 0, 0.05);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000),
-    var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+        var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 
 .content-2-1 .btn-outline {

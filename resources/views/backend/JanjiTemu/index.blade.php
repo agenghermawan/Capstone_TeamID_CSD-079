@@ -50,10 +50,14 @@
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
                                     <div class="flex-shrink-0 h-10 w-10">
-                                        @if($getID->user->profile_photo_path == null)
-                                        <img class="h-10 w-10 rounded-full" src="{{asset('image/avatar doktor.jpg')}}" class="rounded-full" alt="">
+                                        @if(Auth::user()->role_pengguna == 'Dokter')
+                                            @if($getID->user->profile_photo_path == null)
+                                            <img class="h-10 w-10 rounded-full" src="{{asset('image/avatar doktor.jpg')}}" class="rounded-full" alt="">
+                                            @else
+                                                <img src="{{Storage::url($getID->user->profile_photo_path)}}" class="rounded-full" alt="">
+                                            @endif
                                         @else
-                                            <img src="{{Storage::url($getID->user->profile_photo_path)}}" class="rounded-full" alt="">
+                                             <img class="h-10 w-10 rounded-full" src="{{asset('image/avatar doktor.jpg')}}" class="rounded-full" alt="">
                                         @endif
                                     </div>
                                     <div class="ml-4">

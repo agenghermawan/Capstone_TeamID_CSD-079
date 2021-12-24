@@ -2,23 +2,14 @@
 
 namespace App\Models;
 
-use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
-use Spatie\MediaLibrary\InteractsWithMedia;
-use Spatie\MediaLibrary\MediaCollections\Models\Media;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Penyakit extends Model implements HasMedia
+class Penyakit extends Model
 {
-    use HasFactory, InteractsWithMedia;
+    use HasFactory;
     protected $table = 'penyakit';
     protected $fillable = [
         'namaPenyakit','deskripsiSingkat','photoPenyakit','ditulisOleh','gejala','penyebab','faktorRisiko','pengobatan','pencegahan'
     ];
-
-        public function registerMediaConversions(Media $media = null): void
-    {
-        $this->addMediaConversion('thumb')
-              ->width(368);
-    }
 }

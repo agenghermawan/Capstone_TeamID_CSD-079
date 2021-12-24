@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers\Backend;
 
+use Alert;
 use App\Http\Controllers\Controller;
 use App\Models\KategoriObat;
 use App\Models\Obat;
 use Illuminate\Http\Request;
 use Validator;
+
+use function GuzzleHttp\Promise\all;
 
 class ObatController extends Controller
 {
@@ -72,6 +75,7 @@ class ObatController extends Controller
      */
     public function show($id)
     {
+        
         $detailDataObat = Obat::findOrFail($id);
         return view('backend.Obat.detail',compact('detailDataObat'));
     }
@@ -84,7 +88,9 @@ class ObatController extends Controller
      */
     public function edit($id)
     {
-
+         $data = KategoriObat::all();
+        $obatData = Obat::findOrFail($id);
+        return view('backend.Obat.edit',compact('data','obatData'));
     }
 
     /**
@@ -96,7 +102,20 @@ class ObatController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Obat::findOrFail($id);
+        if($request->photoObat == null){
+            $data -> update($request->all());
+            Alert::toast('Berhasil memperbarui data obat','success');
+            return redirect()->route('obat.index');
+        } else{
+            $getNama = $request->file('photoObat')->getClientOriginalName();
+            $post = $request->all();
+            $post['photoObat'] = $request->file('photoObat')->storeAs('assets/Obat', $getNama ,'public');
+            $data->update($post);
+            Alert::toast('Berhasil memperbarui data obat','success');
+            return redirect()->route('obat.index');
+        }
+
     }
 
     /**
@@ -107,6 +126,9 @@ class ObatController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Obat::find($id);
+        $data->delete($id);
+        Alert::toast('Berhasil menghapus data obat','success');
+        return redirect()->route('obat.index');
     }
 }

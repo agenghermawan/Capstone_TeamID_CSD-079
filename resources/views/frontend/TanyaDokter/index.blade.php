@@ -70,5 +70,7 @@
     @endif
     </div>
 @endsection
-@section('opsionalCss')
+
+@section('footer')
+    class="fixed-bottom"
 @endsection

@@ -17,7 +17,7 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        $data = User::all();
+        $data = User::where('role_pengguna', 'Pengguna')->get();
         return view('backend.Pengguna.index',compact('data'))->with([
             'data' => $data
         ]);

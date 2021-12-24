@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class LandingPageController extends Controller
 {
     public function index(){
-        $dataArtikel = Artikel::all();
+        $dataArtikel = Artikel::all()->take(4);
         return view('frontend.home',compact('dataArtikel'));
     }
 }

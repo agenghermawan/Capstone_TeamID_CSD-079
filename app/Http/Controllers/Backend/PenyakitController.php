@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Models\Penyakit;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Validator;
 
 class PenyakitController extends Controller
 {
@@ -90,7 +91,32 @@ class PenyakitController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if ($request->photoPenyakit == null){
+            $artikel =  Penyakit::find($id);
+            $artikel->namaPenyakit = $request->namaPenyakit;
+            $artikel->deskripsiSingkat = $request->deskripsiSingkat;
+            $artikel->ditulisOleh = $request->ditulisOleh;
+            $artikel->gejala = $request->gejala;
+            $artikel->penyebab = $request->penyebab;
+            $artikel->faktorRisiko = $request->faktorRisiko;
+            $artikel->pengobatan = $request->pengobatan;
+            $artikel->pencegahan = $request->pencegahan;
+            $artikel->save();
+
+            \Alert::toast('Berhasil mempebarui Artikel','success');
+            return redirect()->route('penyakit.index');
+        }
+        else{
+            $data= $request->all();
+                Validator::make($data, [
+                    'photoPenyakit' => 'required|image'
+                ])->validate();
+            $findID = Penyakit::find($id);
+            $data['photoPenyakit'] = $request->file('photoPenyakit')->storeAs('assets/Penyakit', $request->file('photoPenyakit')->getClientOriginalName(), 'public');
+                 $findID->update($data);
+            \Alert::toast('Berhasil mempebarui Artikel','success');
+            return redirect()->route('penyakit.index');
+        }
     }
 
     /**
@@ -101,6 +127,9 @@ class PenyakitController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Penyakit::find($id);
+        $data->delete($id);
+        \Alert::success('berhasil menghapus data penyakit','success');
+        return redirect()->route('penyakit.index');
     }
 }

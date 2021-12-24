@@ -9,7 +9,7 @@
         <div class="header col-span-1 grid gap-2 col-rows-1">
             <h4 class="font-bold text-xl text-blue-400"> {{ $detailDataObat->namaObat }}</h4>
             <h5 class="mt-2">
-                {{ $detailDataObat->deskripsi }}
+                {!! $detailDataObat->deskripsi !!}
             </h5>
         </div>
         <div class="image bg-clip-content md:flex">
@@ -17,39 +17,30 @@
                 <img src="{{ Storage::url($detailDataObat->photoObat) }}" class="rounded flex-initial md:h-64" alt="">
             </div>
             <div class="produk md:p-5 md:ml-2">
-                <h5 class="font-bold mb-5">
-                    Produk {{ $detailDataObat->namaObat }}
-                </h5>
+             
                 <ul class="list-outside bg-rose-200 list-disc tracking-tighter">
                     <p class="mt-2 ">
-                        {{ $detailDataObat->productObat }}
+                        {!! $detailDataObat->productObat !!}
                     </p>
                 </ul>
             </div>
         </div>
-        <div class="warning grid gap-2">
-            <h5 class="font-bold"> Peringatan Sebelum Mengonsumsi Adem Sari : </h5>
-            <ul class="list-disc list-inside">
-                <li>
-                    {{ $detailDataObat->peringatanObat }}
-                </li>
-            </ul>
-        </div>
+   
 
         <div class="dosis grid gap-2">
             <h5 class="font-bold"> Dosis dan Aturan Pakai {{ $detailDataObat->namaObat }} </h5>
-            <p> {{ $detailDataObat->dosisdanaturan }}</p>
+            <p> {!! $detailDataObat->dosisdanaturan!!}</p>
         </div>
 
 
         <div class="interaksi grid gap-2">
             <h5 class="font-bold"> Interaksi {{ $detailDataObat->namaObat }} dengan Obat Lain </h5>
-            <p> {{ $detailDataObat->interaksi }}</p>
+            <p> {!! $detailDataObat->interaksi !!}</p>
         </div>
 
         <div class="efek">
             <h5 class="font-bold"> Efek Samping dan Bahaya {{ $detailDataObat->namaObat }} </h5>
-            <p> {{ $detailDataObat->efekSamping }} </p>
+            <p> {!! $detailDataObat->efekSamping !!} </p>
 
         </div>
 

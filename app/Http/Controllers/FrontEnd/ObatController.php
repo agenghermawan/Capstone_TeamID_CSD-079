@@ -22,12 +22,20 @@ class ObatController extends Controller
         }
     }
     public function show($id){
-        $dataRekomendasi =KategoriObat::where('id',$id)->get();
+        $dataRekomendasi = Obat::where('id' , '!=', $id)->get()->random(3);
         $data = Obat::where('id',$id)->first();
         return view('frontend.Obat.detail',compact('data','dataRekomendasi'));
     }
     public function kategori($kategori){
-        $data = Obat::all()->where('kategori',$kategori);
-        return view('frontend.Obat.listkategori',compact('data'));
+
+        if(request('searchObat')){
+            $keywoard = \request('searchObat');
+            $data = Obat::where('namaObat', 'like', "%{$keywoard}%")->latest()->get();
+            return  view('frontend.Obat.listkategori',compact('data','kategori'));
+        }
+        else{
+            $data = Obat::all()->where('kategori',$kategori);
+            return view('frontend.Obat.listkategori',compact('data','kategori'));
+        }
     }
 }
